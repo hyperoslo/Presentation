@@ -60,7 +60,9 @@
 				4456148B1AD6A29D001FA4C3 /* Demo */,
 				146D72941AB782920058798C /* Products */,
 			);
+			indentWidth = 2;
 			sourceTree = "<group>";
+			tabWidth = 2;
 		};
 		146D72941AB782920058798C /* Products */ = {
 			isa = PBXGroup;
