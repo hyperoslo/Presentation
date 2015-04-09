@@ -3,42 +3,49 @@ import UIKit
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
-    var window: UIWindow?
-    var tutorialViewController: TutorialViewController = {
-        return TutorialViewController(title: "Tutorial")
+  var window: UIWindow?
+  var tutorialViewController: TutorialViewController = {
+    let tutorialViewController = TutorialViewController(transitionStyle: .Scroll, navigationOrientation: .Horizontal, options: nil)
+    return tutorialViewController
     }()
 
-    func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
+  func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
 
-        let bounds = UIScreen.mainScreen().liveBounds();
-        let view1 = UIView(frame: bounds)
-        view1.backgroundColor = UIColor.greenColor()
-        let view2 = UIView(frame: bounds)
-        view2.backgroundColor = UIColor.yellowColor()
-        self.tutorialViewController.addPage(view1)
-        self.tutorialViewController.addPage(view2)
+    let viewController1 = UIViewController()
+    viewController1.view.backgroundColor = UIColor.redColor()
+    let viewController2 = UIViewController()
+    viewController2.view.backgroundColor = UIColor.blueColor()
+    let viewController3 = UIViewController()
+    viewController3.view.backgroundColor = UIColor.greenColor()
+    let viewController4 = UIViewController()
+    viewController4.view.backgroundColor = UIColor.yellowColor()
 
-        let navigationController = UINavigationController(rootViewController: self.tutorialViewController)
+    tutorialViewController.addPage(viewController1)
+    tutorialViewController.addPage(viewController2)
+    tutorialViewController.addPage(viewController3)
+    tutorialViewController.addPage(viewController4)
 
-        self.tutorialViewController.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Previous Page", style: .Plain, target: self, action: "previousPage")
+    let navigationController = UINavigationController(rootViewController: self.tutorialViewController)
 
-        self.tutorialViewController.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Next Page", style: .Plain, target: self, action: "nextPage")
+    self.tutorialViewController.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Previous Page", style: .Plain, target: self, action: "previousPage")
 
-        self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
-        self.window?.rootViewController = navigationController
-        self.window?.makeKeyAndVisible()
+    self.tutorialViewController.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Next Page", style: .Plain, target: self, action: "nextPage")
 
-        return true
-    }
+    self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
+    self.window?.rootViewController = navigationController
+    self.window?.makeKeyAndVisible()
 
-    func nextPage() {
-        var currentIndex = self.tutorialViewController.currentPage
-        self.tutorialViewController.currentPage = currentIndex + 1
-    }
+    return true
+  }
 
-    func previousPage() {
-        var currentIndex = self.tutorialViewController.currentPage
-        self.tutorialViewController.currentPage = currentIndex - 1
-    }
+  //    func nextPage() {
+  //        var currentIndex = self.tutorialViewController.currentPage
+  //        self.tutorialViewController.goToPage(currentIndex)
+  //    }
+  //
+  //    func previousPage() {
+  //        var currentIndex = self.tutorialViewController.currentPage
+  //        self.tutorialViewController.goToPage(currentIndex)
+  //    }
 }
 
