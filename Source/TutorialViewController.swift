@@ -1,7 +1,6 @@
 import UIKit
 
-class TutorialViewController {
+public class TutorialViewController : UIViewController {
 
-    
 
 }
