@@ -1,34 +1,33 @@
 import UIKit
 
+let TutorialPageControlHeight: CGFloat = 37.0
+
 public class TutorialViewController : UIViewController,UIScrollViewDelegate {
 
-    let tutorialPageControlHeight: CGFloat = 37.0
-
-    var scrollView: UIScrollView {
+    private var scrollView: UIScrollView = {
         let bounds = UIScreen.mainScreen().bounds
         let frame = CGRectMake(0.0, 0.0, bounds.size.width, bounds.size.height)
         let scrollView = UIScrollView(frame: bounds)
 
-        scrollView.delegate = self
         scrollView.pagingEnabled = true
         scrollView.showsHorizontalScrollIndicator = false
 
         return scrollView
-    }
+    }()
 
-    var pageControl: UIPageControl {
+    private var pageControl: UIPageControl  = {
         let bounds = UIScreen.mainScreen().bounds
         let frame = CGRectMake(bounds.size.width / 4,
             bounds.size.height / 1.5,
             bounds.size.width / 2,
-            tutorialPageControlHeight);
+            TutorialPageControlHeight);
         let pageControl = UIPageControl(frame: frame)
 
         pageControl.currentPageIndicatorTintColor = UIColor.blueColor()
         pageControl.pageIndicatorTintColor = UIColor.whiteColor()
 
         return pageControl
-    }
+    }()
 
     convenience init(title :String) {
         self.init()
@@ -42,7 +41,9 @@ public class TutorialViewController : UIViewController,UIScrollViewDelegate {
         super.viewDidLoad()
 
         self.edgesForExtendedLayout = .None
-        self.view.backgroundColor = UIColor.lightGrayColor()
+        self.view.backgroundColor = UIColor.whiteColor()
+
+        self.scrollView.delegate = self
 
         self.view.addSubview(self.scrollView)
         self.view.addSubview(self.pageControl)
