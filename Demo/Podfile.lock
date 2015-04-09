@@ -9,6 +9,6 @@ EXTERNAL SOURCES:
     :path: "../"
 
 SPEC CHECKSUMS:
-  Tutorial: 0e9f713ef10ec6529e8d72e83b5c4ce8d6798d61
+  Tutorial: b85564139529ab72bea8b90f993496f4dd82269d
 
 COCOAPODS: 0.36.3

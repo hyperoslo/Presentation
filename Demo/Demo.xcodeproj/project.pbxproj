@@ -7,10 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		096675FB87D8ED8A585CFD26 /* Pods_Tutorial.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AE0F440E271D48F8F0D557DC /* Pods_Tutorial.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		BDD3480B1AD6934200C31A63 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDD3480A1AD6934200C31A63 /* AppDelegate.swift */; };
 		BDD348121AD6934200C31A63 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BDD348111AD6934200C31A63 /* Images.xcassets */; };
 		BDD348211AD6934200C31A63 /* TutorialTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDD348201AD6934200C31A63 /* TutorialTests.swift */; };
 		BDD348291AD6939B00C31A63 /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = BDD348281AD6939B00C31A63 /* Podfile */; };
+		BDE44E5C1AD69BA300AFF853 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BDE44E5B1AD69BA300AFF853 /* Default-568h@2x.png */; };
 		EEA6FEA1FF13C5AA249F2B30 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 17A89992E9906931904CF58B /* Pods.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 /* End PBXBuildFile section */
 
@@ -28,6 +30,8 @@
 		17A89992E9906931904CF58B /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2455AE6EA77B64D37B2BA13A /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		487108C35A078896E5CEFB9D /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+		50F9A5E7120FBB430F12C97F /* Pods-Tutorial.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tutorial.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Tutorial/Pods-Tutorial.debug.xcconfig"; sourceTree = "<group>"; };
+		AE0F440E271D48F8F0D557DC /* Pods_Tutorial.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Tutorial.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BDD348051AD6934200C31A63 /* Tutorial.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Tutorial.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BDD348091AD6934200C31A63 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BDD3480A1AD6934200C31A63 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -35,7 +39,9 @@
 		BDD3481A1AD6934200C31A63 /* TutorialTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TutorialTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		BDD3481F1AD6934200C31A63 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BDD348201AD6934200C31A63 /* TutorialTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialTests.swift; sourceTree = "<group>"; };
-		BDD348281AD6939B00C31A63 /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; };
+		BDD348281AD6939B00C31A63 /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		BDE44E5B1AD69BA300AFF853 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		F8506ACB46F978201573716C /* Pods-Tutorial.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tutorial.release.xcconfig"; path = "Pods/Target Support Files/Pods-Tutorial/Pods-Tutorial.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -44,6 +50,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				EEA6FEA1FF13C5AA249F2B30 /* Pods.framework in Frameworks */,
+				096675FB87D8ED8A585CFD26 /* Pods_Tutorial.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -62,6 +69,8 @@
 			children = (
 				2455AE6EA77B64D37B2BA13A /* Pods.debug.xcconfig */,
 				487108C35A078896E5CEFB9D /* Pods.release.xcconfig */,
+				50F9A5E7120FBB430F12C97F /* Pods-Tutorial.debug.xcconfig */,
+				F8506ACB46F978201573716C /* Pods-Tutorial.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -70,6 +79,7 @@
 			isa = PBXGroup;
 			children = (
 				17A89992E9906931904CF58B /* Pods.framework */,
+				AE0F440E271D48F8F0D557DC /* Pods_Tutorial.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -77,6 +87,7 @@
 		BDD347FA1AD6933200C31A63 = {
 			isa = PBXGroup;
 			children = (
+				BDE44E5B1AD69BA300AFF853 /* Default-568h@2x.png */,
 				BDD348281AD6939B00C31A63 /* Podfile */,
 				BDD348071AD6934200C31A63 /* Tutorial */,
 				BDD3481D1AD6934200C31A63 /* TutorialTests */,
@@ -214,6 +225,7 @@
 			files = (
 				BDD348291AD6939B00C31A63 /* Podfile in Resources */,
 				BDD348121AD6934200C31A63 /* Images.xcassets in Resources */,
+				BDE44E5C1AD69BA300AFF853 /* Default-568h@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -239,7 +251,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Tutorial/Pods-Tutorial-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		9C0C962D5DB7C0E843811991 /* Embed Pods Frameworks */ = {
@@ -254,7 +266,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-frameworks.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Tutorial/Pods-Tutorial-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		C6CC343792F60E4C9136407D /* Check Pods Manifest.lock */ = {
@@ -305,18 +317,20 @@
 		BDD347FF1AD6933200C31A63 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 			};
 			name = Debug;
 		};
 		BDD348001AD6933200C31A63 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 			};
 			name = Release;
 		};
 		BDD348231AD6934200C31A63 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 2455AE6EA77B64D37B2BA13A /* Pods.debug.xcconfig */;
+			baseConfigurationReference = 50F9A5E7120FBB430F12C97F /* Pods-Tutorial.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -354,7 +368,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				INFOPLIST_FILE = Tutorial/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -367,7 +381,7 @@
 		};
 		BDD348241AD6934200C31A63 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 487108C35A078896E5CEFB9D /* Pods.release.xcconfig */;
+			baseConfigurationReference = F8506ACB46F978201573716C /* Pods-Tutorial.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -399,7 +413,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				INFOPLIST_FILE = Tutorial/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				MTL_ENABLE_DEBUG_INFO = NO;
 				PRODUCT_NAME = "$(TARGET_NAME)";
