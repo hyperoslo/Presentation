@@ -2,7 +2,10 @@ import UIKit
 
 let TutorialPageControlHeight: CGFloat = 37.0
 
+
 public class TutorialViewController : UIViewController,UIScrollViewDelegate {
+
+    let TutorialDeviceRotatedNotification = "deviceDidRotate"
 
     private var scrollView: UIScrollView = {
         let bounds = UIScreen.mainScreen().bounds
@@ -11,6 +14,7 @@ public class TutorialViewController : UIViewController,UIScrollViewDelegate {
 
         scrollView.pagingEnabled = true
         scrollView.showsHorizontalScrollIndicator = false
+        scrollView.autoresizingMask = UIViewAutoresizing.FlexibleWidth | UIViewAutoresizing.FlexibleHeight
 
         return scrollView
     }()
@@ -25,6 +29,7 @@ public class TutorialViewController : UIViewController,UIScrollViewDelegate {
 
         pageControl.currentPageIndicatorTintColor = UIColor.blueColor()
         pageControl.pageIndicatorTintColor = UIColor.whiteColor()
+        pageControl.setTranslatesAutoresizingMaskIntoConstraints(false)
 
         return pageControl
     }()
@@ -46,10 +51,24 @@ public class TutorialViewController : UIViewController,UIScrollViewDelegate {
         self.scrollView.delegate = self
 
         self.view.addSubview(self.scrollView)
-        self.view.addSubview(self.pageControl)
     }
 
-    // UIScrollViewDelegate
+    public override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+
+        NSNotificationCenter.defaultCenter().addObserver(self,
+            selector: NSSelectorFromString(TutorialDeviceRotatedNotification),
+            name: UIDeviceOrientationDidChangeNotification,
+            object: nil)
+    }
+
+    public override func viewWillDisappear(animated: Bool) {
+        super.viewWillDisappear(animated)
+
+        NSNotificationCenter.removeObserver(self, forKeyPath: TutorialDeviceRotatedNotification)
+    }
+
+    // MARK: UIScrollViewDelegate
 
     public func scrollViewDidEndDecelerating(scrollView: UIScrollView) {
         let index = self.scrollView.contentOffset.x / self.scrollView.bounds.size.width
@@ -57,7 +76,7 @@ public class TutorialViewController : UIViewController,UIScrollViewDelegate {
         self.pageControl.currentPage = Int(index)
     }
 
-    // Public methods
+    // MARK: Public methods
 
     public func addPage(view: UIView) {
         let bounds = UIScreen.mainScreen().bounds
@@ -76,6 +95,24 @@ public class TutorialViewController : UIViewController,UIScrollViewDelegate {
         self.pageControl.numberOfPages += 1;
     }
 
-    // Private methods
+    // MARK: Private methods
 
+    func deviceDidRotate() {
+        self.invalidateLayout()
+    }
+
+    private func invalidateLayout() {
+        let bounds = UIScreen.mainScreen().bounds
+        var index = 0
+        for obj in self.view.subviews {
+            var view = obj as! UIView
+            var frame = view.frame
+            frame.size.width = bounds.size.width
+            frame.size.height = bounds.size.height
+
+            view.frame = frame
+
+            ++index
+        }
+    }
 }
