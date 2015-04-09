@@ -59,7 +59,20 @@ public class TutorialViewController : UIViewController,UIScrollViewDelegate {
     // Public methods
 
     public func addPage(view: UIView) {
+        let bounds = UIScreen.mainScreen().bounds
 
+        self.scrollView.contentSize = CGSizeMake(
+            self.scrollView.contentSize.width + self.scrollView.bounds.size.width,
+            self.scrollView.contentSize.height);
+        view.frame = CGRectMake(
+            self.scrollView.contentSize.width - self.scrollView.bounds.size.width,
+            0,
+            bounds.size.width,
+            bounds.size.height);
+
+        self.scrollView.addSubview(view)
+
+        self.pageControl.numberOfPages += 1;
     }
 
     // Private methods
