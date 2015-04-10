@@ -1,24 +1,26 @@
 import UIKit
 import Pages
+import Hex
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
   var window: UIWindow?
-  var tutorialViewController: TutorialViewController = {
-    let tutorialViewController = TutorialViewController(transitionStyle: .Scroll, navigationOrientation: .Horizontal, options: nil)
-    return tutorialViewController
-    }()
 
   func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
 
-    let viewController1 = UIViewController()
-    viewController1.view.backgroundColor = UIColor.lightGrayColor()
-    viewController1.title = "Welcome"
+    let tutorialViewController = TutorialViewController(transitionStyle: .Scroll, navigationOrientation: .Horizontal, options: nil)
 
+    let viewController1 = UIViewController()
+    viewController1.title = "Welcome"
     tutorialViewController.addPage(viewController1)
 
-    let navigationController = UINavigationController(rootViewController: self.tutorialViewController)
+    let viewController2 = UIViewController()
+    viewController2.title = "This is a tutorial"
+    tutorialViewController.addPage(viewController2)
+
+    let navigationController = UINavigationController(rootViewController: tutorialViewController)
+    navigationController.view.backgroundColor = UIColor(fromHex:"DAE2EA")
     navigationController.navigationBarHidden = true
 
     self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
