@@ -10,10 +10,10 @@
 		146D72B31AB782920058798C /* Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = 146D72B21AB782920058798C /* Tests.m */; };
 		4456148F1AD6A29D001FA4C3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4456148E1AD6A29D001FA4C3 /* AppDelegate.swift */; };
 		445614991AD6A29D001FA4C3 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 445614981AD6A29D001FA4C3 /* Images.xcassets */; };
-		445614AF1AD6A2D9001FA4C3 /* TutorialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDD347F81AD692EF00C31A63 /* TutorialViewController.swift */; };
+		445614AF1AD6A2D9001FA4C3 /* TutorialController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDD347F81AD692EF00C31A63 /* TutorialController.swift */; };
 		BDA158091AD7ED3D0011D55A /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BDA158081AD7ED3D0011D55A /* Pods.framework */; };
 		BDA1580B1AD7ED450011D55A /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BDA1580A1AD7ED450011D55A /* Pods.framework */; };
-		BDD347F91AD692EF00C31A63 /* TutorialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDD347F81AD692EF00C31A63 /* TutorialViewController.swift */; };
+		BDD347F91AD692EF00C31A63 /* TutorialController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDD347F81AD692EF00C31A63 /* TutorialController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -33,7 +33,7 @@
 		BDA158081AD7ED3D0011D55A /* Pods.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Pods.framework; path = "Pods/../build/Debug-iphoneos/Pods.framework"; sourceTree = "<group>"; };
 		BDA1580A1AD7ED450011D55A /* Pods.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Pods.framework; path = "Pods/../build/Debug-iphoneos/Pods.framework"; sourceTree = "<group>"; };
 		BDD347F71AD692EE00C31A63 /* Tests-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Tests-Bridging-Header.h"; sourceTree = "<group>"; };
-		BDD347F81AD692EF00C31A63 /* TutorialViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TutorialViewController.swift; sourceTree = "<group>"; };
+		BDD347F81AD692EF00C31A63 /* TutorialController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TutorialController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -120,7 +120,7 @@
 		14C1365B1AB784BC00B7B07A /* Source */ = {
 			isa = PBXGroup;
 			children = (
-				BDD347F81AD692EF00C31A63 /* TutorialViewController.swift */,
+				BDD347F81AD692EF00C31A63 /* TutorialController.swift */,
 				BDD347F71AD692EE00C31A63 /* Tests-Bridging-Header.h */,
 			);
 			name = Source;
@@ -315,7 +315,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BDD347F91AD692EF00C31A63 /* TutorialViewController.swift in Sources */,
+				BDD347F91AD692EF00C31A63 /* TutorialController.swift in Sources */,
 				146D72B31AB782920058798C /* Tests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -324,7 +324,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				445614AF1AD6A2D9001FA4C3 /* TutorialViewController.swift in Sources */,
+				445614AF1AD6A2D9001FA4C3 /* TutorialController.swift in Sources */,
 				4456148F1AD6A29D001FA4C3 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

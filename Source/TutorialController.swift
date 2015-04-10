@@ -1,7 +1,7 @@
 import UIKit
 import Pages
 
-public class Tutorial: Pages {
+public class TutorialController: Pages {
 
   public var titleFont: UIFont?
 

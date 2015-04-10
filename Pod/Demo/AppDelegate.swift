@@ -24,9 +24,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     let page5 = UIViewController()
     page5.title = "Thanks for your time."
 
-    let tutorialViewController = Tutorial(pages: [page1,page2,page3,page4,page5])
+    let tutorialController = TutorialController(pages: [page1,page2,page3,page4,page5])
 
-    let navigationController = UINavigationController(rootViewController: tutorialViewController)
+    let navigationController = UINavigationController(rootViewController: tutorialController)
     navigationController.view.backgroundColor = UIColor(fromHex:"DAE2EA")
     navigationController.navigationBarHidden = true
 
