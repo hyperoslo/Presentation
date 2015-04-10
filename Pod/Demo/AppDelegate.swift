@@ -11,13 +11,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     let tutorialViewController = TutorialViewController(transitionStyle: .Scroll, navigationOrientation: .Horizontal, options: nil)
 
+    tutorialViewController.titleFont = UIFont(name: "Helvetica", size: 64.0)
+
     let viewController1 = UIViewController()
     viewController1.title = "Welcome"
-    tutorialViewController.addPage(viewController1)
 
     let viewController2 = UIViewController()
     viewController2.title = "This is a tutorial"
-    tutorialViewController.addPage(viewController2)
+
+    tutorialViewController.addPages([viewController1, viewController2])
 
     let navigationController = UINavigationController(rootViewController: tutorialViewController)
     navigationController.view.backgroundColor = UIColor(fromHex:"DAE2EA")
