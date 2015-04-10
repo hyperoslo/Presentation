@@ -19,10 +19,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     tutorialViewController.addPage(viewController1)
 
     let navigationController = UINavigationController(rootViewController: self.tutorialViewController)
-
-    self.tutorialViewController.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Previous Page", style: .Plain, target: self.tutorialViewController, action: "previousPage")
-
-    self.tutorialViewController.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Next Page", style: .Plain, target: self.tutorialViewController, action: "nextPage")
+    navigationController.navigationBarHidden = true
 
     self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
     self.window?.rootViewController = navigationController
