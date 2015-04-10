@@ -2,13 +2,13 @@ import UIKit
 
 let TutorialPageControlHeight: CGFloat = 37.0
 
-public class TutorialViewController : UIPageViewController, UIPageViewControllerDelegate, UIPageViewControllerDataSource {
+@objc(HYP) public class TutorialViewController : UIPageViewController, UIPageViewControllerDelegate, UIPageViewControllerDataSource {
 
   lazy var pages: Array<UIViewController> = {
     return []
   }()
 
-  var currentPage: Int = 0
+  var currentIndex: Int = 0
 
   public override func viewDidLoad() {
     super.viewDidLoad()
@@ -18,7 +18,7 @@ public class TutorialViewController : UIPageViewController, UIPageViewController
   }
 
   public func addPage(viewController: UIViewController) {
-    self.pages.append(viewController)
+    self.pages.insert(viewController, atIndex: self.pages.count)
 
     if self.pages.count == 1 {
       self.setViewControllers([viewController], direction: .Forward, animated: true, completion: nil)
@@ -28,13 +28,25 @@ public class TutorialViewController : UIPageViewController, UIPageViewController
   // MARK: UIPageViewControllerDataSource
 
   public func pageViewController(pageViewController: UIPageViewController, viewControllerBeforeViewController viewController: UIViewController) -> UIViewController? {
-    let index = self.currentPage - 1
-    return self.viewControllerAtIndex(index)
+    var index = viewControllerIndex(viewController)
+    if index == 0 {
+      return nil
+    } else {
+      index--
+      return self.viewControllerAtIndex(index)
+    }
   }
 
   public func pageViewController(pageViewController: UIPageViewController, viewControllerAfterViewController viewController: UIViewController) -> UIViewController? {
-    let index = self.currentPage + 1
-    return self.viewControllerAtIndex(index)
+    var index = viewControllerIndex(viewController)
+
+    index++
+
+    if index == self.pages.count {
+      return nil
+    } else {
+      return self.viewControllerAtIndex(index)
+    }
   }
 
   public func presentationCountForPageViewController(pageViewController: UIPageViewController) -> Int {
@@ -42,37 +54,31 @@ public class TutorialViewController : UIPageViewController, UIPageViewController
   }
 
   public func presentationIndexForPageViewController(pageViewController: UIPageViewController) -> Int {
-    return self.currentPage
+    return 0
   }
 
   // MARK: UIPageViewControllerDelegate
 
   public func pageViewController(pageViewController: UIPageViewController, willTransitionToViewControllers pendingViewControllers: [AnyObject]) {
-    println("pendingViewControllers: \(pendingViewControllers)")
+
   }
 
   public func pageViewController(pageViewController: UIPageViewController, didFinishAnimating finished: Bool, previousViewControllers: [AnyObject], transitionCompleted completed: Bool) {
-    let previousController = previousViewControllers.first as! UIViewController
-    var index = 0
-    for page in self.pages {
-      if previousController.isEqual(page) {
-        index++
-        break
-      }
-      index++
-    }
-    self.currentPage = index
+    let viewControllers: NSArray = self.pages
 
+    self.currentIndex = 1
   }
 
   // MARK: Private methods
 
-  func viewControllerAtIndex(index: NSInteger) -> UIViewController? {
-    if (index > -1 && index < self.pages.count) {
-      return self.pages[index]
-    } else {
-      return nil
-    }
+  func viewControllerIndex(viewController: UIViewController) -> Int {
+    let viewControllers: NSArray = self.pages
+
+    return viewControllers.indexOfObject(viewController)
+  }
+
+  func viewControllerAtIndex(index: NSInteger) -> UIViewController {
+    return self.pages[index]
   }
 
 }
