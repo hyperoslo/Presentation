@@ -9,17 +9,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
   func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
 
-    let tutorialViewController = TutorialViewController(transitionStyle: .Scroll, navigationOrientation: .Horizontal, options: nil)
+    let page1 = UIViewController()
+    page1.title = "Tutorial on how to make a profit"
 
-    tutorialViewController.titleFont = UIFont(name: "Helvetica", size: 64.0)
+    let page2 = UIViewController()
+    page2.title = "Step 1.\n Collect underpants"
 
-    let viewController1 = UIViewController()
-    viewController1.title = "Welcome"
+    let page3 = UIViewController()
+    page3.title = "Step 2.\n ???"
 
-    let viewController2 = UIViewController()
-    viewController2.title = "This is a tutorial"
+    let page4 = UIViewController()
+    page4.title = "Step 3.\n Profit 💸"
 
-    tutorialViewController.addPages([viewController1, viewController2])
+    let page5 = UIViewController()
+    page5.title = "Thanks for your time."
+
+    let tutorialViewController = Tutorial(pages: [page1,page2,page3,page4,page5])
 
     let navigationController = UINavigationController(rootViewController: tutorialViewController)
     navigationController.view.backgroundColor = UIColor(fromHex:"DAE2EA")

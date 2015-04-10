@@ -1,7 +1,7 @@
 import UIKit
 import Pages
 
-public class TutorialViewController: Pages {
+public class Tutorial: Pages {
 
   public var titleFont: UIFont?
 
@@ -17,13 +17,19 @@ public class TutorialViewController: Pages {
     if self.titleFont != nil {
       label.font = self.titleFont
     } else {
-      label.font = UIFont(name: "DINAlternate-Bold", size: 24.0)
+      label.font = UIFont(name: "DINAlternate-Bold", size: 48.0)
     }
 
+    label.numberOfLines = 4
     label.textAlignment = .Center
 
     return label
     }
+
+  convenience init(pages: [UIViewController]) {
+    self.init(transitionStyle: .Scroll, navigationOrientation: .Horizontal, options: nil)
+    self.addPages(pages)
+  }
 
   override public func addPage(viewController: UIViewController) {
     let titleLabel = self.titleLabel
