@@ -1,0 +1,19 @@
+PODS:
+  - Pages (0.1)
+
+DEPENDENCIES:
+  - Pages (from `https://github.com/hyperoslo/Pages.git`)
+
+EXTERNAL SOURCES:
+  Pages:
+    :git: https://github.com/hyperoslo/Pages.git
+
+CHECKOUT OPTIONS:
+  Pages:
+    :commit: 580b745da663d998cfd75ff1d21570fc860884a4
+    :git: https://github.com/hyperoslo/Pages.git
+
+SPEC CHECKSUMS:
+  Pages: eb9fab7559d38664d5165f8aab12072aea6987e0
+
+COCOAPODS: 0.36.3
