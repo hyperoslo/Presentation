@@ -1,9 +1,11 @@
 import UIKit
 import Pages
+import Hex
 
 public class TutorialController: PagesController {
 
   public var titleFont: UIFont?
+  public var titleColor: UIColor?
 
   var titleLabel: UILabel {
     let bounds = UIScreen.mainScreen().bounds
@@ -14,14 +16,12 @@ public class TutorialController: PagesController {
     frame.origin.y = 0.0
     let label = UILabel(frame: frame)
 
-    if self.titleFont != nil {
-      label.font = self.titleFont
-    } else {
-      label.font = UIFont(name: "DINAlternate-Bold", size: 48.0)
-    }
+    label.font = self.titleFont != nil ? self.titleFont : UIFont(name: "DIN Alternate", size: 48.0)
+    label.textColor = self.titleColor != nil ? self.titleColor : UIColor(fromHex: "234583")
 
     label.numberOfLines = 4
     label.textAlignment = .Center
+    label.autoresizingMask = .FlexibleLeftMargin | .FlexibleRightMargin
 
     return label
     }
