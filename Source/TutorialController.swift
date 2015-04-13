@@ -2,7 +2,7 @@ import UIKit
 import Pages
 import Hex
 
-@objc(HYPTutorialController) public class TutorialController: PagesController {
+@objc public class TutorialController: PagesController {
 
   public var titleFont: UIFont?
   public var titleColor: UIColor?
