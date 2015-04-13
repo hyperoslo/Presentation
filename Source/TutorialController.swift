@@ -13,7 +13,7 @@ import Hex
     frame.size.width = bounds.width
     frame.size.height = bounds.height / 2
     frame.origin.x = 0.0
-    frame.origin.y = 0.0
+    frame.origin.y = 0.0 + self.navigationController!.navigationBar.frame.height
     let label = UILabel(frame: frame)
 
     label.font = self.titleFont != nil ? self.titleFont : UIFont(name: "DIN Alternate", size: 48.0)

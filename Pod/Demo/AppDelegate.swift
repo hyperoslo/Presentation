@@ -13,6 +13,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     self.tutorialController.setNavigationTitle = false
 
+    let navigationController = UINavigationController(rootViewController: tutorialController)
+    navigationController.view.backgroundColor = UIColor(fromHex:"FF5703")
+
+    UINavigationBar.appearance().barTintColor = UIColor(fromHex:"FF5703")
+    UINavigationBar.appearance().barStyle = UIBarStyle.BlackTranslucent
+
+    let leftButton = UIBarButtonItem(title: "Previous Page", style: .Plain, target: tutorialController, action: "previousPage")
+    let rightButton = UIBarButtonItem(title: "Next Page", style: .Plain, target: tutorialController, action: "nextPage")
+
+    leftButton.setTitleTextAttributes([NSForegroundColorAttributeName : UIColor.whiteColor()], forState: .Normal)
+    rightButton.setTitleTextAttributes([NSForegroundColorAttributeName : UIColor.whiteColor()], forState: .Normal)
+
+    tutorialController.navigationItem.leftBarButtonItem = leftButton
+    tutorialController.navigationItem.rightBarButtonItem = rightButton
+
     let bounds = UIScreen.mainScreen().bounds
     let page1 = UIViewController()
     page1.title = "Tutorial on how to make a profit"
@@ -48,21 +63,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     tutorialController.titleColor = UIColor(fromHex: "FFFFFF")
     tutorialController.titleFont = UIFont(name: "ArialRoundedMTBold ", size: 48.0)
     tutorialController.add([page1,page2,page3,page4,page5])
-
-    let navigationController = UINavigationController(rootViewController: tutorialController)
-    navigationController.view.backgroundColor = UIColor(fromHex:"FF5703")
-
-    UINavigationBar.appearance().barTintColor = UIColor(fromHex:"FF5703")
-    UINavigationBar.appearance().barStyle = UIBarStyle.BlackTranslucent
-
-    let leftButton = UIBarButtonItem(title: "Previous Page", style: .Plain, target: tutorialController, action: "previousPage")
-    let rightButton = UIBarButtonItem(title: "Next Page", style: .Plain, target: tutorialController, action: "nextPage")
-
-    leftButton.setTitleTextAttributes([NSForegroundColorAttributeName : UIColor.whiteColor()], forState: .Normal)
-    rightButton.setTitleTextAttributes([NSForegroundColorAttributeName : UIColor.whiteColor()], forState: .Normal)
-
-    tutorialController.navigationItem.leftBarButtonItem = leftButton
-    tutorialController.navigationItem.rightBarButtonItem = rightButton
 
     self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
     self.window?.rootViewController = navigationController
