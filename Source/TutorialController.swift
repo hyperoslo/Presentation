@@ -2,6 +2,8 @@ import UIKit
 import Pages
 import Hex
 
+let MinimumMarginLateralSpace: CGFloat = 20.0
+
 @objc public class TutorialController: PagesController {
 
   public var titleFont: UIFont?
@@ -10,9 +12,9 @@ import Hex
   var titleLabel: UILabel {
     let bounds = UIScreen.mainScreen().bounds
     var frame = bounds
-    frame.size.width = bounds.width
+    frame.size.width = bounds.width - MinimumMarginLateralSpace * 2
     frame.size.height = bounds.height / 2
-    frame.origin.x = 0.0
+    frame.origin.x = 0.0 + MinimumMarginLateralSpace
     frame.origin.y = 0.0 + self.navigationController!.navigationBar.frame.height
     let label = UILabel(frame: frame)
 
