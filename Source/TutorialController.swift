@@ -34,7 +34,7 @@ import Hex
   override public func add(viewControllers: [UIViewController]) {
     for viewController: UIViewController in viewControllers {
       let titleLabel = self.titleLabel
-      titleLabel.text = viewController.title!
+      titleLabel.text = viewController.title
       viewController.view.addSubview(titleLabel)
 
     }
