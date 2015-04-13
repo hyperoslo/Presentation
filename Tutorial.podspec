@@ -13,5 +13,5 @@ Pod::Spec.new do |s|
 
   s.source_files = 'Source/**/*'
   s.dependency 'Hex', '~> 1.1.1'
-  s.dependency 'Pages', '~> 0.3.0', git: 'https://github.com/hyperoslo/Pages.git'
+  s.dependency 'Pages', '~> 0.3.0'
 end
