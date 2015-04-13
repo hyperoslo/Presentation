@@ -28,20 +28,17 @@ import Hex
 
   convenience init(pages: [UIViewController]) {
     self.init(transitionStyle: .Scroll, navigationOrientation: .Horizontal, options: nil)
-    self.addPages(pages)
+    self.add(pages)
   }
 
-  override public func addPage(viewController: UIViewController) {
-    let titleLabel = self.titleLabel
-    titleLabel.text = viewController.title!
-    viewController.view.addSubview(titleLabel)
-    super.addPage(viewController)
-  }
-
-  override public func addPages(viewControllers: [UIViewController]) {
+  override public func add(viewControllers: [UIViewController]) {
     for viewController: UIViewController in viewControllers {
-      self.addPage(viewController)
+      let titleLabel = self.titleLabel
+      titleLabel.text = viewController.title!
+      viewController.view.addSubview(titleLabel)
+
     }
+    super.add(viewControllers)
   }
 
 }

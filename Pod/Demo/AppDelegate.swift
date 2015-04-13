@@ -47,7 +47,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     tutorialController.titleColor = UIColor(fromHex: "FFFFFF")
     tutorialController.titleFont = UIFont(name: "ArialRoundedMTBold ", size: 48.0)
-    tutorialController.addPages([page1,page2,page3,page4,page5])
+    tutorialController.add([page1,page2,page3,page4,page5])
 
     let navigationController = UINavigationController(rootViewController: tutorialController)
     navigationController.view.backgroundColor = UIColor(fromHex:"FF5703")
@@ -72,7 +72,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
   }
 
   func resetPages() {
-    tutorialController.goToPage(0)
+    tutorialController.goto(0)
   }
 }
 
