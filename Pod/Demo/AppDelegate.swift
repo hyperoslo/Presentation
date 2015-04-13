@@ -15,6 +15,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     let bounds = UIScreen.mainScreen().bounds
     let page1 = UIViewController()
+    page1.title = "Tutorial on how to make a profit"
 
     let page2 = UIViewController()
     page2.title = "Step I.\nCollect underpants\n💭"
