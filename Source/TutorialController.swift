@@ -29,7 +29,9 @@ let MinimumMarginLateralSpace: CGFloat = 20.0
     }
 
   convenience init(pages: [UIViewController]) {
-    self.init(transitionStyle: .Scroll, navigationOrientation: .Horizontal, options: nil)
+    self.init(transitionStyle: .Scroll,
+      navigationOrientation: .Horizontal,
+      options: nil)
     self.add(pages)
   }
 
@@ -38,8 +40,8 @@ let MinimumMarginLateralSpace: CGFloat = 20.0
       let titleLabel = self.titleLabel
       titleLabel.text = viewController.title
       viewController.view.addSubview(titleLabel)
-
     }
+
     super.add(viewControllers)
   }
 
