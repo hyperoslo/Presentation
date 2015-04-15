@@ -38,7 +38,7 @@ let MinimumMarginLateralSpace: CGFloat = 20.0
     UILabel.appearance().font = font
   }
 
-  static func setColor(color: UIColor) {
+  static func setTextColor(color: UIColor) {
     UILabel.appearance().textColor = color
   }
 
