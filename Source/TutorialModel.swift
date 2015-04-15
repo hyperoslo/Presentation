@@ -1,6 +1,6 @@
 import UIKit
 
-@objc public class TutorialModel {
+@objc public class TutorialModel: NSObject {
 
   // MARK: Public methods
 
