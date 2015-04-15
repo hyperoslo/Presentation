@@ -34,11 +34,11 @@ let MinimumMarginLateralSpace: CGFloat = 20.0
 
   // MARK: UIAppearance
 
-  static func setFont(font: UIFont) {
+  @objc public static func setFont(font: UIFont) {
     UILabel.appearance().font = font
   }
 
-  static func setTextColor(color: UIColor) {
+  @objc public static func setTextColor(color: UIColor) {
     UILabel.appearance().textColor = color
   }
 
