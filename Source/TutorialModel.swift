@@ -101,10 +101,10 @@ extension UIViewController {
     for modelView in model.views() {
       self.view.addSubview(modelView as! UIView)
     }
-    layoutSubviews(model)
+    layoutSubviews()
   }
 
-  private func layoutSubviews(model: TutorialModel) {
+  private func layoutSubviews() {
     let bounds = UIScreen.mainScreen().bounds
     var y: CGFloat = 0.0
     for object in self.view.subviews {
@@ -112,7 +112,9 @@ extension UIViewController {
       var view = object as! UIView
       var frame = bounds
 
-      if let imageSize = model.image?.size where object.isKindOfClass(UIImageView.classForCoder()) {
+      if object.isKindOfClass(UIImageView.classForCoder()) {
+        let imageSize = (object as! UIImageView).image!.size
+
         frame.size.width = imageSize.width
         frame.size.height = imageSize.height
         frame.origin.x = bounds.size.width / 2 - imageSize.width / 2
