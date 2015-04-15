@@ -4,5 +4,5 @@ use_frameworks!
 
 platform :ios, '8.0'
 
-pod 'Pages', git: 'https://github.com/hyperoslo/Pages.git'
+pod 'Pages'
 pod 'Hex'

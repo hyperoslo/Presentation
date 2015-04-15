@@ -64,9 +64,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     tutorialController.titleFont = UIFont(name: "ArialRoundedMTBold ", size: 48.0)
     tutorialController.add([page1,page2,page3,page4,page5])
 
-    self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
-    self.window?.rootViewController = navigationController
-    self.window?.makeKeyAndVisible()
+    window = UIWindow(frame: UIScreen.mainScreen().bounds)
+    window?.rootViewController = navigationController
+    window?.makeKeyAndVisible()
 
     return true
   }
