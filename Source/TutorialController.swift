@@ -15,7 +15,11 @@ let MinimumMarginLateralSpace: CGFloat = 20.0
     frame.size.width = bounds.width - MinimumMarginLateralSpace * 2
     frame.size.height = bounds.height / 2
     frame.origin.x = 0.0 + MinimumMarginLateralSpace
-    frame.origin.y = 0.0 + navigationController!.navigationBar.frame.height
+
+    if let navigationBarHeight = navigationController?.navigationBar.frame.height {
+      frame.origin.y += navigationBarHeight
+    }
+
     let label = UILabel(frame: frame)
 
     label.font = titleFont != nil ? titleFont : UIFont(name: "DIN Alternate", size: 48.0)
