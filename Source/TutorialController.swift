@@ -17,6 +17,21 @@ let MinimumMarginLateralSpace: CGFloat = 20.0
     super.add(viewControllers)
   }
 
+  override public func viewDidAppear(animated: Bool) {
+    super.viewDidAppear(animated)
+
+    NSNotificationCenter.defaultCenter().addObserver(self,
+      selector: "didRotate",
+      name: UIDeviceOrientationDidChangeNotification,
+      object: nil)
+  }
+
+  override public func viewDidDisappear(animated: Bool) {
+    super.viewDidDisappear(animated)
+
+    NSNotificationCenter.defaultCenter().removeObserver(self, name: UIDeviceOrientationDidChangeNotification, object: nil)
+  }
+
   // MARK: UIAppearance
 
   static func setFont(font: UIFont) {
@@ -25,6 +40,12 @@ let MinimumMarginLateralSpace: CGFloat = 20.0
 
   static func setColor(color: UIColor) {
     UILabel.appearance().textColor = color
+  }
+
+  // MARK: Device orientation
+
+  func didRotate() {
+    layoutSubviews()
   }
 
 }

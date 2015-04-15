@@ -32,6 +32,7 @@ public class TutorialModel {
 
   lazy private(set) var imageView: UIImageView = {
     let imageView = UIImageView()
+    imageView.autoresizingMask = .FlexibleLeftMargin | .FlexibleRightMargin
 
     return imageView
     }()
@@ -104,11 +105,11 @@ extension UIViewController {
     layoutSubviews()
   }
 
-  private func layoutSubviews() {
+  func layoutSubviews() {
     let bounds = UIScreen.mainScreen().bounds
     var y: CGFloat = 0.0
-    for object in self.view.subviews {
 
+    for object in self.view.subviews {
       var view = object as! UIView
       var frame = bounds
 
