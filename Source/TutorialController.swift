@@ -35,9 +35,9 @@ let MinimumMarginLateralSpace: CGFloat = 20.0
 
   override public func add(viewControllers: [UIViewController]) {
     for viewController: UIViewController in viewControllers {
-      let viewTitleLabel = titleLabel
-      viewTitleLabel.text = viewController.title
-      viewController.view.addSubview(viewTitleLabel)
+      let titleLabel = self.titleLabel
+      titleLabel.text = viewController.title
+      viewController.view.addSubview(titleLabel)
 
     }
     super.add(viewControllers)
