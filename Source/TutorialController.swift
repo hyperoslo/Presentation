@@ -15,11 +15,11 @@ let MinimumMarginLateralSpace: CGFloat = 20.0
     frame.size.width = bounds.width - MinimumMarginLateralSpace * 2
     frame.size.height = bounds.height / 2
     frame.origin.x = 0.0 + MinimumMarginLateralSpace
-    frame.origin.y = 0.0 + self.navigationController!.navigationBar.frame.height
+    frame.origin.y = 0.0 + navigationController!.navigationBar.frame.height
     let label = UILabel(frame: frame)
 
-    label.font = self.titleFont != nil ? self.titleFont : UIFont(name: "DIN Alternate", size: 48.0)
-    label.textColor = self.titleColor != nil ? self.titleColor : UIColor(fromHex: "234583")
+    label.font = titleFont != nil ? titleFont : UIFont(name: "DIN Alternate", size: 48.0)
+    label.textColor = titleColor != nil ? titleColor : UIColor(fromHex: "234583")
 
     label.numberOfLines = 4
     label.textAlignment = .Center
@@ -30,7 +30,7 @@ let MinimumMarginLateralSpace: CGFloat = 20.0
 
   convenience init(pages: [UIViewController]) {
     self.init(transitionStyle: .Scroll, navigationOrientation: .Horizontal, options: nil)
-    self.add(pages)
+    add(pages)
   }
 
   override public func add(viewControllers: [UIViewController]) {

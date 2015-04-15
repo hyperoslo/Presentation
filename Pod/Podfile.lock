@@ -1,6 +1,6 @@
 PODS:
   - Hex (1.1.1)
-  - Pages (0.3.0)
+  - Pages (0.4.1)
 
 DEPENDENCIES:
   - Hex
@@ -12,11 +12,11 @@ EXTERNAL SOURCES:
 
 CHECKOUT OPTIONS:
   Pages:
-    :commit: eb794e364bf7242064d760fbb3bba9cbd9884e92
+    :commit: 6621219a2c18bfa3a607e7b21ae038de149a0436
     :git: https://github.com/hyperoslo/Pages.git
 
 SPEC CHECKSUMS:
   Hex: acf6d0dc34658d3d44047a992bfd09190c87e6e7
-  Pages: 95a615950779b8db96eeed7d865490715836d821
+  Pages: c85685cc417d3efd85bcde0042a2721efb69679e
 
 COCOAPODS: 0.36.3
