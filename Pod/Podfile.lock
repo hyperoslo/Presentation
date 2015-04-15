@@ -1,6 +1,6 @@
 PODS:
   - Hex (1.1.1)
-  - Pages (0.4.1)
+  - Pages (0.4.2)
 
 DEPENDENCIES:
   - Hex
@@ -8,6 +8,6 @@ DEPENDENCIES:
 
 SPEC CHECKSUMS:
   Hex: acf6d0dc34658d3d44047a992bfd09190c87e6e7
-  Pages: c85685cc417d3efd85bcde0042a2721efb69679e
+  Pages: 7eb72cc268ae1092bfa7ad2c9495dc55af301ae1
 
 COCOAPODS: 0.36.3

@@ -7,7 +7,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
   var window: UIWindow?
 
-  lazy var tutorialController = {TutorialController(pages: [])}()
+  lazy var tutorialController: TutorialController = {
+    return TutorialController(pages: [])
+    }()
 
   func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
 
@@ -19,8 +21,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     UINavigationBar.appearance().barTintColor = UIColor(fromHex:"FF5703")
     UINavigationBar.appearance().barStyle = UIBarStyle.BlackTranslucent
 
-    let leftButton = UIBarButtonItem(title: "Previous Page", style: .Plain, target: tutorialController, action: "previousPage")
-    let rightButton = UIBarButtonItem(title: "Next Page", style: .Plain, target: tutorialController, action: "nextPage")
+    let leftButton = UIBarButtonItem(title: "Previous page", style: .Plain, target: tutorialController, action: "previous")
+    let rightButton = UIBarButtonItem(title: "Next page", style: .Plain, target: tutorialController, action: "next")
 
     leftButton.setTitleTextAttributes([NSForegroundColorAttributeName : UIColor.whiteColor()], forState: .Normal)
     rightButton.setTitleTextAttributes([NSForegroundColorAttributeName : UIColor.whiteColor()], forState: .Normal)
@@ -28,41 +30,36 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     tutorialController.navigationItem.leftBarButtonItem = leftButton
     tutorialController.navigationItem.rightBarButtonItem = rightButton
 
-    let bounds = UIScreen.mainScreen().bounds
-    let page1 = UIViewController()
-    page1.title = "Tutorial on how to make a profit"
+    let model1 = TutorialModel(title: "Tutorial on how to make a profit",
+      text: nil,
+      image: nil)
 
-    let page2 = UIViewController()
-    page2.title = "Step I.\nCollect underpants\n💭"
+    let model2 = TutorialModel(title: "Step I",
+      text: "Collect underpants\n💭",
+      image: nil)
 
-    let page3 = UIViewController()
-    page3.title = "Step II.\n???\n🎅🎅🏻🎅🏼🎅🏽🎅🏾🎅🏿\n"
+    let model3 = TutorialModel(title: "Step II",
+      text: "🎅🎅🏻🎅🏼🎅🏽🎅🏾🎅🏿",
+      image: nil)
 
-    let page4 = UIViewController()
-    page4.title = "Step III.\nProfit\n💸"
+    let model4 = TutorialModel(title: "Step III",
+      text: "Profit\n💸",
+      image: nil)
 
-    let page5 = UIViewController()
-    page5.title = "Thanks for your time."
+    let model5 = TutorialModel(title: nil,
+      text: "Thanks for your time.",
+      image:UIImage(named: "hyper-logo.png"))
 
-    let logoSize: CGFloat = 100.0
-    let hyperlogo = UIImageView(frame: CGRectMake(
-      bounds.size.width / 2 - logoSize / 2,
-      bounds.size.height / 2 - logoSize / 2,
-      logoSize,
-      logoSize))
-    hyperlogo.image = UIImage(named: "hyper-logo.png")
-    hyperlogo.autoresizingMask = .FlexibleLeftMargin | .FlexibleRightMargin
-    hyperlogo.userInteractionEnabled = true
+    let page1 = UIViewController(model: model1)
+    let page2 = UIViewController(model: model2)
+    let page3 = UIViewController(model: model3)
+    let page4 = UIViewController(model: model4)
+    let page5 = UIViewController(model: model5)
 
-    let restartTap = UITapGestureRecognizer(target: self,
-      action: "resetPages")
-    hyperlogo.addGestureRecognizer(restartTap)
+    tutorialController.add([page1, page2, page3, page4, page5])
 
-    page5.view.addSubview(hyperlogo)
-
-    tutorialController.titleColor = UIColor(fromHex: "FFFFFF")
-    tutorialController.titleFont = UIFont(name: "ArialRoundedMTBold ", size: 48.0)
-    tutorialController.add([page1,page2,page3,page4,page5])
+    TutorialController.setFont(UIFont(name: "ArialRoundedMTBold", size: 42.0)!)
+    TutorialController.setTextColor(UIColor.whiteColor())
 
     window = UIWindow(frame: UIScreen.mainScreen().bounds)
     window?.rootViewController = navigationController
@@ -72,7 +69,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
   }
 
   func resetPages() {
-    tutorialController.goto(0)
+    tutorialController.goTo(0)
   }
 }
 

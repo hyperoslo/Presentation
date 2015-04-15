@@ -6,32 +6,6 @@ let MinimumMarginLateralSpace: CGFloat = 20.0
 
 @objc public class TutorialController: PagesController {
 
-  public var titleFont: UIFont?
-  public var titleColor: UIColor?
-
-  var titleLabel: UILabel {
-    let bounds = UIScreen.mainScreen().bounds
-    var frame = bounds
-    frame.size.width = bounds.width - MinimumMarginLateralSpace * 2
-    frame.size.height = bounds.height / 2
-    frame.origin.x = 0.0 + MinimumMarginLateralSpace
-
-    if let navigationBarHeight = navigationController?.navigationBar.frame.height {
-      frame.origin.y += navigationBarHeight
-    }
-
-    let label = UILabel(frame: frame)
-
-    label.font = titleFont != nil ? titleFont : UIFont(name: "DIN Alternate", size: 48.0)
-    label.textColor = titleColor != nil ? titleColor : UIColor(fromHex: "234583")
-
-    label.numberOfLines = 4
-    label.textAlignment = .Center
-    label.autoresizingMask = .FlexibleLeftMargin | .FlexibleRightMargin
-
-    return label
-    }
-
   convenience init(pages: [UIViewController]) {
     self.init(transitionStyle: .Scroll,
       navigationOrientation: .Horizontal,
@@ -40,13 +14,38 @@ let MinimumMarginLateralSpace: CGFloat = 20.0
   }
 
   override public func add(viewControllers: [UIViewController]) {
-    for viewController: UIViewController in viewControllers {
-      let titleLabel = self.titleLabel
-      titleLabel.text = viewController.title
-      viewController.view.addSubview(titleLabel)
-    }
-
     super.add(viewControllers)
+  }
+
+  override public func viewDidAppear(animated: Bool) {
+    super.viewDidAppear(animated)
+
+    NSNotificationCenter.defaultCenter().addObserver(self,
+      selector: "didRotate",
+      name: UIDeviceOrientationDidChangeNotification,
+      object: nil)
+  }
+
+  override public func viewDidDisappear(animated: Bool) {
+    super.viewDidDisappear(animated)
+
+    NSNotificationCenter.defaultCenter().removeObserver(self, name: UIDeviceOrientationDidChangeNotification, object: nil)
+  }
+
+  // MARK: UIAppearance
+
+  static func setFont(font: UIFont) {
+    UILabel.appearance().font = font
+  }
+
+  static func setTextColor(color: UIColor) {
+    UILabel.appearance().textColor = color
+  }
+
+  // MARK: Device orientation
+
+  func didRotate() {
+    layoutSubviews()
   }
 
 }
