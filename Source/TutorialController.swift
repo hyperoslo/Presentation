@@ -7,9 +7,11 @@ let MinimumMarginLateralSpace: CGFloat = 20.0
 @objc public class TutorialController: PagesController {
 
   convenience init(pages: [UIViewController]) {
-    self.init(transitionStyle: .Scroll,
+    self.init(
+      transitionStyle: .Scroll,
       navigationOrientation: .Horizontal,
       options: nil)
+
     self.add(pages)
   }
 
@@ -20,7 +22,8 @@ let MinimumMarginLateralSpace: CGFloat = 20.0
   override public func viewDidAppear(animated: Bool) {
     super.viewDidAppear(animated)
 
-    NSNotificationCenter.defaultCenter().addObserver(self,
+    NSNotificationCenter.defaultCenter().addObserver(
+      self,
       selector: "didRotate",
       name: UIDeviceOrientationDidChangeNotification,
       object: nil)
@@ -29,7 +32,10 @@ let MinimumMarginLateralSpace: CGFloat = 20.0
   override public func viewDidDisappear(animated: Bool) {
     super.viewDidDisappear(animated)
 
-    NSNotificationCenter.defaultCenter().removeObserver(self, name: UIDeviceOrientationDidChangeNotification, object: nil)
+    NSNotificationCenter.defaultCenter().removeObserver(
+      self,
+      name: UIDeviceOrientationDidChangeNotification,
+      object: nil)
   }
 
   // MARK: UIAppearance
@@ -54,6 +60,7 @@ public extension UIViewController {
 
   convenience init(model: TutorialModel) {
     self.init(nibName: nil, bundle: nil)
+
     addModel(model)
   }
 
@@ -61,6 +68,7 @@ public extension UIViewController {
     for modelView in model.views() {
       self.view.addSubview(modelView as! UIView)
     }
+
     layoutSubviews()
   }
 
