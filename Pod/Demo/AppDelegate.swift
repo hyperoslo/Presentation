@@ -15,79 +15,80 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     application: UIApplication,
     didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
 
-    self.tutorialController.setNavigationTitle = false
+      self.tutorialController.setNavigationTitle = false
 
-    let navigationController = UINavigationController(rootViewController: tutorialController)
-    navigationController.view.backgroundColor = UIColor(fromHex:"FF5703")
+      let navigationController = UINavigationController(rootViewController: tutorialController)
+      navigationController.view.backgroundColor = UIColor(fromHex:"FF5703")
 
-    UINavigationBar.appearance().barTintColor = UIColor(fromHex:"FF5703")
-    UINavigationBar.appearance().barStyle = UIBarStyle.BlackTranslucent
+      UINavigationBar.appearance().barTintColor = UIColor(fromHex:"FF5703")
+      UINavigationBar.appearance().barStyle = UIBarStyle.BlackTranslucent
 
-    let leftButton = UIBarButtonItem(
-      title: "Previous page",
-      style: .Plain,
-      target: tutorialController,
-      action: "previous")
+      let leftButton = UIBarButtonItem(
+        title: "Previous page",
+        style: .Plain,
+        target: tutorialController,
+        action: "previous")
 
-    let rightButton = UIBarButtonItem(
-      title: "Next page",
-      style: .Plain,
-      target: tutorialController,
-      action: "next")
+      leftButton.setTitleTextAttributes(
+        [NSForegroundColorAttributeName : UIColor.whiteColor()],
+        forState: .Normal)
 
-    leftButton.setTitleTextAttributes(
-      [NSForegroundColorAttributeName : UIColor.whiteColor()],
-      forState: .Normal)
-    rightButton.setTitleTextAttributes(
-      [NSForegroundColorAttributeName : UIColor.whiteColor()],
-      forState: .Normal)
+      let rightButton = UIBarButtonItem(
+        title: "Next page",
+        style: .Plain,
+        target: tutorialController,
+        action: "next")
 
-    tutorialController.navigationItem.leftBarButtonItem = leftButton
-    tutorialController.navigationItem.rightBarButtonItem = rightButton
+      rightButton.setTitleTextAttributes(
+        [NSForegroundColorAttributeName : UIColor.whiteColor()],
+        forState: .Normal)
 
-    let model1 = TutorialModel(
-      title: "Tutorial on how to make a profit",
-      text: nil,
-      image: nil)
+      tutorialController.navigationItem.leftBarButtonItem = leftButton
+      tutorialController.navigationItem.rightBarButtonItem = rightButton
 
-    let model2 = TutorialModel(
-      title: "Step I",
-      text: "Collect underpants\n💭",
-      image: nil)
+      let model1 = TutorialModel(
+        title: "Tutorial on how to make a profit",
+        text: nil,
+        image: nil)
 
-    let model3 = TutorialModel(
-      title: "Step II",
-      text: "🎅🎅🏻🎅🏼🎅🏽🎅🏾🎅🏿",
-      image: nil)
+      let model2 = TutorialModel(
+        title: "Step I",
+        text: "Collect underpants\n💭",
+        image: nil)
 
-    let model4 = TutorialModel(
-      title: "Step III",
-      text: "Profit\n💸",
-      image: nil)
+      let model3 = TutorialModel(
+        title: "Step II",
+        text: "🎅🎅🏻🎅🏼🎅🏽🎅🏾🎅🏿",
+        image: nil)
 
-    let model5 = TutorialModel(
-      title: nil,
-      text: "Thanks for your time.",
-      image:UIImage(named: "hyper-logo.png"))
+      let model4 = TutorialModel(
+        title: "Step III",
+        text: "Profit\n💸",
+        image: nil)
 
-    let page1 = UIViewController(model: model1)
-    let page2 = UIViewController(model: model2)
-    let page3 = UIViewController(model: model3)
-    let page4 = UIViewController(model: model4)
-    let page5 = UIViewController(model: model5)
+      let model5 = TutorialModel(
+        title: nil,
+        text: "Thanks for your time.",
+        image:UIImage(named: "hyper-logo.png"))
 
-    tutorialController.add([page1, page2, page3, page4, page5])
+      let page1 = UIViewController(model: model1)
+      let page2 = UIViewController(model: model2)
+      let page3 = UIViewController(model: model3)
+      let page4 = UIViewController(model: model4)
+      let page5 = UIViewController(model: model5)
 
-    TutorialController.setFont(
-      UIFont(name: "ArialRoundedMTBold",
-        size: 42.0)!)
-    TutorialController.setTextColor(UIColor.whiteColor())
+      tutorialController.add([page1, page2, page3, page4, page5])
 
-    window = UIWindow(frame: UIScreen.mainScreen().bounds)
-    window?.rootViewController = navigationController
-    window?.makeKeyAndVisible()
+      TutorialController.setFont(
+        UIFont(name: "ArialRoundedMTBold",
+          size: 42.0)!)
+      TutorialController.setTextColor(UIColor.whiteColor())
 
-    return true
+      window = UIWindow(frame: UIScreen.mainScreen().bounds)
+      window?.rootViewController = navigationController
+      window?.makeKeyAndVisible()
+
+      return true
   }
 
   func resetPages() {
