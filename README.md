@@ -1,16 +1,5 @@
 # Tutorial
 
-[![CI Status](http://img.shields.io/travis/hyperoslo/Tutorial.svg?style=flat)](https://travis-ci.org/hyperoslo/Tutorial)
-[![Version](https://img.shields.io/cocoapods/v/Tutorial.svg?style=flat)](http://cocoadocs.org/docsets/Tutorial)
-[![License](https://img.shields.io/cocoapods/l/Tutorial.svg?style=flat)](http://cocoadocs.org/docsets/Tutorial)
-[![Platform](https://img.shields.io/cocoapods/p/Tutorial.svg?style=flat)](http://cocoadocs.org/docsets/Tutorial)
-
-## Usage
-
-```objc
-<API>
-```
-
 ## Installation
 
 **Tutorial** is available through [CocoaPods](http://cocoapods.org). To install
