@@ -41,10 +41,8 @@ import UIKit
     let label = UILabel(frame: CGRectNull)
 
     label.autoresizingMask = .FlexibleLeftMargin | .FlexibleRightMargin
-    label.font = UIFont(name: "DIN Alternate", size: 48.0)
     label.numberOfLines = 1
     label.textAlignment = .Center
-    label.textColor = UIColor(fromHex: "234583")
 
     return label
     }()
@@ -53,10 +51,8 @@ import UIKit
     let label = UILabel(frame: CGRectNull)
 
     label.autoresizingMask = .FlexibleLeftMargin | .FlexibleRightMargin
-    label.font = UIFont(name: "DIN Alternate", size: 32.0)
     label.numberOfLines = 4
     label.textAlignment = .Center
-    label.textColor = UIColor(fromHex: "234583")
 
     return label
     }()
