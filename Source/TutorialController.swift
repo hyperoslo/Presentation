@@ -80,6 +80,7 @@ public extension UIViewController {
         textView.width == superview.width - MinimumMarginSpace * 2
         textView.height >= superview.height / 4
         textView.bottom == superview.bottom + MinimumMarginSpace
+        textView.centerX == superview.centerX
 
         hasTextView = true
       }
@@ -88,6 +89,7 @@ public extension UIViewController {
         titleLabel.width == superview.width - MinimumMarginSpace * 2
         let bottom = hasTextView ? textView.top : superview.bottom
         titleLabel.bottom == bottom
+        titleLabel.centerX == superview.centerX
       }
 
       if let superview = imageView.superview {
