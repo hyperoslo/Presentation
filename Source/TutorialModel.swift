@@ -8,8 +8,8 @@ import UIKit
     get {
       return imageView.image
     }
-    set(newImage) {
-      imageView.image = newImage
+    set {
+      imageView.image = newValue
     }
   }
 
@@ -17,7 +17,7 @@ import UIKit
     get {
       return titleLabel.text
     }
-    set(newValue) {
+    set {
       titleLabel.text = newValue
     }
   }
@@ -25,8 +25,8 @@ import UIKit
     get {
       return textLabel.text
     }
-    set(newText) {
-      textLabel.text = newText
+    set {
+      textLabel.text = newValue
     }
   }
 
@@ -68,8 +68,8 @@ import UIKit
 }
 
 extension TutorialModel {
-  func views() -> [AnyObject] {
-    var views: [AnyObject] = []
+  func views() -> [UIView] {
+    var views = [UIView]()
 
     if image != nil {
       views.append(imageView)
