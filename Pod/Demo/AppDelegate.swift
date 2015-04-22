@@ -15,7 +15,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     application: UIApplication,
     didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
 
-      self.tutorialController.setNavigationTitle = false
+      tutorialController.setNavigationTitle = false
 
       let navigationController = UINavigationController(rootViewController: tutorialController)
       navigationController.view.backgroundColor = UIColor(fromHex:"FF5703")
@@ -79,9 +79,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
       tutorialController.add([page1, page2, page3, page4, page5])
 
-      TutorialController.setFont(
-        UIFont(name: "ArialRoundedMTBold",
-          size: 42.0)!)
+      let font = UIFont(name: "ArialRoundedMTBold", size: 42.0)!
+      TutorialController.setFont(font)
       TutorialController.setTextColor(UIColor.whiteColor())
 
       window = UIWindow(frame: UIScreen.mainScreen().bounds)
