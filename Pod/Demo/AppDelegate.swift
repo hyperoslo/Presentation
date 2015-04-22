@@ -15,7 +15,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     application: UIApplication,
     didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
 
-      self.tutorialController.setNavigationTitle = false
+      tutorialController.setNavigationTitle = false
 
       let navigationController = UINavigationController(rootViewController: tutorialController)
       navigationController.view.backgroundColor = UIColor(fromHex:"FF5703")

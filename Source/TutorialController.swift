@@ -12,7 +12,7 @@ let MinimumMarginLateralSpace: CGFloat = 20.0
       navigationOrientation: .Horizontal,
       options: nil)
 
-    self.add(pages)
+    add(pages)
   }
 
   override public func add(viewControllers: [UIViewController]) {
@@ -66,7 +66,7 @@ public extension UIViewController {
 
   public func addModel(model: TutorialModel) {
     for modelView in model.views() {
-      self.view.addSubview(modelView as! UIView)
+      view.addSubview(modelView as! UIView)
     }
 
     layoutSubviews()
@@ -76,7 +76,7 @@ public extension UIViewController {
     let bounds = UIScreen.mainScreen().bounds
     var y: CGFloat = 0.0
 
-    for object in self.view.subviews {
+    for object in view.subviews {
       var view = object as! UIView
       var frame = bounds
 
