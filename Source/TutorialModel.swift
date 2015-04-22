@@ -23,38 +23,33 @@ import UIKit
   }
   public var text: String? {
     get {
-      return textLabel.text
+      return textView.text
     }
     set(newText) {
-      textLabel.text = newText
+      textView.text = newText
     }
   }
 
   lazy private(set) var imageView: UIImageView = {
     let imageView = UIImageView()
-    imageView.autoresizingMask = .FlexibleLeftMargin | .FlexibleRightMargin
-
     return imageView
     }()
 
   lazy private(set) var titleLabel: UILabel = {
     let label = UILabel(frame: CGRectNull)
 
-    label.autoresizingMask = .FlexibleLeftMargin | .FlexibleRightMargin
     label.numberOfLines = 1
     label.textAlignment = .Center
 
     return label
     }()
 
-  lazy private(set) var textLabel: UILabel = {
-    let label = UILabel(frame: CGRectNull)
+  lazy private(set) var textView: UITextView = {
+    let textView = UITextView(frame: CGRectNull)
 
-    label.autoresizingMask = .FlexibleLeftMargin | .FlexibleRightMargin
-    label.numberOfLines = 4
-    label.textAlignment = .Center
+    textView.textAlignment = .Center
 
-    return label
+    return textView
     }()
 
   convenience init(title: String?, text: String?, image: UIImage?) {
@@ -64,12 +59,11 @@ import UIKit
     self.title = title
     self.text = text
   }
-
 }
 
 extension TutorialModel {
-  func views() -> [AnyObject] {
-    var views: [AnyObject] = []
+  func views() -> [UIView] {
+    var views: [UIView] = []
 
     if image != nil {
       views.append(imageView)
@@ -80,7 +74,7 @@ extension TutorialModel {
     }
 
     if text != nil {
-      views.append(textLabel)
+      views.append(textView)
     }
 
     return views
