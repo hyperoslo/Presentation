@@ -64,7 +64,7 @@ public extension UIViewController {
     addModel(model)
   }
 
-  public func addModel(model: TutorialModel) {
+  func addModel(model: TutorialModel) {
     for modelView in model.views() {
       view.addSubview(modelView as! UIView)
     }
