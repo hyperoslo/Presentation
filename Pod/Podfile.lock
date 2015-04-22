@@ -1,12 +1,15 @@
 PODS:
+  - Cartography (0.5.0)
   - Hex (1.1.1)
   - Pages (0.4.2)
 
 DEPENDENCIES:
+  - Cartography
   - Hex
   - Pages
 
 SPEC CHECKSUMS:
+  Cartography: 774e5cc446f5a6bca5d4345c5aa6af9a1fe74dc6
   Hex: acf6d0dc34658d3d44047a992bfd09190c87e6e7
   Pages: 7eb72cc268ae1092bfa7ad2c9495dc55af301ae1
 

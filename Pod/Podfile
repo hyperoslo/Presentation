@@ -6,3 +6,4 @@ platform :ios, '8.0'
 
 pod 'Pages'
 pod 'Hex'
+pod 'Cartography'
