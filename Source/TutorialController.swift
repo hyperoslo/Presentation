@@ -1,8 +1,9 @@
 import UIKit
 import Pages
 import Hex
+import Cartography
 
-let MinimumMarginLateralSpace: CGFloat = 20.0
+let MinimumMarginSpace: CGFloat = 20.0
 
 @objc public class TutorialController: PagesController {
 
@@ -51,7 +52,7 @@ let MinimumMarginLateralSpace: CGFloat = 20.0
   // MARK: Device orientation
 
   func didRotate() {
-    layoutSubviews()
+    //layoutSubviews()
   }
 
 }
@@ -61,47 +62,41 @@ public extension UIViewController {
   convenience init(model: TutorialModel) {
     self.init(nibName: nil, bundle: nil)
 
-    addModel(model)
+    addViewsFromModel(model)
   }
 
-  func addModel(model: TutorialModel) {
-    for modelView in model.views() {
-      view.addSubview(modelView as! UIView)
+  func addViewsFromModel(model: TutorialModel) {
+    let modelViews = model.views()
+
+    for modelView in modelViews {
+      view.addSubview(modelView)
     }
 
-    layoutSubviews()
-  }
+    layout(model.textView, model.titleLabel, model.imageView) {
+      textView, titleLabel, imageView in
 
-  func layoutSubviews() {
-    let bounds = UIScreen.mainScreen().bounds
-    var y: CGFloat = 0.0
+      var hasTextView = false
+      if let superview = textView.superview {
+        textView.width == superview.width - MinimumMarginSpace * 2
+        textView.height >= superview.height / 4
+        textView.bottom == superview.bottom + MinimumMarginSpace
 
-    for object in view.subviews {
-      var view = object as! UIView
-      var frame = bounds
-
-      if object.isKindOfClass(UIImageView.classForCoder()) {
-        let imageSize = (object as! UIImageView).image!.size
-
-        frame.size.width = imageSize.width
-        frame.size.height = imageSize.height
-        frame.origin.x = bounds.size.width / 2 - imageSize.width / 2
-        frame.origin.y = bounds.size.height / 2 - imageSize.height / 2
-        y = frame.origin.y + frame.height
-      } else {
-        frame.size.width = bounds.width - MinimumMarginLateralSpace * 2
-        frame.size.height = bounds.height / 2 / 4
-        frame.origin.x = bounds.size.width / 2 - frame.size.width / 2
-
-        if y == 0.0 {
-          y = bounds.height / 2 - frame.size.height / 2
-        }
-
-        frame.origin.y = y
-        y += frame.size.height
+        hasTextView = true
       }
 
-      view.frame = frame
+      if let superview = titleLabel.superview {
+        titleLabel.width == superview.width - MinimumMarginSpace * 2
+        let bottom = hasTextView ? textView.top : superview.bottom
+        titleLabel.bottom == bottom
+      }
+
+      if let superview = imageView.superview {
+        let size = model.imageView.image!.size
+        imageView.width == size.width
+        imageView.height == size.height
+        imageView.centerX == superview.centerX
+        imageView.centerY == superview.centerY
+      }
     }
   }
 }
