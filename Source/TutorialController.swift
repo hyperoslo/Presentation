@@ -2,9 +2,9 @@ import UIKit
 import Pages
 import Hex
 
-let MinimumMarginLateralSpace: CGFloat = 20.0
+private let MinimumMarginLateralSpace: CGFloat = 20.0
 
-@objc public class TutorialController: PagesController {
+public class TutorialController: PagesController {
 
   convenience init(pages: [UIViewController]) {
     self.init(
@@ -40,11 +40,12 @@ let MinimumMarginLateralSpace: CGFloat = 20.0
 
   // MARK: UIAppearance
 
-  @objc public static func setFont(font: UIFont) {
+
+  public static func setFont(font: UIFont) {
     UILabel.appearance().font = font
   }
 
-  @objc public static func setTextColor(color: UIColor) {
+  public static func setTextColor(color: UIColor) {
     UILabel.appearance().textColor = color
   }
 
@@ -66,7 +67,7 @@ public extension UIViewController {
 
   public func addModel(model: TutorialModel) {
     for modelView in model.views() {
-      view.addSubview(modelView as! UIView)
+      view.addSubview(modelView)
     }
 
     layoutSubviews()
@@ -80,8 +81,8 @@ public extension UIViewController {
       var view = object as! UIView
       var frame = bounds
 
-      if object.isKindOfClass(UIImageView.classForCoder()) {
-        let imageSize = (object as! UIImageView).image!.size
+      if let object = object as? UIImageView {
+        let imageSize = object.image!.size
 
         frame.size.width = imageSize.width
         frame.size.height = imageSize.height
