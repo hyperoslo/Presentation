@@ -1,9 +1,11 @@
 import UIKit
 import Cartography
 
-let MinimumMarginSpace: CGFloat = 20.0
-
 @objc public class TutorialModel: NSObject {
+
+  struct Dimensions {
+    static let minimumMarginSpace: CGFloat = 20.0
+  }
 
   // MARK: Public methods
 
@@ -98,18 +100,18 @@ extension TutorialModel {
 
       var hasTextView = false
       if let superview = textView.superview {
-        textView.width == superview.width - MinimumMarginSpace * 2
+        textView.width == superview.width - Dimensions.minimumMarginSpace * 2
         textView.height >= superview.height / 4
-        textView.bottom == superview.bottom + MinimumMarginSpace
+        textView.bottom == superview.bottom - Dimensions.minimumMarginSpace
         textView.centerX == superview.centerX
 
         hasTextView = true
       }
 
       if let superview = titleLabel.superview {
-        titleLabel.width == superview.width - MinimumMarginSpace * 2
+        titleLabel.width == superview.width - Dimensions.minimumMarginSpace * 2
         let bottom = hasTextView ? textView.top : superview.bottom
-        titleLabel.bottom == bottom
+        titleLabel.bottom == bottom - Dimensions.minimumMarginSpace
         titleLabel.centerX == superview.centerX
       }
 

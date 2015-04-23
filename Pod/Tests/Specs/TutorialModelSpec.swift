@@ -5,68 +5,162 @@ class TutorialModelSpec: QuickSpec {
 
   override func spec() {
     describe("TutorialModel") {
-      beforeEach {
-      }
+      var model: TutorialModel!
 
       describe("#init") {
-        it("sets title to titleLabel") {
-          let model = TutorialModel(
-            title: "Tutorial on how to make a profit",
-            text: nil,
-            image: nil)
+        beforeEach {
+          model = TutorialModel(
+            title: "Step I",
+            text: "Collect underpants",
+            image: ResourceHelper.dummyImage())
+        }
 
+        it("sets title to titleLabel") {
           expect(model.titleLabel.text).to(equal(model.title))
         }
 
         it("sets text to textView") {
-          let model = TutorialModel(
-            title: "Step I",
-            text: "Collect underpants\n💭",
-            image: nil)
-
           expect(model.textView.text).to(equal(model.text))
         }
 
         it("sets image to imageView") {
-          let model = TutorialModel(
-            title: nil,
-            text: "Thanks for your time.",
-            image:ResourceHelper.dummyImage())
-
           expect(model.imageView.image).to(equal(model.image))
         }
       }
 
       describe("#views") {
-        it("returns the correct views") {
-          context("with title only") {
-            let model = TutorialModel(
+        var views: [UIView]!
+
+        context("when we have title only") {
+          beforeEach {
+            model = TutorialModel(
               title: "Step I",
               text: nil,
               image: nil)
-            let views = model.views()
+            views = model.views()
+          }
 
+          it("returns titleLabel only") {
             expect(views.count).to(equal(1))
           }
+        }
 
-          context("with title and text") {
-            let model = TutorialModel(
+        context("when we have title and text") {
+          beforeEach {
+            model = TutorialModel(
               title: "Step I",
-              text: "Collect underpants\n💭",
+              text: "Collect underpants",
               image: nil)
-            let views = model.views()
-
-            expect(views.count).to(equal(2))
+            views = model.views()
           }
 
-          context("with title, text are image") {
-            let model = TutorialModel(
-              title: "Step I",
-              text: "Collect underpants\n💭",
-              image: ResourceHelper.dummyImage())
-            let views = model.views()
+          it("returns titleLabel and textView") {
+            expect(views.count).to(equal(2))
+          }
+        }
 
+        context("when we have title, text are image") {
+          beforeEach {
+            model = TutorialModel(
+              title: "Step I",
+              text: "Collect underpants",
+              image: ResourceHelper.dummyImage())
+            views = model.views()
+          }
+
+          it("returns titleLabel, textView and imageView") {
             expect(views.count).to(equal(3))
+          }
+        }
+      }
+
+      describe("#layoutSubviews") {
+        var view: UIView!
+        let frame = CGRect(x: 0, y: 0, width: 600, height: 600)
+
+        context("when we have title only") {
+          beforeEach {
+            model = TutorialModel(
+              title: "Step I",
+              text: nil,
+              image: nil)
+            view = UIViewController(model: model).view
+            view.frame = frame
+            view.layoutIfNeeded()
+          }
+
+          it("moves titleLabel to the bottom of its superview") {
+            expect(CGRectGetMaxY(model.titleLabel.frame)).to(equal(CGRectGetMaxY(view.frame)
+              - TutorialModel.Dimensions.minimumMarginSpace))
+            expect(CGRectGetMinX(model.titleLabel.frame)).to(equal(CGRectGetMinX(view.frame)
+              + TutorialModel.Dimensions.minimumMarginSpace))
+            expect(CGRectGetMaxX(model.titleLabel.frame)).to(equal(CGRectGetMaxX(view.frame)
+              - TutorialModel.Dimensions.minimumMarginSpace))
+          }
+        }
+
+        context("when we have title and text") {
+          beforeEach {
+            model = TutorialModel(
+              title: "Step I",
+              text: "Collect underpants",
+              image: nil)
+            view = UIViewController(model: model).view
+            view.frame = frame
+            view.layoutIfNeeded()
+          }
+
+          it("moves textView to the bottom of its superview") {
+            expect(CGRectGetMaxY(model.textView.frame)).to(equal(CGRectGetMaxY(view.frame)
+              - TutorialModel.Dimensions.minimumMarginSpace))
+            expect(CGRectGetMinX(model.textView.frame)).to(equal(CGRectGetMinX(view.frame)
+              + TutorialModel.Dimensions.minimumMarginSpace))
+            expect(CGRectGetMaxX(model.textView.frame)).to(equal(CGRectGetMaxX(view.frame)
+              - TutorialModel.Dimensions.minimumMarginSpace))
+          }
+
+          it("places titleLabel above textView") {
+            expect(CGRectGetMaxY(model.titleLabel.frame)).to(equal(CGRectGetMinY(model.textView.frame)
+              - TutorialModel.Dimensions.minimumMarginSpace))
+            expect(CGRectGetMinX(model.titleLabel.frame)).to(equal(CGRectGetMinX(view.frame)
+              + TutorialModel.Dimensions.minimumMarginSpace))
+            expect(CGRectGetMaxX(model.titleLabel.frame)).to(equal(CGRectGetMaxX(view.frame)
+              - TutorialModel.Dimensions.minimumMarginSpace))
+          }
+        }
+
+        context("when we have title, text and image") {
+          beforeEach {
+            model = TutorialModel(
+              title: "Step I",
+              text: "Collect underpants",
+              image: ResourceHelper.dummyImage())
+            view = UIViewController(model: model).view
+            view.frame = frame
+            view.layoutIfNeeded()
+          }
+
+          it("moves textView to the bottom of its superview") {
+            expect(CGRectGetMaxY(model.textView.frame)).to(equal(CGRectGetMaxY(view.frame)
+              - TutorialModel.Dimensions.minimumMarginSpace))
+            expect(CGRectGetMinX(model.textView.frame)).to(equal(CGRectGetMinX(view.frame)
+              + TutorialModel.Dimensions.minimumMarginSpace))
+            expect(CGRectGetMaxX(model.textView.frame)).to(equal(CGRectGetMaxX(view.frame)
+              - TutorialModel.Dimensions.minimumMarginSpace))
+          }
+
+          it("places titleLabel above textView") {
+            expect(CGRectGetMaxY(model.titleLabel.frame)).to(equal(CGRectGetMinY(model.textView.frame)
+              - TutorialModel.Dimensions.minimumMarginSpace))
+            expect(CGRectGetMinX(model.titleLabel.frame)).to(equal(CGRectGetMinX(view.frame)
+              + TutorialModel.Dimensions.minimumMarginSpace))
+            expect(CGRectGetMaxX(model.titleLabel.frame)).to(equal(CGRectGetMaxX(view.frame)
+              - TutorialModel.Dimensions.minimumMarginSpace))
+          }
+
+          it("moves imageView to the center of its superview") {
+            expect(CGRectGetMidX(model.imageView.frame)).to(equal(CGRectGetMidX(view.frame)))
+            expect(CGRectGetMidY(model.imageView.frame)).to(equal(CGRectGetMidY(view.frame)))
           }
         }
       }
