@@ -13,8 +13,8 @@ import Cartography
     get {
       return imageView.image
     }
-    set(newImage) {
-      imageView.image = newImage
+    set {
+      imageView.image = newValue
     }
   }
 
@@ -22,7 +22,7 @@ import Cartography
     get {
       return titleLabel.text
     }
-    set(newValue) {
+    set {
       titleLabel.text = newValue
     }
   }
@@ -30,8 +30,8 @@ import Cartography
     get {
       return textView.text.isEmpty ? nil : textView.text
     }
-    set(newText) {
-      textView.text = newText
+    set {
+      textView.text = newValue
     }
   }
 
@@ -72,7 +72,7 @@ import Cartography
 extension TutorialModel {
 
   func views() -> [UIView] {
-    var views: [UIView] = []
+    var views = [UIView]()
 
     if image != nil {
       views.append(imageView)

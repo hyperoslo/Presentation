@@ -1,7 +1,8 @@
 import UIKit
 import Pages
+import Hex
 
-@objc public class TutorialController: PagesController {
+public class TutorialController: PagesController {
 
   convenience init(pages: [UIViewController]) {
     self.init(
@@ -18,19 +19,19 @@ import Pages
 
   // MARK: UIAppearance
 
-  @objc public static func setTitleFont(font: UIFont) {
+  public static func setTitleFont(font: UIFont) {
     UILabel.appearance().font = font
   }
 
-  @objc public static func setTextFont(font: UIFont) {
+  public static func setTextFont(font: UIFont) {
     UITextView.appearance().font = font
   }
 
-  @objc public static func setTitleColor(color: UIColor) {
+  public static func setTitleColor(color: UIColor) {
     UILabel.appearance().textColor = color
   }
 
-  @objc public static func setTextColor(color: UIColor) {
+  public static func setTextColor(color: UIColor) {
     UITextView.appearance().textColor = color
   }
 }
@@ -49,7 +50,7 @@ public extension UIViewController {
     for modelView in modelViews {
       view.addSubview(modelView)
     }
-
+    
     model.layoutSubviews()
   }
 }
