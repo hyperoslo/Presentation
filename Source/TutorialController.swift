@@ -37,8 +37,12 @@ import Pages
 
   // MARK: UIAppearance
 
-  @objc public static func setFont(font: UIFont) {
+  @objc public static func setTitleFont(font: UIFont) {
     UILabel.appearance().font = font
+  }
+
+  @objc public static func setTextFont(font: UIFont) {
+    UITextView.appearance().font = font
   }
 
   @objc public static func setTitleColor(color: UIColor) {
