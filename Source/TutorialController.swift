@@ -16,25 +16,6 @@ import Pages
     super.add(viewControllers)
   }
 
-  override public func viewDidAppear(animated: Bool) {
-    super.viewDidAppear(animated)
-
-    NSNotificationCenter.defaultCenter().addObserver(
-      self,
-      selector: "didRotate",
-      name: UIDeviceOrientationDidChangeNotification,
-      object: nil)
-  }
-
-  override public func viewDidDisappear(animated: Bool) {
-    super.viewDidDisappear(animated)
-
-    NSNotificationCenter.defaultCenter().removeObserver(
-      self,
-      name: UIDeviceOrientationDidChangeNotification,
-      object: nil)
-  }
-
   // MARK: UIAppearance
 
   @objc public static func setTitleFont(font: UIFont) {
@@ -51,12 +32,6 @@ import Pages
 
   @objc public static func setTextColor(color: UIColor) {
     UITextView.appearance().textColor = color
-  }
-
-  // MARK: Device orientation
-
-  func didRotate() {
-    //layoutSubviews()
   }
 }
 
