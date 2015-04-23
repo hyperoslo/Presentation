@@ -80,7 +80,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
       tutorialController.add([page1, page2, page3, page4, page5])
 
       let font = UIFont(name: "ArialRoundedMTBold", size: 42.0)!
-      TutorialController.setFont(font)
+      TutorialController.setTitleFont(font)
+      TutorialController.setTextFont(font)
+
+      TutorialController.setTitleColor(UIColor.whiteColor())
       TutorialController.setTextColor(UIColor.whiteColor())
 
       window = UIWindow(frame: UIScreen.mainScreen().bounds)
