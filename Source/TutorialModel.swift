@@ -1,6 +1,11 @@
 import UIKit
+import Cartography
 
 @objc public class TutorialModel: NSObject {
+
+  struct Dimensions {
+    static let minimumMarginSpace: CGFloat = 20.0
+  }
 
   // MARK: Public methods
 
@@ -23,38 +28,34 @@ import UIKit
   }
   public var text: String? {
     get {
-      return textLabel.text
+      return textView.text.isEmpty ? nil : textView.text
     }
     set {
-      textLabel.text = newValue
+      textView.text = newValue
     }
   }
 
   lazy private(set) var imageView: UIImageView = {
     let imageView = UIImageView()
-    imageView.autoresizingMask = .FlexibleLeftMargin | .FlexibleRightMargin
-
     return imageView
     }()
 
   lazy private(set) var titleLabel: UILabel = {
     let label = UILabel(frame: CGRectNull)
 
-    label.autoresizingMask = .FlexibleLeftMargin | .FlexibleRightMargin
     label.numberOfLines = 1
     label.textAlignment = .Center
 
     return label
     }()
 
-  lazy private(set) var textLabel: UILabel = {
-    let label = UILabel(frame: CGRectNull)
+  lazy private(set) var textView: UITextView = {
+    let textView = UITextView(frame: CGRectNull)
 
-    label.autoresizingMask = .FlexibleLeftMargin | .FlexibleRightMargin
-    label.numberOfLines = 4
-    label.textAlignment = .Center
+    textView.textAlignment = .Center
+    textView.backgroundColor = UIColor.clearColor()
 
-    return label
+    return textView
     }()
 
   convenience init(title: String?, text: String?, image: UIImage?) {
@@ -64,10 +65,12 @@ import UIKit
     self.title = title
     self.text = text
   }
-
 }
 
+// MARK: Views
+
 extension TutorialModel {
+
   func views() -> [UIView] {
     var views = [UIView]()
 
@@ -80,9 +83,45 @@ extension TutorialModel {
     }
 
     if text != nil {
-      views.append(textLabel)
+      views.append(textView)
     }
 
     return views
+  }
+}
+
+// MARK: Layout
+
+extension TutorialModel {
+
+  func layoutSubviews() {
+    layout(textView, titleLabel, imageView) {
+      [unowned self]textView, titleLabel, imageView in
+
+      var hasTextView = false
+      if let superview = textView.superview {
+        textView.width == superview.width - Dimensions.minimumMarginSpace * 2
+        textView.height >= superview.height / 4
+        textView.bottom == superview.bottom - Dimensions.minimumMarginSpace
+        textView.centerX == superview.centerX
+
+        hasTextView = true
+      }
+
+      if let superview = titleLabel.superview {
+        titleLabel.width == superview.width - Dimensions.minimumMarginSpace * 2
+        let bottom = hasTextView ? textView.top : superview.bottom
+        titleLabel.bottom == bottom - Dimensions.minimumMarginSpace
+        titleLabel.centerX == superview.centerX
+      }
+
+      if let superview = imageView.superview {
+        let size = self.imageView.image!.size
+        imageView.width == size.width
+        imageView.height == size.height
+        imageView.centerX == superview.centerX
+        imageView.centerY == superview.centerY
+      }
+    }
   }
 }

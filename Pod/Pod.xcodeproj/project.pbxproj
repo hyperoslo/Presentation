@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		146D72B31AB782920058798C /* Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = 146D72B21AB782920058798C /* Tests.m */; };
+		4165176CCE292A765019CBFD /* Pods_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F6FACB069003DC522C05C4C3 /* Pods_Tests.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		4456148F1AD6A29D001FA4C3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4456148E1AD6A29D001FA4C3 /* AppDelegate.swift */; };
 		445614991AD6A29D001FA4C3 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 445614981AD6A29D001FA4C3 /* Images.xcassets */; };
 		445614AF1AD6A2D9001FA4C3 /* TutorialController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDD347F81AD692EF00C31A63 /* TutorialController.swift */; };
@@ -17,12 +17,15 @@
 		BDA855231AD815CA00B2BD1D /* hyper-logo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BDA855211AD815CA00B2BD1D /* hyper-logo@2x.png */; };
 		BDD347F91AD692EF00C31A63 /* TutorialController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDD347F81AD692EF00C31A63 /* TutorialController.swift */; };
 		BDFA62F81ADE5DBE0007940E /* TutorialModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDFA62F71ADE5DBE0007940E /* TutorialModel.swift */; };
+		D5E344421AE8E55A00F958CB /* TutorialModelSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5E344411AE8E55A00F958CB /* TutorialModelSpec.swift */; };
+		D5E344431AE8E5C100F958CB /* TutorialModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDFA62F71ADE5DBE0007940E /* TutorialModel.swift */; };
+		D5E344441AE8E5E500F958CB /* hyper-logo.png in Resources */ = {isa = PBXBuildFile; fileRef = BDA855201AD815CA00B2BD1D /* hyper-logo.png */; };
+		D5E344451AE8E5E800F958CB /* hyper-logo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BDA855211AD815CA00B2BD1D /* hyper-logo@2x.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		146D72AC1AB782920058798C /* Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		146D72B11AB782920058798C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		146D72B21AB782920058798C /* Tests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Tests.m; sourceTree = "<group>"; };
 		14C136511AB784B200B7B07A /* .travis.yml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = .travis.yml; path = ../.travis.yml; sourceTree = "<group>"; };
 		14C136521AB784B200B7B07A /* CONTRIBUTING.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; name = CONTRIBUTING.md; path = ../CONTRIBUTING.md; sourceTree = "<group>"; };
 		14C136541AB784B200B7B07A /* LICENSE.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; name = LICENSE.md; path = ../LICENSE.md; sourceTree = "<group>"; };
@@ -39,6 +42,8 @@
 		BDA855211AD815CA00B2BD1D /* hyper-logo@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "hyper-logo@2x.png"; sourceTree = "<group>"; };
 		BDD347F81AD692EF00C31A63 /* TutorialController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TutorialController.swift; sourceTree = "<group>"; };
 		BDFA62F71ADE5DBE0007940E /* TutorialModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TutorialModel.swift; sourceTree = "<group>"; };
+		D5E344411AE8E55A00F958CB /* TutorialModelSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TutorialModelSpec.swift; sourceTree = "<group>"; };
+		F6FACB069003DC522C05C4C3 /* Pods_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -47,6 +52,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BDA1580B1AD7ED450011D55A /* Pods.framework in Frameworks */,
+				4165176CCE292A765019CBFD /* Pods_Tests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -66,6 +72,7 @@
 			children = (
 				BDA1580A1AD7ED450011D55A /* Pods.framework */,
 				BDA158081AD7ED3D0011D55A /* Pods.framework */,
+				F6FACB069003DC522C05C4C3 /* Pods_Tests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -97,7 +104,7 @@
 		146D72AF1AB782920058798C /* Tests */ = {
 			isa = PBXGroup;
 			children = (
-				146D72B21AB782920058798C /* Tests.m */,
+				D5E344401AE8E55A00F958CB /* Specs */,
 				146D72B01AB782920058798C /* Supporting Files */,
 			);
 			path = Tests;
@@ -159,6 +166,14 @@
 				4456148D1AD6A29D001FA4C3 /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		D5E344401AE8E55A00F958CB /* Specs */ = {
+			isa = PBXGroup;
+			children = (
+				D5E344411AE8E55A00F958CB /* TutorialModelSpec.swift */,
+			);
+			path = Specs;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -243,6 +258,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D5E344451AE8E5E800F958CB /* hyper-logo@2x.png in Resources */,
+				D5E344441AE8E5E500F958CB /* hyper-logo.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -271,7 +288,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-frameworks.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Tests/Pods-Tests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		41DA61D1CECB79C1D5CB9EB7 /* Copy Pods Resources */ = {
@@ -286,7 +303,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Tests/Pods-Tests-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		521002C5D51B6D391317105F /* Check Pods Manifest.lock */ = {
@@ -324,8 +341,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D5E344431AE8E5C100F958CB /* TutorialModel.swift in Sources */,
+				D5E344421AE8E55A00F958CB /* TutorialModelSpec.swift in Sources */,
 				BDD347F91AD692EF00C31A63 /* TutorialController.swift in Sources */,
-				146D72B31AB782920058798C /* Tests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -423,12 +441,7 @@
 			baseConfigurationReference = 48D596C5F7386460518077F9 /* Pods.debug.xcconfig */;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-					"$(PROJECT_DIR)/build/Debug-iphoneos/Pods",
-					"$(PROJECT_DIR)/build/Debug-iphoneos",
-				);
+				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
@@ -436,7 +449,6 @@
 				INFOPLIST_FILE = Tests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "../Source/Tests-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
@@ -446,16 +458,10 @@
 			baseConfigurationReference = 30212F8CDFCE2FA3013BEA16 /* Pods.release.xcconfig */;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-					"$(PROJECT_DIR)/build/Debug-iphoneos/Pods",
-					"$(PROJECT_DIR)/build/Debug-iphoneos",
-				);
+				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = Tests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "../Source/Tests-Bridging-Header.h";
 			};
 			name = Release;
 		};

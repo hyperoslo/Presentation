@@ -6,3 +6,10 @@ platform :ios, '8.0'
 
 pod 'Pages'
 pod 'Hex'
+pod 'Cartography'
+
+target 'Tests' do
+    use_frameworks!
+    pod 'Quick'
+    pod 'Nimble'
+end
