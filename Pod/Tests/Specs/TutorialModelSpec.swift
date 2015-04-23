@@ -12,7 +12,7 @@ class TutorialModelSpec: QuickSpec {
           model = TutorialModel(
             title: "Step I",
             text: "Collect underpants",
-            image: ResourceHelper.dummyImage())
+            image: dummyImage())
         }
 
         it("sets title to titleLabel") {
@@ -64,7 +64,7 @@ class TutorialModelSpec: QuickSpec {
             model = TutorialModel(
               title: "Step I",
               text: "Collect underpants",
-              image: ResourceHelper.dummyImage())
+              image: dummyImage())
             views = model.views()
           }
 
@@ -76,7 +76,6 @@ class TutorialModelSpec: QuickSpec {
 
       describe("#layoutSubviews") {
         var view: UIView!
-        let frame = CGRect(x: 0, y: 0, width: 600, height: 600)
 
         context("when we have title only") {
           beforeEach {
@@ -84,12 +83,7 @@ class TutorialModelSpec: QuickSpec {
               title: "Step I",
               text: nil,
               image: nil)
-            view = UIView(frame: frame)
-            for modelView in model.views() {
-              view.addSubview(modelView)
-            }
-            model.layoutSubviews()
-            view.layoutIfNeeded()
+            view = viewWithSubviewsFromModel(model)
           }
 
           it("moves titleLabel to the bottom of its superview") {
@@ -108,12 +102,7 @@ class TutorialModelSpec: QuickSpec {
               title: "Step I",
               text: "Collect underpants",
               image: nil)
-            view = UIView(frame: frame)
-            for modelView in model.views() {
-              view.addSubview(modelView)
-            }
-            model.layoutSubviews()
-            view.layoutIfNeeded()
+            view = viewWithSubviewsFromModel(model)
           }
 
           it("moves textView to the bottom of its superview") {
@@ -140,13 +129,8 @@ class TutorialModelSpec: QuickSpec {
             model = TutorialModel(
               title: "Step I",
               text: "Collect underpants",
-              image: ResourceHelper.dummyImage())
-            view = UIView(frame: frame)
-            for modelView in model.views() {
-              view.addSubview(modelView)
-            }
-            model.layoutSubviews()
-            view.layoutIfNeeded()
+              image: dummyImage())
+            view = viewWithSubviewsFromModel(model)
           }
 
           it("moves textView to the bottom of its superview") {
@@ -172,8 +156,32 @@ class TutorialModelSpec: QuickSpec {
             expect(CGRectGetMidY(model.imageView.frame)).to(equal(CGRectGetMidY(view.frame)))
           }
         }
-
       }
     }
   }
+}
+
+// MARK: Helpers
+
+private func dummyImage() -> UIImage? {
+  let bundle = NSBundle(forClass: TutorialModelSpec.self)
+
+  var image: UIImage? = nil
+  if let imagePath = bundle.pathForResource("hyper-logo", ofType: "png") {
+    image = UIImage(contentsOfFile: imagePath)
+  }
+
+  return image
+}
+
+private func viewWithSubviewsFromModel(model: TutorialModel) -> UIView {
+  let frame = CGRect(x: 0, y: 0, width: 600, height: 600)
+  let view = UIView(frame: frame)
+  for modelView in model.views() {
+    view.addSubview(modelView)
+  }
+  model.layoutSubviews()
+  view.layoutIfNeeded()
+
+  return view
 }
