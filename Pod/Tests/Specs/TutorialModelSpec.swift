@@ -84,8 +84,11 @@ class TutorialModelSpec: QuickSpec {
               title: "Step I",
               text: nil,
               image: nil)
-            view = UIViewController(model: model).view
-            view.frame = frame
+            view = UIView(frame: frame)
+            for modelView in model.views() {
+              view.addSubview(modelView)
+            }
+            model.layoutSubviews()
             view.layoutIfNeeded()
           }
 
@@ -105,8 +108,11 @@ class TutorialModelSpec: QuickSpec {
               title: "Step I",
               text: "Collect underpants",
               image: nil)
-            view = UIViewController(model: model).view
-            view.frame = frame
+            view = UIView(frame: frame)
+            for modelView in model.views() {
+              view.addSubview(modelView)
+            }
+            model.layoutSubviews()
             view.layoutIfNeeded()
           }
 
@@ -135,8 +141,11 @@ class TutorialModelSpec: QuickSpec {
               title: "Step I",
               text: "Collect underpants",
               image: ResourceHelper.dummyImage())
-            view = UIViewController(model: model).view
-            view.frame = frame
+            view = UIView(frame: frame)
+            for modelView in model.views() {
+              view.addSubview(modelView)
+            }
+            model.layoutSubviews()
             view.layoutIfNeeded()
           }
 
@@ -163,6 +172,7 @@ class TutorialModelSpec: QuickSpec {
             expect(CGRectGetMidY(model.imageView.frame)).to(equal(CGRectGetMidY(view.frame)))
           }
         }
+
       }
     }
   }
