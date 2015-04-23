@@ -26,7 +26,7 @@ let MinimumMarginSpace: CGFloat = 20.0
   }
   public var text: String? {
     get {
-      return textView.text
+      return textView.text.isEmpty ? nil : textView.text
     }
     set(newText) {
       textView.text = newText
