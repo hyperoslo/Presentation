@@ -1,9 +1,5 @@
 import UIKit
 import Pages
-import Hex
-import Cartography
-
-let MinimumMarginSpace: CGFloat = 20.0
 
 @objc public class TutorialController: PagesController {
 
@@ -45,8 +41,12 @@ let MinimumMarginSpace: CGFloat = 20.0
     UILabel.appearance().font = font
   }
 
-  @objc public static func setTextColor(color: UIColor) {
+  @objc public static func setTitleColor(color: UIColor) {
     UILabel.appearance().textColor = color
+  }
+
+  @objc public static func setTextColor(color: UIColor) {
+    UITextView.appearance().textColor = color
   }
 
   // MARK: Device orientation
@@ -54,7 +54,6 @@ let MinimumMarginSpace: CGFloat = 20.0
   func didRotate() {
     //layoutSubviews()
   }
-
 }
 
 public extension UIViewController {
@@ -72,33 +71,6 @@ public extension UIViewController {
       view.addSubview(modelView)
     }
 
-    layout(model.textView, model.titleLabel, model.imageView) {
-      textView, titleLabel, imageView in
-
-      var hasTextView = false
-      if let superview = textView.superview {
-        textView.width == superview.width - MinimumMarginSpace * 2
-        textView.height >= superview.height / 4
-        textView.bottom == superview.bottom + MinimumMarginSpace
-        textView.centerX == superview.centerX
-
-        hasTextView = true
-      }
-
-      if let superview = titleLabel.superview {
-        titleLabel.width == superview.width - MinimumMarginSpace * 2
-        let bottom = hasTextView ? textView.top : superview.bottom
-        titleLabel.bottom == bottom
-        titleLabel.centerX == superview.centerX
-      }
-
-      if let superview = imageView.superview {
-        let size = model.imageView.image!.size
-        imageView.width == size.width
-        imageView.height == size.height
-        imageView.centerX == superview.centerX
-        imageView.centerY == superview.centerY
-      }
-    }
+    model.layoutSubviews()
   }
 }

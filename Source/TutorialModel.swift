@@ -1,4 +1,7 @@
 import UIKit
+import Cartography
+
+let MinimumMarginSpace: CGFloat = 20.0
 
 @objc public class TutorialModel: NSObject {
 
@@ -48,6 +51,7 @@ import UIKit
     let textView = UITextView(frame: CGRectNull)
 
     textView.textAlignment = .Center
+    textView.backgroundColor = UIColor.clearColor()
 
     return textView
     }()
@@ -61,7 +65,10 @@ import UIKit
   }
 }
 
+// MARK: Views
+
 extension TutorialModel {
+
   func views() -> [UIView] {
     var views: [UIView] = []
 
@@ -78,5 +85,41 @@ extension TutorialModel {
     }
 
     return views
+  }
+}
+
+// MARK: Layout
+
+extension TutorialModel {
+
+  func layoutSubviews() {
+    layout(textView, titleLabel, imageView) {
+      [unowned self]textView, titleLabel, imageView in
+
+      var hasTextView = false
+      if let superview = textView.superview {
+        textView.width == superview.width - MinimumMarginSpace * 2
+        textView.height >= superview.height / 4
+        textView.bottom == superview.bottom + MinimumMarginSpace
+        textView.centerX == superview.centerX
+
+        hasTextView = true
+      }
+
+      if let superview = titleLabel.superview {
+        titleLabel.width == superview.width - MinimumMarginSpace * 2
+        let bottom = hasTextView ? textView.top : superview.bottom
+        titleLabel.bottom == bottom
+        titleLabel.centerX == superview.centerX
+      }
+
+      if let superview = imageView.superview {
+        let size = self.imageView.image!.size
+        imageView.width == size.width
+        imageView.height == size.height
+        imageView.centerX == superview.centerX
+        imageView.centerY == superview.centerY
+      }
+    }
   }
 }
