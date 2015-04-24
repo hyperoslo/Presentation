@@ -16,24 +16,6 @@ public class TutorialController: PagesController {
   override public func add(viewControllers: [UIViewController]) {
     super.add(viewControllers)
   }
-
-  // MARK: UIAppearance
-
-  public static func setTitleFont(font: UIFont) {
-    UILabel.appearance().font = font
-  }
-
-  public static func setTextFont(font: UIFont) {
-    UITextView.appearance().font = font
-  }
-
-  public static func setTitleColor(color: UIColor) {
-    UILabel.appearance().textColor = color
-  }
-
-  public static func setTextColor(color: UIColor) {
-    UITextView.appearance().textColor = color
-  }
 }
 
 public extension UIViewController {
@@ -50,7 +32,7 @@ public extension UIViewController {
     for modelView in modelViews {
       view.addSubview(modelView)
     }
-    
+
     model.layoutSubviews()
   }
 }
