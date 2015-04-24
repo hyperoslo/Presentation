@@ -48,7 +48,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
       let font = UIFont(name: "ArialRoundedMTBold", size: 42.0)!
       let color = UIColor.whiteColor()
-      let attributes = [NSFontAttributeName: font, NSForegroundColorAttributeName: color];
+      let paragraphStyle = NSMutableParagraphStyle()
+      paragraphStyle.alignment = NSTextAlignment.Center
+
+      let attributes = [NSFontAttributeName: font, NSForegroundColorAttributeName: color,
+        NSParagraphStyleAttributeName: paragraphStyle]
 
       let model1 = TutorialModel(
         title: "Tutorial on how to make a profit",
