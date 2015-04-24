@@ -46,30 +46,44 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
       tutorialController.navigationItem.leftBarButtonItem = leftButton
       tutorialController.navigationItem.rightBarButtonItem = rightButton
 
+      let font = UIFont(name: "ArialRoundedMTBold", size: 42.0)!
+      let color = UIColor.whiteColor()
+      let attributes = [NSFontAttributeName: font, NSForegroundColorAttributeName: color];
+
       let model1 = TutorialModel(
         title: "Tutorial on how to make a profit",
         text: nil,
         image: nil)
+      model1.setTitleAttributes(attributes)
+      model1.setTextAttributes(attributes)
 
       let model2 = TutorialModel(
         title: "Step I",
         text: "Collect underpants\n💭",
         image: nil)
+      model2.setTitleAttributes(attributes)
+      model2.setTextAttributes(attributes)
 
       let model3 = TutorialModel(
         title: "Step II",
         text: "🎅🎅🏻🎅🏼🎅🏽🎅🏾🎅🏿",
         image: nil)
+      model3.setTitleAttributes(attributes)
+      model3.setTextAttributes(attributes)
 
       let model4 = TutorialModel(
         title: "Step III",
         text: "Profit\n💸",
         image: nil)
+      model4.setTitleAttributes(attributes)
+      model4.setTextAttributes(attributes)
 
       let model5 = TutorialModel(
         title: nil,
         text: "Thanks for your time.",
         image:UIImage(named: "hyper-logo.png"))
+      model5.setTitleAttributes(attributes)
+      model5.setTextAttributes(attributes)
 
       let page1 = UIViewController(model: model1)
       let page2 = UIViewController(model: model2)
@@ -78,13 +92,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
       let page5 = UIViewController(model: model5)
 
       tutorialController.add([page1, page2, page3, page4, page5])
-
-      let font = UIFont(name: "ArialRoundedMTBold", size: 42.0)!
-      TutorialController.setTitleFont(font)
-      TutorialController.setTextFont(font)
-
-      TutorialController.setTitleColor(UIColor.whiteColor())
-      TutorialController.setTextColor(UIColor.whiteColor())
 
       window = UIWindow(frame: UIScreen.mainScreen().bounds)
       window?.rootViewController = navigationController
