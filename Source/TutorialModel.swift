@@ -7,7 +7,7 @@ import Cartography
     static let minimumMarginSpace: CGFloat = 20.0
   }
 
-  // MARK: Public methods
+  // MARK: Public properties
 
   public var image: UIImage? {
     get {
@@ -64,6 +64,22 @@ import Cartography
     self.image = image
     self.title = title
     self.text = text
+  }
+}
+
+// MARK: Styling
+
+extension TutorialModel {
+
+  public func setTitleAttributes(attributes: [String: AnyObject]) {
+    if let text = titleLabel.text {
+      titleLabel.attributedText = NSAttributedString(string: text, attributes: attributes)
+    }
+  }
+
+  public func setTextAttributes(attributes: [String: AnyObject]) {
+    let text = textView.text
+    textView.attributedText = NSAttributedString(string: text, attributes: attributes)
   }
 }
 

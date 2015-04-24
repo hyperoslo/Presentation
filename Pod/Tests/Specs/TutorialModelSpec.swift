@@ -7,14 +7,14 @@ class TutorialModelSpec: QuickSpec {
     describe("TutorialModel") {
       var model: TutorialModel!
 
-      describe("#init") {
-        beforeEach {
-          model = TutorialModel(
-            title: "Step I",
-            text: "Collect underpants",
-            image: dummyImage())
-        }
+      beforeEach {
+        model = TutorialModel(
+          title: "Step I",
+          text: "Collect underpants",
+          image: dummyImage())
+      }
 
+      describe("#init") {
         it("sets title to titleLabel") {
           expect(model.titleLabel.text).to(equal(model.title))
         }
@@ -25,6 +25,28 @@ class TutorialModelSpec: QuickSpec {
 
         it("sets image to imageView") {
           expect(model.imageView.image).to(equal(model.image))
+        }
+      }
+
+      describe("#setTitleAttributes") {
+         it("sets attributes to titleLabel") {
+          let attributes = [NSForegroundColorAttributeName: UIColor.whiteColor(),
+            NSFontAttributeName: UIFont.systemFontOfSize(14.0)]
+          let string = NSAttributedString(string: model.title!, attributes: attributes)
+
+          model.setTitleAttributes(attributes)
+          expect(model.titleLabel.attributedText).to(equal(string))
+        }
+      }
+
+      describe("#setTextAttributes") {
+        it("sets attributes to textView") {
+          let attributes = [NSForegroundColorAttributeName: UIColor.whiteColor(),
+            NSFontAttributeName: UIFont.systemFontOfSize(14.0)]
+          let string = NSAttributedString(string: model.text!, attributes: attributes)
+
+          model.setTextAttributes(attributes)
+          expect(model.textView.attributedText).to(equal(string))
         }
       }
 
