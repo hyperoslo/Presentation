@@ -7,7 +7,7 @@ import Cartography
     static let minimumMarginSpace: CGFloat = 20.0
   }
 
-  // MARK: Public methods
+  // MARK: Public properties
 
   public var image: UIImage? {
     get {
@@ -20,18 +20,28 @@ import Cartography
 
   public var title: String? {
     get {
-      return titleLabel.text
+      return titleLabel.attributedText.string
     }
     set {
-      titleLabel.text = newValue
+      let text = newValue != nil ? newValue! : ""
+      let range = NSMakeRange(0, titleLabel.attributedText.length)
+      let string = titleLabel.attributedText.mutableCopy() as! NSMutableAttributedString
+      string.replaceCharactersInRange(range, withString: text)
+
+      titleLabel.attributedText = string
     }
   }
   public var text: String? {
     get {
-      return textView.text.isEmpty ? nil : textView.text
+      return textView.attributedText.string.isEmpty ? nil : textView.attributedText.string
     }
     set {
-      textView.text = newValue
+      let text = newValue != nil ? newValue! : ""
+      let range = NSMakeRange(0, textView.attributedText.length)
+      let string = textView.attributedText.mutableCopy() as! NSMutableAttributedString
+      string.replaceCharactersInRange(range, withString: text)
+
+      textView.attributedText = string
     }
   }
 
@@ -44,7 +54,7 @@ import Cartography
     let label = UILabel(frame: CGRectNull)
 
     label.numberOfLines = 1
-    label.textAlignment = .Center
+    label.attributedText = NSAttributedString(string: "")
 
     return label
     }()
@@ -52,8 +62,8 @@ import Cartography
   lazy private(set) var textView: UITextView = {
     let textView = UITextView(frame: CGRectNull)
 
-    textView.textAlignment = .Center
     textView.backgroundColor = UIColor.clearColor()
+    textView.attributedText = NSAttributedString(string: "")
 
     return textView
     }()
@@ -64,6 +74,21 @@ import Cartography
     self.image = image
     self.title = title
     self.text = text
+  }
+}
+
+// MARK: Styling
+
+extension TutorialModel {
+
+  public func setTitleAttributes(attributes: [String: AnyObject]) {
+    var text = titleLabel.attributedText.string
+    titleLabel.attributedText = NSAttributedString(string: text, attributes: attributes)
+  }
+
+  public func setTextAttributes(attributes: [String: AnyObject]) {
+    var text = textView.attributedText.string
+    textView.attributedText = NSAttributedString(string: text, attributes: attributes)
   }
 }
 
