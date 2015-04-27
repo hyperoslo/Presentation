@@ -95,6 +95,31 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
       let page4 = UIViewController(model: model4)
       let page5 = UIViewController(model: model5)
 
+      let cloudView1 = UIImageView(image: UIImage(named: "cloud1"))
+      let cloudView2 = UIImageView(image: UIImage(named: "cloud2"))
+
+     //tutorialController.addViewsToBack([cloudView1, cloudView2])
+
+      tutorialController.addAnimation(
+        LeftAppearanceAnimation(view: cloudView1,
+          destination: TutorialViewPosition(xPercentage: 0.1, yPercentage: 0.1, hMargin: .Left, vMargin: .Top)),
+          forPage: 0)
+      /*
+      tutorialController.addAnimation(
+        RightAppearanceAnimation(view: cloudView2,
+          destination: TutorialViewPosition(xPercentage: 0.2, yPercentage: 0.12, hMargin: .Right, vMargin: .Top)),
+          forPage: 0)*/
+
+      tutorialController.addAnimation(
+        TransitionAnimation(view: cloudView1,
+          destination: TutorialViewPosition(xPercentage: 0.2, yPercentage: 0.1, hMargin: .Left, vMargin: .Top)),
+          forPage: 1)
+
+      /*tutorialController.addAnimation(
+        TransitionAnimation(view: cloudView2,
+          destination: TutorialViewPosition(xPercentage: 0.3, yPercentage: 0.12, hMargin: .Right, vMargin: .Top)),
+          forPage: 1)*/
+
       tutorialController.add([page1, page2, page3, page4, page5])
 
       window = UIWindow(frame: UIScreen.mainScreen().bounds)

@@ -9,5 +9,6 @@
 #ifndef Pod_BridgingHeader_h
 #define Pod_BridgingHeader_h
 
+#import "TutorialTypes.h"
 
 #endif
