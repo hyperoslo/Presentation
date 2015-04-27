@@ -9,8 +9,17 @@ DEPENDENCIES:
   - Cartography
   - Hex
   - Nimble
-  - Pages
+  - Pages (from `https://github.com/hyperoslo/Pages.git`)
   - Quick
+
+EXTERNAL SOURCES:
+  Pages:
+    :git: https://github.com/hyperoslo/Pages.git
+
+CHECKOUT OPTIONS:
+  Pages:
+    :commit: ed37320495b9577d877ee1576c21584895e6dcfe
+    :git: https://github.com/hyperoslo/Pages.git
 
 SPEC CHECKSUMS:
   Cartography: 774e5cc446f5a6bca5d4345c5aa6af9a1fe74dc6

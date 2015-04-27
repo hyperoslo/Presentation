@@ -31,6 +31,7 @@ import Cartography
       titleLabel.attributedText = string
     }
   }
+
   public var text: String? {
     get {
       return textView.attributedText.string.isEmpty ? nil : textView.attributedText.string
@@ -121,7 +122,7 @@ extension TutorialModel {
 
   func layoutSubviews() {
     layout(textView, titleLabel, imageView) {
-      [unowned self]textView, titleLabel, imageView in
+      [unowned self] textView, titleLabel, imageView in
 
       var hasTextView = false
       if let superview = textView.superview {
