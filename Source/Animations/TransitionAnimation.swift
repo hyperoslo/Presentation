@@ -47,7 +47,8 @@ import UIKit
     if !isPlaying {
       isPlaying = true
 
-      UIView.animateWithDuration(duration,
+      UIView.animateWithDuration(duration, delay: 0,
+        options: .BeginFromCurrentState,
         animations: {
           [unowned self] () -> Void in
           self.view.frame = frame
