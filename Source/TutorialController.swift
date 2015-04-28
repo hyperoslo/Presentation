@@ -8,7 +8,8 @@ public class TutorialController: PagesController {
   private var animationLayer = [Int: [Animation]]()
   private var animationIndex = 0
 
-  convenience init(pages: [UIViewController], backViewModels: [BackViewModel] = []) {
+  convenience init(pages: [UIViewController],
+    backViewModels: [BackViewModel] = []) {
     self.init(
       transitionStyle: .Scroll,
       navigationOrientation: .Horizontal,
@@ -105,6 +106,12 @@ extension TutorialController {
 // MARK: - Animation layer
 
 extension TutorialController {
+
+  public func addAnimations(animations: [Animation], forPage page: Int) {
+    for animation in animations {
+      addAnimation(animation, forPage: page)
+    }
+  }
 
   public func addAnimation(animation: Animation, forPage page: Int) {
     if animationLayer[page] == nil {
