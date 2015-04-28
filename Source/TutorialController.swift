@@ -107,7 +107,6 @@ extension TutorialController {
   }
 
   func playAnimations() {
-    println("Play :\(animationIndex)")
     if let animations = animationLayer[animationIndex] {
       for animation in animations {
         if animation.view.superview == nil {
@@ -122,7 +121,6 @@ extension TutorialController {
   }
 
   func playBackAnimations() {
-    println("Playback :\(animationIndex)")
     if let animations = animationLayer[animationIndex] {
       for animation in animations {
         animation.playBack()
@@ -134,7 +132,6 @@ extension TutorialController {
 extension TutorialController: PagesControllerDelegate {
 
   public func pageViewController(pageViewController: UIPageViewController, setViewController viewController: UIViewController, atPage page: Int) {
-    println("Hoho")
     animationIndex = page
   }
 }
@@ -156,24 +153,5 @@ extension TutorialController: UIScrollViewDelegate {
         animation.move(offsetRatio)
       }
     }
-  }
-}
-
-public extension UIViewController {
-
-  convenience init(model: TutorialModel) {
-    self.init(nibName: nil, bundle: nil)
-
-    addViewsFromModel(model)
-  }
-
-  func addViewsFromModel(model: TutorialModel) {
-    let modelViews = model.views()
-
-    for modelView in modelViews {
-      view.addSubview(modelView)
-    }
-
-    model.layoutSubviews()
   }
 }
