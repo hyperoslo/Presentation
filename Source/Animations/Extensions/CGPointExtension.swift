@@ -2,9 +2,9 @@ import UIKit
 
 extension CGPoint {
 
-  func positionInView(view: UIView) -> TutorialViewPosition {
-    var xPercentage = x / CGRectGetWidth(view.frame)
-    var yPercentage = y / CGRectGetHeight(view.frame)
+  func positionInFrame(frame: CGRect) -> TutorialViewPosition {
+    var xPercentage = x / CGRectGetWidth(frame)
+    var yPercentage = y / CGRectGetHeight(frame)
 
     var hMargin: HorizontalMarginType = .Left
     var vMargin: VerticalMarginType = .Top

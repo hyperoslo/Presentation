@@ -27,14 +27,29 @@ public class TutorialController: PagesController {
   public override func viewDidAppear(animated: Bool) {
     super.viewDidAppear(animated)
 
+    NSNotificationCenter.defaultCenter().addObserver(
+      self,
+      selector: "didRotate",
+      name: UIDeviceOrientationDidChangeNotification,
+      object: nil)
+
     animationIndex = 0
-    
+
     for subview in view.subviews{
       if subview.isKindOfClass(UIScrollView){
         (subview as! UIScrollView).delegate = self
       }
     }
     playAnimations()
+  }
+
+  override public func viewDidDisappear(animated: Bool) {
+    super.viewDidDisappear(animated)
+
+    NSNotificationCenter.defaultCenter().removeObserver(
+      self,
+      name: UIDeviceOrientationDidChangeNotification,
+      object: nil)
   }
 
   override public func add(viewControllers: [UIViewController]) {
@@ -52,7 +67,15 @@ public class TutorialController: PagesController {
     super.goTo(index)
   }
 
+  // MARK: device orientation
 
+  func didRotate() {
+    if let animations = animationLayer[animationIndex] {
+      for animation in animations {
+        animation.rotate()
+      }
+    }
+  }
 }
 
 // MARK: - Back layer

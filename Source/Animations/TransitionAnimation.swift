@@ -7,15 +7,27 @@ import UIKit
   public var duration: NSTimeInterval
   public var isPlaying = false
 
-  private var start: CGPoint?
+  var start: TutorialViewPosition?
+
+  var startPoint: CGPoint? {
+    var point: CGPoint?
+    if let superview = view.superview {
+      if start == nil {
+        start = view.frame.origin.positionInFrame(superview.bounds)
+      }
+      point = start!.originInFrame(superview.bounds)
+    }
+
+    return point
+  }
 
   var distance: CGFloat {
     var dx: CGFloat = 0.0
 
     if let superview = view.superview {
-      dx = destination.xInView(superview)
-      if let start = start {
-        dx -= start.x
+      dx = destination.xInFrame(superview.bounds)
+      if let startPoint = startPoint {
+        dx -= startPoint.x
       }
     }
 
@@ -51,22 +63,29 @@ import UIKit
 
 extension TransitionAnimation {
 
+  public func rotate() {
+    if let superview = view.superview {
+      var frame = view.frame
+      var rotatedFrame = superview.bounds.rotatedRect
+
+      frame.origin = destination.originInFrame(rotatedFrame)
+      view.frame = frame
+    }
+  }
+
   public func play() {
     if let superview = view.superview {
       var frame = view.frame
-      if start == nil {
-        start = frame.origin
-      }
-      frame.origin = destination.originInView(superview)
+      frame.origin = destination.originInFrame(superview.bounds)
 
       animate(frame)
     }
   }
 
   public func playBack() {
-    if let superview = view.superview, start = start {
+    if let startPoint = startPoint {
       var frame = view.frame
-      frame.origin = start
+      frame.origin = startPoint
 
       animate(frame)
     }
@@ -74,16 +93,13 @@ extension TransitionAnimation {
 
   public func move(offsetRatio: CGFloat) {
     if !isPlaying {
-      if let superview = view.superview {
+      if let startPoint = startPoint {
         var frame = view.frame
-        if start == nil {
-          start = frame.origin
-        }
 
         let ratio = offsetRatio > 0.0 ? offsetRatio : (1.0 + offsetRatio)
         let offset = distance * ratio
 
-        frame.origin.x = start!.x + offset
+        frame.origin.x = startPoint.x + offset
 
         view.frame = frame
       }

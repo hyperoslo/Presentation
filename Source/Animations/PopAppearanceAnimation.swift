@@ -36,11 +36,21 @@ import UIKit
 
 extension PopAppearanceAnimation {
 
+  public func rotate() {
+    if let superview = view.superview {
+      var frame = view.frame
+      var rotatedFrame = superview.bounds.rotatedRect
+
+      frame.origin = destination.originInFrame(rotatedFrame)
+      view.frame = frame
+    }
+  }
+
   public func show() {
     var frame = view.frame
     if let superview = view.superview {
-      frame.origin.x = destination.xInView(superview)
-      frame.origin.y = destination.yInView(superview)
+      frame.origin.x = destination.xInFrame(superview.frame)
+      frame.origin.y = destination.yInFrame(superview.frame)
     }
 
     view.frame = frame

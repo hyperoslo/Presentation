@@ -31,6 +31,10 @@
 		D55904EA1AEE75B8006DFE7F /* TutorialViewPositionExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D55904E81AEE75B8006DFE7F /* TutorialViewPositionExtension.swift */; };
 		D55904EC1AEE75E1006DFE7F /* CGPointExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D55904EB1AEE75E1006DFE7F /* CGPointExtension.swift */; };
 		D55904ED1AEE75E1006DFE7F /* CGPointExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D55904EB1AEE75E1006DFE7F /* CGPointExtension.swift */; };
+		D55904EF1AEEE2BD006DFE7F /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D55904EE1AEEE2BD006DFE7F /* UIViewExtension.swift */; };
+		D55904F01AEEE2BD006DFE7F /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D55904EE1AEEE2BD006DFE7F /* UIViewExtension.swift */; };
+		D55904F21AEF73A1006DFE7F /* CGRectExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D55904F11AEF73A1006DFE7F /* CGRectExtension.swift */; };
+		D55904F31AEF73A1006DFE7F /* CGRectExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D55904F11AEF73A1006DFE7F /* CGRectExtension.swift */; };
 		D5E205A01AEE57E50023686C /* TutorialAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5E2059F1AEE57E50023686C /* TutorialAnimation.swift */; };
 		D5E205A21AEE58070023686C /* LeftAppearanceAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5E205A11AEE58070023686C /* LeftAppearanceAnimation.swift */; };
 		D5E205A41AEE582F0023686C /* TransitionAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5E205A31AEE582F0023686C /* TransitionAnimation.swift */; };
@@ -69,6 +73,8 @@
 		D55904E51AEE6837006DFE7F /* PopAppearanceAnimation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopAppearanceAnimation.swift; sourceTree = "<group>"; };
 		D55904E81AEE75B8006DFE7F /* TutorialViewPositionExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TutorialViewPositionExtension.swift; sourceTree = "<group>"; };
 		D55904EB1AEE75E1006DFE7F /* CGPointExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CGPointExtension.swift; sourceTree = "<group>"; };
+		D55904EE1AEEE2BD006DFE7F /* UIViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
+		D55904F11AEF73A1006DFE7F /* CGRectExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CGRectExtension.swift; sourceTree = "<group>"; };
 		D5E2059F1AEE57E50023686C /* TutorialAnimation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TutorialAnimation.swift; sourceTree = "<group>"; };
 		D5E205A11AEE58070023686C /* LeftAppearanceAnimation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LeftAppearanceAnimation.swift; sourceTree = "<group>"; };
 		D5E205A31AEE582F0023686C /* TransitionAnimation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransitionAnimation.swift; sourceTree = "<group>"; };
@@ -211,6 +217,8 @@
 			children = (
 				D55904E81AEE75B8006DFE7F /* TutorialViewPositionExtension.swift */,
 				D55904EB1AEE75E1006DFE7F /* CGPointExtension.swift */,
+				D55904EE1AEEE2BD006DFE7F /* UIViewExtension.swift */,
+				D55904F11AEF73A1006DFE7F /* CGRectExtension.swift */,
 			);
 			name = Extensions;
 			path = Animations/Extensions;
@@ -409,8 +417,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D55904F01AEEE2BD006DFE7F /* UIViewExtension.swift in Sources */,
 				D5E344431AE8E5C100F958CB /* TutorialModel.swift in Sources */,
 				D5E344421AE8E55A00F958CB /* TutorialModelSpec.swift in Sources */,
+				D55904F31AEF73A1006DFE7F /* CGRectExtension.swift in Sources */,
 				D55904ED1AEE75E1006DFE7F /* CGPointExtension.swift in Sources */,
 				D545D6F61AEDB54E0091EEE4 /* TutorialController.swift in Sources */,
 				D55904EA1AEE75B8006DFE7F /* TutorialViewPositionExtension.swift in Sources */,
@@ -423,12 +433,14 @@
 			files = (
 				D5E205A01AEE57E50023686C /* TutorialAnimation.swift in Sources */,
 				D55904E91AEE75B8006DFE7F /* TutorialViewPositionExtension.swift in Sources */,
+				D55904EF1AEEE2BD006DFE7F /* UIViewExtension.swift in Sources */,
 				D55904EC1AEE75E1006DFE7F /* CGPointExtension.swift in Sources */,
 				D55904E41AEE682D006DFE7F /* RightAppearanceAnimation.swift in Sources */,
 				D5E205A21AEE58070023686C /* LeftAppearanceAnimation.swift in Sources */,
 				4456148F1AD6A29D001FA4C3 /* AppDelegate.swift in Sources */,
 				BDFA62F81ADE5DBE0007940E /* TutorialModel.swift in Sources */,
 				D5E205A41AEE582F0023686C /* TransitionAnimation.swift in Sources */,
+				D55904F21AEF73A1006DFE7F /* CGRectExtension.swift in Sources */,
 				D55904E61AEE6838006DFE7F /* PopAppearanceAnimation.swift in Sources */,
 				D545D6F51AEDB54E0091EEE4 /* TutorialController.swift in Sources */,
 			);
