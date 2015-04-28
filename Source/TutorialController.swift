@@ -59,9 +59,8 @@ public class TutorialController: PagesController {
 
   public override func goTo(index: Int) {
     if index > animationIndex {
-      animationIndex++
       playAnimations()
-    } else {
+    } else if animationIndex != 0 {
       playBackAnimations()
     }
 
@@ -142,7 +141,8 @@ extension TutorialController {
 
 extension TutorialController: PagesControllerDelegate {
 
-  public func pageViewController(pageViewController: UIPageViewController, setViewController viewController: UIViewController, atPage page: Int) {
+  public func pageViewController(pageViewController: UIPageViewController,
+    setViewController viewController: UIViewController, atPage page: Int) {
     animationIndex = page
   }
 }
