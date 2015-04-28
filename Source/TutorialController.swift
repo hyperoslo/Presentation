@@ -37,7 +37,7 @@ public class TutorialController: PagesController {
     animationIndex = 0
 
     for subview in view.subviews{
-      if subview.isKindOfClass(UIScrollView){
+      if subview.isKindOfClass(UIScrollView) {
         (subview as! UIScrollView).delegate = self
       }
     }

@@ -40,8 +40,8 @@ import UIKit
               UIView.animateWithDuration(1 / 4.0,
                 animations: {
                   [unowned self] in
-                  self.view.transform = CGAffineTransformIdentity;
-                  self.view.alpha = 1.0;
+                  self.view.transform = CGAffineTransformIdentity
+                  self.view.alpha = 1.0
                 }, completion: { [unowned self] finished in
                   self.isPlaying = false
                 })
