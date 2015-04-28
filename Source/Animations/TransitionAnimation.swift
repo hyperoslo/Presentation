@@ -64,13 +64,7 @@ import UIKit
 extension TransitionAnimation {
 
   public func rotate() {
-    if let superview = view.superview {
-      var frame = view.frame
-      var rotatedFrame = superview.bounds.rotatedRect
-
-      frame.origin = destination.originInFrame(rotatedFrame)
-      view.frame = frame
-    }
+    view.rotateAtPosition(destination)
   }
 
   public func play() {
