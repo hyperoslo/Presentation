@@ -162,7 +162,11 @@ extension TutorialController: UIScrollViewDelegate {
 
     if let animations = animationLayer[index] {
       for animation in animations {
-        if offsetRatio != 0.0 {
+        let canMove = offsetRatio != 0.0 &&
+          !(animationIndex == 0 && offsetRatio < 0.0) &&
+          !(animationIndex == pageCount - 1 && offsetRatio > 0.0)
+
+        if canMove {
           animation.move(offsetRatio)
         }
       }
