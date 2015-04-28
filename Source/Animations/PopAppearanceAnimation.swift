@@ -1,6 +1,6 @@
 import UIKit
 
-@objc public class PopAppearanceAnimation: NSObject, TutorialAnimation {
+@objc public class PopAppearanceAnimation: NSObject, Animation {
 
   public var view: UIView
   public var destination: TutorialViewPosition

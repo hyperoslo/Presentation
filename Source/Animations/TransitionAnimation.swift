@@ -1,6 +1,6 @@
 import UIKit
 
-@objc public class TransitionAnimation: NSObject, TutorialAnimation {
+@objc public class TransitionAnimation: NSObject, Animation {
 
   public var view: UIView
   public var destination: TutorialViewPosition

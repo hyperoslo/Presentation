@@ -1,6 +1,6 @@
 import UIKit
 
-@objc public protocol TutorialAnimation {
+@objc public protocol Animation {
 
   func rotate()
   func play()

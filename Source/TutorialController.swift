@@ -5,7 +5,7 @@ import Hex
 public class TutorialController: PagesController {
 
   private var backLayer = [BackViewModel]()
-  private var animationLayer = [Int: [TutorialAnimation]]()
+  private var animationLayer = [Int: [Animation]]()
   private var animationIndex = 0
 
   convenience init(pages: [UIViewController], backViewModels: [BackViewModel] = []) {
@@ -106,7 +106,7 @@ extension TutorialController {
 
 extension TutorialController {
 
-  public func addAnimation(animation: TutorialAnimation, forPage page: Int) {
+  public func addAnimation(animation: Animation, forPage page: Int) {
     if animationLayer[page] == nil {
       animationLayer[page] = []
     }
