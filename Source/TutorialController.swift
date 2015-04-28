@@ -4,24 +4,28 @@ import Hex
 
 public class TutorialController: PagesController {
 
-  private var backLayer = [UIView]()
+  private var backLayer = [BackViewModel]()
   private var animationLayer = [Int: [TutorialAnimation]]()
   private var animationIndex = 0
 
-  convenience init(pages: [UIViewController], backViews: [UIView] = []) {
+  convenience init(pages: [UIViewController], backViewModels: [BackViewModel] = []) {
     self.init(
       transitionStyle: .Scroll,
       navigationOrientation: .Horizontal,
       options: nil)
 
     add(pages)
-    addViewsToBack(backViews)
+    addBackViewModels(backViewModels)
 
     pagesDelegate = self
   }
 
   public override func viewDidLoad() {
     super.viewDidLoad()
+
+    for backViewModel in backLayer {
+      backViewModel.place()
+    }
   }
 
   public override func viewDidAppear(animated: Bool) {
@@ -75,6 +79,9 @@ public class TutorialController: PagesController {
         animation.rotate()
       }
     }
+    for backViewModel in backLayer {
+      backViewModel.rotate()
+    }
   }
 }
 
@@ -82,16 +89,16 @@ public class TutorialController: PagesController {
 
 extension TutorialController {
 
-  public func addViewsToBack(backViews: [UIView]) {
-    for backView in backViews {
-      addViewToBack(backView)
+  public func addBackViewModels(backViewModels: [BackViewModel]) {
+    for backViewModel in backViewModels {
+      addBackViewModel(backViewModel)
     }
   }
 
-  public func addViewToBack(backView: UIView) {
-    backLayer.append(backView)
-    view.addSubview(backView)
-    view.sendSubviewToBack(backView)
+  public func addBackViewModel(backViewModel: BackViewModel) {
+    backLayer.append(backViewModel)
+    view.addSubview(backViewModel.view)
+    view.sendSubviewToBack(backViewModel.view)
   }
 }
 
