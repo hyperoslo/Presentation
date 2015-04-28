@@ -66,35 +66,35 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     let attributes = [NSFontAttributeName: font, NSForegroundColorAttributeName: color,
       NSParagraphStyleAttributeName: paragraphStyle]
 
-    let model1 = TutorialModel(
+    let model1 = ContentViewModel(
       title: "Tutorial on how to make a profit",
       text: nil,
       image: nil)
     model1.setTitleAttributes(attributes)
     model1.setTextAttributes(attributes)
 
-    let model2 = TutorialModel(
+    let model2 = ContentViewModel(
       title: "Step I",
       text: "Collect underpants\n💭",
       image: nil)
     model2.setTitleAttributes(attributes)
     model2.setTextAttributes(attributes)
 
-    let model3 = TutorialModel(
+    let model3 = ContentViewModel(
       title: "Step II",
       text: "🎅🎅🏻🎅🏼🎅🏽🎅🏾🎅🏿",
       image: nil)
     model3.setTitleAttributes(attributes)
     model3.setTextAttributes(attributes)
 
-    let model4 = TutorialModel(
+    let model4 = ContentViewModel(
       title: "Step III",
       text: "Profit\n💸",
       image: nil)
     model4.setTitleAttributes(attributes)
     model4.setTextAttributes(attributes)
 
-    let model5 = TutorialModel(
+    let model5 = ContentViewModel(
       title: nil,
       text: "Thanks for your time.",
       image:UIImage(named: "hyper-logo"))

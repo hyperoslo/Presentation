@@ -1,7 +1,7 @@
 import UIKit
 import Cartography
 
-@objc public class TutorialModel: NSObject {
+@objc public class ContentViewModel: NSObject {
 
   struct Dimensions {
     static let minimumMarginSpace: CGFloat = 20.0
@@ -80,7 +80,7 @@ import Cartography
 
 // MARK: Styling
 
-extension TutorialModel {
+extension ContentViewModel {
 
   public func setTitleAttributes(attributes: [String: AnyObject]) {
     var text = titleLabel.attributedText.string
@@ -95,7 +95,7 @@ extension TutorialModel {
 
 // MARK: Views
 
-extension TutorialModel {
+extension ContentViewModel {
 
   func views() -> [UIView] {
     var views = [UIView]()
@@ -118,7 +118,7 @@ extension TutorialModel {
 
 // MARK: Layout
 
-extension TutorialModel {
+extension ContentViewModel {
 
   func layoutSubviews() {
     layout(textView, titleLabel, imageView) {

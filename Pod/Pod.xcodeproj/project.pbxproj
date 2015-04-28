@@ -38,9 +38,9 @@
 		D55904FC1AEF7AE3006DFE7F /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D55904FA1AEF7AE3006DFE7F /* UIViewExtension.swift */; };
 		D55905001AEF7DAF006DFE7F /* BackViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D55904FE1AEF7DAF006DFE7F /* BackViewModel.swift */; };
 		D55905011AEF7DAF006DFE7F /* BackViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D55904FE1AEF7DAF006DFE7F /* BackViewModel.swift */; };
-		D55905021AEF7DAF006DFE7F /* TutorialModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D55904FF1AEF7DAF006DFE7F /* TutorialModel.swift */; };
-		D55905031AEF7DAF006DFE7F /* TutorialModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D55904FF1AEF7DAF006DFE7F /* TutorialModel.swift */; };
-		D55905061AEF8D21006DFE7F /* TutorialModelSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = D55905051AEF8D21006DFE7F /* TutorialModelSpec.swift */; };
+		D55905021AEF7DAF006DFE7F /* ContentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D55904FF1AEF7DAF006DFE7F /* ContentViewModel.swift */; };
+		D55905031AEF7DAF006DFE7F /* ContentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D55904FF1AEF7DAF006DFE7F /* ContentViewModel.swift */; };
+		D55905061AEF8D21006DFE7F /* ContentViewModelSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = D55905051AEF8D21006DFE7F /* ContentViewModelSpec.swift */; };
 		D55905081AEF8D32006DFE7F /* BackViewModelSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = D55905071AEF8D32006DFE7F /* BackViewModelSpec.swift */; };
 		D5A130581AEF98240081DAFE /* Animation.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5E2059F1AEE57E50023686C /* Animation.swift */; };
 		D5A130591AEF98280081DAFE /* LeftAppearanceAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5E205A11AEE58070023686C /* LeftAppearanceAnimation.swift */; };
@@ -92,8 +92,8 @@
 		D55904F41AEF77DB006DFE7F /* UIViewControllerExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewControllerExtension.swift; sourceTree = "<group>"; };
 		D55904FA1AEF7AE3006DFE7F /* UIViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
 		D55904FE1AEF7DAF006DFE7F /* BackViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BackViewModel.swift; sourceTree = "<group>"; };
-		D55904FF1AEF7DAF006DFE7F /* TutorialModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TutorialModel.swift; sourceTree = "<group>"; };
-		D55905051AEF8D21006DFE7F /* TutorialModelSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TutorialModelSpec.swift; sourceTree = "<group>"; };
+		D55904FF1AEF7DAF006DFE7F /* ContentViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentViewModel.swift; sourceTree = "<group>"; };
+		D55905051AEF8D21006DFE7F /* ContentViewModelSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentViewModelSpec.swift; sourceTree = "<group>"; };
 		D55905071AEF8D32006DFE7F /* BackViewModelSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BackViewModelSpec.swift; sourceTree = "<group>"; };
 		D5A130561AEF95C40081DAFE /* BridgingHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BridgingHeader.h; sourceTree = "<group>"; };
 		D5A130571AEF96610081DAFE /* TutorialTypes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TutorialTypes.h; sourceTree = "<group>"; };
@@ -258,7 +258,7 @@
 			isa = PBXGroup;
 			children = (
 				D55904FE1AEF7DAF006DFE7F /* BackViewModel.swift */,
-				D55904FF1AEF7DAF006DFE7F /* TutorialModel.swift */,
+				D55904FF1AEF7DAF006DFE7F /* ContentViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -266,7 +266,7 @@
 		D55905041AEF8CE7006DFE7F /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
-				D55905051AEF8D21006DFE7F /* TutorialModelSpec.swift */,
+				D55905051AEF8D21006DFE7F /* ContentViewModelSpec.swift */,
 				D55905071AEF8D32006DFE7F /* BackViewModelSpec.swift */,
 			);
 			path = ViewModels;
@@ -494,8 +494,8 @@
 				D5A130711AEF9B060081DAFE /* PopAppearanceAnimationSpec.swift in Sources */,
 				D55904F31AEF73A1006DFE7F /* CGRectExtension.swift in Sources */,
 				D5A1306D1AEF9AF30081DAFE /* TransitionAnimationSpec.swift in Sources */,
-				D55905031AEF7DAF006DFE7F /* TutorialModel.swift in Sources */,
-				D55905061AEF8D21006DFE7F /* TutorialModelSpec.swift in Sources */,
+				D55905031AEF7DAF006DFE7F /* ContentViewModel.swift in Sources */,
+				D55905061AEF8D21006DFE7F /* ContentViewModelSpec.swift in Sources */,
 				D5A1306F1AEF9AFD0081DAFE /* RightAppearanceAnimationSpec.swift in Sources */,
 				D5A1305A1AEF982B0081DAFE /* TransitionAnimation.swift in Sources */,
 				D55904F61AEF77DB006DFE7F /* UIViewControllerExtension.swift in Sources */,
@@ -528,7 +528,7 @@
 				D5E205A21AEE58070023686C /* LeftAppearanceAnimation.swift in Sources */,
 				4456148F1AD6A29D001FA4C3 /* AppDelegate.swift in Sources */,
 				D5E205A41AEE582F0023686C /* TransitionAnimation.swift in Sources */,
-				D55905021AEF7DAF006DFE7F /* TutorialModel.swift in Sources */,
+				D55905021AEF7DAF006DFE7F /* ContentViewModel.swift in Sources */,
 				D55904F51AEF77DB006DFE7F /* UIViewControllerExtension.swift in Sources */,
 				D55904F21AEF73A1006DFE7F /* CGRectExtension.swift in Sources */,
 				D55904E61AEE6838006DFE7F /* PopAppearanceAnimation.swift in Sources */,
