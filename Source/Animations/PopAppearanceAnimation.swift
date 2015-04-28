@@ -7,7 +7,7 @@ import UIKit
   public var duration: NSTimeInterval
   public var isPlaying = false
 
-  init(view: UIView, destination: TutorialViewPosition, duration: NSTimeInterval = 1.0) {
+  init(view: UIView, destination: TutorialViewPosition, duration: NSTimeInterval = 0.5) {
     self.view = view
     self.view.setTranslatesAutoresizingMaskIntoConstraints(true)
     self.destination = destination
@@ -16,17 +16,36 @@ import UIKit
     super.init()
   }
 
-  func animate(alpha: CGFloat) {
+  func animate() {
     if !isPlaying {
       isPlaying = true
 
+      if view.hidden {
+        view.transform = CGAffineTransformMakeScale(0.6, 0.6)
+      }
+      view.hidden = false
+
       UIView.animateWithDuration(duration,
         animations: {
-          [unowned self] () -> Void in
-          self.view.alpha = alpha
-        }, completion: {
-          [unowned self] (done: Bool) -> Void in
-          self.isPlaying = false
+          [unowned self] in
+          self.view.transform = CGAffineTransformMakeScale(1.05, 1.05)
+          self.view.alpha = 0.8
+        }, completion: { [unowned self] finished in
+          UIView.animateWithDuration(1 / 8.0,
+            animations: {
+              [unowned self] in
+              self.view.transform = CGAffineTransformMakeScale(0.9, 0.9)
+              self.view.alpha = 0.9
+            }, completion: { [unowned self] finished in
+              UIView.animateWithDuration(1 / 4.0,
+                animations: {
+                  [unowned self] in
+                  self.view.transform = CGAffineTransformIdentity;
+                  self.view.alpha = 1.0;
+                }, completion: { [unowned self] finished in
+                  self.isPlaying = false
+                })
+            })
         })
     }
   }
@@ -42,15 +61,17 @@ extension PopAppearanceAnimation {
 
   public func show() {
     view.placeAtPosition(destination)
-    view.alpha = 0.0
+    view.hidden = true
   }
 
   public func play() {
-    animate(1.0)
+    view.hidden = true
+    animate()
   }
 
   public func playBack() {
-    animate(0.0)
+    view.hidden = false
+    animate()
   }
 
   public func move(offsetRatio: CGFloat) {
