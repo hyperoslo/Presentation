@@ -1,9 +1,33 @@
-//
-//  BackViewModelSpec.swift
-//  Pod
-//
-//  Created by Vadym Markov on 28/04/15.
-//  Copyright (c) 2015 Hyper. All rights reserved.
-//
+import Quick
+import Nimble
 
-import Foundation
+class BackViewModelSpec: QuickSpec {
+
+  override func spec() {
+    describe("BackViewModel") {
+      var model: BackViewModel!
+
+      beforeEach {
+        model = BackViewModel(view: dummyImage(),
+          position: TutorialViewPosition(xPercentage: 0.3, yPercentage: 0.3, hMargin: .Right, vMargin: .Bottom))
+      }
+
+      describe("#place") {
+      }
+    }
+  }
+
+}
+
+// MARK: Helpers
+
+private func dummyImage() -> UIImage? {
+  let bundle = NSBundle(forClass: TutorialModelSpec.self)
+
+  var image: UIImage? = nil
+  if let imagePath = bundle.pathForResource("hyper-logo", ofType: "png") {
+    image = UIImage(contentsOfFile: imagePath)
+  }
+
+  return image
+}
