@@ -46,12 +46,12 @@ import Cartography
     }
   }
 
-  lazy private(set) var imageView: UIImageView = {
+  public lazy private(set) var imageView: UIImageView = {
     let imageView = UIImageView()
     return imageView
     }()
 
-  lazy private(set) var titleLabel: UILabel = {
+  public lazy private(set) var titleLabel: UILabel = {
     let label = UILabel(frame: CGRectNull)
 
     label.numberOfLines = 1
@@ -60,7 +60,7 @@ import Cartography
     return label
     }()
 
-  lazy private(set) var textView: UITextView = {
+  public lazy private(set) var textView: UITextView = {
     let textView = UITextView(frame: CGRectNull)
 
     textView.backgroundColor = UIColor.clearColor()
@@ -69,7 +69,7 @@ import Cartography
     return textView
     }()
 
-  convenience init(title: String?, text: String?, image: UIImage?) {
+  public convenience init(title: String?, text: String?, image: UIImage?) {
     self.init()
 
     self.image = image
@@ -97,7 +97,7 @@ extension ContentViewModel {
 
 extension ContentViewModel {
 
-  func views() -> [UIView] {
+  public func views() -> [UIView] {
     var views = [UIView]()
 
     if image != nil {
@@ -120,7 +120,7 @@ extension ContentViewModel {
 
 extension ContentViewModel {
 
-  func layoutSubviews() {
+  public func layoutSubviews() {
     layout(textView, titleLabel, imageView) {
       [unowned self] textView, titleLabel, imageView in
 

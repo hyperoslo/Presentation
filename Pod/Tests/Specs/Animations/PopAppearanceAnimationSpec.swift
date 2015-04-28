@@ -1,5 +1,6 @@
 import Quick
 import Nimble
+import Tutorial
 
 class PopAppearanceAnimationSpec: QuickSpec {
 

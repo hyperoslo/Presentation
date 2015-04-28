@@ -5,7 +5,7 @@ import UIKit
   public var view: UIView
   public var position: Position
 
-  init(view: UIView, position: Position) {
+  public init(view: UIView, position: Position) {
     self.view = view
     self.position = position
 

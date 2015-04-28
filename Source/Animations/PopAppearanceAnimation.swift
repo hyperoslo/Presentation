@@ -7,7 +7,7 @@ import UIKit
   public var duration: NSTimeInterval
   public var isPlaying = false
 
-  init(view: UIView, destination: Position, duration: NSTimeInterval = 0.5) {
+  public init(view: UIView, destination: Position, duration: NSTimeInterval = 0.5) {
     self.view = view
     self.view.setTranslatesAutoresizingMaskIntoConstraints(true)
     self.destination = destination
@@ -16,7 +16,7 @@ import UIKit
     super.init()
   }
 
-  func animate() {
+  private func animate() {
     if !isPlaying {
       isPlaying = true
 

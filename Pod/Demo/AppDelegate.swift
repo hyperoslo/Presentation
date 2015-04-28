@@ -1,6 +1,7 @@
 import UIKit
 import Pages
 import Hex
+import Tutorial
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -8,7 +9,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
   var window: UIWindow?
 
   lazy var tutorialController: TutorialController = {
-    return TutorialController(pages: [])
+    return TutorialController([])
     }()
 
   func application(
@@ -113,7 +114,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
   func addBackgroundViews() {
     let cloudView1 = UIImageView(image: UIImage(named: "cloud1"))
     let backViewModel1 = BackViewModel(view: cloudView1,
-      position: TutorialViewPosition(xPercentage: 0.3, yPercentage: 0.3, hMargin: .Right, vMargin: .Bottom))
+      position: Position(left: 0.7, top: 0.7))
 
     tutorialController.addBackViewModels([backViewModel1])
   }
@@ -126,49 +127,49 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     tutorialController.addAnimations(
       [
         LeftAppearanceAnimation(view: image1,
-          destination: TutorialViewPosition(xPercentage: 0.1, yPercentage: 0.1, hMargin: .Left, vMargin: .Top)),
+          destination: Position(left: 0.1, top: 0.1)),
         RightAppearanceAnimation(view: image2,
-          destination: TutorialViewPosition(xPercentage: 0.2, yPercentage: 0.12, hMargin: .Right, vMargin: .Top)),
+          destination: Position(right: 0.2, top: 0.12)),
         PopAppearanceAnimation(view: image3,
-          destination: TutorialViewPosition(xPercentage: 0.4, yPercentage: 0.5, hMargin: .Left, vMargin: .Top))
+          destination: Position(left: 0.4, top: 0.5))
       ],
       forPage: 0)
 
     tutorialController.addAnimations(
       [
         TransitionAnimation(view: image1,
-          destination: TutorialViewPosition(xPercentage: 0.2, yPercentage: 0.1, hMargin: .Left, vMargin: .Top)),
+          destination: Position(left: 0.2, top: 0.1)),
         TransitionAnimation(view: image2,
-          destination: TutorialViewPosition(xPercentage: 0.3, yPercentage: 0.12, hMargin: .Right, vMargin: .Top)),
+          destination: Position(right: 0.3, top: 0.12)),
         TransitionAnimation(view: image3,
-          destination: TutorialViewPosition(xPercentage: 0.1, yPercentage: 0.5, hMargin: .Left, vMargin: .Top))
+          destination: Position(left: 0.1, top: 0.5))
       ],
       forPage: 1)
 
     tutorialController.addAnimations(
       [
         TransitionAnimation(view: image1,
-          destination: TutorialViewPosition(xPercentage: 0.3, yPercentage: 0.1, hMargin: .Left, vMargin: .Top)),
+          destination: Position(left: 0.3, top: 0.1)),
         TransitionAnimation(view: image2,
-          destination: TutorialViewPosition(xPercentage: 0.4, yPercentage: 0.12, hMargin: .Right, vMargin: .Top))
+          destination: Position(right: 0.4, top: 0.12))
       ],
       forPage: 2)
 
     tutorialController.addAnimations(
       [
         TransitionAnimation(view: image1,
-          destination: TutorialViewPosition(xPercentage: 0.5, yPercentage: 0.1, hMargin: .Left, vMargin: .Top)),
+          destination: Position(left: 0.5, top: 0.1)),
         TransitionAnimation(view: image2,
-          destination: TutorialViewPosition(xPercentage: 0.6, yPercentage: 0.12, hMargin: .Right, vMargin: .Top))
+          destination: Position(right: 0.6, top: 0.12))
       ],
       forPage: 3)
 
     tutorialController.addAnimations(
       [
         TransitionAnimation(view: image1,
-          destination: TutorialViewPosition(xPercentage: 0.7, yPercentage: 0.1, hMargin: .Left, vMargin: .Top)),
+          destination: Position(left: 0.7, top: 0.1)),
         TransitionAnimation(view: image2,
-          destination: TutorialViewPosition(xPercentage: 0.8, yPercentage: 0.12, hMargin: .Right, vMargin: .Top))
+          destination: Position(right: 0.8, top: 0.12))
       ],
       forPage: 4)
   }

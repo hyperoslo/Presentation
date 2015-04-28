@@ -1,5 +1,7 @@
 import Quick
 import Nimble
+import UIKit
+import Tutorial
 
 class BackViewModelSpec: QuickSpec {
 
@@ -8,26 +10,9 @@ class BackViewModelSpec: QuickSpec {
       var model: BackViewModel!
 
       beforeEach {
-        model = BackViewModel(view: dummyImage(),
-          position: TutorialViewPosition(xPercentage: 0.3, yPercentage: 0.3, hMargin: .Right, vMargin: .Bottom))
-      }
-
-      describe("#place") {
+        let position = Position(left: 0.2, top: 0.2)
+        model = BackViewModel(view: SpecHelper.imageView(), position: position)
       }
     }
   }
-
-}
-
-// MARK: Helpers
-
-private func dummyImage() -> UIImage? {
-  let bundle = NSBundle(forClass: TutorialModelSpec.self)
-
-  var image: UIImage? = nil
-  if let imagePath = bundle.pathForResource("hyper-logo", ofType: "png") {
-    image = UIImage(contentsOfFile: imagePath)
-  }
-
-  return image
 }

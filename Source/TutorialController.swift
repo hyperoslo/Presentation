@@ -8,7 +8,7 @@ public class TutorialController: PagesController {
   private var animationLayer = [Int: [Animation]]()
   private var animationIndex = 0
 
-  convenience init(pages: [UIViewController],
+  public convenience init(pages: [UIViewController],
     backViewModels: [BackViewModel] = []) {
     self.init(
       transitionStyle: .Scroll,

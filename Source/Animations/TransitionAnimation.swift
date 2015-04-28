@@ -34,7 +34,7 @@ import UIKit
     return dx
   }
 
-  init(view: UIView, destination: Position, duration: NSTimeInterval = 0.5) {
+  public init(view: UIView, destination: Position, duration: NSTimeInterval = 0.5) {
     self.view = view
     self.view.setTranslatesAutoresizingMaskIntoConstraints(true)
     self.destination = destination
@@ -43,7 +43,7 @@ import UIKit
     super.init()
   }
 
-  func animate(frame: CGRect) {
+  private func animate(frame: CGRect) {
     if !isPlaying {
       isPlaying = true
 
