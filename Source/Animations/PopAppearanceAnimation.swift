@@ -7,7 +7,7 @@ import UIKit
   public var duration: NSTimeInterval
   public var isPlaying = false
 
-  init(view: UIView, destination: TutorialViewPosition, duration: NSTimeInterval = 0.5) {
+  init(view: UIView, destination: TutorialViewPosition, duration: NSTimeInterval = 1.0) {
     self.view = view
     self.view.setTranslatesAutoresizingMaskIntoConstraints(true)
     self.destination = destination
@@ -37,23 +37,11 @@ import UIKit
 extension PopAppearanceAnimation {
 
   public func rotate() {
-    if let superview = view.superview {
-      var frame = view.frame
-      var rotatedFrame = superview.bounds.rotatedRect
-
-      frame.origin = destination.originInFrame(rotatedFrame)
-      view.frame = frame
-    }
+    view.rotateAtPosition(destination)
   }
 
   public func show() {
-    var frame = view.frame
-    if let superview = view.superview {
-      frame.origin.x = destination.xInFrame(superview.frame)
-      frame.origin.y = destination.yInFrame(superview.frame)
-    }
-
-    view.frame = frame
+    view.placeAtPosition(destination)
     view.alpha = 0.0
   }
 
@@ -67,7 +55,8 @@ extension PopAppearanceAnimation {
 
   public func move(offsetRatio: CGFloat) {
     if !isPlaying {
-      view.alpha = offsetRatio
+      let ratio = offsetRatio > 0.0 ? offsetRatio : (1.0 + offsetRatio)
+        view.alpha = offsetRatio
     }
   }
 }

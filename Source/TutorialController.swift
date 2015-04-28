@@ -79,6 +79,7 @@ public class TutorialController: PagesController {
       backViewModel.rotate()
     }
   }
+
 }
 
 // MARK: - Back layer
@@ -161,7 +162,9 @@ extension TutorialController: UIScrollViewDelegate {
 
     if let animations = animationLayer[index] {
       for animation in animations {
-        animation.move(offsetRatio)
+        if offsetRatio != 0.0 {
+          animation.move(offsetRatio)
+        }
       }
     }
   }
