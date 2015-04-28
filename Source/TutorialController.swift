@@ -23,10 +23,6 @@ public class TutorialController: PagesController {
 
   public override func viewDidLoad() {
     super.viewDidLoad()
-
-    for backViewModel in backLayer {
-      backViewModel.place()
-    }
   }
 
   public override func viewDidAppear(animated: Bool) {
@@ -100,6 +96,7 @@ extension TutorialController {
     backLayer.append(backViewModel)
     view.addSubview(backViewModel.view)
     view.sendSubviewToBack(backViewModel.view)
+    backViewModel.place()
   }
 }
 
