@@ -3,9 +3,9 @@ import UIKit
 @objc public class BackViewModel: NSObject {
 
   public var view: UIView
-  public var position: TutorialViewPosition
+  public var position: Position
 
-  init(view: UIView, position: TutorialViewPosition) {
+  init(view: UIView, position: Position) {
     self.view = view
     self.position = position
 

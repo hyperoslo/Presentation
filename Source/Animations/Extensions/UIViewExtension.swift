@@ -2,13 +2,13 @@ import UIKit
 
 extension UIView {
 
-  func placeAtPosition(position: TutorialViewPosition) {
+  func placeAtPosition(position: Position) {
     if let superview = superview {
       frame.origin = position.originInFrame(superview.bounds)
     }
   }
 
-  func rotateAtPosition(position: TutorialViewPosition) {
+  func rotateAtPosition(position: Position) {
     if let superview = superview {
       var rotatedFrame = superview.bounds.rotatedRect
       frame.origin = position.originInFrame(rotatedFrame)

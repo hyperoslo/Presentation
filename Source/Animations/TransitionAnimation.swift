@@ -3,11 +3,11 @@ import UIKit
 @objc public class TransitionAnimation: NSObject, Animation {
 
   public var view: UIView
-  public var destination: TutorialViewPosition
+  public var destination: Position
   public var duration: NSTimeInterval
   public var isPlaying = false
 
-  var start: TutorialViewPosition?
+  var start: Position?
 
   var startPoint: CGPoint? {
     var point: CGPoint?
@@ -34,7 +34,7 @@ import UIKit
     return dx
   }
 
-  init(view: UIView, destination: TutorialViewPosition, duration: NSTimeInterval = 0.5) {
+  init(view: UIView, destination: Position, duration: NSTimeInterval = 0.5) {
     self.view = view
     self.view.setTranslatesAutoresizingMaskIntoConstraints(true)
     self.destination = destination
