@@ -25,7 +25,7 @@ EXTERNAL SOURCES:
 
 CHECKOUT OPTIONS:
   Pages:
-    :commit: ec877e6e277ef5f0767dce02dd9c2d7cf0f2a596
+    :commit: cf50faa4fc77ec27f946135626fd9a76e677fde6
     :git: https://github.com/hyperoslo/Pages.git
 
 SPEC CHECKSUMS:

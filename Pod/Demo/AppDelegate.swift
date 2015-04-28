@@ -9,7 +9,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
   var window: UIWindow?
 
   lazy var tutorialController: TutorialController = {
-    return TutorialController([])
+    return TutorialController(pages: [])
     }()
 
   func application(
@@ -123,15 +123,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     let image1 = UIImageView(image: UIImage(named: "cloud1"))
     let image2 = UIImageView(image: UIImage(named: "cloud2"))
     let image3 = UIImageView(image: UIImage(named: "cloud1"))
+    let image4 = UIImageView(image: UIImage(named: "cloud2"))
 
     tutorialController.addAnimations(
       [
         LeftAppearanceAnimation(view: image1,
-          destination: Position(left: 0.1, top: 0.1)),
+          destination: Position(left: 0.1, top: 0.1),
+          duration: 1.0),
         RightAppearanceAnimation(view: image2,
-          destination: Position(right: 0.2, top: 0.12)),
+          destination: Position(right: 0.2, top: 0.12),
+          duration: 1.0),
         PopAppearanceAnimation(view: image3,
-          destination: Position(left: 0.4, top: 0.5))
+          destination: Position(left: 0.4, top: 0.5),
+          duration: 1.0)
       ],
       forPage: 0)
 
@@ -141,8 +145,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
           destination: Position(left: 0.2, top: 0.1)),
         TransitionAnimation(view: image2,
           destination: Position(right: 0.3, top: 0.12)),
-        TransitionAnimation(view: image3,
-          destination: Position(left: 0.1, top: 0.5))
+        RightAppearanceAnimation(view: image4,
+          destination: Position(right: 0.4, top: 0.35),
+          duration: 1.0),
       ],
       forPage: 1)
 

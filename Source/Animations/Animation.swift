@@ -2,12 +2,10 @@ import UIKit
 
 @objc public protocol Animation {
 
-  func rotate()
   func play()
   func playBack()
   func move(offsetRatio: CGFloat)
-  var view: UIView { get }
-  var isPlaying: Bool { get }
+  func rotate()
 
-  optional func show()
+  var view: UIView { get }
 }

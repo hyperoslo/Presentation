@@ -5,7 +5,6 @@ import UIKit
   public var view: UIView
   public var destination: Position
   public var duration: NSTimeInterval
-  public var isPlaying = false
 
   public init(view: UIView, destination: Position, duration: NSTimeInterval = 0.5) {
     self.view = view
@@ -17,37 +16,30 @@ import UIKit
   }
 
   private func animate() {
-    if !isPlaying {
-      isPlaying = true
-
-      if view.hidden {
-        view.transform = CGAffineTransformMakeScale(0.6, 0.6)
-      }
-      view.hidden = false
-
-      UIView.animateWithDuration(duration,
-        animations: {
-          [unowned self] in
-          self.view.transform = CGAffineTransformMakeScale(1.05, 1.05)
-          self.view.alpha = 0.8
-        }, completion: { [unowned self] finished in
-          UIView.animateWithDuration(1 / 8.0,
-            animations: {
-              [unowned self] in
-              self.view.transform = CGAffineTransformMakeScale(0.9, 0.9)
-              self.view.alpha = 0.9
-            }, completion: { [unowned self] finished in
-              UIView.animateWithDuration(1 / 4.0,
-                animations: {
-                  [unowned self] in
-                  self.view.transform = CGAffineTransformIdentity
-                  self.view.alpha = 1.0
-                }, completion: { [unowned self] finished in
-                  self.isPlaying = false
-                })
-            })
-        })
+    if view.hidden {
+      view.transform = CGAffineTransformMakeScale(0.6, 0.6)
     }
+    view.hidden = false
+
+    UIView.animateWithDuration(duration,
+      animations: { [unowned self] in
+        self.view.transform = CGAffineTransformMakeScale(1.05, 1.05)
+        self.view.alpha = 0.8
+      }, completion: { [unowned self] done in
+        UIView.animateWithDuration(1 / 8.0,
+          animations: {
+            [unowned self] in
+            self.view.transform = CGAffineTransformMakeScale(0.9, 0.9)
+            self.view.alpha = 0.9
+          }, completion: { [unowned self] done in
+            UIView.animateWithDuration(1 / 4.0,
+              animations: {
+                [unowned self] in
+                self.view.transform = CGAffineTransformIdentity
+                self.view.alpha = 1.0
+              }, completion: nil)
+          })
+      })
   }
 }
 
@@ -55,17 +47,9 @@ import UIKit
 
 extension PopAppearanceAnimation {
 
-  public func rotate() {
-    view.rotateAtPosition(destination)
-  }
-
-  public func show() {
-    view.placeAtPosition(destination)
-    view.hidden = true
-  }
-
   public func play() {
     view.hidden = true
+    view.placeAtPosition(destination)
     animate()
   }
 
@@ -75,9 +59,13 @@ extension PopAppearanceAnimation {
   }
 
   public func move(offsetRatio: CGFloat) {
-    if !isPlaying {
+    if view.layer.animationKeys() == nil {
       let ratio = offsetRatio > 0.0 ? offsetRatio : (1.0 + offsetRatio)
-        view.alpha = offsetRatio
+      view.alpha = ratio
     }
+  }
+
+  public func rotate() {
+    view.rotateAtPosition(destination)
   }
 }

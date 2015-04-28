@@ -11,14 +11,14 @@ import UIKit
 
 extension LeftAppearanceAnimation {
 
-  public func show() {
+  public override func play() {
     var frame = view.frame
     if let superview = view.superview {
       frame.origin.x = CGRectGetMinX(superview.frame) - Dimensions.defaultOffset
       frame.origin.y = destination.yInFrame(superview.bounds)
-      start = view.frame.origin.positionInFrame(superview.bounds)
     }
-
     view.frame = frame
+
+    super.play()
   }
 }

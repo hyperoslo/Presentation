@@ -5,34 +5,8 @@ import UIKit
   public var view: UIView
   public var destination: Position
   public var duration: NSTimeInterval
-  public var isPlaying = false
 
   var start: Position?
-
-  var startPoint: CGPoint? {
-    var point: CGPoint?
-    if let superview = view.superview {
-      if start == nil {
-        start = view.frame.origin.positionInFrame(superview.bounds)
-      }
-      point = start!.originInFrame(superview.bounds)
-    }
-
-    return point
-  }
-
-  var distance: CGFloat {
-    var dx: CGFloat = 0.0
-
-    if let superview = view.superview {
-      dx = destination.xInFrame(superview.bounds)
-      if let startPoint = startPoint {
-        dx -= startPoint.x
-      }
-    }
-
-    return dx
-  }
 
   public init(view: UIView, destination: Position, duration: NSTimeInterval = 0.5) {
     self.view = view
@@ -44,19 +18,22 @@ import UIKit
   }
 
   private func animate(frame: CGRect) {
-    if !isPlaying {
-      isPlaying = true
+    UIView.animateWithDuration(duration, delay: 0,
+      options: .BeginFromCurrentState,
+      animations: { [unowned self] in
+        self.view.frame = frame
+      }, completion: nil)
+  }
 
-      UIView.animateWithDuration(duration, delay: 0,
-        options: .BeginFromCurrentState,
-        animations: {
-          [unowned self] () -> Void in
-          self.view.frame = frame
-        }, completion: {
-          [unowned self] (done: Bool) -> Void in
-          self.isPlaying = false
-        })
+  private func startFrameInSuperview(superview: UIView) -> CGRect {
+    let bounds = superview.bounds
+    if start == nil {
+      start = view.frame.origin.positionInFrame(bounds)
     }
+
+    var frame = view.frame
+    frame.origin = start!.originInFrame(bounds)
+    return frame
   }
 }
 
@@ -64,12 +41,9 @@ import UIKit
 
 extension TransitionAnimation {
 
-  public func rotate() {
-    view.rotateAtPosition(destination)
-  }
-
   public func play() {
     if let superview = view.superview {
+      view.frame = startFrameInSuperview(superview)
       var frame = view.frame
       frame.origin = destination.originInFrame(superview.bounds)
 
@@ -78,26 +52,32 @@ extension TransitionAnimation {
   }
 
   public func playBack() {
-    if let startPoint = startPoint {
-      var frame = view.frame
-      frame.origin = startPoint
+    if let superview = view.superview {
+      var frame = startFrameInSuperview(superview)
 
       animate(frame)
     }
   }
 
   public func move(offsetRatio: CGFloat) {
-    if !isPlaying {
-      if let startPoint = startPoint {
-        var frame = view.frame
+    if view.layer.animationKeys() == nil {
+      if let superview = view.superview {
+        let startFrame = startFrameInSuperview(superview)
+        let startX = CGRectGetMinX(startFrame)
+        let dx = destination.xInFrame(superview.bounds) - startX
 
         let ratio = offsetRatio > 0.0 ? offsetRatio : (1.0 + offsetRatio)
-        let offset = distance * ratio
+        let offset = dx * ratio
 
-        frame.origin.x = startPoint.x + offset
+        var frame = view.frame
+        frame.origin.x = CGRectGetMinX(startFrame) + offset
 
         view.frame = frame
       }
     }
+  }
+
+  public func rotate() {
+    view.rotateAtPosition(destination)
   }
 }

@@ -6,7 +6,9 @@ public class TutorialController: PagesController {
 
   private var backLayer = [BackViewModel]()
   private var animationLayer = [Int: [Animation]]()
-  private var animationIndex = 0
+  private var animationIndex = -1
+
+  private weak var scrollView: UIScrollView?
 
   public convenience init(pages: [UIViewController],
     backViewModels: [BackViewModel] = []) {
@@ -17,11 +19,11 @@ public class TutorialController: PagesController {
 
     add(pages)
     addBackViewModels(backViewModels)
-
-    pagesDelegate = self
   }
 
   public override func viewDidLoad() {
+    pagesDelegate = self
+
     super.viewDidLoad()
   }
 
@@ -34,14 +36,12 @@ public class TutorialController: PagesController {
       name: UIDeviceOrientationDidChangeNotification,
       object: nil)
 
-    animationIndex = 0
-
     for subview in view.subviews{
       if subview.isKindOfClass(UIScrollView) {
-        (subview as! UIScrollView).delegate = self
+        scrollView = subview as? UIScrollView
+        scrollView?.delegate = self
       }
     }
-    playAnimations()
   }
 
   override public func viewDidDisappear(animated: Bool) {
@@ -58,10 +58,30 @@ public class TutorialController: PagesController {
   }
 
   public override func goTo(index: Int) {
-    if index > animationIndex {
-      playAnimations()
-    } else if animationIndex != 0 {
-      playBackAnimations()
+    let pageCount = presentationCountForPageViewController(self)
+    let disableScroll = animationIndex != -1
+
+    if index >= 0 && index < pageCount {
+      let reverse = index < animationIndex
+      if !reverse {
+        animationIndex = index
+      }
+
+      if let animations = animationLayer[animationIndex] {
+        for animation in animations {
+          checkAnimation(animation)
+
+          if disableScroll {
+            scrollView?.delegate = nil
+          }
+
+          if reverse {
+            animation.playBack()
+          } else {
+            animation.play()
+          }
+        }
+      }
     }
 
     super.goTo(index)
@@ -117,25 +137,10 @@ extension TutorialController {
     animationLayer[page]?.append(animation)
   }
 
-  func playAnimations() {
-    if let animations = animationLayer[animationIndex] {
-      for animation in animations {
-        if animation.view.superview == nil {
-          view.addSubview(animation.view)
-          view.sendSubviewToBack(animation.view)
-          animation.show?()
-        }
-
-        animation.play()
-      }
-    }
-  }
-
-  func playBackAnimations() {
-    if let animations = animationLayer[animationIndex] {
-      for animation in animations {
-        animation.playBack()
-      }
+  private func checkAnimation(animation: Animation) {
+    if animation.view.superview == nil {
+      view.addSubview(animation.view)
+      view.sendSubviewToBack(animation.view)
     }
   }
 }
@@ -145,13 +150,15 @@ extension TutorialController: PagesControllerDelegate {
   public func pageViewController(pageViewController: UIPageViewController,
     setViewController viewController: UIViewController, atPage page: Int) {
     animationIndex = page
+    scrollView?.delegate = self
   }
 }
 
 extension TutorialController: UIScrollViewDelegate {
 
   public func scrollViewDidScroll(scrollView: UIScrollView) {
-    let offsetRatio = (scrollView.contentOffset.x - CGRectGetWidth(view.frame)) / CGRectGetWidth(view.frame)
+    let offset = scrollView.contentOffset.x - CGRectGetWidth(view.frame)
+    let offsetRatio = offset / CGRectGetWidth(view.frame)
 
     let pageCount = presentationCountForPageViewController(self)
 
@@ -167,6 +174,7 @@ extension TutorialController: UIScrollViewDelegate {
           !(animationIndex == pageCount - 1 && offsetRatio > 0.0)
 
         if canMove {
+          checkAnimation(animation)
           animation.move(offsetRatio)
         }
       }
