@@ -6,7 +6,7 @@ import UIKit
     static let defaultOffset: CGFloat = 50.0
   }
 
-  private func placeView() {
+  public func placeView() {
     var frame = view.frame
     if let superview = view.superview {
       frame.origin.x = CGRectGetMaxX(superview.frame) + Dimensions.defaultOffset

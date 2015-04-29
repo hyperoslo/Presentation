@@ -99,7 +99,6 @@ public class TutorialController: PagesController {
       backViewModel.rotate()
     }
   }
-
 }
 
 // MARK: - Back layer

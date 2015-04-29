@@ -70,7 +70,7 @@ extension TransitionAnimation {
         let offset = dx * ratio
 
         var frame = view.frame
-        frame.origin.x = CGRectGetMinX(startFrame) + offset
+        frame.origin.x = startX + offset
 
         view.frame = frame
       }

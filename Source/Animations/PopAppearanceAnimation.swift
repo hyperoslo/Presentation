@@ -9,6 +9,7 @@ import UIKit
   public init(view: UIView, destination: Position, duration: NSTimeInterval = 0.5) {
     self.view = view
     self.view.setTranslatesAutoresizingMaskIntoConstraints(true)
+    self.view.hidden = true
     self.destination = destination
     self.duration = duration
 
@@ -48,20 +49,26 @@ import UIKit
 extension PopAppearanceAnimation {
 
   public func play() {
-    view.hidden = true
-    view.placeAtPosition(destination)
-    animate()
+    if view.superview != nil {
+      view.hidden = true
+      view.placeAtPosition(destination)
+      animate()
+    }
   }
 
   public func playBack() {
-    view.hidden = false
-    animate()
+    if view.superview != nil {
+      view.hidden = false
+      animate()
+    }
   }
 
   public func move(offsetRatio: CGFloat) {
     if view.layer.animationKeys() == nil {
-      let ratio = offsetRatio > 0.0 ? offsetRatio : (1.0 + offsetRatio)
-      view.alpha = ratio
+      if view.superview != nil {
+        let ratio = offsetRatio > 0.0 ? offsetRatio : (1.0 + offsetRatio)
+        view.alpha = ratio
+      }
     }
   }
 

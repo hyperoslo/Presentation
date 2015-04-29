@@ -1,8 +1,8 @@
 import UIKit
 
-extension CGPoint {
+public extension CGPoint {
 
-  func positionInFrame(frame: CGRect) -> Position {
+  public func positionInFrame(frame: CGRect) -> Position {
     var left = x / CGRectGetWidth(frame)
     var top = y / CGRectGetHeight(frame)
 
