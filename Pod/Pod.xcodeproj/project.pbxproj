@@ -50,6 +50,8 @@
 		4456148E1AD6A29D001FA4C3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		445614981AD6A29D001FA4C3 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		48D596C5F7386460518077F9 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		52C4B602692A15E8F471B50B /* Pods-Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Tests/Pods-Tests.debug.xcconfig"; sourceTree = "<group>"; };
+		7BDF425D7A39B12C5A23B2A0 /* Pods-Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Tests/Pods-Tests.release.xcconfig"; sourceTree = "<group>"; };
 		BDA158081AD7ED3D0011D55A /* Pods.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Pods.framework; path = "Pods/../build/Debug-iphoneos/Pods.framework"; sourceTree = "<group>"; };
 		BDA1580A1AD7ED450011D55A /* Pods.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Pods.framework; path = "Pods/../build/Debug-iphoneos/Pods.framework"; sourceTree = "<group>"; };
 		BDA855201AD815CA00B2BD1D /* hyper-logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "hyper-logo.png"; sourceTree = "<group>"; };
@@ -159,6 +161,8 @@
 			children = (
 				48D596C5F7386460518077F9 /* Pods.debug.xcconfig */,
 				30212F8CDFCE2FA3013BEA16 /* Pods.release.xcconfig */,
+				52C4B602692A15E8F471B50B /* Pods-Tests.debug.xcconfig */,
+				7BDF425D7A39B12C5A23B2A0 /* Pods-Tests.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -513,7 +517,7 @@
 		};
 		146D72BA1AB782920058798C /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 48D596C5F7386460518077F9 /* Pods.debug.xcconfig */;
+			baseConfigurationReference = 52C4B602692A15E8F471B50B /* Pods-Tests.debug.xcconfig */;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
@@ -531,7 +535,7 @@
 		};
 		146D72BB1AB782920058798C /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 30212F8CDFCE2FA3013BEA16 /* Pods.release.xcconfig */;
+			baseConfigurationReference = 7BDF425D7A39B12C5A23B2A0 /* Pods-Tests.release.xcconfig */;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
