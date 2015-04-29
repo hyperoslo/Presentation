@@ -42,13 +42,28 @@ class ContentSpec: QuickSpec {
       }
 
       describe("#rotate") {
-        it("changes view position correctly") {
-          superview.addSubview(model.view)
-          var rotatedFrame = superview.bounds.rotatedRect
-          let origin = position.originInFrame(rotatedFrame)
+        context("with superview") {
+          beforeEach {
+            superview.addSubview(content.view)
+          }
 
-          model.rotate()
-          expect(model.view.frame.origin).to(equal(origin))
+          it("changes view position correctly") {
+            superview.addSubview(content.view)
+            var rotatedFrame = superview.bounds.rotatedRect
+            let origin = position.originInFrame(rotatedFrame)
+
+            content.rotate()
+            expect(content.view.frame.origin).to(equal(origin))
+          }
+        }
+
+        context("without superview") {
+          it("doesn't change origin") {
+            let origin = content.view.frame.origin
+
+            content.rotate()
+            expect(content.view.frame.origin).to(equal(origin))
+          }
         }
       }
     }
