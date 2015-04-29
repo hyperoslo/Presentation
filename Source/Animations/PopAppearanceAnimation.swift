@@ -28,14 +28,12 @@ import UIKit
         self.view.alpha = 0.8
       }, completion: { [unowned self] done in
         UIView.animateWithDuration(1 / 8.0,
-          animations: {
-            [unowned self] in
+          animations: { [unowned self] in
             self.view.transform = CGAffineTransformMakeScale(0.9, 0.9)
             self.view.alpha = 0.9
           }, completion: { [unowned self] done in
             UIView.animateWithDuration(1 / 4.0,
-              animations: {
-                [unowned self] in
+              animations: { [unowned self] in
                 self.view.transform = CGAffineTransformIdentity
                 self.view.alpha = 1.0
               }, completion: nil)
