@@ -1,7 +1,7 @@
 import UIKit
 import Cartography
 
-@objc public class TutorialModel: NSObject {
+@objc public class ContentViewModel: NSObject {
 
   struct Dimensions {
     static let minimumMarginSpace: CGFloat = 20.0
@@ -31,6 +31,7 @@ import Cartography
       titleLabel.attributedText = string
     }
   }
+
   public var text: String? {
     get {
       return textView.attributedText.string.isEmpty ? nil : textView.attributedText.string
@@ -45,12 +46,12 @@ import Cartography
     }
   }
 
-  lazy private(set) var imageView: UIImageView = {
+  public lazy private(set) var imageView: UIImageView = {
     let imageView = UIImageView()
     return imageView
     }()
 
-  lazy private(set) var titleLabel: UILabel = {
+  public lazy private(set) var titleLabel: UILabel = {
     let label = UILabel(frame: CGRectNull)
 
     label.numberOfLines = 1
@@ -59,7 +60,7 @@ import Cartography
     return label
     }()
 
-  lazy private(set) var textView: UITextView = {
+  public lazy private(set) var textView: UITextView = {
     let textView = UITextView(frame: CGRectNull)
 
     textView.backgroundColor = UIColor.clearColor()
@@ -68,7 +69,7 @@ import Cartography
     return textView
     }()
 
-  convenience init(title: String?, text: String?, image: UIImage?) {
+  public convenience init(title: String?, text: String?, image: UIImage?) {
     self.init()
 
     self.image = image
@@ -79,7 +80,7 @@ import Cartography
 
 // MARK: Styling
 
-extension TutorialModel {
+extension ContentViewModel {
 
   public func setTitleAttributes(attributes: [String: AnyObject]) {
     var text = titleLabel.attributedText.string
@@ -94,9 +95,9 @@ extension TutorialModel {
 
 // MARK: Views
 
-extension TutorialModel {
+extension ContentViewModel {
 
-  func views() -> [UIView] {
+  public func views() -> [UIView] {
     var views = [UIView]()
 
     if image != nil {
@@ -117,11 +118,11 @@ extension TutorialModel {
 
 // MARK: Layout
 
-extension TutorialModel {
+extension ContentViewModel {
 
-  func layoutSubviews() {
+  public func layoutSubviews() {
     layout(textView, titleLabel, imageView) {
-      [unowned self]textView, titleLabel, imageView in
+      [unowned self] textView, titleLabel, imageView in
 
       var hasTextView = false
       if let superview = textView.superview {

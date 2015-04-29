@@ -1,17 +1,22 @@
 import Quick
 import Nimble
+import Tutorial
 
-class TutorialModelSpec: QuickSpec {
+class ContentViewModelSpec: QuickSpec {
+
+  struct Dimensions {
+    static let minimumMarginSpace: CGFloat = 20.0
+  }
 
   override func spec() {
-    describe("TutorialModel") {
-      var model: TutorialModel!
+    describe("ContentViewModel") {
+      var model: ContentViewModel!
 
       beforeEach {
-        model = TutorialModel(
+        model = ContentViewModel(
           title: "Step I",
           text: "Collect underpants",
-          image: dummyImage())
+          image: SpecHelper.image())
       }
 
       describe("#init") {
@@ -55,7 +60,7 @@ class TutorialModelSpec: QuickSpec {
 
         context("when we have title only") {
           beforeEach {
-            model = TutorialModel(
+            model = ContentViewModel(
               title: "Step I",
               text: nil,
               image: nil)
@@ -69,7 +74,7 @@ class TutorialModelSpec: QuickSpec {
 
         context("when we have title and text") {
           beforeEach {
-            model = TutorialModel(
+            model = ContentViewModel(
               title: "Step I",
               text: "Collect underpants",
               image: nil)
@@ -83,10 +88,10 @@ class TutorialModelSpec: QuickSpec {
 
         context("when we have title, text are image") {
           beforeEach {
-            model = TutorialModel(
+            model = ContentViewModel(
               title: "Step I",
               text: "Collect underpants",
-              image: dummyImage())
+              image: SpecHelper.image())
             views = model.views()
           }
 
@@ -101,7 +106,7 @@ class TutorialModelSpec: QuickSpec {
 
         context("when we have title only") {
           beforeEach {
-            model = TutorialModel(
+            model = ContentViewModel(
               title: "Step I",
               text: nil,
               image: nil)
@@ -110,17 +115,17 @@ class TutorialModelSpec: QuickSpec {
 
           it("moves titleLabel to the bottom of its superview") {
             expect(CGRectGetMaxY(model.titleLabel.frame)).to(equal(CGRectGetMaxY(view.frame)
-              - TutorialModel.Dimensions.minimumMarginSpace))
+              - Dimensions.minimumMarginSpace))
             expect(CGRectGetMinX(model.titleLabel.frame)).to(equal(CGRectGetMinX(view.frame)
-              + TutorialModel.Dimensions.minimumMarginSpace))
+              + Dimensions.minimumMarginSpace))
             expect(CGRectGetMaxX(model.titleLabel.frame)).to(equal(CGRectGetMaxX(view.frame)
-              - TutorialModel.Dimensions.minimumMarginSpace))
+              - Dimensions.minimumMarginSpace))
           }
         }
 
         context("when we have title and text") {
           beforeEach {
-            model = TutorialModel(
+            model = ContentViewModel(
               title: "Step I",
               text: "Collect underpants",
               image: nil)
@@ -129,48 +134,48 @@ class TutorialModelSpec: QuickSpec {
 
           it("moves textView to the bottom of its superview") {
             expect(CGRectGetMaxY(model.textView.frame)).to(equal(CGRectGetMaxY(view.frame)
-              - TutorialModel.Dimensions.minimumMarginSpace))
+              - Dimensions.minimumMarginSpace))
             expect(CGRectGetMinX(model.textView.frame)).to(equal(CGRectGetMinX(view.frame)
-              + TutorialModel.Dimensions.minimumMarginSpace))
+              + Dimensions.minimumMarginSpace))
             expect(CGRectGetMaxX(model.textView.frame)).to(equal(CGRectGetMaxX(view.frame)
-              - TutorialModel.Dimensions.minimumMarginSpace))
+              - Dimensions.minimumMarginSpace))
           }
 
           it("places titleLabel above textView") {
             expect(CGRectGetMaxY(model.titleLabel.frame)).to(equal(CGRectGetMinY(model.textView.frame)
-              - TutorialModel.Dimensions.minimumMarginSpace))
+              - Dimensions.minimumMarginSpace))
             expect(CGRectGetMinX(model.titleLabel.frame)).to(equal(CGRectGetMinX(view.frame)
-              + TutorialModel.Dimensions.minimumMarginSpace))
+              + Dimensions.minimumMarginSpace))
             expect(CGRectGetMaxX(model.titleLabel.frame)).to(equal(CGRectGetMaxX(view.frame)
-              - TutorialModel.Dimensions.minimumMarginSpace))
+              - Dimensions.minimumMarginSpace))
           }
         }
 
         context("when we have title, text and image") {
           beforeEach {
-            model = TutorialModel(
+            model = ContentViewModel(
               title: "Step I",
               text: "Collect underpants",
-              image: dummyImage())
+              image: SpecHelper.image())
             view = viewWithSubviewsFromModel(model)
           }
 
           it("moves textView to the bottom of its superview") {
             expect(CGRectGetMaxY(model.textView.frame)).to(equal(CGRectGetMaxY(view.frame)
-              - TutorialModel.Dimensions.minimumMarginSpace))
+              - Dimensions.minimumMarginSpace))
             expect(CGRectGetMinX(model.textView.frame)).to(equal(CGRectGetMinX(view.frame)
-              + TutorialModel.Dimensions.minimumMarginSpace))
+              + Dimensions.minimumMarginSpace))
             expect(CGRectGetMaxX(model.textView.frame)).to(equal(CGRectGetMaxX(view.frame)
-              - TutorialModel.Dimensions.minimumMarginSpace))
+              - Dimensions.minimumMarginSpace))
           }
 
           it("places titleLabel above textView") {
             expect(CGRectGetMaxY(model.titleLabel.frame)).to(equal(CGRectGetMinY(model.textView.frame)
-              - TutorialModel.Dimensions.minimumMarginSpace))
+              - Dimensions.minimumMarginSpace))
             expect(CGRectGetMinX(model.titleLabel.frame)).to(equal(CGRectGetMinX(view.frame)
-              + TutorialModel.Dimensions.minimumMarginSpace))
+              + Dimensions.minimumMarginSpace))
             expect(CGRectGetMaxX(model.titleLabel.frame)).to(equal(CGRectGetMaxX(view.frame)
-              - TutorialModel.Dimensions.minimumMarginSpace))
+              - Dimensions.minimumMarginSpace))
           }
 
           it("moves imageView to the center of its superview") {
@@ -185,18 +190,7 @@ class TutorialModelSpec: QuickSpec {
 
 // MARK: Helpers
 
-private func dummyImage() -> UIImage? {
-  let bundle = NSBundle(forClass: TutorialModelSpec.self)
-
-  var image: UIImage? = nil
-  if let imagePath = bundle.pathForResource("hyper-logo", ofType: "png") {
-    image = UIImage(contentsOfFile: imagePath)
-  }
-
-  return image
-}
-
-private func viewWithSubviewsFromModel(model: TutorialModel) -> UIView {
+private func viewWithSubviewsFromModel(model: ContentViewModel) -> UIView {
   let frame = CGRect(x: 0, y: 0, width: 600, height: 600)
   let view = UIView(frame: frame)
   for modelView in model.views() {
