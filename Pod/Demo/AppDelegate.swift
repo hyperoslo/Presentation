@@ -59,23 +59,24 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
   func addScene() {
     let images = ["cloud1", "cloud2", "cloud1"].map { UIImageView(image: UIImage(named: $0)) }
+    images[0].tag = 1002
 
-    let content1 = SceneContent(view: images[0], position: Position(left: -0.3, top: 0.1), animations: [
-      TransitionAnimation(destination: Position(left: 0.1, top: 0.1), duration: 1.0),
-      TransitionAnimation(destination: Position(left: 0.2, top: 0.1)),
-      TransitionAnimation(destination: Position(left: 0.3, top: 0.1)),
-      TransitionAnimation(destination: Position(left: 0.5, top: 0.1)),
-      TransitionAnimation(destination: Position(left: 0.7, top: 0.1))])
+    let content1 = SceneContent(view: images[0], position: Position(left: -0.3, top: 0.2), animations: [
+      TransitionAnimation(destination: Position(left: 0.2, top: 0.2), duration: 1.0),
+      TransitionAnimation(destination: Position(left: 0.3, top: 0.2)),
+      TransitionAnimation(destination: Position(left: 0.4, top: 0.2)),
+      TransitionAnimation(destination: Position(left: 0.6, top: 0.2)),
+      TransitionAnimation(destination: Position(left: 0.8, top: 0.2))])
 
-    let content2 = SceneContent(view: images[1], position: Position(right: -0.3, top: 0.12), animations: [
-      TransitionAnimation(destination: Position(right: 0.2, top: 0.12), duration: 1.0),
-      TransitionAnimation(destination: Position(right: 0.3, top: 0.12)),
-      TransitionAnimation(destination: Position(right: 0.4, top: 0.12)),
-      TransitionAnimation(destination: Position(right: 0.6, top: 0.12)),
-      TransitionAnimation(destination: Position(right: 0.8, top: 0.12))
+    let content2 = SceneContent(view: images[1], position: Position(right: -0.3, top: 0.22), animations: [
+      TransitionAnimation(destination: Position(right: 0.3, top: 0.22), duration: 1.0),
+      TransitionAnimation(destination: Position(right: 0.4, top: 0.22)),
+      TransitionAnimation(destination: Position(right: 0.5, top: 0.22)),
+      TransitionAnimation(destination: Position(right: 0.7, top: 0.22)),
+      TransitionAnimation(destination: Position(right: 0.9, top: 0.22))
       ])
 
-    let content3 = SceneContent(view: images[2], position: Position(left: 0.4, bottom: 0.4), animations: [
+    let content3 = SceneContent(view: images[2], position: Position(left: 0.5, top: 0.5), animations: [
       PopAnimation(duration: 1.0)])
 
     tutorialController.addToScene([content1, content2, content3])

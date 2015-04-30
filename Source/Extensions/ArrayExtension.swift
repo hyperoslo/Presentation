@@ -1,9 +1,10 @@
-//
-//  ArrayExtension.swift
-//  Pods
-//
-//  Created by Vadym Markov on 29/04/15.
-//
-//
+extension Array {
 
-import Foundation
+  func at(index: Int?) -> T? {
+    if let index = index where index >= 0 && index < endIndex {
+      return self[index]
+    } else {
+      return nil
+    }
+  }
+}

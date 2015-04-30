@@ -51,6 +51,10 @@ import UIKit
     self.bottom = bottom
   }
 
+  public var positionCopy: Position {
+    return Position(left: left, top: top)
+  }
+
   public func originInFrame(frame: CGRect) -> CGPoint {
     return CGPoint(x: xInFrame(frame), y: yInFrame(frame))
   }

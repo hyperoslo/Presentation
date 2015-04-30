@@ -1,11 +1,10 @@
 import UIKit
 
-@objc public protocol Animation {
+public protocol Animation {
 
   func play()
   func playBack()
-  func move(offsetRatio: CGFloat)
-  func rotate()
+  func moveWith(offsetRatio: CGFloat)
 
-  var view: UIView { get }
+  weak var content: Content! { get set }
 }

@@ -4,21 +4,19 @@ import Hex
 
 public class TutorialController: PagesController {
 
-  private var backLayer = [BackViewModel]()
-  private var animationLayer = [Int: [Animation]]()
-  private var animationIndex = -1
+  private var scene = [SceneContent]()
+  private var slides = [[SlideContent]]()
+  private var animationIndex = 0
 
   private weak var scrollView: UIScrollView?
 
-  public convenience init(pages: [UIViewController],
-    backViewModels: [BackViewModel] = []) {
+  public convenience init(pages: [UIViewController]) {
     self.init(
       transitionStyle: .Scroll,
       navigationOrientation: .Horizontal,
       options: nil)
 
     add(pages)
-    addBackViewModels(backViewModels)
   }
 
   public override func viewDidLoad() {
@@ -42,6 +40,10 @@ public class TutorialController: PagesController {
         scrollView?.delegate = self
       }
     }
+
+    animateAtIndex(0, perform: { animation in
+      animation.play()
+    })
   }
 
   override public func viewDidDisappear(animated: Bool) {
@@ -53,35 +55,23 @@ public class TutorialController: PagesController {
       object: nil)
   }
 
-  override public func add(viewControllers: [UIViewController]) {
-    super.add(viewControllers)
-  }
-
   public override func goTo(index: Int) {
-    let pageCount = presentationCountForPageViewController(self)
-    let disableScroll = animationIndex != -1
-
-    if index >= 0 && index < pageCount {
+    println("\(index) \(animationIndex)")
+    if index > 0 && index < pagesCount {
       let reverse = index < animationIndex
       if !reverse {
         animationIndex = index
       }
 
-      if let animations = animationLayer[animationIndex] {
-        for animation in animations {
-          checkAnimation(animation)
+      scrollView?.delegate = nil
 
-          if disableScroll {
-            scrollView?.delegate = nil
-          }
-
-          if reverse {
-            animation.playBack()
-          } else {
-            animation.play()
-          }
+      animateAtIndex(animationIndex, perform: { animation in
+        if reverse {
+          animation.playBack()
+        } else {
+          animation.play()
         }
-      }
+      })
     }
 
     super.goTo(index)
@@ -90,56 +80,58 @@ public class TutorialController: PagesController {
   // MARK: device orientation
 
   func didRotate() {
-    if let animations = animationLayer[animationIndex] {
-      for animation in animations {
-        animation.rotate()
+    for slide in slides {
+      for content in slide {
+        content.rotate()
       }
     }
-    for backViewModel in backLayer {
-      backViewModel.rotate()
+    for content in scene {
+      content.rotate()
     }
   }
 }
 
-// MARK: - Back layer
+// MARK: - Content
 
 extension TutorialController {
 
-  public func addBackViewModels(backViewModels: [BackViewModel]) {
-    for backViewModel in backViewModels {
-      addBackViewModel(backViewModel)
+  public func addToScene(elements: [SceneContent]) {
+    for content in elements {
+      scene.append(content)
+      view.addSubview(content.view)
+      view.sendSubviewToBack(content.view)
+      content.layout()
     }
   }
 
-  public func addBackViewModel(backViewModel: BackViewModel) {
-    backLayer.append(backViewModel)
-    view.addSubview(backViewModel.view)
-    view.sendSubviewToBack(backViewModel.view)
-    backViewModel.place()
-  }
-}
+  public func addSlides(elements: [[SlideContent]]) {
+    var pages = [UIViewController]()
+    for slide in elements {
+      let page = UIViewController()
 
-// MARK: - Animation layer
-
-extension TutorialController {
-
-  public func addAnimations(animations: [Animation], forPage page: Int) {
-    for animation in animations {
-      addAnimation(animation, forPage: page)
+      for content in slide {
+        page.view.addSubview(content.view)
+        content.layout()
+      }
+      slides.append(slide)
+      pages.append(page)
     }
+    add(pages)
   }
 
-  public func addAnimation(animation: Animation, forPage page: Int) {
-    if animationLayer[page] == nil {
-      animationLayer[page] = []
+  private func animateAtIndex(index: Int, perform: (animation: Animation) -> Void) {
+    if let slide = slides.at(index) {
+      for content in slide {
+        if let animation = content.animation {
+          perform(animation: animation)
+        }
+      }
     }
-    animationLayer[page]?.append(animation)
-  }
 
-  private func checkAnimation(animation: Animation) {
-    if animation.view.superview == nil {
-      view.addSubview(animation.view)
-      view.sendSubviewToBack(animation.view)
+    for content in scene {
+      if let animation = content.animations.at(index) {
+        perform(animation: animation!)
+      }
     }
   }
 }
@@ -148,8 +140,8 @@ extension TutorialController: PagesControllerDelegate {
 
   public func pageViewController(pageViewController: UIPageViewController,
     setViewController viewController: UIViewController, atPage page: Int) {
-    animationIndex = page
-    scrollView?.delegate = self
+      animationIndex = page
+      scrollView?.delegate = self
   }
 }
 
@@ -162,21 +154,19 @@ extension TutorialController: UIScrollViewDelegate {
     let pageCount = presentationCountForPageViewController(self)
 
     var index = animationIndex
-    if offsetRatio > 0.0 && index < pageCount - 1 {
-      index++
+    if (offsetRatio > 0.0 && index < pageCount - 1) ||
+      (index == 0)  {
+        index++
     }
 
-    if let animations = animationLayer[index] {
-      for animation in animations {
-        let canMove = offsetRatio != 0.0 &&
-          !(animationIndex == 0 && offsetRatio < 0.0) &&
-          !(animationIndex == pageCount - 1 && offsetRatio > 0.0)
+    let canMove = offsetRatio != 0.0 &&
+      !(animationIndex == 0 && offsetRatio < 0.0) &&
+      !(animationIndex == pageCount - 1 && offsetRatio > 0.0)
 
-        if canMove {
-          checkAnimation(animation)
-          animation.move(offsetRatio)
-        }
-      }
+    if canMove {
+      animateAtIndex(index, perform: { animation in
+        animation.moveWith(offsetRatio)
+      })
     }
   }
 }

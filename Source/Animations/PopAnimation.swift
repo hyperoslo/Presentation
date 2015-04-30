@@ -1,41 +1,37 @@
 import UIKit
 
-@objc public class PopAppearanceAnimation: NSObject, Animation {
+public class PopAnimation: NSObject, Animation {
 
-  public var view: UIView
-  public var destination: Position
-  public var duration: NSTimeInterval
+  public weak var content: Content!
+  let duration: NSTimeInterval
 
-  public init(view: UIView, destination: Position, duration: NSTimeInterval = 0.5) {
-    self.view = view
-    self.view.setTranslatesAutoresizingMaskIntoConstraints(true)
-    self.view.hidden = true
-    self.destination = destination
+  public init(duration: NSTimeInterval = 0.5) {
     self.duration = duration
 
     super.init()
   }
 
   private func animate() {
+    let view = content.view
     if view.hidden {
       view.transform = CGAffineTransformMakeScale(0.6, 0.6)
     }
     view.hidden = false
 
     UIView.animateWithDuration(duration,
-      animations: { [unowned self] in
-        self.view.transform = CGAffineTransformMakeScale(1.05, 1.05)
-        self.view.alpha = 0.8
-      }, completion: { [unowned self] done in
+      animations: {
+        view.transform = CGAffineTransformMakeScale(1.05, 1.05)
+        view.alpha = 0.8
+      }, completion: { done in
         UIView.animateWithDuration(1 / 8.0,
-          animations: { [unowned self] in
-            self.view.transform = CGAffineTransformMakeScale(0.9, 0.9)
-            self.view.alpha = 0.9
-          }, completion: { [unowned self] done in
+          animations: {
+            view.transform = CGAffineTransformMakeScale(0.9, 0.9)
+            view.alpha = 0.9
+          }, completion: { done in
             UIView.animateWithDuration(1 / 4.0,
-              animations: { [unowned self] in
-                self.view.transform = CGAffineTransformIdentity
-                self.view.alpha = 1.0
+              animations: {
+                view.transform = CGAffineTransformIdentity
+                view.alpha = 1.0
               }, completion: nil)
           })
       })
@@ -44,33 +40,29 @@ import UIKit
 
 // MARK: TutorialAnimation protocol implementation
 
-extension PopAppearanceAnimation {
+extension PopAnimation {
 
   public func play() {
-    if view.superview != nil {
-      view.hidden = true
-      view.placeAtPosition(destination)
+    if content.view.superview != nil {
+      content.view.hidden = true
       animate()
     }
   }
 
   public func playBack() {
-    if view.superview != nil {
-      view.hidden = false
+    if content.view.superview != nil {
+      content.view.hidden = false
       animate()
     }
   }
 
-  public func move(offsetRatio: CGFloat) {
+  public func moveWith(offsetRatio: CGFloat) {
+    let view = content.view
     if view.layer.animationKeys() == nil {
       if view.superview != nil {
         let ratio = offsetRatio > 0.0 ? offsetRatio : (1.0 + offsetRatio)
         view.alpha = ratio
       }
     }
-  }
-
-  public func rotate() {
-    view.rotateAtPosition(destination)
   }
 }
