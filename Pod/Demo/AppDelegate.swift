@@ -92,10 +92,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
       NSParagraphStyleAttributeName: paragraphStyle]
 
     let titles = ["Tutorial on how to make a profit", "Step I", "Step II", "Step III", "Thanks"].map {
-      SlideContent.titleContent($0, attributes: attributes, animated: false)
+      SlideContent.titleContent($0, attributes: attributes, animated: true)
     }
     let texts = ["", "Collect underpants\n💭", "🎅🎅🏻🎅🏼🎅🏽🎅🏾🎅🏿", "Profit\n💸", ""].map {
-      SlideContent.textContent($0, attributes: attributes, animated: false)
+      SlideContent.textContent($0, attributes: attributes, animated: true)
     }
 
     var slides = [[SlideContent]]()

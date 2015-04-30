@@ -22,7 +22,12 @@ extension SlideContent {
     attributes: [NSObject: AnyObject]? = nil, animated: Bool = false) -> SlideContent {
       let label = Content.titleLabel(text, attributes: attributes)
 
-      return SlideContent(view: label, position: Position(left: 0.4, bottom: 0.5))
+      let position = animated ? Position(right: 0.1, top: 0.5) :
+        Position(left: 0.5, bottom: 0.5)
+      let animation: Animation? = animated ?
+        TransitionAnimation(destination: Position(left: 0.5, top: 0.5), duration: 5.0) : nil
+
+      return SlideContent(view: label, position: position, animation: animation)
   }
 
   public class func textContent(text: String,
