@@ -47,9 +47,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
       tutorialController.navigationItem.leftBarButtonItem = leftButton
       tutorialController.navigationItem.rightBarButtonItem = rightButton
 
-      addPages()
-      addAnimations()
-      addBackgroundViews()
+      addScene()
+      addSlides()
 
       window = UIWindow(frame: UIScreen.mainScreen().bounds)
       window?.rootViewController = navigationController
@@ -58,7 +57,31 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
       return true
   }
 
-  func addPages() {
+  func addScene() {
+    let images = ["cloud1", "cloud2", "cloud1"].map { UIImageView(image: UIImage(named: $0)) }
+
+    let content1 = SceneContent(view: images[0], position: Position(left: -0.3, top: 0.1), animations: [
+      TransitionAnimation(destination: Position(left: 0.1, top: 0.1), duration: 1.0),
+      TransitionAnimation(destination: Position(left: 0.2, top: 0.1)),
+      TransitionAnimation(destination: Position(left: 0.3, top: 0.1)),
+      TransitionAnimation(destination: Position(left: 0.5, top: 0.1)),
+      TransitionAnimation(destination: Position(left: 0.7, top: 0.1))])
+
+    let content2 = SceneContent(view: images[1], position: Position(right: -0.3, top: 0.12), animations: [
+      TransitionAnimation(destination: Position(right: 0.2, top: 0.12), duration: 1.0),
+      TransitionAnimation(destination: Position(right: 0.3, top: 0.12)),
+      TransitionAnimation(destination: Position(right: 0.4, top: 0.12)),
+      TransitionAnimation(destination: Position(right: 0.6, top: 0.12)),
+      TransitionAnimation(destination: Position(right: 0.8, top: 0.12))
+      ])
+
+    let content3 = SceneContent(view: images[2], position: Position(left: 0.4, bottom: 0.4), animations: [
+      PopAnimation(duration: 1.0)])
+
+    tutorialController.addToScene([content1, content2, content3])
+  }
+
+  func addSlides() {
     let font = UIFont(name: "ArialRoundedMTBold", size: 42.0)!
     let color = UIColor.whiteColor()
     let paragraphStyle = NSMutableParagraphStyle()
@@ -67,116 +90,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     let attributes = [NSFontAttributeName: font, NSForegroundColorAttributeName: color,
       NSParagraphStyleAttributeName: paragraphStyle]
 
-    let model1 = ContentViewModel(
-      title: "Tutorial on how to make a profit",
-      text: nil,
-      image: nil)
-    model1.setTitleAttributes(attributes)
-    model1.setTextAttributes(attributes)
+    let titles = ["Tutorial on how to make a profit", "Step I", "Step II", "Step III", "Thanks"].map {
+      SlideContent.titleContent($0, attributes: attributes, animated: false)
+    }
+    let texts = ["", "Collect underpants\n💭", "🎅🎅🏻🎅🏼🎅🏽🎅🏾🎅🏿", "Profit\n💸", ""].map {
+      SlideContent.textContent($0, attributes: attributes, animated: false)
+    }
 
-    let model2 = ContentViewModel(
-      title: "Step I",
-      text: "Collect underpants\n💭",
-      image: nil)
-    model2.setTitleAttributes(attributes)
-    model2.setTextAttributes(attributes)
+    var slides = [[SlideContent]]()
+    for index in 0...4 {
+      slides.append([titles[index], texts[index]])
+    }
+    slides[4].append(SlideContent.imageContent(UIImage(named: "hyper-logo")!, animated: false))
 
-    let model3 = ContentViewModel(
-      title: "Step II",
-      text: "🎅🎅🏻🎅🏼🎅🏽🎅🏾🎅🏿",
-      image: nil)
-    model3.setTitleAttributes(attributes)
-    model3.setTextAttributes(attributes)
-
-    let model4 = ContentViewModel(
-      title: "Step III",
-      text: "Profit\n💸",
-      image: nil)
-    model4.setTitleAttributes(attributes)
-    model4.setTextAttributes(attributes)
-
-    let model5 = ContentViewModel(
-      title: nil,
-      text: "Thanks for your time.",
-      image:UIImage(named: "hyper-logo"))
-    model5.setTitleAttributes(attributes)
-    model5.setTextAttributes(attributes)
-
-    let page1 = UIViewController(model: model1)
-    let page2 = UIViewController(model: model2)
-    let page3 = UIViewController(model: model3)
-    let page4 = UIViewController(model: model4)
-    let page5 = UIViewController(model: model5)
-
-    tutorialController.add([page1, page2, page3, page4, page5])
-  }
-
-  func addBackgroundViews() {
-    let cloudView1 = UIImageView(image: UIImage(named: "cloud1"))
-    let backViewModel1 = BackViewModel(view: cloudView1,
-      position: Position(left: 0.7, top: 0.7))
-
-    tutorialController.addBackViewModels([backViewModel1])
-  }
-
-  func addAnimations() {
-    let image1 = UIImageView(image: UIImage(named: "cloud1"))
-    let image2 = UIImageView(image: UIImage(named: "cloud2"))
-    let image3 = UIImageView(image: UIImage(named: "cloud1"))
-    let image4 = UIImageView(image: UIImage(named: "cloud2"))
-
-    tutorialController.addAnimations(
-      [
-        LeftAppearanceAnimation(view: image1,
-          destination: Position(left: 0.1, top: 0.1),
-          duration: 1.0),
-        RightAppearanceAnimation(view: image2,
-          destination: Position(right: 0.2, top: 0.12),
-          duration: 1.0),
-        PopAppearanceAnimation(view: image3,
-          destination: Position(left: 0.4, top: 0.5),
-          duration: 1.0)
-      ],
-      forPage: 0)
-
-    tutorialController.addAnimations(
-      [
-        TransitionAnimation(view: image1,
-          destination: Position(left: 0.2, top: 0.1)),
-        TransitionAnimation(view: image2,
-          destination: Position(right: 0.3, top: 0.12)),
-        RightAppearanceAnimation(view: image4,
-          destination: Position(right: 0.4, top: 0.35),
-          duration: 1.0),
-      ],
-      forPage: 1)
-
-    tutorialController.addAnimations(
-      [
-        TransitionAnimation(view: image1,
-          destination: Position(left: 0.3, top: 0.1)),
-        TransitionAnimation(view: image2,
-          destination: Position(right: 0.4, top: 0.12))
-      ],
-      forPage: 2)
-
-    tutorialController.addAnimations(
-      [
-        TransitionAnimation(view: image1,
-          destination: Position(left: 0.5, top: 0.1)),
-        TransitionAnimation(view: image2,
-          destination: Position(right: 0.6, top: 0.12))
-      ],
-      forPage: 3)
-
-    tutorialController.addAnimations(
-      [
-        TransitionAnimation(view: image1,
-          destination: Position(left: 0.7, top: 0.1)),
-        TransitionAnimation(view: image2,
-          destination: Position(right: 0.8, top: 0.12))
-      ],
-      forPage: 4)
+    tutorialController.addSlides(slides)
   }
 
   func resetPages() {
