@@ -4,8 +4,10 @@ import Hex
 
 public class TutorialController: PagesController {
 
-  private var scene = [SceneContent]()
-  private var slides = [[SlideContent]]()
+  private var scene = [Content]()
+  private var slides = [[Content]]()
+  private var animations = [Int: [Animation]]()
+
   private var animationIndex = 0
 
   private weak var scrollView: UIScrollView?
@@ -56,7 +58,6 @@ public class TutorialController: PagesController {
   }
 
   public override func goTo(index: Int) {
-    println("\(index) \(animationIndex)")
     if index > 0 && index < pagesCount {
       let reverse = index < animationIndex
       if !reverse {
@@ -95,7 +96,7 @@ public class TutorialController: PagesController {
 
 extension TutorialController {
 
-  public func addToScene(elements: [SceneContent]) {
+  public func addToScene(elements: [Content]) {
     for content in elements {
       scene.append(content)
       view.addSubview(content.view)
@@ -104,7 +105,7 @@ extension TutorialController {
     }
   }
 
-  public func addSlides(elements: [[SlideContent]]) {
+  public func addSlides(elements: [[Content]]) {
     var pages = [UIViewController]()
     for slide in elements {
       let page = UIViewController()
@@ -120,19 +121,28 @@ extension TutorialController {
   }
 
   private func animateAtIndex(index: Int, perform: (animation: Animation) -> Void) {
-    if let slide = slides.at(index) {
-      for content in slide {
-        if let animation = content.animation {
-          perform(animation: animation)
-        }
+    if let animations = animations[index] {
+      for animation in animations {
+        perform(animation: animation)
       }
     }
+  }
+}
 
-    for content in scene {
-      if let animation = content.animations.at(index) {
-        perform(animation: animation!)
-      }
+// MARK: Animations
+
+extension TutorialController {
+  public func addAnimations(animations: [Animation], forPage page: Int) {
+    for animation in animations {
+      addAnimation(animation, forPage: page)
     }
+  }
+
+  public func addAnimation(animation: Animation, forPage page: Int) {
+    if animations[page] == nil && page >= 0 && page < slides.count {
+      animations[page] = []
+    }
+    animations[page]?.append(animation)
   }
 }
 

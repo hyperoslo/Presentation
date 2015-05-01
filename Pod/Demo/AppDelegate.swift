@@ -47,8 +47,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
       tutorialController.navigationItem.leftBarButtonItem = leftButton
       tutorialController.navigationItem.rightBarButtonItem = rightButton
 
-      addScene()
       addSlides()
+      addScene()
 
       window = UIWindow(frame: UIScreen.mainScreen().bounds)
       window?.rootViewController = navigationController
@@ -59,27 +59,37 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
   func addScene() {
     let images = ["cloud1", "cloud2", "cloud1"].map { UIImageView(image: UIImage(named: $0)) }
-    images[0].tag = 1002
 
-    let content1 = SceneContent(view: images[0], position: Position(left: -0.3, top: 0.2), animations: [
-      TransitionAnimation(destination: Position(left: 0.2, top: 0.2), duration: 1.0),
-      TransitionAnimation(destination: Position(left: 0.3, top: 0.2)),
-      TransitionAnimation(destination: Position(left: 0.4, top: 0.2)),
-      TransitionAnimation(destination: Position(left: 0.6, top: 0.2)),
-      TransitionAnimation(destination: Position(left: 0.8, top: 0.2))])
-
-    let content2 = SceneContent(view: images[1], position: Position(right: -0.3, top: 0.22), animations: [
-      TransitionAnimation(destination: Position(right: 0.3, top: 0.22), duration: 1.0),
-      TransitionAnimation(destination: Position(right: 0.4, top: 0.22)),
-      TransitionAnimation(destination: Position(right: 0.5, top: 0.22)),
-      TransitionAnimation(destination: Position(right: 0.7, top: 0.22)),
-      TransitionAnimation(destination: Position(right: 0.9, top: 0.22))
-      ])
-
-    let content3 = SceneContent(view: images[2], position: Position(left: 0.5, top: 0.5), animations: [
-      PopAnimation(duration: 1.0)])
-
+    let content1 = Content(view: images[0], position: Position(left: -0.3, top: 0.2))
+    let content2 = Content(view: images[1], position: Position(right: -0.3, top: 0.22))
+    let content3 = Content(view: images[2], position: Position(left: 0.5, top: 0.5))
     tutorialController.addToScene([content1, content2, content3])
+
+    tutorialController.addAnimations([
+      TransitionAnimation(content: content1, destination: Position(left: 0.2, top: 0.2)),
+      TransitionAnimation(content: content2, destination: Position(right: 0.3, top: 0.22)),
+      PopAnimation(content: content3, duration: 1.0)
+      ], forPage: 0)
+
+    tutorialController.addAnimations([
+      TransitionAnimation(content: content1, destination: Position(left: 0.3, top: 0.2)),
+      TransitionAnimation(content: content2, destination: Position(right: 0.4, top: 0.22))
+      ], forPage: 1)
+
+    tutorialController.addAnimations([
+      TransitionAnimation(content: content1, destination: Position(left: 0.5, top: 0.2)),
+      TransitionAnimation(content: content2, destination: Position(right: 0.5, top: 0.22))
+      ], forPage: 2)
+
+    tutorialController.addAnimations([
+      TransitionAnimation(content: content1, destination: Position(left: 0.6, top: 0.2)),
+      TransitionAnimation(content: content2, destination: Position(right: 0.7, top: 0.22))
+      ], forPage: 3)
+
+    tutorialController.addAnimations([
+      TransitionAnimation(content: content1, destination: Position(left: 0.8, top: 0.2)),
+      TransitionAnimation(content: content2, destination: Position(right: 0.9, top: 0.22))
+      ], forPage: 4)
   }
 
   func addSlides() {
@@ -92,19 +102,30 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
       NSParagraphStyleAttributeName: paragraphStyle]
 
     let titles = ["Tutorial on how to make a profit", "Step I", "Step II", "Step III", "Thanks"].map {
-      SlideContent.titleContent($0, attributes: attributes, animated: true)
+      Content.titleContent($0, attributes: attributes)
     }
     let texts = ["", "Collect underpants\n💭", "🎅🎅🏻🎅🏼🎅🏽🎅🏾🎅🏿", "Profit\n💸", ""].map {
-      SlideContent.textContent($0, attributes: attributes, animated: true)
+      Content.textContent($0, attributes: attributes)
     }
 
-    var slides = [[SlideContent]]()
+    var slides = [[Content]]()
+    var slideAnimations = [[Animation]]()
     for index in 0...4 {
       slides.append([titles[index], texts[index]])
+      slideAnimations.append([
+        TransitionAnimation(content: titles[index],
+          destination: Position(left: 0.5, bottom: 0.25), duration: 1.0),
+        TransitionAnimation(content: texts[index],
+          destination: Position(left: 0.5, bottom: 0.15), duration: 1.0)])
     }
-    slides[4].append(SlideContent.imageContent(UIImage(named: "hyper-logo")!, animated: false))
+    slides[4].append(Content.imageContent(UIImage(named: "hyper-logo")!))
 
     tutorialController.addSlides(slides)
+
+    for (index, animations) in enumerate(slideAnimations) {
+      println(index)
+      tutorialController.addAnimations(animations, forPage: index)
+    }
   }
 
   func resetPages() {

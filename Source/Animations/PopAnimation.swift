@@ -2,10 +2,11 @@ import UIKit
 
 public class PopAnimation: NSObject, Animation {
 
-  public weak var content: Content!
+  let content: Content
   let duration: NSTimeInterval
 
-  public init(duration: NSTimeInterval = 0.5) {
+  public init(content: Content, duration: NSTimeInterval = 0.5) {
+    self.content = content
     self.duration = duration
 
     super.init()

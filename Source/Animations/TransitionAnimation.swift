@@ -2,7 +2,7 @@ import UIKit
 
 public class TransitionAnimation: NSObject, Animation {
 
-  public var content: Content!
+  let content: Content
 
   lazy var start: Position = { [unowned self] in
     return self.content.position.positionCopy
@@ -11,7 +11,8 @@ public class TransitionAnimation: NSObject, Animation {
   let destination: Position
   let duration: NSTimeInterval
 
-  public init(destination: Position, duration: NSTimeInterval = 0.5) {
+  public init(content: Content, destination: Position, duration: NSTimeInterval = 0.5) {
+    self.content = content
     self.destination = destination
     self.duration = duration
 
