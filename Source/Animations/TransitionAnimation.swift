@@ -6,12 +6,14 @@ public class TransitionAnimation: NSObject, Animation {
 
   lazy var start: Position = { [unowned self] in
     return self.content.position.positionCopy
-  }()
+    }()
 
   let destination: Position
   let duration: NSTimeInterval
 
-  public init(content: Content, destination: Position, duration: NSTimeInterval = 0.5) {
+  var started = false
+
+  public init(content: Content, destination: Position, duration: NSTimeInterval = 1.0) {
     self.content = content
     self.destination = destination
     self.duration = duration
@@ -20,7 +22,10 @@ public class TransitionAnimation: NSObject, Animation {
   }
 
   private func animateTo(position: Position) {
-    UIView.animateWithDuration(duration, delay: 0,
+    UIView.animateWithDuration(duration,
+      delay: 0,
+      usingSpringWithDamping: 0.7,
+      initialSpringVelocity: 0.5,
       options: .BeginFromCurrentState,
       animations: { [unowned self] in
         self.content.position = position

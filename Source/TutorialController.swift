@@ -5,7 +5,6 @@ import Hex
 public class TutorialController: PagesController {
 
   private var scene = [Content]()
-  private var slides = [[Content]]()
   private var animations = [Int: [Animation]]()
 
   private var animationIndex = 0
@@ -58,8 +57,11 @@ public class TutorialController: PagesController {
   }
 
   public override func goTo(index: Int) {
-    if index > 0 && index < pagesCount {
-      let reverse = index < animationIndex
+
+    super.goTo(index)
+
+    if index >= 0 && index < pagesCount {
+    let reverse = index < animationIndex
       if !reverse {
         animationIndex = index
       }
@@ -75,19 +77,13 @@ public class TutorialController: PagesController {
       })
     }
 
-    super.goTo(index)
   }
 
   // MARK: device orientation
 
   func didRotate() {
-    for slide in slides {
-      for content in slide {
-        content.rotate()
-      }
-    }
     for content in scene {
-      content.rotate()
+      content.layout()
     }
   }
 }
@@ -104,20 +100,23 @@ extension TutorialController {
       content.layout()
     }
   }
+}
 
-  public func addSlides(elements: [[Content]]) {
-    var pages = [UIViewController]()
-    for slide in elements {
-      let page = UIViewController()
+// MARK: Animations
 
-      for content in slide {
-        page.view.addSubview(content.view)
-        content.layout()
-      }
-      slides.append(slide)
-      pages.append(page)
+extension TutorialController {
+
+  public func addAnimations(animations: [Animation], forPage page: Int) {
+    for animation in animations {
+      addAnimation(animation, forPage: page)
     }
-    add(pages)
+  }
+
+  public func addAnimation(animation: Animation, forPage page: Int) {
+    if animations[page] == nil && page >= 0 {
+      animations[page] = []
+    }
+    animations[page]?.append(animation)
   }
 
   private func animateAtIndex(index: Int, perform: (animation: Animation) -> Void) {
@@ -126,23 +125,6 @@ extension TutorialController {
         perform(animation: animation)
       }
     }
-  }
-}
-
-// MARK: Animations
-
-extension TutorialController {
-  public func addAnimations(animations: [Animation], forPage page: Int) {
-    for animation in animations {
-      addAnimation(animation, forPage: page)
-    }
-  }
-
-  public func addAnimation(animation: Animation, forPage page: Int) {
-    if animations[page] == nil && page >= 0 && page < slides.count {
-      animations[page] = []
-    }
-    animations[page]?.append(animation)
   }
 }
 
@@ -160,12 +142,13 @@ extension TutorialController: UIScrollViewDelegate {
   public func scrollViewDidScroll(scrollView: UIScrollView) {
     let offset = scrollView.contentOffset.x - CGRectGetWidth(view.frame)
     let offsetRatio = offset / CGRectGetWidth(view.frame)
+    let speed = scrollView.contentSize.width / scrollView.contentOffset.x
 
     let pageCount = presentationCountForPageViewController(self)
 
     var index = animationIndex
     if (offsetRatio > 0.0 && index < pageCount - 1) ||
-      (index == 0)  {
+      (index == 0) {
         index++
     }
 

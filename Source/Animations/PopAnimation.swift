@@ -5,7 +5,7 @@ public class PopAnimation: NSObject, Animation {
   let content: Content
   let duration: NSTimeInterval
 
-  public init(content: Content, duration: NSTimeInterval = 0.5) {
+  public init(content: Content, duration: NSTimeInterval = 1.0) {
     self.content = content
     self.duration = duration
 
@@ -34,8 +34,8 @@ public class PopAnimation: NSObject, Animation {
                 view.transform = CGAffineTransformIdentity
                 view.alpha = 1.0
               }, completion: nil)
-          })
-      })
+        })
+    })
   }
 }
 

@@ -1,10 +1,13 @@
 import UIKit
+import Cartography
 
 public class Content: NSObject {
 
   public var view: UIView
   public private(set) var initialPosition: Position
   public var centered: Bool = true
+
+  let group = ConstraintGroup()
 
   public var position: Position {
     didSet {
@@ -25,16 +28,11 @@ public class Content: NSObject {
   }
 
   public func layout() {
-    view.placeAtPosition(position)
-    if centered {
-      view.alignToCenter()
-    }
-  }
-
-  public func rotate() {
-    view.rotateAtPosition(position)
-    if centered {
-      view.alignToCenter()
+    if let superview = view.superview {
+      view.placeAtPosition(position)
+      if centered {
+        view.alignToCenter()
+      }
     }
   }
 }
