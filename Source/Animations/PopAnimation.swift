@@ -9,6 +9,8 @@ public class PopAnimation: NSObject, Animation {
     self.content = content
     self.duration = duration
 
+    content.view.hidden = true
+    
     super.init()
   }
 
