@@ -11,7 +11,7 @@ public class SlideController: UIViewController {
     addContents(contents)
   }
 
-  // MARK: View lifecycle
+  // MARK: - View lifecycle
 
   public override func viewWillAppear(animated: Bool) {
     super.viewWillAppear(animated)
@@ -25,7 +25,7 @@ public class SlideController: UIViewController {
     }
   }
 
-  // MARK: Navigation
+  // MARK: - Navigation
 
   public func goToLeft() {
     for animation in animations {
@@ -44,7 +44,7 @@ public class SlideController: UIViewController {
   }
 }
 
-// MARK: Public methods
+// MARK: - Public methods
 
 extension SlideController {
 

@@ -10,7 +10,7 @@ public class PopAnimation: NSObject, Animation {
     self.duration = duration
 
     content.view.hidden = true
-    
+
     super.init()
   }
 
@@ -41,7 +41,7 @@ public class PopAnimation: NSObject, Animation {
   }
 }
 
-// MARK: TutorialAnimation protocol implementation
+// MARK: - TutorialAnimation protocol implementation
 
 extension PopAnimation {
 

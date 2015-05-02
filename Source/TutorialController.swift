@@ -19,7 +19,7 @@ public class TutorialController: PagesController {
     add(pages)
   }
 
-  // MARK: View lifecycle
+  // MARK: - View lifecycle
 
   public override func viewDidLoad() {
     pagesDelegate = self
@@ -42,7 +42,7 @@ public class TutorialController: PagesController {
     })
   }
 
-  // MARK: Public methods
+  // MARK: - Public methods
 
   public override func goTo(index: Int) {
     super.goTo(index)
@@ -74,7 +74,7 @@ public class TutorialController: PagesController {
   }
 }
 
-// MARK: Content
+// MARK: - Content
 
 extension TutorialController {
 
@@ -97,7 +97,7 @@ extension TutorialController {
   }
 }
 
-// MARK: Animations
+// MARK: - Animations
 
 extension TutorialController {
 
@@ -123,7 +123,7 @@ extension TutorialController {
   }
 }
 
-// MARK: PagesControllerDelegate
+// MARK: - PagesControllerDelegate
 
 extension TutorialController: PagesControllerDelegate {
 
@@ -134,7 +134,7 @@ extension TutorialController: PagesControllerDelegate {
   }
 }
 
-// MARK: UIScrollViewDelegate
+// MARK: - UIScrollViewDelegate
 
 extension TutorialController: UIScrollViewDelegate {
 

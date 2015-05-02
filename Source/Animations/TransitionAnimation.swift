@@ -39,7 +39,7 @@ public class TransitionAnimation: NSObject, Animation {
   }
 }
 
-// MARK: TutorialAnimation protocol implementation
+// MARK: -  TutorialAnimation protocol implementation
 
 extension TransitionAnimation {
 
