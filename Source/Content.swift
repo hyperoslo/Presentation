@@ -7,6 +7,11 @@ public class Content: NSObject {
   public private(set) var initialPosition: Position
   public var centered: Bool = true
 
+  private var height: NSLayoutConstraint?
+  private var width: NSLayoutConstraint?
+  private var left: NSLayoutConstraint?
+  private var top: NSLayoutConstraint?
+
   let group = ConstraintGroup()
 
   public var position: Position {
@@ -25,14 +30,38 @@ public class Content: NSObject {
     initialPosition = position.positionCopy
 
     super.init()
+
+    constrain(view) { [unowned self] view in
+      view.width  == CGRectGetWidth(self.view.frame)
+      view.height == CGRectGetHeight(self.view.frame)
+    }
   }
 
   public func layout() {
     if let superview = view.superview {
-      view.placeAtPosition(position)
-      if centered {
-        view.alignToCenter()
+
+
+
+      //view.placeAtPosition(position)
+
+      constrain(view, replace: group) { [unowned self] view in
+        view.centerY  == view.superview!.bottom * self.position.top
+        view.centerX == view.superview!.right * self.position.left
       }
+      view.layoutIfNeeded()
+
+      //if centered {
+      //  view.alignToCenter()
+      //}
+    }
+  }
+
+  public func rotate() {
+    if let superview = view.superview {
+      //view.rotateAtPosition(position)
+      //if centered {
+      //  view.alignToCenter()
+      //}
     }
   }
 }

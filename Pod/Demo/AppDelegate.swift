@@ -61,7 +61,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     let images = ["cloud1", "cloud2", "cloud1"].map { UIImageView(image: UIImage(named: $0)) }
 
     let content1 = Content(view: images[0], position: Position(left: -0.3, top: 0.2))
-    content1.view.tag = 1003
 
     let content2 = Content(view: images[1], position: Position(right: -0.3, top: 0.22))
     let content3 = Content(view: images[2], position: Position(left: 0.5, top: 0.5))
@@ -110,15 +109,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
       Content.textContent($0, attributes: attributes)
     }
 
+    titles[1].view.tag = 1003
+
     var slides = [SlideController]()
 
     for index in 0...4 {
       let controller = SlideController(contents: [titles[index], texts[index]])
       controller.addAnimations([
         TransitionAnimation(content: titles[index],
-          destination: Position(left: 0.5, bottom: 0.25), duration: 2.0),
+          destination: Position(left: 0.5, bottom: 0.25), duration: 2.0, reflective: true),
         TransitionAnimation(content: texts[index],
-          destination: Position(left: 0.5, bottom: 0.15), duration: 2.0)])
+          destination: Position(left: 0.5, bottom: 0.15), duration: 2.0, reflective: true)])
 
       slides.append(controller)
     }

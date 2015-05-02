@@ -6,7 +6,7 @@ public class TutorialController: PagesController {
 
   private var scene = [Content]()
   private var animations = [Int: [Animation]]()
-
+  private var slides = [SlideController]()
   private var animationIndex = 0
 
   private weak var scrollView: UIScrollView?
@@ -66,6 +66,14 @@ public class TutorialController: PagesController {
         animationIndex = index
       }
 
+      for slide in slides {
+        if reverse {
+          slide.goToLeft()
+        } else {
+          slide.goToRight()
+        }
+      }
+
       scrollView?.delegate = nil
 
       animateAtIndex(animationIndex, perform: { animation in
@@ -76,14 +84,25 @@ public class TutorialController: PagesController {
         }
       })
     }
+  }
 
+  public override func add(viewControllers: [UIViewController]) {
+    for controller in viewControllers {
+      if controller is SlideController {
+        slides.append((controller as! SlideController))
+      }
+    }
+    super.add(viewControllers)
   }
 
   // MARK: device orientation
 
   func didRotate() {
     for content in scene {
-      content.layout()
+      //content.layout()
+    }
+    for slide in slides {
+      //slide.rotate()
     }
   }
 }
@@ -160,6 +179,16 @@ extension TutorialController: UIScrollViewDelegate {
       animateAtIndex(index, perform: { animation in
         animation.moveWith(offsetRatio)
       })
+      for slide in slides {
+        if index <= animationIndex {
+          slide.goToLeft()
+        } else {
+          slide.goToRight()
+        }
+      }
     }
+
+    scrollView.layoutIfNeeded()
+    view.layoutIfNeeded()
   }
 }

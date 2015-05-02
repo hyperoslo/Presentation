@@ -21,31 +21,24 @@ public class SlideController: UIViewController {
 
   // MARK: View lifecycle
 
+  public override func viewDidLoad() {
+    super.viewDidLoad()
+  }
+
   public override func viewDidAppear(animated: Bool) {
     super.viewDidAppear(animated)
-
-    NSNotificationCenter.defaultCenter().addObserver(
-      self,
-      selector: "didRotate",
-      name: UIDeviceOrientationDidChangeNotification,
-      object: nil)
   }
 
   override public func viewDidDisappear(animated: Bool) {
     super.viewDidDisappear(animated)
-
-    NSNotificationCenter.defaultCenter().removeObserver(
-      self,
-      name: UIDeviceOrientationDidChangeNotification,
-      object: nil)
-
-    for animation in animations {
-      animation.playBack()
-    }
   }
 
   public override func viewWillAppear(animated: Bool) {
     super.viewWillAppear(animated)
+
+    for content in contents {
+      content.layout()
+    }
 
     for animation in animations {
       animation.play()
@@ -54,9 +47,19 @@ public class SlideController: UIViewController {
 
   // MARK: device orientation
 
-  func didRotate() {
-    for content in contents {
-      content.layout()
+  public func goToLeft() {
+    for animation in animations {
+      if animation is TransitionAnimation {
+        (animation as! TransitionAnimation).reflective = true
+      }
+    }
+  }
+
+  public func goToRight() {
+    for animation in animations {
+      if animation is TransitionAnimation {
+        (animation as! TransitionAnimation).reflective = false
+      }
     }
   }
 }

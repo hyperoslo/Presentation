@@ -13,6 +13,8 @@ extension UIView {
   public func rotateAtPosition(position: Position) {
     if let superview = superview {
       let rotatedFrame = superview.bounds.rotatedRect
+      println(rotatedFrame)
+
       let point = position.originInFrame(rotatedFrame)
 
       frame.origin = point
