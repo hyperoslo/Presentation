@@ -1,6 +1,6 @@
 import UIKit
 
-public class PopAnimation: NSObject, Animation {
+public class PopAnimation: NSObject, Animatable {
 
   let content: Content
   let duration: NSTimeInterval
@@ -41,7 +41,7 @@ public class PopAnimation: NSObject, Animation {
   }
 }
 
-// MARK: - TutorialAnimation protocol implementation
+// MARK: - Animatable
 
 extension PopAnimation {
 

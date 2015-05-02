@@ -3,7 +3,7 @@ import UIKit
 public class SlideController: UIViewController {
 
   private var contents = [Content]()
-  private var animations = [Animation]()
+  private var animations = [Animatable]()
 
   public convenience init(contents: [Content]) {
     self.init()
@@ -61,13 +61,13 @@ extension SlideController {
     content.layout()
   }
 
-  public func addAnimations(animations: [Animation]) {
+  public func addAnimations(animations: [Animatable]) {
     for animation in animations {
       addAnimation(animation)
     }
   }
 
-  public func addAnimation(animation: Animation) {
+  public func addAnimation(animation: Animatable) {
     animations.append(animation)
   }
 }

@@ -1,6 +1,6 @@
 import UIKit
 
-public class TransitionAnimation: NSObject, Animation {
+public class TransitionAnimation: NSObject, Animatable {
 
   let content: Content
   let destination: Position
@@ -39,7 +39,7 @@ public class TransitionAnimation: NSObject, Animation {
   }
 }
 
-// MARK: -  TutorialAnimation protocol implementation
+// MARK: -  Animatable
 
 extension TransitionAnimation {
 
