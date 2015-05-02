@@ -1,6 +1,6 @@
 import UIKit
 
-public protocol Animatable {
+public protocol Animatable: NSObjectProtocol {
 
   func play()
   func playBack()
