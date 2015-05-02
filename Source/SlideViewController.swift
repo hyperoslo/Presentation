@@ -1,11 +1,3 @@
-//
-//  SlideViewController.swift
-//  Pods
-//
-//  Created by Vadym Markov on 01/05/15.
-//
-//
-
 import UIKit
 
 public class SlideController: UIViewController {
@@ -21,18 +13,6 @@ public class SlideController: UIViewController {
 
   // MARK: View lifecycle
 
-  public override func viewDidLoad() {
-    super.viewDidLoad()
-  }
-
-  public override func viewDidAppear(animated: Bool) {
-    super.viewDidAppear(animated)
-  }
-
-  override public func viewDidDisappear(animated: Bool) {
-    super.viewDidDisappear(animated)
-  }
-
   public override func viewWillAppear(animated: Bool) {
     super.viewWillAppear(animated)
 
@@ -45,7 +25,7 @@ public class SlideController: UIViewController {
     }
   }
 
-  // MARK: device orientation
+  // MARK: Navigation
 
   public func goToLeft() {
     for animation in animations {

@@ -1,14 +1,13 @@
 import UIKit
 import Pages
-import Hex
 
 public class TutorialController: PagesController {
 
   private var scene = [Content]()
-  private var animations = [Int: [Animation]]()
   private var slides = [SlideController]()
-  private var animationIndex = 0
+  private var animations = [Int: [Animation]]()
 
+  private var animationIndex = 0
   private weak var scrollView: UIScrollView?
 
   public convenience init(pages: [UIViewController]) {
@@ -20,6 +19,8 @@ public class TutorialController: PagesController {
     add(pages)
   }
 
+  // MARK: View lifecycle
+
   public override func viewDidLoad() {
     pagesDelegate = self
 
@@ -28,12 +29,6 @@ public class TutorialController: PagesController {
 
   public override func viewDidAppear(animated: Bool) {
     super.viewDidAppear(animated)
-
-    NSNotificationCenter.defaultCenter().addObserver(
-      self,
-      selector: "didRotate",
-      name: UIDeviceOrientationDidChangeNotification,
-      object: nil)
 
     for subview in view.subviews{
       if subview.isKindOfClass(UIScrollView) {
@@ -47,21 +42,13 @@ public class TutorialController: PagesController {
     })
   }
 
-  override public func viewDidDisappear(animated: Bool) {
-    super.viewDidDisappear(animated)
-
-    NSNotificationCenter.defaultCenter().removeObserver(
-      self,
-      name: UIDeviceOrientationDidChangeNotification,
-      object: nil)
-  }
+  // MARK: Public methods
 
   public override func goTo(index: Int) {
-
     super.goTo(index)
 
     if index >= 0 && index < pagesCount {
-    let reverse = index < animationIndex
+      let reverse = index < animationIndex
       if !reverse {
         animationIndex = index
       }
@@ -85,6 +72,11 @@ public class TutorialController: PagesController {
       })
     }
   }
+}
+
+// MARK: Content
+
+extension TutorialController {
 
   public override func add(viewControllers: [UIViewController]) {
     for controller in viewControllers {
@@ -94,22 +86,6 @@ public class TutorialController: PagesController {
     }
     super.add(viewControllers)
   }
-
-  // MARK: device orientation
-
-  func didRotate() {
-    for content in scene {
-      //content.layout()
-    }
-    for slide in slides {
-      //slide.rotate()
-    }
-  }
-}
-
-// MARK: - Content
-
-extension TutorialController {
 
   public func addToScene(elements: [Content]) {
     for content in elements {
@@ -132,7 +108,7 @@ extension TutorialController {
   }
 
   public func addAnimation(animation: Animation, forPage page: Int) {
-    if animations[page] == nil && page >= 0 {
+    if animations[page] == nil {
       animations[page] = []
     }
     animations[page]?.append(animation)
@@ -147,6 +123,8 @@ extension TutorialController {
   }
 }
 
+// MARK: PagesControllerDelegate
+
 extension TutorialController: PagesControllerDelegate {
 
   public func pageViewController(pageViewController: UIPageViewController,
@@ -156,24 +134,22 @@ extension TutorialController: PagesControllerDelegate {
   }
 }
 
+// MARK: UIScrollViewDelegate
+
 extension TutorialController: UIScrollViewDelegate {
 
   public func scrollViewDidScroll(scrollView: UIScrollView) {
     let offset = scrollView.contentOffset.x - CGRectGetWidth(view.frame)
     let offsetRatio = offset / CGRectGetWidth(view.frame)
-    let speed = scrollView.contentSize.width / scrollView.contentOffset.x
-
-    let pageCount = presentationCountForPageViewController(self)
 
     var index = animationIndex
-    if (offsetRatio > 0.0 && index < pageCount - 1) ||
-      (index == 0) {
-        index++
+    if (offsetRatio > 0.0 && index < pagesCount - 1) || (index == 0) {
+      index++
     }
 
     let canMove = offsetRatio != 0.0 &&
       !(animationIndex == 0 && offsetRatio < 0.0) &&
-      !(animationIndex == pageCount - 1 && offsetRatio > 0.0)
+      !(index == pagesCount)
 
     if canMove {
       animateAtIndex(index, perform: { animation in
