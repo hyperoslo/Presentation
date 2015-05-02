@@ -5,7 +5,7 @@ public class TutorialController: PagesController {
 
   private var scene = [Content]()
   private var slides = [SlideController]()
-  private var animations = [Int: [Animation]]()
+  private var animationsForPages = [Int : [Animation]]()
 
   private var animationIndex = 0
   private weak var scrollView: UIScrollView?
@@ -108,14 +108,14 @@ extension TutorialController {
   }
 
   public func addAnimation(animation: Animation, forPage page: Int) {
-    if animations[page] == nil {
-      animations[page] = []
+    if animationsForPages[page] == nil {
+      animationsForPages[page] = []
     }
-    animations[page]?.append(animation)
+    animationsForPages[page]?.append(animation)
   }
 
   private func animateAtIndex(index: Int, perform: (animation: Animation) -> Void) {
-    if let animations = animations[index] {
+    if let animations = animationsForPages[index] {
       for animation in animations {
         perform(animation: animation)
       }
