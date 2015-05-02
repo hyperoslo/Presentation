@@ -24,7 +24,7 @@ class PopAnimationSpec: QuickSpec {
         }
       }
 
-      describe("#move") {
+      describe("#moveWith") {
         context("with superview") {
           beforeEach {
             superview.addSubview(view)

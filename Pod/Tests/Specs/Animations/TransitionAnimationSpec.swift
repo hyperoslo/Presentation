@@ -81,7 +81,7 @@ class TransitionAnimationSpec: QuickSpec {
         }
       }
 
-      describe("#move") {
+      describe("#moveWith") {
         var center = CGPointZero
 
         beforeEach {
