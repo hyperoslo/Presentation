@@ -51,6 +51,14 @@ import UIKit
     self.bottom = bottom
   }
 
+  public var positionCopy: Position {
+    return Position(left: left, top: top)
+  }
+
+  public var horizontalMirror: Position {
+    return Position(left: right, top: top)
+  }
+
   public func originInFrame(frame: CGRect) -> CGPoint {
     return CGPoint(x: xInFrame(frame), y: yInFrame(frame))
   }
@@ -65,5 +73,11 @@ import UIKit
     let margin = CGRectGetHeight(frame) * top
 
     return CGRectGetMinY(frame) + margin
+  }
+
+  public func isEqualToPosition(position: Position, epsilon: CGFloat = 0.0001) -> Bool {
+    let dx = left - position.left, dy = top - position.top
+
+    return (dx * dx + dy * dy) < epsilon
   }
 }

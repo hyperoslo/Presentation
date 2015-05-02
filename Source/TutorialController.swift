@@ -1,25 +1,25 @@
 import UIKit
 import Pages
-import Hex
 
 public class TutorialController: PagesController {
 
-  private var backLayer = [BackViewModel]()
-  private var animationLayer = [Int: [Animation]]()
-  private var animationIndex = -1
+  private var scene = [Content]()
+  private var slides = [SlideController]()
+  private var animationsForPages = [Int : [Animatable]]()
 
+  private var animationIndex = 0
   private weak var scrollView: UIScrollView?
 
-  public convenience init(pages: [UIViewController],
-    backViewModels: [BackViewModel] = []) {
+  public convenience init(pages: [UIViewController]) {
     self.init(
       transitionStyle: .Scroll,
       navigationOrientation: .Horizontal,
       options: nil)
 
     add(pages)
-    addBackViewModels(backViewModels)
   }
+
+  // MARK: - View lifecycle
 
   public override func viewDidLoad() {
     pagesDelegate = self
@@ -30,128 +30,111 @@ public class TutorialController: PagesController {
   public override func viewDidAppear(animated: Bool) {
     super.viewDidAppear(animated)
 
-    NSNotificationCenter.defaultCenter().addObserver(
-      self,
-      selector: "didRotate",
-      name: UIDeviceOrientationDidChangeNotification,
-      object: nil)
-
     for subview in view.subviews{
       if subview.isKindOfClass(UIScrollView) {
         scrollView = subview as? UIScrollView
         scrollView?.delegate = self
       }
     }
+
+    animateAtIndex(0, perform: { animation in
+      animation.play()
+    })
   }
 
-  override public func viewDidDisappear(animated: Bool) {
-    super.viewDidDisappear(animated)
-
-    NSNotificationCenter.defaultCenter().removeObserver(
-      self,
-      name: UIDeviceOrientationDidChangeNotification,
-      object: nil)
-  }
-
-  override public func add(viewControllers: [UIViewController]) {
-    super.add(viewControllers)
-  }
+  // MARK: - Public methods
 
   public override func goTo(index: Int) {
-    let pageCount = presentationCountForPageViewController(self)
-    let disableScroll = animationIndex != -1
+    super.goTo(index)
 
-    if index >= 0 && index < pageCount {
+    if index >= 0 && index < pagesCount {
       let reverse = index < animationIndex
       if !reverse {
         animationIndex = index
       }
 
-      if let animations = animationLayer[animationIndex] {
-        for animation in animations {
-          checkAnimation(animation)
-
-          if disableScroll {
-            scrollView?.delegate = nil
-          }
-
-          if reverse {
-            animation.playBack()
-          } else {
-            animation.play()
-          }
+      for slide in slides {
+        if reverse {
+          slide.goToLeft()
+        } else {
+          slide.goToRight()
         }
       }
+
+      scrollView?.delegate = nil
+
+      animateAtIndex(animationIndex, perform: { animation in
+        if reverse {
+          animation.playBack()
+        } else {
+          animation.play()
+        }
+      })
     }
-
-    super.goTo(index)
   }
+}
 
-  // MARK: device orientation
+// MARK: - Content
 
-  func didRotate() {
-    if let animations = animationLayer[animationIndex] {
-      for animation in animations {
-        animation.rotate()
+extension TutorialController {
+
+  public override func add(viewControllers: [UIViewController]) {
+    for controller in viewControllers {
+      if controller is SlideController {
+        slides.append((controller as! SlideController))
       }
     }
-    for backViewModel in backLayer {
-      backViewModel.rotate()
+    super.add(viewControllers)
+  }
+
+  public func addToScene(elements: [Content]) {
+    for content in elements {
+      scene.append(content)
+      view.addSubview(content.view)
+      view.sendSubviewToBack(content.view)
+      content.layout()
     }
   }
 }
 
-// MARK: - Back layer
+// MARK: - Animations
 
 extension TutorialController {
 
-  public func addBackViewModels(backViewModels: [BackViewModel]) {
-    for backViewModel in backViewModels {
-      addBackViewModel(backViewModel)
-    }
-  }
-
-  public func addBackViewModel(backViewModel: BackViewModel) {
-    backLayer.append(backViewModel)
-    view.addSubview(backViewModel.view)
-    view.sendSubviewToBack(backViewModel.view)
-    backViewModel.place()
-  }
-}
-
-// MARK: - Animation layer
-
-extension TutorialController {
-
-  public func addAnimations(animations: [Animation], forPage page: Int) {
+  public func addAnimations(animations: [Animatable], forPage page: Int) {
     for animation in animations {
       addAnimation(animation, forPage: page)
     }
   }
 
-  public func addAnimation(animation: Animation, forPage page: Int) {
-    if animationLayer[page] == nil {
-      animationLayer[page] = []
+  public func addAnimation(animation: Animatable, forPage page: Int) {
+    if animationsForPages[page] == nil {
+      animationsForPages[page] = []
     }
-    animationLayer[page]?.append(animation)
+    animationsForPages[page]?.append(animation)
   }
 
-  private func checkAnimation(animation: Animation) {
-    if animation.view.superview == nil {
-      view.addSubview(animation.view)
-      view.sendSubviewToBack(animation.view)
+  private func animateAtIndex(index: Int, perform: (animation: Animatable) -> Void) {
+    if let animations = animationsForPages[index] {
+      for animation in animations {
+        perform(animation: animation)
+      }
     }
   }
 }
+
+// MARK: - PagesControllerDelegate
 
 extension TutorialController: PagesControllerDelegate {
 
   public func pageViewController(pageViewController: UIPageViewController,
     setViewController viewController: UIViewController, atPage page: Int) {
-    animationIndex = page
-    scrollView?.delegate = self
+      animationIndex = page
+      scrollView?.delegate = self
   }
 }
+
+// MARK: - UIScrollViewDelegate
 
 extension TutorialController: UIScrollViewDelegate {
 
@@ -159,24 +142,29 @@ extension TutorialController: UIScrollViewDelegate {
     let offset = scrollView.contentOffset.x - CGRectGetWidth(view.frame)
     let offsetRatio = offset / CGRectGetWidth(view.frame)
 
-    let pageCount = presentationCountForPageViewController(self)
-
     var index = animationIndex
-    if offsetRatio > 0.0 && index < pageCount - 1 {
+    if (offsetRatio > 0.0 && index < pagesCount - 1) || (index == 0) {
       index++
     }
 
-    if let animations = animationLayer[index] {
-      for animation in animations {
-        let canMove = offsetRatio != 0.0 &&
-          !(animationIndex == 0 && offsetRatio < 0.0) &&
-          !(animationIndex == pageCount - 1 && offsetRatio > 0.0)
+    let canMove = offsetRatio != 0.0 &&
+      !(animationIndex == 0 && offsetRatio < 0.0) &&
+      !(index == pagesCount)
 
-        if canMove {
-          checkAnimation(animation)
-          animation.move(offsetRatio)
+    if canMove {
+      animateAtIndex(index, perform: { animation in
+        animation.moveWith(offsetRatio)
+      })
+      for slide in slides {
+        if index <= animationIndex {
+          slide.goToLeft()
+        } else {
+          slide.goToRight()
         }
       }
     }
+
+    scrollView.layoutIfNeeded()
+    view.layoutIfNeeded()
   }
 }

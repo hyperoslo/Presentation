@@ -8,80 +8,84 @@ class TransitionAnimationSpec: QuickSpec {
     describe("TransitionAnimation") {
       var animation: TransitionAnimation!
       var view: UIView!
+      var content: Content!
       var destination: Position!
       var superview: UIView!
 
       beforeEach {
         view = SpecHelper.imageView()
-        destination = Position(left: 0.2, top: 0.1)
+        content = Content(view: view, position: Position(left: 0.3, top: 0.5))
+        destination = Position(left: 0.5, top: 0.5)
         superview = UIView(frame: CGRect(x: 0.0, y: 0.0, width: 300.0, height: 200.0))
-        animation = TransitionAnimation(view: view, destination: destination, duration: 0)
+        animation = TransitionAnimation(content: content, destination: destination, duration: 0)
       }
 
       describe("#play") {
         context("with superview") {
           beforeEach {
             superview.addSubview(view)
+            content.layout()
           }
 
           it("moves view to the destination point") {
-            var frame = view.frame
-            frame.origin = destination.originInFrame(superview.bounds)
+            let center = destination.originInFrame(superview.bounds)
 
             animation.play()
-            expect(view.frame).to(equal(frame))
+            expect(view.center).to(equal(center))
           }
         }
 
         context("without superview") {
           it("doesn't change position") {
-            let origin = view.frame.origin
+            let center = view.center
 
             animation.play()
-            expect(view.frame.origin).to(equal(origin))
+            expect(view.center).to(equal(center))
           }
         }
       }
 
       describe("#playBack") {
-        var frame = CGRectZero
+        var center = CGPointZero
 
         context("with superview") {
           beforeEach {
             superview.addSubview(view)
-            frame = view.frame
+            content.layout()
+            center = view.center
             animation.play()
           }
 
           it("moves view to the destination point") {
             animation.playBack()
-            expect(view.frame).to(equal(frame))
+            expect(view.center).to(equal(center))
           }
         }
 
         context("without superview") {
-          var origin = CGPointZero
+          var center = CGPointZero
 
           beforeEach {
             superview.addSubview(view)
+            content.layout()
             animation.play()
-            origin = view.frame.origin
+            center = view.center
 
             view.removeFromSuperview()
           }
 
           it("doesn't change position") {
             animation.playBack()
-            expect(view.frame.origin).to(equal(origin))
+            expect(view.center).to(equal(center))
           }
         }
       }
 
-      describe("#move") {
-        var frame = CGRectZero
+      describe("#moveWith") {
+        var center = CGPointZero
 
         beforeEach {
-          frame = view.frame
+          center = view.center
         }
 
         context("with superview") {
@@ -90,8 +94,10 @@ class TransitionAnimationSpec: QuickSpec {
 
           beforeEach {
             superview.addSubview(view)
+            content.layout()
+            center = view.center
 
-            let start = view.frame.origin.positionInFrame(superview.bounds)
+            let start = view.center.positionInFrame(superview.bounds)
             startX = start.xInFrame(superview.bounds)
             dx = destination.xInFrame(superview.bounds) - startX
           }
@@ -100,10 +106,10 @@ class TransitionAnimationSpec: QuickSpec {
             it("moves view correctly") {
               let offsetRatio: CGFloat = 0.4
               let offset = dx * offsetRatio
-              frame.origin.x = startX + offset
+              center.x = startX + offset
 
-              animation.move(offsetRatio)
-              expect(view.frame).to(equal(frame))
+              animation.moveWith(offsetRatio)
+              expect(view.center).to(equal(center))
             }
           }
 
@@ -111,10 +117,10 @@ class TransitionAnimationSpec: QuickSpec {
             it("moves view correctly") {
               let offsetRatio: CGFloat = -0.4
               let offset = dx * (1.0 + offsetRatio)
-              frame.origin.x = startX + offset
+              center.x = startX + offset
 
-              animation.move(offsetRatio)
-              expect(view.frame).to(equal(frame))
+              animation.moveWith(offsetRatio)
+              expect(view.center).to(equal(center))
             }
           }
         }
@@ -123,14 +129,17 @@ class TransitionAnimationSpec: QuickSpec {
           it("doesn't change position") {
             let offsetRatio: CGFloat = -0.4
 
-            animation.move(offsetRatio)
-            expect(view.frame).to(equal(frame))
+            animation.moveWith(offsetRatio)
+            expect(view.center).to(equal(center))
           }
         }
 
         context("with playing animations") {
           beforeEach {
             superview.addSubview(view)
+            content.layout()
+            center = view.center
+
             UIView.animateWithDuration(2.0, animations: {
               view.alpha = 0.5
             })
@@ -139,20 +148,9 @@ class TransitionAnimationSpec: QuickSpec {
           it("doesn't change position") {
             let offsetRatio: CGFloat = -0.4
 
-            animation.move(offsetRatio)
-            expect(view.frame).to(equal(frame))
+            animation.moveWith(offsetRatio)
+            expect(view.center).to(equal(center))
           }
-        }
-      }
-
-      describe("#rotate") {
-        it("changes view position correctly") {
-          superview.addSubview(view)
-          var rotatedFrame = superview.bounds.rotatedRect
-          let origin = destination.originInFrame(rotatedFrame)
-
-          animation.rotate()
-          expect(view.frame.origin).to(equal(origin))
         }
       }
     }

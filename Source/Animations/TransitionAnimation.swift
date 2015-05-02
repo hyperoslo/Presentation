@@ -1,83 +1,83 @@
 import UIKit
 
-@objc public class TransitionAnimation: NSObject, Animation {
+public class TransitionAnimation: NSObject, Animatable {
 
-  public var view: UIView
-  public var destination: Position
-  public var duration: NSTimeInterval
+  let content: Content
+  let destination: Position
+  let duration: NSTimeInterval
+  let dumping: CGFloat
+  var reflective = false
 
-  var start: Position?
+  lazy var start: Position = { [unowned self] in
+    return self.content.position.positionCopy
+    }()
 
-  public init(view: UIView, destination: Position, duration: NSTimeInterval = 0.5) {
-    self.view = view
-    self.view.setTranslatesAutoresizingMaskIntoConstraints(true)
-    self.destination = destination
-    self.duration = duration
+  lazy var startMirror: Position = { [unowned self] in
+    return self.start.horizontalMirror
+    }()
 
-    super.init()
+  public init(content: Content, destination: Position,
+    duration: NSTimeInterval = 1.0, dumping: CGFloat = 0.7, reflective: Bool = false) {
+      self.content = content
+      self.destination = destination
+      self.duration = duration
+      self.dumping = dumping
+      self.reflective = reflective
+
+      super.init()
   }
 
-  private func animate(frame: CGRect) {
-    UIView.animateWithDuration(duration, delay: 0,
+  private func animateTo(position: Position) {
+    UIView.animateWithDuration(duration,
+      delay: 0,
+      usingSpringWithDamping: dumping,
+      initialSpringVelocity: 0.5,
       options: .BeginFromCurrentState,
       animations: { [unowned self] in
-        self.view.frame = frame
+        self.content.position = position
       }, completion: nil)
-  }
-
-  private func startFrameInSuperview(superview: UIView) -> CGRect {
-    let bounds = superview.bounds
-    if start == nil {
-      start = view.frame.origin.positionInFrame(bounds)
-    }
-
-    var frame = view.frame
-    frame.origin = start!.originInFrame(bounds)
-    return frame
   }
 }
 
-// MARK: TutorialAnimation protocol implementation
+// MARK: -  Animatable
 
 extension TransitionAnimation {
 
   public func play() {
-    if let superview = view.superview {
-      view.frame = startFrameInSuperview(superview)
-      var frame = view.frame
-      frame.origin = destination.originInFrame(superview.bounds)
+    let position = reflective ? startMirror : start
 
-      animate(frame)
+    if let superview = content.view.superview {
+      content.position = position
+      animateTo(destination)
     }
   }
 
   public func playBack() {
-    if let superview = view.superview {
-      var frame = startFrameInSuperview(superview)
+    let position = reflective ? startMirror : start
 
-      animate(frame)
+    if let superview = content.view.superview {
+      animateTo(position)
     }
   }
 
-  public func move(offsetRatio: CGFloat) {
-    if view.layer.animationKeys() == nil {
+  public func moveWith(offsetRatio: CGFloat) {
+    if content.view.layer.animationKeys() == nil {
+      let view = content.view
+
       if let superview = view.superview {
-        let startFrame = startFrameInSuperview(superview)
-        let startX = CGRectGetMinX(startFrame)
+        let position = reflective && offsetRatio < 0.0 ? startMirror : start
+
+        let startX = position.xInFrame(superview.bounds)
         let dx = destination.xInFrame(superview.bounds) - startX
 
         let ratio = offsetRatio > 0.0 ? offsetRatio : (1.0 + offsetRatio)
         let offset = dx * ratio
 
-        var frame = view.frame
-        frame.origin.x = startX + offset
+        var origin = content.position.originInFrame(superview.bounds)
+        origin.x = startX + offset
 
-        view.frame = frame
+        content.position = origin.positionInFrame(superview.bounds)
       }
     }
-  }
-
-  public func rotate() {
-    view.rotateAtPosition(destination)
   }
 }

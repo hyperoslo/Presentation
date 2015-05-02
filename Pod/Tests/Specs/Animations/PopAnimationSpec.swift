@@ -2,20 +2,20 @@ import Quick
 import Nimble
 import Tutorial
 
-class PopAppearanceAnimationSpec: QuickSpec {
+class PopAnimationSpec: QuickSpec {
 
   override func spec() {
-    describe("PopAppearanceAnimation") {
-      var animation: PopAppearanceAnimation!
+    describe("PopAnimation") {
+      var animation: PopAnimation!
       var view: UIView!
-      var destination: Position!
+      var content: Content!
       var superview: UIView!
 
       beforeEach {
         view = SpecHelper.imageView()
-        destination = Position(left: 0.2, top: 0.1)
+        content = Content(view: view, position: Position(left: 0.2, bottom: 0.2))
         superview = UIView(frame: CGRect(x: 0.0, y: 0.0, width: 300.0, height: 200.0))
-        animation = PopAppearanceAnimation(view: view, destination: destination, duration: 0)
+        animation = PopAnimation(content: content, duration: 0)
       }
 
       describe("#init") {
@@ -24,7 +24,7 @@ class PopAppearanceAnimationSpec: QuickSpec {
         }
       }
 
-      describe("#move") {
+      describe("#moveWith") {
         context("with superview") {
           beforeEach {
             superview.addSubview(view)
@@ -34,7 +34,7 @@ class PopAppearanceAnimationSpec: QuickSpec {
             it("moves view correctly") {
               let offsetRatio: CGFloat = 0.4
 
-              animation.move(offsetRatio)
+              animation.moveWith(offsetRatio)
               expect(Double(view.alpha)) ≈ Double(0.4)
             }
           }
@@ -43,7 +43,7 @@ class PopAppearanceAnimationSpec: QuickSpec {
             it("moves view correctly") {
               let offsetRatio: CGFloat = -0.4
 
-              animation.move(offsetRatio)
+              animation.moveWith(offsetRatio)
               expect(Double(view.alpha)) ≈ Double(0.6)
             }
           }
@@ -53,7 +53,7 @@ class PopAppearanceAnimationSpec: QuickSpec {
           it("doesn't change position") {
             let offsetRatio: CGFloat = 0.4
 
-            animation.move(offsetRatio)
+            animation.moveWith(offsetRatio)
             expect(Double(view.alpha)) ≈ Double(1.0)
           }
         }
@@ -69,20 +69,9 @@ class PopAppearanceAnimationSpec: QuickSpec {
           it("doesn't change position") {
             let offsetRatio: CGFloat = -0.4
 
-            animation.move(offsetRatio)
+            animation.moveWith(offsetRatio)
             expect(Double(view.alpha)) ≈ Double(1.0)
           }
-        }
-      }
-
-      describe("#rotate") {
-        it("changes view position correctly") {
-          superview.addSubview(view)
-          var rotatedFrame = superview.bounds.rotatedRect
-          let origin = destination.originInFrame(rotatedFrame)
-
-          animation.rotate()
-          expect(view.frame.origin).to(equal(origin))
         }
       }
     }
