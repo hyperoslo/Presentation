@@ -25,12 +25,12 @@ public class PopAnimation: NSObject, Animation {
       animations: {
         view.transform = CGAffineTransformMakeScale(1.05, 1.05)
         view.alpha = 0.8
-      }, completion: { done in
+      }, completion: { _ in
         UIView.animateWithDuration(1 / 8.0,
           animations: {
             view.transform = CGAffineTransformMakeScale(0.9, 0.9)
             view.alpha = 0.9
-          }, completion: { done in
+          }, completion: { _ in
             UIView.animateWithDuration(1 / 4.0,
               animations: {
                 view.transform = CGAffineTransformIdentity
