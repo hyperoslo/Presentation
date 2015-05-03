@@ -8,20 +8,20 @@
 
 /* Begin PBXBuildFile section */
 		D3D95882AE758EF67F333D85 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D4A68838D32D2494868CDBA /* Pods.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
-		D542218C1AF64A7000F4E9A8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D542218B1AF64A7000F4E9A8 /* AppDelegate.swift */; };
-		D54221961AF64A7000F4E9A8 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = D54221941AF64A7000F4E9A8 /* LaunchScreen.xib */; };
-		D5EFE3511AF64D8500E0814D /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D5EFE3501AF64D8500E0814D /* Images.xcassets */; };
+		D59807741AF6A8AB004B6D3A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D598076E1AF6A8AB004B6D3A /* AppDelegate.swift */; };
+		D59807751AF6A8AB004B6D3A /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = D598076F1AF6A8AB004B6D3A /* LaunchScreen.xib */; };
+		D59807771AF6A8AB004B6D3A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D59807731AF6A8AB004B6D3A /* Images.xcassets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		6975562F146EF4C19735CF2C /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		6D4A68838D32D2494868CDBA /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6FCA86592E0135881A07A9D5 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
-		D54221861AF64A7000F4E9A8 /* Basic.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Basic.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		D542218A1AF64A7000F4E9A8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		D542218B1AF64A7000F4E9A8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		D54221951AF64A7000F4E9A8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
-		D5EFE3501AF64D8500E0814D /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		D54221861AF64A7000F4E9A8 /* Tutorial.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Tutorial.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		D598076E1AF6A8AB004B6D3A /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		D59807701AF6A8AB004B6D3A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
+		D59807711AF6A8AB004B6D3A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D59807731AF6A8AB004B6D3A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,7 +56,7 @@
 		D542217D1AF64A7000F4E9A8 = {
 			isa = PBXGroup;
 			children = (
-				D54221881AF64A7000F4E9A8 /* Basic */,
+				D598076D1AF6A8AB004B6D3A /* Tutorial */,
 				D54221871AF64A7000F4E9A8 /* Products */,
 				A34D4190F7A22EF550D2B7E2 /* Pods */,
 				7BB385731A23BFD439DC4FDF /* Frameworks */,
@@ -66,34 +66,26 @@
 		D54221871AF64A7000F4E9A8 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				D54221861AF64A7000F4E9A8 /* Basic.app */,
+				D54221861AF64A7000F4E9A8 /* Tutorial.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		D54221881AF64A7000F4E9A8 /* Basic */ = {
+		D598076D1AF6A8AB004B6D3A /* Tutorial */ = {
 			isa = PBXGroup;
 			children = (
-				D5EFE34F1AF64D7100E0814D /* Resources */,
-				D542218B1AF64A7000F4E9A8 /* AppDelegate.swift */,
-				D54221941AF64A7000F4E9A8 /* LaunchScreen.xib */,
-				D54221891AF64A7000F4E9A8 /* Supporting Files */,
+				D598076E1AF6A8AB004B6D3A /* AppDelegate.swift */,
+				D598076F1AF6A8AB004B6D3A /* LaunchScreen.xib */,
+				D59807711AF6A8AB004B6D3A /* Info.plist */,
+				D59807721AF6A8AB004B6D3A /* Resources */,
 			);
-			path = Basic;
+			path = Tutorial;
 			sourceTree = "<group>";
 		};
-		D54221891AF64A7000F4E9A8 /* Supporting Files */ = {
+		D59807721AF6A8AB004B6D3A /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				D542218A1AF64A7000F4E9A8 /* Info.plist */,
-			);
-			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		D5EFE34F1AF64D7100E0814D /* Resources */ = {
-			isa = PBXGroup;
-			children = (
-				D5EFE3501AF64D8500E0814D /* Images.xcassets */,
+				D59807731AF6A8AB004B6D3A /* Images.xcassets */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -101,9 +93,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		D54221851AF64A7000F4E9A8 /* Basic */ = {
+		D54221851AF64A7000F4E9A8 /* Tutorial */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = D54221A51AF64A7000F4E9A8 /* Build configuration list for PBXNativeTarget "Basic" */;
+			buildConfigurationList = D54221A51AF64A7000F4E9A8 /* Build configuration list for PBXNativeTarget "Tutorial" */;
 			buildPhases = (
 				340EA80D84B87B1E75B32D48 /* Check Pods Manifest.lock */,
 				D54221821AF64A7000F4E9A8 /* Sources */,
@@ -116,9 +108,9 @@
 			);
 			dependencies = (
 			);
-			name = Basic;
+			name = Tutorial;
 			productName = Basic;
-			productReference = D54221861AF64A7000F4E9A8 /* Basic.app */;
+			productReference = D54221861AF64A7000F4E9A8 /* Tutorial.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -135,7 +127,7 @@
 					};
 				};
 			};
-			buildConfigurationList = D54221811AF64A7000F4E9A8 /* Build configuration list for PBXProject "Basic" */;
+			buildConfigurationList = D54221811AF64A7000F4E9A8 /* Build configuration list for PBXProject "Tutorial" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -148,7 +140,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				D54221851AF64A7000F4E9A8 /* Basic */,
+				D54221851AF64A7000F4E9A8 /* Tutorial */,
 			);
 		};
 /* End PBXProject section */
@@ -158,8 +150,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D54221961AF64A7000F4E9A8 /* LaunchScreen.xib in Resources */,
-				D5EFE3511AF64D8500E0814D /* Images.xcassets in Resources */,
+				D59807771AF6A8AB004B6D3A /* Images.xcassets in Resources */,
+				D59807751AF6A8AB004B6D3A /* LaunchScreen.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -218,17 +210,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D542218C1AF64A7000F4E9A8 /* AppDelegate.swift in Sources */,
+				D59807741AF6A8AB004B6D3A /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		D54221941AF64A7000F4E9A8 /* LaunchScreen.xib */ = {
+		D598076F1AF6A8AB004B6D3A /* LaunchScreen.xib */ = {
 			isa = PBXVariantGroup;
 			children = (
-				D54221951AF64A7000F4E9A8 /* Base */,
+				D59807701AF6A8AB004B6D3A /* Base */,
 			);
 			name = LaunchScreen.xib;
 			sourceTree = "<group>";
@@ -324,9 +316,9 @@
 			baseConfigurationReference = 6975562F146EF4C19735CF2C /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				INFOPLIST_FILE = Basic/Info.plist;
+				INFOPLIST_FILE = Tutorial/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = Tutorial;
 			};
 			name = Debug;
 		};
@@ -335,16 +327,16 @@
 			baseConfigurationReference = 6FCA86592E0135881A07A9D5 /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				INFOPLIST_FILE = Basic/Info.plist;
+				INFOPLIST_FILE = Tutorial/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = Tutorial;
 			};
 			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		D54221811AF64A7000F4E9A8 /* Build configuration list for PBXProject "Basic" */ = {
+		D54221811AF64A7000F4E9A8 /* Build configuration list for PBXProject "Tutorial" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				D54221A31AF64A7000F4E9A8 /* Debug */,
@@ -353,7 +345,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		D54221A51AF64A7000F4E9A8 /* Build configuration list for PBXNativeTarget "Basic" */ = {
+		D54221A51AF64A7000F4E9A8 /* Build configuration list for PBXNativeTarget "Tutorial" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				D54221A61AF64A7000F4E9A8 /* Debug */,
