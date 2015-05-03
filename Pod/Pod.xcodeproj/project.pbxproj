@@ -10,6 +10,7 @@
 		4165176CCE292A765019CBFD /* Pods_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F6FACB069003DC522C05C4C3 /* Pods_Tests.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		BDA1580B1AD7ED450011D55A /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BDA1580A1AD7ED450011D55A /* Pods.framework */; };
 		D50583F31AEFD983003D8F05 /* SpecHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D50583F21AEFD983003D8F05 /* SpecHelper.swift */; };
+		D516EFF11AF6B800002BE7CA /* DissolveAnimationSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = D516EFF01AF6B800002BE7CA /* DissolveAnimationSpec.swift */; };
 		D526B3CB1AF0EA4600A9CA0F /* ContentSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = D526B3CA1AF0EA4600A9CA0F /* ContentSpec.swift */; };
 		D5A130641AEF99BD0081DAFE /* CGPointExtensionSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5A130631AEF99BD0081DAFE /* CGPointExtensionSpec.swift */; };
 		D5A1306D1AEF9AF30081DAFE /* TransitionAnimationSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5A1306C1AEF9AF30081DAFE /* TransitionAnimationSpec.swift */; };
@@ -31,6 +32,7 @@
 		BDA158081AD7ED3D0011D55A /* Pods.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Pods.framework; path = "Pods/../build/Debug-iphoneos/Pods.framework"; sourceTree = "<group>"; };
 		BDA1580A1AD7ED450011D55A /* Pods.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Pods.framework; path = "Pods/../build/Debug-iphoneos/Pods.framework"; sourceTree = "<group>"; };
 		D50583F21AEFD983003D8F05 /* SpecHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpecHelper.swift; sourceTree = "<group>"; };
+		D516EFF01AF6B800002BE7CA /* DissolveAnimationSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DissolveAnimationSpec.swift; sourceTree = "<group>"; };
 		D526B3CA1AF0EA4600A9CA0F /* ContentSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentSpec.swift; sourceTree = "<group>"; };
 		D5A130631AEF99BD0081DAFE /* CGPointExtensionSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CGPointExtensionSpec.swift; sourceTree = "<group>"; };
 		D5A1306C1AEF9AF30081DAFE /* TransitionAnimationSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransitionAnimationSpec.swift; sourceTree = "<group>"; };
@@ -143,6 +145,7 @@
 			children = (
 				D5A130701AEF9B060081DAFE /* PopAnimationSpec.swift */,
 				D5A1306C1AEF9AF30081DAFE /* TransitionAnimationSpec.swift */,
+				D516EFF01AF6B800002BE7CA /* DissolveAnimationSpec.swift */,
 			);
 			path = Animations;
 			sourceTree = "<group>";
@@ -281,6 +284,7 @@
 				D5A1306D1AEF9AF30081DAFE /* TransitionAnimationSpec.swift in Sources */,
 				D50583F31AEFD983003D8F05 /* SpecHelper.swift in Sources */,
 				D5C28A2D1AEFCFDB00DCC96D /* PositionSpec.swift in Sources */,
+				D516EFF11AF6B800002BE7CA /* DissolveAnimationSpec.swift in Sources */,
 				D5A130641AEF99BD0081DAFE /* CGPointExtensionSpec.swift in Sources */,
 				D526B3CB1AF0EA4600A9CA0F /* ContentSpec.swift in Sources */,
 			);
