@@ -1,4 +1,4 @@
-import Tutorial
+import Presentation
 import Quick
 import Nimble
 

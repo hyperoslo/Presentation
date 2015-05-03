@@ -1,6 +1,6 @@
 import Quick
 import Nimble
-import Tutorial
+import Presentation
 
 class CGPointExtensionSpec: QuickSpec {
 

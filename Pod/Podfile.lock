@@ -3,29 +3,29 @@ PODS:
   - Hex (1.1.1)
   - Nimble (0.4.2)
   - Pages (0.4.2)
-  - Quick (0.3.1)
-  - Tutorial (0.1):
+  - Presentation (0.1):
     - Cartography (~> 0.5.0)
     - Hex (~> 1.1.1)
     - Pages (~> 0.4.0)
+  - Quick (0.3.1)
 
 DEPENDENCIES:
   - Cartography
   - Hex
   - Nimble
   - Pages (from `https://github.com/hyperoslo/Pages.git`)
+  - Presentation (from `../`)
   - Quick
-  - Tutorial (from `../`)
 
 EXTERNAL SOURCES:
   Pages:
     :git: https://github.com/hyperoslo/Pages.git
-  Tutorial:
+  Presentation:
     :path: "../"
 
 CHECKOUT OPTIONS:
   Pages:
-    :commit: cf50faa4fc77ec27f946135626fd9a76e677fde6
+    :commit: d71fa4912e42f9dda6d8dea71e4f5306c24607d0
     :git: https://github.com/hyperoslo/Pages.git
 
 SPEC CHECKSUMS:
@@ -33,7 +33,7 @@ SPEC CHECKSUMS:
   Hex: acf6d0dc34658d3d44047a992bfd09190c87e6e7
   Nimble: 49b7a7da8919f42823d37c6d68cc6d15a7009f32
   Pages: 7eb72cc268ae1092bfa7ad2c9495dc55af301ae1
+  Presentation: e80c45ee632d2f7f6ae747749651aaaba023bd2d
   Quick: 824572d3d198d51e52cf4aa722cebf7e59952a35
-  Tutorial: e0c4d8c94beb9b525b7401346c2b53bf4c84e65c
 
 COCOAPODS: 0.36.4
