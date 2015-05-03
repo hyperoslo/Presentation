@@ -92,10 +92,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
       if index == 0 {
         titles[index].position.left = 0.5
-        texts[index].position.left = 0.5
 
         controller.addAnimations([
-          DissolveAnimation(content: titles[index], duration: 2.0, delay: 2.0)])
+          DissolveAnimation(content: titles[index], duration: 2.0, delay: 1.0)])
       } else {
         controller.addAnimations([
           Content.centerTransitionForSlideContent(titles[index]),
