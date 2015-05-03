@@ -1,13 +1,10 @@
 import UIKit
 import Cartography
 
-import UIKit
-import Cartography
-
 public class Content: NSObject {
 
   public var view: UIView
-  public var centered: Bool = true
+  public var centered: Bool
 
   public var position: Position {
     didSet {
