@@ -1,5 +1,5 @@
-language: objective-c
-before_install:
-- gem install cocoapods
-podfile: Pod/Podfile
-script: xctool -workspace Pod/Pod.xcworkspace -scheme Tests -sdk iphonesimulator build test
+# language: objective-c
+# before_install:
+# - gem install cocoapods
+# podfile: Pod/Podfile
+# script: xctool -workspace Pod/Pod.xcworkspace -scheme Tests -sdk iphonesimulator build test
