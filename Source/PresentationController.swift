@@ -1,7 +1,7 @@
 import UIKit
 import Pages
 
-public class TutorialController: PagesController {
+public class PresentationController: PagesController {
 
   private var scene = [Content]()
   private var slides = [SlideController]()
@@ -76,7 +76,7 @@ public class TutorialController: PagesController {
 
 // MARK: - Content
 
-extension TutorialController {
+extension PresentationController {
 
   public override func add(viewControllers: [UIViewController]) {
     for controller in viewControllers {
@@ -99,7 +99,7 @@ extension TutorialController {
 
 // MARK: - Animations
 
-extension TutorialController {
+extension PresentationController {
 
   public func addAnimations(animations: [Animatable], forPage page: Int) {
     for animation in animations {
@@ -125,7 +125,7 @@ extension TutorialController {
 
 // MARK: - PagesControllerDelegate
 
-extension TutorialController: PagesControllerDelegate {
+extension PresentationController: PagesControllerDelegate {
 
   public func pageViewController(pageViewController: UIPageViewController,
     setViewController viewController: UIViewController, atPage page: Int) {
@@ -136,7 +136,7 @@ extension TutorialController: PagesControllerDelegate {
 
 // MARK: - UIScrollViewDelegate
 
-extension TutorialController: UIScrollViewDelegate {
+extension PresentationController: UIScrollViewDelegate {
 
   public func scrollViewDidScroll(scrollView: UIScrollView) {
     let offset = scrollView.contentOffset.x - CGRectGetWidth(view.frame)

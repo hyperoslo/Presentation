@@ -1,24 +1,23 @@
 import UIKit
-import Pages
 import Hex
-import Tutorial
+import Presentation
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
   var window: UIWindow?
 
-  lazy var tutorialController: TutorialController = {
-    return TutorialController(pages: [])
+  lazy var presentationController: PresentationController = {
+    return PresentationController(pages: [])
     }()
 
   func application(
     application: UIApplication,
     didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
 
-      tutorialController.setNavigationTitle = false
+      presentationController.setNavigationTitle = false
 
-      let navigationController = UINavigationController(rootViewController: tutorialController)
+      let navigationController = UINavigationController(rootViewController: presentationController)
       navigationController.view.backgroundColor = UIColor(fromHex:"FF5703")
 
       UINavigationBar.appearance().barTintColor = UIColor(fromHex:"FF5703")
@@ -27,7 +26,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
       let leftButton = UIBarButtonItem(
         title: "Previous page",
         style: .Plain,
-        target: tutorialController,
+        target: presentationController,
         action: "previous")
 
       leftButton.setTitleTextAttributes(
@@ -37,15 +36,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
       let rightButton = UIBarButtonItem(
         title: "Next page",
         style: .Plain,
-        target: tutorialController,
+        target: presentationController,
         action: "next")
 
       rightButton.setTitleTextAttributes(
         [NSForegroundColorAttributeName : UIColor.whiteColor()],
         forState: .Normal)
 
-      tutorialController.navigationItem.leftBarButtonItem = leftButton
-      tutorialController.navigationItem.rightBarButtonItem = rightButton
+      presentationController.navigationItem.leftBarButtonItem = leftButton
+      presentationController.navigationItem.rightBarButtonItem = rightButton
 
       addSlides()
       addScene()
@@ -64,30 +63,30 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     let content2 = Content(view: images[1], position: Position(right: -0.3, top: 0.22))
     let content3 = Content(view: images[2], position: Position(left: 0.5, top: 0.5))
 
-    tutorialController.addToScene([content1, content2, content3])
+    presentationController.addToScene([content1, content2, content3])
 
-    tutorialController.addAnimations([
+    presentationController.addAnimations([
       TransitionAnimation(content: content1, destination: Position(left: 0.2, top: 0.2)),
       TransitionAnimation(content: content2, destination: Position(right: 0.3, top: 0.22)),
       PopAnimation(content: content3, duration: 1.0)
       ], forPage: 0)
 
-    tutorialController.addAnimations([
+    presentationController.addAnimations([
       TransitionAnimation(content: content1, destination: Position(left: 0.3, top: 0.2)),
       TransitionAnimation(content: content2, destination: Position(right: 0.4, top: 0.22))
       ], forPage: 1)
 
-    tutorialController.addAnimations([
+    presentationController.addAnimations([
       TransitionAnimation(content: content1, destination: Position(left: 0.5, top: 0.2)),
       TransitionAnimation(content: content2, destination: Position(right: 0.5, top: 0.22))
       ], forPage: 2)
 
-    tutorialController.addAnimations([
+    presentationController.addAnimations([
       TransitionAnimation(content: content1, destination: Position(left: 0.6, top: 0.2)),
       TransitionAnimation(content: content2, destination: Position(right: 0.7, top: 0.22))
       ], forPage: 3)
 
-    tutorialController.addAnimations([
+    presentationController.addAnimations([
       TransitionAnimation(content: content1, destination: Position(left: 0.8, top: 0.2)),
       TransitionAnimation(content: content2, destination: Position(right: 0.9, top: 0.22))
       ], forPage: 4)
@@ -122,11 +121,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     slides[4].addContent(Content.imageContent(UIImage(named: "hyper-logo")!))
 
-    tutorialController.add(slides)
+    presentationController.add(slides)
   }
 
   func resetPages() {
-    tutorialController.goTo(0)
+    presentationController.goTo(0)
   }
 }
 
