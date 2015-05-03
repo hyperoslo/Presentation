@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		96F043126EF14B2D767397F5 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 19AAEC28E205728CA1917A3B /* Pods.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		D563C9FC1AF6DD6400E2F7C8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D563C9FB1AF6DD6400E2F7C8 /* AppDelegate.swift */; };
 		D563C9FE1AF6DD6400E2F7C8 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D563C9FD1AF6DD6400E2F7C8 /* ViewController.swift */; };
 		D563CA061AF6DD6400E2F7C8 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = D563CA041AF6DD6400E2F7C8 /* LaunchScreen.xib */; };
@@ -14,6 +15,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		19AAEC28E205728CA1917A3B /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		810978B0480A9D2C02A92D9B /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		89FB75BE36A34B1D8660538C /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		D563C9F61AF6DD6400E2F7C8 /* Parallax.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Parallax.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D563C9FA1AF6DD6400E2F7C8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D563C9FB1AF6DD6400E2F7C8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -27,17 +31,37 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				96F043126EF14B2D767397F5 /* Pods.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		64FB64093DB89B3EF9BB05FE /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				810978B0480A9D2C02A92D9B /* Pods.debug.xcconfig */,
+				89FB75BE36A34B1D8660538C /* Pods.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		BDEF999980885BB6D44186A5 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				19AAEC28E205728CA1917A3B /* Pods.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		D563C9ED1AF6DD6400E2F7C8 = {
 			isa = PBXGroup;
 			children = (
 				D563C9F81AF6DD6400E2F7C8 /* Parallax */,
 				D563C9F71AF6DD6400E2F7C8 /* Products */,
+				64FB64093DB89B3EF9BB05FE /* Pods */,
+				BDEF999980885BB6D44186A5 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -84,9 +108,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = D563CA151AF6DD6400E2F7C8 /* Build configuration list for PBXNativeTarget "Parallax" */;
 			buildPhases = (
+				D32C1653AA3458D369AEE7ED /* Check Pods Manifest.lock */,
 				D563C9F21AF6DD6400E2F7C8 /* Sources */,
 				D563C9F31AF6DD6400E2F7C8 /* Frameworks */,
 				D563C9F41AF6DD6400E2F7C8 /* Resources */,
+				D85DA7B22336AAD150E7821A /* Embed Pods Frameworks */,
+				164CB660A509A195057CAD8F /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -140,6 +167,54 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		164CB660A509A195057CAD8F /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D32C1653AA3458D369AEE7ED /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		D85DA7B22336AAD150E7821A /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		D563C9F21AF6DD6400E2F7C8 /* Sources */ = {
@@ -250,6 +325,7 @@
 		};
 		D563CA161AF6DD6400E2F7C8 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 810978B0480A9D2C02A92D9B /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = Parallax/Info.plist;
@@ -260,6 +336,7 @@
 		};
 		D563CA171AF6DD6400E2F7C8 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 89FB75BE36A34B1D8660538C /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = Parallax/Info.plist;
@@ -287,6 +364,7 @@
 				D563CA171AF6DD6400E2F7C8 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

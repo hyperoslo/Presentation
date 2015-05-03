@@ -1,4 +1,5 @@
 import UIKit
+import Presentation
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -11,8 +12,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     return controller
     }()
 
-  lazy var presentationController: UIViewController = {
-    return ViewController()
+  lazy var presentationController: PresentationController = {
+    return ViewController(pages: [])
     }()
 
   func application(
