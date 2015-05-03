@@ -89,9 +89,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     for index in 0...4 {
       let controller = SlideController(contents: [titles[index], texts[index]])
-      controller.addAnimations([
-        Content.centerTransitionForSlideContent(titles[index]),
-        Content.centerTransitionForSlideContent(texts[index])])
+
+      if index == 0 {
+        titles[index].position.left = 0.5
+        texts[index].position.left = 0.5
+
+        controller.addAnimations([
+          DissolveAnimation(content: titles[index], duration: 2.0, delay: 2.0)])
+      } else {
+        controller.addAnimations([
+          Content.centerTransitionForSlideContent(titles[index]),
+          Content.centerTransitionForSlideContent(texts[index])])
+      }
 
       slides.append(controller)
     }
