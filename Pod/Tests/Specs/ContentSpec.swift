@@ -1,7 +1,7 @@
 import Quick
 import Nimble
 import UIKit
-import Tutorial
+import Presentation
 
 class ContentSpec: QuickSpec {
 
