@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		D3D95882AE758EF67F333D85 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D4A68838D32D2494868CDBA /* Pods.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		D542218C1AF64A7000F4E9A8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D542218B1AF64A7000F4E9A8 /* AppDelegate.swift */; };
-		D542218E1AF64A7000F4E9A8 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D542218D1AF64A7000F4E9A8 /* ViewController.swift */; };
 		D54221961AF64A7000F4E9A8 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = D54221941AF64A7000F4E9A8 /* LaunchScreen.xib */; };
 		D5EFE3511AF64D8500E0814D /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D5EFE3501AF64D8500E0814D /* Images.xcassets */; };
 /* End PBXBuildFile section */
@@ -21,7 +20,6 @@
 		D54221861AF64A7000F4E9A8 /* Basic.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Basic.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D542218A1AF64A7000F4E9A8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D542218B1AF64A7000F4E9A8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		D542218D1AF64A7000F4E9A8 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		D54221951AF64A7000F4E9A8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		D5EFE3501AF64D8500E0814D /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -78,7 +76,6 @@
 			children = (
 				D5EFE34F1AF64D7100E0814D /* Resources */,
 				D542218B1AF64A7000F4E9A8 /* AppDelegate.swift */,
-				D542218D1AF64A7000F4E9A8 /* ViewController.swift */,
 				D54221941AF64A7000F4E9A8 /* LaunchScreen.xib */,
 				D54221891AF64A7000F4E9A8 /* Supporting Files */,
 			);
@@ -221,7 +218,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D542218E1AF64A7000F4E9A8 /* ViewController.swift in Sources */,
 				D542218C1AF64A7000F4E9A8 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
