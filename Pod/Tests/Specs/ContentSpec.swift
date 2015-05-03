@@ -23,11 +23,19 @@ class ContentSpec: QuickSpec {
             superview.addSubview(content.view)
           }
 
+          it("changes center correctly") {
+            let center = position.originInFrame(superview.bounds)
+
+            content.layout()
+            expect(content.view.center).to(equal(center))
+          }
+
           it("changes origin correctly") {
+            content.centered = false
             let origin = position.originInFrame(superview.bounds)
 
             content.layout()
-            expect(content.view.center).to(equal(origin))
+            expect(content.view.frame.origin).to(equal(origin))
           }
         }
 
