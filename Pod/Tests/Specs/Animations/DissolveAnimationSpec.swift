@@ -79,23 +79,6 @@ class DissolveAnimationSpec: QuickSpec {
             expect(Double(view.alpha)) ≈ Double(0.0)
           }
         }
-
-        context("with playing animations") {
-          beforeEach {
-            superview.addSubview(view)
-            view.alpha = 1.0
-            UIView.animateWithDuration(10.0, animations: {
-              view.frame = CGRectZero
-            })
-          }
-
-          it("doesn't change alpha") {
-            let offsetRatio: CGFloat = 0.4
-
-            animation.moveWith(offsetRatio)
-            expect(Double(view.alpha)) ≈ Double(1.0)
-          }
-        }
       }
     }
   }
