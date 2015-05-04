@@ -57,16 +57,6 @@ class PopAnimationSpec: QuickSpec {
             expect(Double(view.alpha)) ≈ Double(1.0)
           }
         }
-
-        context("with playing animations") {
-          beforeEach {
-            superview.addSubview(view)
-            view.alpha = 1.0
-            UIView.animateWithDuration(10.0, animations: {
-              view.frame = CGRectZero
-            })
-          }
-        }
       }
     }
   }
