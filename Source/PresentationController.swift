@@ -3,7 +3,7 @@ import Pages
 
 public class PresentationController: PagesController {
 
-  private var scene = [Content]()
+  private var backgroundContents = [Content]()
   private var slides = [SlideController]()
   private var animationsForPages = [Int : [Animatable]]()
 
@@ -87,9 +87,9 @@ extension PresentationController {
     super.add(viewControllers)
   }
 
-  public func addToScene(elements: [Content]) {
+  public func addToBackground(elements: [Content]) {
     for content in elements {
-      scene.append(content)
+      backgroundContents.append(content)
       view.addSubview(content.view)
       view.sendSubviewToBack(content.view)
       content.layout()
