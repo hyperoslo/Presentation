@@ -105,13 +105,14 @@ class ViewController: PresentationController {
 
   func configureScene() {
     let sceneImages = [
-      SceneImage(name: "Trees", left: 0.0, top: 0.804, speed: -0.25),
-      SceneImage(name: "Bus", left: 0.02, top: 0.83, speed: 0.25),
-      SceneImage(name: "Roadlines", left: 0.0, top: 0.85, speed: -0.2),
-      SceneImage(name: "Houses", left: 0.0, top: 0.687, speed: -0.14),
-      SceneImage(name: "Hills", left: 0.0, top: 0.583, speed: -0.09),
-      SceneImage(name: "Mountains", left: 0.0, top: 0.41, speed: 0.0),
-      SceneImage(name: "Clouds", left: -0.1, top: 0.14, speed: 0.2),
+      SceneImage(name: "Trees", left: 0.0, top: 0.743, speed: -0.25),
+      SceneImage(name: "Bus", left: 0.02, top: 0.77, speed: 0.25),
+      SceneImage(name: "Truck", left: 1.3, top: 0.73, speed: -1.5),
+      SceneImage(name: "Roadlines", left: 0.0, top: 0.79, speed: -0.2),
+      SceneImage(name: "Houses", left: 0.0, top: 0.627, speed: -0.14),
+      SceneImage(name: "Hills", left: 0.0, top: 0.51, speed: -0.09),
+      SceneImage(name: "Mountains", left: 0.0, top: 0.29, speed: 0.0),
+      SceneImage(name: "Clouds", left: -0.415, top: 0.14, speed: 0.2),
       SceneImage(name: "Sun", left: 0.8, top: 0.07, speed: 0.0)
     ]
 
@@ -134,6 +135,14 @@ class ViewController: PresentationController {
         }
       }
     }
+
+    let groundView = UIView(frame: CGRect(x: 0.0, y: 0.0, width: 1024.0, height: 60.0))
+    groundView.backgroundColor = UIColor(fromHex: "FFCD41")
+    let groundContent = Content(view: groundView,
+      position: Position(left: 0.0, bottom: 0.063), centered: false)
+    contents.append(groundContent)
+
+    addToScene([groundContent])
   }
 }
 
