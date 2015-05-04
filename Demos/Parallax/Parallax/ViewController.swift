@@ -74,7 +74,7 @@ class ViewController: PresentationController {
 
   func configureSlides() {
     let font = UIFont(name: "HelveticaNeue", size: 42.0)!
-    let color = UIColor.blackColor()
+    let color = UIColor(fromHex: "FFE8A9")
     let paragraphStyle = NSMutableParagraphStyle()
     paragraphStyle.alignment = NSTextAlignment.Center
 
@@ -83,14 +83,14 @@ class ViewController: PresentationController {
 
     let titles = [
       "What tools do we usually use to make a cool presentation? Keynote, PowerPoint, Google Slides...",
-      "But what if we need a presentation within our iOS app? From app to app we make tutorials, release notes and different kind of animatable slides.",
-      "What could we do there? Build something from scratch every time? Defenetely, no. We are lazy developers and always want to have something universal that we could re-use.",
-      "In iOS development world - Pod - library ad off course open source.",
+      "But what if we need to present something within our iOS app? From app to app we make tutorials, release notes and different kind of animated slides.",
+      "What could we do there? Build something from scratch every time? Definitely not! We want to have something universal that we could re-use.",
+      "Presentation - iOS open source library that lets you easily create dynamic or static slides in the declarative way.",
       "Thanks!"].map { title -> Content in
         let label = UILabel(frame: CGRect(x: 0.0, y: 0.0, width: 500.0, height: 200.0))
         label.numberOfLines = 5
         label.attributedText = NSAttributedString(string: title, attributes: attributes)
-        let position = Position(left: 0.5, top: 0.35)
+        let position = Position(left: 0.7, top: 0.35)
 
         return Content(view: label, position: position)
     }
