@@ -4,6 +4,7 @@ import Cartography
 public class Content: NSObject {
 
   public var view: UIView
+  public var centered: Bool
 
   public var position: Position {
     didSet {
@@ -14,9 +15,10 @@ public class Content: NSObject {
   public private(set) var initialPosition: Position
   private let group = ConstraintGroup()
 
-  public init(view: UIView, position: Position) {
+  public init(view: UIView, position: Position, centered: Bool = true) {
     self.view = view
     self.position = position
+    self.centered = centered
     initialPosition = position.positionCopy
 
     super.init()
@@ -30,8 +32,17 @@ public class Content: NSObject {
   public func layout() {
     if let superview = view.superview {
       constrain(view, replace: group) { [unowned self] view in
-        view.centerY  == view.superview!.bottom * self.position.top
-        view.centerX == view.superview!.right * self.position.left
+        let x = self.position.left == 0.0 ? view.superview!.left * 1.0 :
+          view.superview!.right * self.position.left
+        let y = self.position.top == 0.0 ? view.superview!.top * 1.0 :
+          view.superview!.bottom * self.position.top
+        if self.centered {
+          view.centerX == x
+          view.centerY  == y
+        } else {
+          view.left == x
+          view.top == y
+        }
       }
       view.layoutIfNeeded()
     }
