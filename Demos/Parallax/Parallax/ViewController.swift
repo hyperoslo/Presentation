@@ -73,30 +73,34 @@ class ViewController: PresentationController {
   // MARK: - Configuration
 
   func configureSlides() {
-    let font = UIFont(name: "ArialRoundedMTBold", size: 42.0)!
-    let color = UIColor.whiteColor()
+    let font = UIFont(name: "HelveticaNeue", size: 42.0)!
+    let color = UIColor.blackColor()
     let paragraphStyle = NSMutableParagraphStyle()
     paragraphStyle.alignment = NSTextAlignment.Center
 
     let attributes = [NSFontAttributeName: font, NSForegroundColorAttributeName: color,
       NSParagraphStyleAttributeName: paragraphStyle]
 
-    let titles = ["Tutorial on how to make a profit", "Step I", "Step II", "Step III", "Thanks"].map {
-      Content.titleContent($0, attributes: attributes)
-    }
-    let texts = ["", "Collect underpants\n💭", "🎅🎅🏻🎅🏼🎅🏽🎅🏾🎅🏿", "Profit\n💸", ""].map {
-      Content.textContent($0, attributes: attributes)
+    let titles = [
+      "What tools do we usually use to make a cool presentation? Keynote, PowerPoint, Google Slides...",
+      "But what if we need a presentation within our iOS app? From app to app we make tutorials, release notes and different kind of animatable slides.",
+      "What could we do there? Build something from scratch every time? Defenetely, no. We are lazy developers and always want to have something universal that we could re-use.",
+      "In iOS development world - Pod - library ad off course open source.",
+      "Thanks!"].map { title -> Content in
+        let label = UILabel(frame: CGRect(x: 0.0, y: 0.0, width: 500.0, height: 200.0))
+        label.numberOfLines = 5
+        label.attributedText = NSAttributedString(string: title, attributes: attributes)
+        let position = Position(left: 0.5, top: 0.35)
+
+        return Content(view: label, position: position)
     }
 
     var slides = [SlideController]()
 
     for index in 0...4 {
-      let controller = SlideController(contents: [])
-      /*
-      controller.addAnimations([
-      Content.centerTransitionForSlideContent(titles[index]),
-      Content.centerTransitionForSlideContent(texts[index])])
-      */
+      let controller = SlideController(contents: [titles[index]])
+      controller.addAnimations([Content.centerTransitionForSlideContent(titles[index])])
+
       slides.append(controller)
     }
 
@@ -105,14 +109,14 @@ class ViewController: PresentationController {
 
   func configureScene() {
     let sceneImages = [
-      SceneImage(name: "Trees", left: 0.0, top: 0.743, speed: -0.25),
+      SceneImage(name: "Trees", left: 0.0, top: 0.743, speed: -0.3),
       SceneImage(name: "Bus", left: 0.02, top: 0.77, speed: 0.25),
       SceneImage(name: "Truck", left: 1.3, top: 0.73, speed: -1.5),
-      SceneImage(name: "Roadlines", left: 0.0, top: 0.79, speed: -0.2),
-      SceneImage(name: "Houses", left: 0.0, top: 0.627, speed: -0.14),
-      SceneImage(name: "Hills", left: 0.0, top: 0.51, speed: -0.09),
+      SceneImage(name: "Roadlines", left: 0.0, top: 0.79, speed: -0.24),
+      SceneImage(name: "Houses", left: 0.0, top: 0.627, speed: -0.16),
+      SceneImage(name: "Hills", left: 0.0, top: 0.51, speed: -0.08),
       SceneImage(name: "Mountains", left: 0.0, top: 0.29, speed: 0.0),
-      SceneImage(name: "Clouds", left: -0.415, top: 0.14, speed: 0.2),
+      SceneImage(name: "Clouds", left: -0.415, top: 0.14, speed: 0.18),
       SceneImage(name: "Sun", left: 0.8, top: 0.07, speed: 0.0)
     ]
 
