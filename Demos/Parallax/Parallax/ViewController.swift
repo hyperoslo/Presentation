@@ -73,7 +73,7 @@ class ViewController: PresentationController {
   // MARK: - Configuration
 
   func configureSlides() {
-    let font = UIFont(name: "HelveticaNeue", size: 42.0)!
+    let font = UIFont(name: "HelveticaNeue", size: 34.0)!
     let color = UIColor(fromHex: "FFE8A9")
     let paragraphStyle = NSMutableParagraphStyle()
     paragraphStyle.alignment = NSTextAlignment.Center
@@ -82,12 +82,12 @@ class ViewController: PresentationController {
       NSParagraphStyleAttributeName: paragraphStyle]
 
     let titles = [
-      "What tools do we usually use to make a cool presentation? Keynote, PowerPoint, Google Slides...",
-      "But what if we need to present something within our iOS app? From app to app we make tutorials, release notes and different kind of animated slides.",
-      "What could we do there? Build something from scratch every time? Definitely not! We want to have something universal that we could re-use.",
-      "Presentation - iOS open source library that lets you easily create dynamic or static slides in the declarative way.",
-      "Thanks!"].map { title -> Content in
-        let label = UILabel(frame: CGRect(x: 0.0, y: 0.0, width: 500.0, height: 200.0))
+      "Parallax is a displacement or difference in the apparent position of an object viewed along two different lines of sight.",
+      "It's measured by the angle or semi-angle of inclination between those two lines.",
+      "The term is derived from the Greek word παράλλαξις (parallaxis), meaning 'alteration'.",
+      "Nearby objects have a larger parallax than more distant objects when observed from different positions.",
+      "http://en.wikipedia.org/wiki/Parallax"].map { title -> Content in
+        let label = UILabel(frame: CGRect(x: 0.0, y: 0.0, width: 550.0, height: 200.0))
         label.numberOfLines = 5
         label.attributedText = NSAttributedString(string: title, attributes: attributes)
         let position = Position(left: 0.7, top: 0.35)
