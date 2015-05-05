@@ -17,7 +17,7 @@ public class PopAnimation: NSObject, Animatable {
   private func animate() {
     let view = content.view
     if view.hidden {
-      view.transform = CGAffineTransformMakeScale(0.6, 0.6)
+      view.transform = CGAffineTransformMakeScale(0.95, 0.95)
     }
     view.hidden = false
 
@@ -26,12 +26,12 @@ public class PopAnimation: NSObject, Animatable {
         view.transform = CGAffineTransformMakeScale(1.05, 1.05)
         view.alpha = 0.8
       }, completion: { _ in
-        UIView.animateWithDuration(1 / 8.0,
+        UIView.animateWithDuration(0.1,
           animations: {
-            view.transform = CGAffineTransformMakeScale(0.9, 0.9)
+            view.transform = CGAffineTransformMakeScale(0.95, 0.95)
             view.alpha = 0.9
           }, completion: { _ in
-            UIView.animateWithDuration(1 / 4.0,
+            UIView.animateWithDuration(0.1,
               animations: {
                 view.transform = CGAffineTransformIdentity
                 view.alpha = 1.0

@@ -2,11 +2,11 @@ import Quick
 import Nimble
 import Presentation
 
-class PopAnimationSpec: QuickSpec {
+class DissolveAnimationSpec: QuickSpec {
 
   override func spec() {
-    describe("PopAnimation") {
-      var animation: PopAnimation!
+    describe("DissolveAnimation") {
+      var animation: DissolveAnimation!
       var view: UIView!
       var content: Content!
       var superview: UIView!
@@ -15,12 +15,34 @@ class PopAnimationSpec: QuickSpec {
         view = SpecHelper.imageView()
         content = Content(view: view, position: Position(left: 0.2, bottom: 0.2))
         superview = UIView(frame: CGRect(x: 0.0, y: 0.0, width: 300.0, height: 200.0))
-        animation = PopAnimation(content: content, duration: 0)
+        animation = DissolveAnimation(content: content, duration: 0.0, delay: 0.0)
       }
 
       describe("#init") {
-        it("hides view") {
-          expect(view.hidden).to(beTrue())
+        it("sets alpha to zero") {
+          expect(Double(view.alpha)) ≈ Double(0.0)
+        }
+      }
+
+      describe("#play") {
+        beforeEach {
+          superview.addSubview(view)
+          animation.play()
+        }
+
+        it("changes alpha to 1.0") {
+          expect(Double(view.alpha)) ≈ Double(1.0)
+        }
+      }
+
+      describe("#playBack") {
+        beforeEach {
+          superview.addSubview(view)
+          animation.playBack()
+        }
+
+        it("changes alpha to zero") {
+          expect(Double(view.alpha)) ≈ Double(0.0)
         }
       }
 
@@ -31,7 +53,7 @@ class PopAnimationSpec: QuickSpec {
           }
 
           context("with positive offsetRatio") {
-            it("moves view correctly") {
+            it("changes alpha correctly") {
               let offsetRatio: CGFloat = 0.4
 
               animation.moveWith(offsetRatio)
@@ -40,7 +62,7 @@ class PopAnimationSpec: QuickSpec {
           }
 
           context("with negative offsetRatio") {
-            it("moves view correctly") {
+            it("changes alpha correctly") {
               let offsetRatio: CGFloat = -0.4
 
               animation.moveWith(offsetRatio)
@@ -50,11 +72,11 @@ class PopAnimationSpec: QuickSpec {
         }
 
         context("without superview") {
-          it("doesn't change position") {
+          it("doesn't change alpha") {
             let offsetRatio: CGFloat = 0.4
 
             animation.moveWith(offsetRatio)
-            expect(Double(view.alpha)) ≈ Double(1.0)
+            expect(Double(view.alpha)) ≈ Double(0.0)
           }
         }
       }

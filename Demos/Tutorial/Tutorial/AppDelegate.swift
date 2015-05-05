@@ -59,8 +59,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
       presentationController.navigationItem.leftBarButtonItem = leftButton
       presentationController.navigationItem.rightBarButtonItem = rightButton
 
-      addSlides()
-      addScene()
+      configureSlides()
+      configureBackground()
 
       window = UIWindow(frame: UIScreen.mainScreen().bounds)
       window?.rootViewController = navigationController
@@ -69,7 +69,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
       return true
   }
 
-  func addSlides() {
+  func configureSlides() {
     let font = UIFont(name: "ArialRoundedMTBold", size: 42.0)!
     let color = UIColor.whiteColor()
     let paragraphStyle = NSMutableParagraphStyle()
@@ -89,9 +89,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     for index in 0...4 {
       let controller = SlideController(contents: [titles[index], texts[index]])
-      controller.addAnimations([
-        Content.centerTransitionForSlideContent(titles[index]),
-        Content.centerTransitionForSlideContent(texts[index])])
+
+      if index == 0 {
+        titles[index].position.left = 0.5
+
+        controller.addAnimations([
+          DissolveAnimation(content: titles[index], duration: 2.0, delay: 1.0)])
+      } else {
+        controller.addAnimations([
+          Content.centerTransitionForSlideContent(titles[index]),
+          Content.centerTransitionForSlideContent(texts[index])])
+      }
 
       slides.append(controller)
     }
@@ -101,14 +109,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     presentationController.add(slides)
   }
 
-  func addScene() {
+  func configureBackground() {
     let images = ["Cloud1", "Cloud2", "Cloud1"].map { UIImageView(image: UIImage(named: $0)) }
 
     let content1 = Content(view: images[0], position: Position(left: -0.3, top: 0.2))
     let content2 = Content(view: images[1], position: Position(right: -0.3, top: 0.22))
     let content3 = Content(view: images[2], position: Position(left: 0.5, top: 0.5))
 
-    presentationController.addToScene([content1, content2, content3])
+    presentationController.addToBackground([content1, content2, content3])
 
     presentationController.addAnimations([
       TransitionAnimation(content: content1, destination: Position(left: 0.2, top: 0.2)),
