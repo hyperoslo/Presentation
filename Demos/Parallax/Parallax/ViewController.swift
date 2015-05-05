@@ -4,7 +4,7 @@ import Presentation
 
 class ViewController: PresentationController {
 
-  struct SceneImage {
+  struct BackgroundImage {
     let name: String
     let left: CGFloat
     let top: CGFloat
@@ -67,7 +67,7 @@ class ViewController: PresentationController {
     view.backgroundColor = UIColor(fromHex: "FFBC00")
 
     configureSlides()
-    configureScene()
+    configureBackground()
   }
 
   // MARK: - Configuration
@@ -107,33 +107,33 @@ class ViewController: PresentationController {
     add(slides)
   }
 
-  func configureScene() {
-    let sceneImages = [
-      SceneImage(name: "Trees", left: 0.0, top: 0.743, speed: -0.3),
-      SceneImage(name: "Bus", left: 0.02, top: 0.77, speed: 0.25),
-      SceneImage(name: "Truck", left: 1.3, top: 0.73, speed: -1.5),
-      SceneImage(name: "Roadlines", left: 0.0, top: 0.79, speed: -0.24),
-      SceneImage(name: "Houses", left: 0.0, top: 0.627, speed: -0.16),
-      SceneImage(name: "Hills", left: 0.0, top: 0.51, speed: -0.08),
-      SceneImage(name: "Mountains", left: 0.0, top: 0.29, speed: 0.0),
-      SceneImage(name: "Clouds", left: -0.415, top: 0.14, speed: 0.18),
-      SceneImage(name: "Sun", left: 0.8, top: 0.07, speed: 0.0)
+  func configureBackground() {
+    let backgroundImages = [
+      BackgroundImage(name: "Trees", left: 0.0, top: 0.743, speed: -0.3),
+      BackgroundImage(name: "Bus", left: 0.02, top: 0.77, speed: 0.25),
+      BackgroundImage(name: "Truck", left: 1.3, top: 0.73, speed: -1.5),
+      BackgroundImage(name: "Roadlines", left: 0.0, top: 0.79, speed: -0.24),
+      BackgroundImage(name: "Houses", left: 0.0, top: 0.627, speed: -0.16),
+      BackgroundImage(name: "Hills", left: 0.0, top: 0.51, speed: -0.08),
+      BackgroundImage(name: "Mountains", left: 0.0, top: 0.29, speed: 0.0),
+      BackgroundImage(name: "Clouds", left: -0.415, top: 0.14, speed: 0.18),
+      BackgroundImage(name: "Sun", left: 0.8, top: 0.07, speed: 0.0)
     ]
 
     var contents = [Content]()
 
-    for sceneImage in sceneImages {
-      let imageView = UIImageView(image: UIImage(named: sceneImage.name))
-      if let position = sceneImage.positionAt(0) {
+    for backgroundImage in backgroundImages {
+      let imageView = UIImageView(image: UIImage(named: backgroundImage.name))
+      if let position = backgroundImage.positionAt(0) {
         contents.append(Content(view: imageView, position: position, centered: false))
       }
     }
 
-    addToScene(contents)
+    addToBackground(contents)
 
     for i in 1...4 {
-      for (j, sceneImage) in enumerate(sceneImages) {
-        if let position = sceneImage.positionAt(i), content = contents.at(j) {
+      for (j, backgroundImage) in enumerate(backgroundImages) {
+        if let position = backgroundImage.positionAt(i), content = contents.at(j) {
           addAnimation(TransitionAnimation(content: content, destination: position,
             duration: 2.0, dumping: 1.0), forPage: i)
         }
@@ -146,7 +146,7 @@ class ViewController: PresentationController {
       position: Position(left: 0.0, bottom: 0.063), centered: false)
     contents.append(groundContent)
 
-    addToScene([groundContent])
+    addToBackground([groundContent])
   }
 }
 
