@@ -87,7 +87,7 @@ class ViewController: PresentationController {
       "The term is derived from the Greek word παράλλαξις (parallaxis), meaning 'alteration'.",
       "Nearby objects have a larger parallax than more distant objects when observed from different positions.",
       "http://en.wikipedia.org/wiki/Parallax"].map { title -> Content in
-        let label = UILabel(frame: CGRect(x: 0.0, y: 0.0, width: 550.0, height: 200.0))
+        let label = UILabel(frame: CGRect(x: 0, y: 0, width: 550, height: 200))
         label.numberOfLines = 5
         label.attributedText = NSAttributedString(string: title, attributes: attributes)
         let position = Position(left: 0.7, top: 0.35)
@@ -131,16 +131,16 @@ class ViewController: PresentationController {
 
     addToBackground(contents)
 
-    for i in 1...4 {
-      for (j, backgroundImage) in enumerate(backgroundImages) {
-        if let position = backgroundImage.positionAt(i), content = contents.at(j) {
+    for row in 1...4 {
+      for (column, backgroundImage) in enumerate(backgroundImages) {
+        if let position = backgroundImage.positionAt(row), content = contents.at(column) {
           addAnimation(TransitionAnimation(content: content, destination: position,
-            duration: 2.0, dumping: 1.0), forPage: i)
+            duration: 2.0, dumping: 1.0), forPage: row)
         }
       }
     }
 
-    let groundView = UIView(frame: CGRect(x: 0.0, y: 0.0, width: 1024.0, height: 60.0))
+    let groundView = UIView(frame: CGRect(x: 0, y: 0, width: 1024, height: 60))
     groundView.backgroundColor = UIColor(fromHex: "FFCD41")
     let groundContent = Content(view: groundView,
       position: Position(left: 0.0, bottom: 0.063), centered: false)
