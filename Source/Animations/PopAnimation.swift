@@ -4,10 +4,13 @@ public class PopAnimation: NSObject, Animatable {
 
   let content: Content
   let duration: NSTimeInterval
+  var initial: Bool
+  var played = false
 
-  public init(content: Content, duration: NSTimeInterval = 1.0) {
+  public init(content: Content, duration: NSTimeInterval = 1.0, initial: Bool = false) {
     self.content = content
     self.duration = duration
+    self.initial = initial
 
     content.view.hidden = true
 
@@ -38,6 +41,8 @@ public class PopAnimation: NSObject, Animatable {
               }, completion: nil)
         })
     })
+
+    played = true
   }
 }
 
@@ -47,15 +52,19 @@ extension PopAnimation {
 
   public func play() {
     if content.view.superview != nil {
-      content.view.hidden = true
-      animate()
+      if !(initial && played) {
+        content.view.hidden = true
+        animate()
+      }
     }
   }
 
   public func playBack() {
     if content.view.superview != nil {
-      content.view.hidden = false
-      animate()
+      if !(initial && played) {
+        content.view.hidden = false
+        animate()
+      }
     }
   }
 
