@@ -142,7 +142,6 @@ extension PresentationController: UIScrollViewDelegate {
     let offset = scrollView.contentOffset.x - CGRectGetWidth(view.frame)
     let offsetRatio = offset / CGRectGetWidth(view.frame)
 
-
     var index = animationIndex
     if offsetRatio > 0.0 || index == 0 {
       index++
