@@ -143,7 +143,7 @@ extension PresentationController: UIScrollViewDelegate {
     let offsetRatio = offset / CGRectGetWidth(view.frame)
 
     var index = animationIndex
-    if (offsetRatio > 0.0 && index < pagesCount - 1) || (index == 0) {
+    if offsetRatio > 0.0 || index == 0 {
       index++
     }
 
