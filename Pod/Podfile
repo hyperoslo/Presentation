@@ -8,9 +8,5 @@ pod 'Presentation', path: '../'
 pod 'Pages', '0.5.0'
 pod 'Hex'
 pod 'Cartography'
-
-target 'Tests' do
-    use_frameworks!
-    pod 'Quick'
-    pod 'Nimble'
-end
+pod 'Quick'
+pod 'Nimble'

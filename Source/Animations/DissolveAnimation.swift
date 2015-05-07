@@ -24,7 +24,7 @@ public class DissolveAnimation: NSObject, Animatable {
       delay: delay,
       usingSpringWithDamping: 1.0,
       initialSpringVelocity: 0.5,
-      options: .BeginFromCurrentState,
+      options: .BeginFromCurrentState | .AllowUserInteraction,
       animations: { [unowned self] in
         self.content.view.alpha = alpha
       }, completion: nil)

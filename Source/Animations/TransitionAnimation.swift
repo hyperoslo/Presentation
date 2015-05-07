@@ -32,7 +32,7 @@ public class TransitionAnimation: NSObject, Animatable {
       delay: 0,
       usingSpringWithDamping: dumping,
       initialSpringVelocity: 0.5,
-      options: .BeginFromCurrentState,
+      options: .BeginFromCurrentState | .AllowUserInteraction,
       animations: { [unowned self] in
         self.content.position = position
       }, completion: nil)
