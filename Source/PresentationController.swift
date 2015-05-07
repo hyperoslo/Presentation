@@ -144,7 +144,7 @@ extension PresentationController: UIScrollViewDelegate {
 
 
     var index = animationIndex
-    if (offsetRatio > 0.0) || (index == 0) {
+    if offsetRatio > 0.0 || index == 0 {
       index++
     }
 
