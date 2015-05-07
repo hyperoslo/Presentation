@@ -153,8 +153,6 @@ extension PresentationController: UIScrollViewDelegate {
       !(index == pagesCount)
 
     if canMove {
-      println("\(index) - \(pagesCount)")
-
       animateAtIndex(index, perform: { animation in
         animation.moveWith(offsetRatio)
       })
