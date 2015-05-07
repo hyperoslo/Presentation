@@ -4,6 +4,7 @@ public class SlideController: UIViewController {
 
   private var contents = [Content]()
   private var animations = [Animatable]()
+  private var visible = false
 
   public convenience init(contents: [Content]) {
     self.init()
@@ -16,13 +17,22 @@ public class SlideController: UIViewController {
   public override func viewWillAppear(animated: Bool) {
     super.viewWillAppear(animated)
 
-    for content in contents {
-      content.layout()
-    }
+    if !visible {
+      visible = true
+      for content in contents {
+        content.layout()
+      }
 
-    for animation in animations {
-      animation.play()
+      for animation in animations {
+        animation.play()
+      }
     }
+  }
+
+  public override func viewDidDisappear(animated: Bool) {
+    super.viewDidDisappear(animated)
+
+    visible = false
   }
 
   // MARK: - Navigation
