@@ -6,7 +6,9 @@ public class TransitionAnimation: NSObject, Animatable {
   let destination: Position
   let duration: NSTimeInterval
   let dumping: CGFloat
-  var reflective = false
+  var reflective: Bool
+  var initial: Bool
+  var played = false
 
   lazy var start: Position = { [unowned self] in
     return self.content.position.positionCopy
@@ -17,12 +19,13 @@ public class TransitionAnimation: NSObject, Animatable {
     }()
 
   public init(content: Content, destination: Position,
-    duration: NSTimeInterval = 1.0, dumping: CGFloat = 0.7, reflective: Bool = false) {
+    duration: NSTimeInterval = 1.0, dumping: CGFloat = 0.7, reflective: Bool = false, initial: Bool = false) {
       self.content = content
       self.destination = destination
       self.duration = duration
       self.dumping = dumping
       self.reflective = reflective
+      self.initial = initial
 
       super.init()
   }
@@ -36,6 +39,8 @@ public class TransitionAnimation: NSObject, Animatable {
       animations: { [unowned self] in
         self.content.position = position
       }, completion: nil)
+
+    played = true
   }
 }
 
@@ -44,19 +49,23 @@ public class TransitionAnimation: NSObject, Animatable {
 extension TransitionAnimation {
 
   public func play() {
-    let position = reflective ? startMirror : start
-
     if let superview = content.view.superview {
-      content.position = position
-      animateTo(destination)
+      if !(initial && played) {
+        let position = reflective ? startMirror : start
+
+        content.position = position
+        animateTo(destination)
+      }
     }
   }
 
   public func playBack() {
-    let position = reflective ? startMirror : start
-
     if let superview = content.view.superview {
-      animateTo(position)
+      if !(initial && played) {
+        let position = reflective ? startMirror : start
+
+        animateTo(position)
+      }
     }
   }
 
