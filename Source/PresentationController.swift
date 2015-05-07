@@ -142,8 +142,9 @@ extension PresentationController: UIScrollViewDelegate {
     let offset = scrollView.contentOffset.x - CGRectGetWidth(view.frame)
     let offsetRatio = offset / CGRectGetWidth(view.frame)
 
+
     var index = animationIndex
-    if (offsetRatio > 0.0 && index < pagesCount - 1) || (index == 0) {
+    if (offsetRatio > 0.0) || (index == 0) {
       index++
     }
 
@@ -152,6 +153,8 @@ extension PresentationController: UIScrollViewDelegate {
       !(index == pagesCount)
 
     if canMove {
+      println("\(index) - \(pagesCount)")
+
       animateAtIndex(index, perform: { animation in
         animation.moveWith(offsetRatio)
       })
