@@ -7,6 +7,8 @@
 
 Looking for the easy way of creating magazine-like slides in your iOS app? Then you are in the right place. **Presentation** will help you to make your tutorials, release notes and any kind of animated pages with the minimum amount of effort.
 
+![Parallax](https://github.com/hyperoslo/Presentation/blob/master/Demos/Parallax/Images/Parallax.gif)
+
 *Presentation* includes the following features:
 
 - Custom positioning: you can use [Position](https://github.com/hyperoslo/Presentation/blob/master/Source/Position.swift) for percentage-based position declaration.
