@@ -5,9 +5,7 @@
 [![License](https://img.shields.io/cocoapods/l/Presentation.svg?style=flat)](http://cocoadocs.org/docsets/Presentation)
 [![Platform](https://img.shields.io/cocoapods/p/Presentation.svg?style=flat)](http://cocoadocs.org/docsets/Presentation)
 
-Looking for the easy way of creating magazine-like slides in your iOS app? Then you are in the right place. **Presentation** will help you to make your tutorials, release notes and any kind of animated pages with the minimum amount of effort.
-
-![Parallax](https://github.com/hyperoslo/Presentation/blob/master/Demos/Parallax/Images/Parallax.gif)
+Looking for the easiest way of presenting something in your iOS app? Then you are in the right place. **Presentation** will help you to make your tutorials, release notes and any kind of animated pages with the minimum amount of effort.
 
 *Presentation* includes the following features:
 
@@ -20,6 +18,8 @@ Looking for the easy way of creating magazine-like slides in your iOS app? Then 
 Presentation works both on the iPhone and the iPad. You can use it with both `Swift` and `Objective-C`.
 
 Try one of our [demos](https://github.com/hyperoslo/Presentation/tree/master/Demos) to see how it works.
+
+![Parallax](https://github.com/hyperoslo/Presentation/blob/master/Demos/Parallax/Images/Parallax.gif)
 
 ## Usage
 
@@ -35,7 +35,6 @@ let viewController2 = UIViewController()
 viewController2.title = "Controller B"
 
 let presentationController = PresentationController(pages: [viewController1, viewController2])
-
 ```
 
 If it's the only thing you need mind looking at [Pages](https://github.com/hyperoslo/Pages), it does the same for you.
