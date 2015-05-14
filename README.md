@@ -1,4 +1,4 @@
-![Presentation logo](https://raw.githubusercontent.com/hyperoslo/Presentation/feature/logo/Images/logo_v3.png)
+![Presentation logo](https://raw.githubusercontent.com/hyperoslo/Presentation/master/Images/logo_v3.png)
 
 [![CI Status](http://img.shields.io/travis/hyperoslo/Presentation.svg?style=flat)](https://travis-ci.org/hyperoslo/Presentation)
 [![Version](https://img.shields.io/cocoapods/v/Presentation.svg?style=flat)](http://cocoadocs.org/docsets/Presentation)
