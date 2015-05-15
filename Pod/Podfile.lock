@@ -2,18 +2,18 @@ PODS:
   - Cartography (0.5.0)
   - Hex (1.1.1)
   - Nimble (0.4.2)
-  - Pages (0.5.0)
+  - Pages (0.6.0)
   - Presentation (0.1):
     - Cartography (~> 0.5.0)
     - Hex (~> 1.1.1)
-    - Pages (~> 0.5.0)
+    - Pages (~> 0.6.0)
   - Quick (0.3.1)
 
 DEPENDENCIES:
   - Cartography
   - Hex
   - Nimble
-  - Pages (= 0.5.0)
+  - Pages (= 0.6.0)
   - Presentation (from `../`)
   - Quick
 
@@ -25,8 +25,8 @@ SPEC CHECKSUMS:
   Cartography: 774e5cc446f5a6bca5d4345c5aa6af9a1fe74dc6
   Hex: acf6d0dc34658d3d44047a992bfd09190c87e6e7
   Nimble: 49b7a7da8919f42823d37c6d68cc6d15a7009f32
-  Pages: 0c1abc35e532a488dfb8a281ebbb35e5e3026649
-  Presentation: 3178c513f5d8d2f2a3b6d27e4ec70599538ff4cb
+  Pages: 355c1bdecc54e5e52841e96bf8a12b477e474bb2
+  Presentation: f39db740adcefa15a394cf6920f927f26ca71848
   Quick: 824572d3d198d51e52cf4aa722cebf7e59952a35
 
-COCOAPODS: 0.37.0
+COCOAPODS: 0.37.1
