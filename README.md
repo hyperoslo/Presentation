@@ -131,6 +131,14 @@ it, simply add the following line to your Podfile:
 pod 'Presentation'
 ```
 
+## Components
+
+**Presentation** wouldn’t be possible without the help of this components:
+
+* [**Pages**](https://github.com/3lvis/DATAStack): The easiest way of setting up a `UIPageViewController`
+
+* [**Cartography**](https://github.com/robb/Cartography): Helps you purge deleted objects, internally we use it to diff inserts, updates and deletes. Also it’s used for uniquing Core Data does this based on objectIDs, DATAFilter uses your remote keys (such as id) for this
+
 ## Contributing
 
 Please check our [playbook](https://github.com/hyperoslo/playbook/blob/master/GIT_AND_GITHUB.md) for guidelines on contributing.
