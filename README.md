@@ -19,7 +19,9 @@ Presentation works both on the iPhone and the iPad. You can use it with both `Sw
 
 Try one of our [demos](https://github.com/hyperoslo/Presentation/tree/master/Demos) to see how it works.
 
-![Parallax](https://raw.githubusercontent.com/hyperoslo/Presentation/master/Demos/Parallax/Images/Parallax-v2.gif)
+<p align="center">
+  <img src="https://raw.githubusercontent.com/hyperoslo/Presentation/master/Demos/Parallax/Images/Parallax-v2.gif"/>
+</p>
 
 ## Usage
 
