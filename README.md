@@ -21,6 +21,21 @@ Try one of our [demos](https://github.com/hyperoslo/Presentation/tree/master/Dem
 
 ![Parallax](https://raw.githubusercontent.com/hyperoslo/Presentation/master/Demos/Parallax/Images/Parallax-v2.gif)
 
+## Table of Contents
+
+* [Usage](#usage)
+  * [Presentation controller](#presentation-controller)
+  * [Position](#position)
+  * [Content view model](#content-view-model)
+  * [Slides](#slides)
+  * [Page animations](#page-animations)
+  * [Background views](#background-views)
+* [Installation](#installation)
+* [Components](#components)
+* [Contributing](#contributing)
+* [Credits](#credits)
+* [License](#license)
+
 ## Usage
 
 ### Presentation controller
@@ -104,7 +119,7 @@ for index in 0...4 {
 presentationController.add(slides)
 ```
 
-## Background views
+### Background views
 
 ```swift
 let imageView = UIImageView(image: UIImage(named: "image"))
@@ -135,9 +150,9 @@ pod 'Presentation'
 
 **Presentation** wouldn’t be possible without the help of this components:
 
-* [**Pages**](https://github.com/3lvis/DATAStack): The easiest way of setting up a `UIPageViewController`
+* [**Pages**](https://github.com/hyperoslo/Pages): The easiest way of setting up a `UIPageViewController`
 
-* [**Cartography**](https://github.com/robb/Cartography): Helps you purge deleted objects, internally we use it to diff inserts, updates and deletes. Also it’s used for uniquing Core Data does this based on objectIDs, DATAFilter uses your remote keys (such as id) for this
+* [**Cartography**](https://github.com/robb/Cartography): Helps you set up your Auto Layout constraints declaratively and without any stringly typing!
 
 ## Contributing
 
