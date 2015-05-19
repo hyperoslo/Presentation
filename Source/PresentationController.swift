@@ -3,7 +3,7 @@ import Pages
 
 @objc public protocol PresentationControllerDelegate {
 
-  func presentationController(presentationController: PresentationController, setViewController viewController: UIViewController, atPage page: Int)
+  func presentationController(presentationController: PresentationController, didSetViewController viewController: UIViewController, atPage page: Int)
 }
 
 public class PresentationController: PagesController {
@@ -139,7 +139,7 @@ extension PresentationController: PagesControllerDelegate {
       animationIndex = page
       scrollView?.delegate = self
 
-      presentationDelegate?.presentationController(self, setViewController: viewController, atPage: page)
+      presentationDelegate?.presentationController(self, didSetViewController: viewController, atPage: page)
   }
 }
 
