@@ -53,7 +53,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     application: UIApplication,
     didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
 
-      UINavigationBar.appearance().barTintColor = UIColor(hex: "5703")
+      UINavigationBar.appearance().barTintColor = UIColor(hex: "FF5703")
       UINavigationBar.appearance().barStyle = .BlackTranslucent
 
       presentationController.navigationItem.leftBarButtonItem = leftButton

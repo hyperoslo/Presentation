@@ -5,3 +5,4 @@ use_frameworks!
 platform :ios, '8.0'
 
 pod 'Presentation', path: '../../'
+pod 'Hex', '~> 2.0'

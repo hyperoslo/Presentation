@@ -64,7 +64,7 @@ class ViewController: PresentationController {
     navigationItem.leftBarButtonItem = leftButton
     navigationItem.rightBarButtonItem = rightButton
 
-    view.backgroundColor = UIColor(fromHex: "FFBC00")
+    view.backgroundColor = UIColor(hex: "FFBC00")
 
     configureSlides()
     configureBackground()
@@ -74,7 +74,7 @@ class ViewController: PresentationController {
 
   func configureSlides() {
     let font = UIFont(name: "HelveticaNeue", size: 34.0)!
-    let color = UIColor(fromHex: "FFE8A9")
+    let color = UIColor(hex: "FFE8A9")
     let paragraphStyle = NSMutableParagraphStyle()
     paragraphStyle.alignment = NSTextAlignment.Center
 
@@ -141,7 +141,7 @@ class ViewController: PresentationController {
     }
 
     let groundView = UIView(frame: CGRect(x: 0, y: 0, width: 1024, height: 60))
-    groundView.backgroundColor = UIColor(fromHex: "FFCD41")
+    groundView.backgroundColor = UIColor(hex: "FFCD41")
     let groundContent = Content(view: groundView,
       position: Position(left: 0.0, bottom: 0.063), centered: false)
     contents.append(groundContent)
