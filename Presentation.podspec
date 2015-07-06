@@ -1,7 +1,7 @@
 Pod::Spec.new do |s|
   s.name             = "Presentation"
   s.summary          = "A short description of Presentation."
-  s.version          = "0.1"
+  s.version          = "1.0"
   s.homepage         = "https://github.com/hyperoslo/Presentation"
   s.license          = 'MIT'
   s.author           = { "Hyper" => "ios@hyper.no" }
