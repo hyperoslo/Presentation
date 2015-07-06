@@ -5,8 +5,8 @@ use_frameworks!
 platform :ios, '8.0'
 
 pod 'Presentation', path: '../'
-pod 'Pages', '0.6.0'
+pod 'Pages'
 pod 'Hex'
 pod 'Cartography'
-pod 'Quick'
-pod 'Nimble'
+pod 'Quick', '0.3.1'
+pod 'Nimble', '1.0.0-rc.1'
