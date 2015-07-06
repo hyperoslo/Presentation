@@ -1,26 +1,23 @@
 PODS:
   - Cartography (0.5.0)
-  - Hex (1.1.1)
-  - Pages (0.6.0)
-  - Presentation (0.1):
+  - Hex (2.0)
+  - Pages (0.6.1)
+  - Presentation (1.0):
     - Cartography (~> 0.5.0)
-    - Hex (~> 1.1.1)
-    - Pages (~> 0.6.0)
+    - Pages (~> 0.6.1)
 
 DEPENDENCIES:
-  - Cartography
-  - Hex
-  - Pages (= 0.6.0)
+  - Hex (~> 2.0)
   - Presentation (from `../../`)
 
 EXTERNAL SOURCES:
   Presentation:
-    :path: "../../"
+    :path: ../../
 
 SPEC CHECKSUMS:
   Cartography: 774e5cc446f5a6bca5d4345c5aa6af9a1fe74dc6
-  Hex: acf6d0dc34658d3d44047a992bfd09190c87e6e7
-  Pages: 355c1bdecc54e5e52841e96bf8a12b477e474bb2
-  Presentation: f39db740adcefa15a394cf6920f927f26ca71848
+  Hex: 1800bd20206b93b10422d2289baa3787698825ad
+  Pages: 515a8ec7396cfb7cdacc28c0beceb2ce39c065cb
+  Presentation: 47da74597602fa2555292d7c1d48e85eb503463b
 
-COCOAPODS: 0.37.1
+COCOAPODS: 0.37.2

@@ -9,7 +9,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
   lazy var navigationController: UINavigationController = { [unowned self] in
     let controller = UINavigationController(rootViewController: self.presentationController)
-    controller.view.backgroundColor = UIColor(fromHex:"FF5703")
+    controller.view.backgroundColor = UIColor(hex:"FF5703")
 
     return controller
   }()
@@ -53,7 +53,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     application: UIApplication,
     didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
 
-      UINavigationBar.appearance().barTintColor = UIColor(fromHex:"FF5703")
+      UINavigationBar.appearance().barTintColor = UIColor(hex: "FF5703")
       UINavigationBar.appearance().barStyle = .BlackTranslucent
 
       presentationController.navigationItem.leftBarButtonItem = leftButton
