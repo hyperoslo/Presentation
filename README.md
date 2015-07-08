@@ -10,7 +10,7 @@ Looking for the easiest way of presenting something in your iOS app? Then you ar
 *Presentation* includes the following features:
 
 - Custom positioning: you can use [Position](https://github.com/hyperoslo/Presentation/blob/master/Source/Position.swift) for percentage-based position declaration.
-- [Content](https://github.com/hyperoslo/Presentation/blob/master/Source/Content.swift): View model used for custom positioning and animations. It translated your percents to AutoLayout constraints behind the scene.
+- [Content](https://github.com/hyperoslo/Presentation/blob/master/Source/Content.swift): View model used for custom positioning and animations. It translates your percents to AutoLayout constraints behind the scene.
 - Slides: You can use any kind of `UIViewController` as a slide. [SlideController](https://github.com/hyperoslo/Presentation/blob/master/Source/SlideController.swift) is your good friend if you want to use custom positioning and animation features on your pages.
 - Background: You can add views that are visible across all the pages. Also it's possible to animate those views during the transition to the specific page.  
 - [Animations](https://github.com/hyperoslo/Presentation/tree/master/Source/Animations): You can easily animate the appearance of a view on the specific page.
