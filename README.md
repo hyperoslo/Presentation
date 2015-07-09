@@ -5,12 +5,12 @@
 [![License](https://img.shields.io/cocoapods/l/Presentation.svg?style=flat)](http://cocoadocs.org/docsets/Presentation)
 [![Platform](https://img.shields.io/cocoapods/p/Presentation.svg?style=flat)](http://cocoadocs.org/docsets/Presentation)
 
-Looking for the easiest way of presenting something in your iOS app? Then you are in the right place. **Presentation** will help you to make your tutorials, release notes and any kind of animated pages with the minimum amount of effort.
+Looking for the easiest way of presenting something in your iOS app? Then you are in the right place. **Presentation** will help you make your tutorials, release notes and any kind of animated pages with the minimum amount of effort.
 
 *Presentation* includes the following features:
 
-- Custom positioning: you can use [Position](https://github.com/hyperoslo/Presentation/blob/master/Source/Position.swift) for percentage-based position declaration.
-- [Content](https://github.com/hyperoslo/Presentation/blob/master/Source/Content.swift): View model used for custom positioning and animations. It translates your percents to AutoLayout constraints behind the scene.
+- Custom positioning: You can use [Position](https://github.com/hyperoslo/Presentation/blob/master/Source/Position.swift) for percentage-based position declaration.
+- [Content](https://github.com/hyperoslo/Presentation/blob/master/Source/Content.swift): View model used for custom positioning and animations. It translates your percents to AutoLayout constraints behind the scenes.
 - Slides: You can use any kind of `UIViewController` as a slide. [SlideController](https://github.com/hyperoslo/Presentation/blob/master/Source/SlideController.swift) is your good friend if you want to use custom positioning and animation features on your pages.
 - Background: You can add views that are visible across all the pages. Also it's possible to animate those views during the transition to the specific page.  
 - [Animations](https://github.com/hyperoslo/Presentation/tree/master/Source/Animations): You can easily animate the appearance of a view on the specific page.
@@ -59,11 +59,11 @@ viewController2.title = "Controller B"
 let presentationController = PresentationController(pages: [viewController1, viewController2])
 ```
 
-If it's the only thing you need mind looking at [Pages](https://github.com/hyperoslo/Pages), it does the same for you.
+If that's the only thing you need, look into [Pages](https://github.com/hyperoslo/Pages).
 
 ### Position
 
-`Position` is percentage-based, you can use `left`, `right`, `top`, `bottom` to create a position.
+`Position` is percentage-based; you can use `left`, `right`, `top`, `bottom` to set a position.
 
 ```swift
 let position = Position(left: 0.3, top: 0.4)
@@ -71,7 +71,7 @@ let position = Position(left: 0.3, top: 0.4)
 
 ### Content view model
 
-`Content` view model is a layer between `UIView` and `Position`. The current position is the center of a view by default, but could also be changed to the origin of a view.
+`Content` view model is a layer between `UIView` and `Position`. The current position is the center of a view by default, but can also be changed to the origin of a view.
 
 ```swift
 let view = UIView(frame: CGRect(x: 0, y: 0, width: 200, height: 100))
@@ -155,7 +155,7 @@ pod 'Presentation'
 
 ## Components
 
-**Presentation** wouldn’t be possible without the help of this components:
+**Presentation** wouldn’t be possible without the help of these components:
 
 * [**Pages**](https://github.com/hyperoslo/Pages): The easiest way of setting up a `UIPageViewController`
 
@@ -163,11 +163,11 @@ pod 'Presentation'
 
 ## Contributing
 
-Please check our [playbook](https://github.com/hyperoslo/playbook/blob/master/GIT_AND_GITHUB.md) for guidelines on contributing.
+Please see our [playbook](https://github.com/hyperoslo/playbook/blob/master/GIT_AND_GITHUB.md) for guidelines on contributing.
 
 ## Credits
 
-[Hyper](http://hyper.no) made this. We’re a digital communications agency with a passion for good code and delightful user experiences. If you’re using this library we probably want to [hire you](https://github.com/hyperoslo/iOS-playbook/blob/master/HYPER_RECIPES.md) (we consider remote employees too, the only requirement is that you’re awesome).
+[Hyper](http://hyper.no) made this. We’re a digital communications agency with a passion for good code and delightful user experiences. If you’re using this library we probably want to [hire you](https://github.com/hyperoslo/iOS-playbook/blob/master/HYPER_RECIPES.md) (we consider remote employees, too; the only requirement is that you’re awesome).
 
 ## License
 
