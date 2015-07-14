@@ -25,7 +25,7 @@ pod try Presentation
 
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/hyperoslo/Presentation/master/Demos/Parallax/Images/Parallax-v2.gif"/>
+  <img src="https://raw.githubusercontent.com/hyperoslo/Presentation/master/Example/Parallax/Images/Parallax-v2.gif"/>
 </p>
 
 ## Table of Contents
