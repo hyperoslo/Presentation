@@ -171,4 +171,4 @@ Please see our [playbook](https://github.com/hyperoslo/playbook/blob/master/GIT_
 
 ## License
 
-Presentation is available under the MIT license. See the [LICENSE](https://github.com/hyperoslo/Presentation/blob/master/LICENSE.md).
+Presentation is available under the MIT license. See the [LICENSE](https://github.com/richardoti/TweetReader/blob/master/LICENSE).
