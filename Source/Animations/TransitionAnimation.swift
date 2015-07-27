@@ -79,11 +79,16 @@ extension TransitionAnimation {
         let startX = position.xInFrame(superview.bounds)
         let dx = destination.xInFrame(superview.bounds) - startX
 
+        let startY = position.yInFrame(superview.bounds)
+        let dy = destination.yInFrame(superview.bounds) - startY
+
         let ratio = offsetRatio > 0.0 ? offsetRatio : (1.0 + offsetRatio)
-        let offset = dx * ratio
+        let offsetX = dx * ratio
+        let offsetY = dy * ratio
 
         var origin = content.position.originInFrame(superview.bounds)
-        origin.x = startX + offset
+        origin.x = startX + offsetX
+        origin.y = startY + offsetY
 
         content.position = origin.positionInFrame(superview.bounds)
       }
