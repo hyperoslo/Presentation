@@ -35,7 +35,7 @@ public class TransitionAnimation: NSObject, Animatable {
       delay: 0,
       usingSpringWithDamping: dumping,
       initialSpringVelocity: 0.5,
-      options: .BeginFromCurrentState | .AllowUserInteraction,
+      options: [.BeginFromCurrentState, .AllowUserInteraction],
       animations: { [unowned self] in
         self.content.position = position
       }, completion: nil)
@@ -49,7 +49,7 @@ public class TransitionAnimation: NSObject, Animatable {
 extension TransitionAnimation {
 
   public func play() {
-    if let superview = content.view.superview {
+    if let _ = content.view.superview {
       if !(initial && played) {
         let position = reflective ? startMirror : start
 
@@ -60,7 +60,7 @@ extension TransitionAnimation {
   }
 
   public func playBack() {
-    if let superview = content.view.superview {
+    if let _ = content.view.superview {
       if !(initial && played) {
         let position = reflective ? startMirror : start
 

@@ -3,4 +3,7 @@ use_frameworks!
 platform :ios, '8.0'
 
 pod 'Presentation', path: '../../'
+pod 'Cartography', git: 'https://github.com/robb/Cartography.git', branch: 'swift-2.0'
+pod 'Pages', git: 'https://github.com/hyperoslo/Pages', branch: 'swift_2.0'
+
 pod 'Hex', '~> 2.0'

@@ -132,7 +132,7 @@ class ViewController: PresentationController {
     addToBackground(contents)
 
     for row in 1...4 {
-      for (column, backgroundImage) in enumerate(backgroundImages) {
+      for (column, backgroundImage) in backgroundImages.enumerate() {
         if let position = backgroundImage.positionAt(row), content = contents.at(column) {
           addAnimation(TransitionAnimation(content: content, destination: position,
             duration: 2.0, dumping: 1.0), forPage: row)
@@ -152,8 +152,8 @@ class ViewController: PresentationController {
 
 extension Array {
 
-  func at(index: Int?) -> T? {
-    var object: T?
+  func at(index: Int?) -> Element? {
+    var object: Element?
     if let index = index where index >= 0 && index < endIndex {
       object = self[index]
     }
