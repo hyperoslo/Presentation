@@ -30,7 +30,7 @@ public class Content: NSObject {
   }
 
   public func layout() {
-    if let superview = view.superview {
+    if let _ = view.superview {
       constrain(view, replace: group) { [unowned self] view in
         let x = self.position.left == 0.0 ? view.superview!.left * 1.0 :
           view.superview!.right * self.position.left
@@ -52,7 +52,7 @@ public class Content: NSObject {
 extension Content {
 
   public class func titleContent(text: String,
-    attributes: [NSObject: AnyObject]? = nil) -> Content {
+    attributes: [String : AnyObject]? = nil) -> Content {
       let label = UILabel(frame: CGRectZero)
       label.numberOfLines = 1
       label.attributedText = NSAttributedString(string: text, attributes: attributes)
@@ -64,7 +64,7 @@ extension Content {
   }
 
   public class func textContent(text: String,
-    attributes: [NSObject: AnyObject]? = nil) -> Content {
+    attributes: [String : AnyObject]? = nil) -> Content {
       let textView = UITextView(frame: CGRectZero)
       textView.backgroundColor = .clearColor()
       textView.attributedText = NSAttributedString(string: text, attributes: attributes)
