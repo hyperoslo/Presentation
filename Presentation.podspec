@@ -12,6 +12,6 @@ Pod::Spec.new do |s|
   s.requires_arc = true
 
   s.source_files = 'Source/**/*'
-  s.dependency 'Pages', '~> 0.6.1'
+  s.dependency 'Pages', '~> 0.6.2'
   s.dependency 'Cartography', '~> 0.5.0'
 end
