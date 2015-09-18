@@ -1,7 +1,7 @@
 PODS:
   - Cartography (0.5.0)
   - Hex (2.0)
-  - Pages (0.6.1)
+  - Pages (0.6.2)
   - Presentation (1.0.0):
     - Cartography (~> 0.5.0)
     - Pages (~> 0.6.1)
@@ -25,13 +25,13 @@ CHECKOUT OPTIONS:
     :commit: 5ced82bb4bcd34ef232e2c13c3d07d686238b457
     :git: https://github.com/robb/Cartography.git
   Pages:
-    :commit: 8dabe1c74ceb9095a9ce3058749886c9ce17ddd1
+    :commit: f411722d6281fee2d458cc520e3fb9c4de62f04c
     :git: https://github.com/hyperoslo/Pages
 
 SPEC CHECKSUMS:
   Cartography: 314f5ed1495995760487161eeb7a8a0940d88ad3
   Hex: 1800bd20206b93b10422d2289baa3787698825ad
-  Pages: 515a8ec7396cfb7cdacc28c0beceb2ce39c065cb
+  Pages: 6c042132f8c63c34d242789b7763d4c64e9681a0
   Presentation: 983b35662805253b6141e589edb6685a4d1724a5
 
 COCOAPODS: 0.39.0.beta.4
