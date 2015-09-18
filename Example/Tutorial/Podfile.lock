@@ -2,9 +2,9 @@ PODS:
   - Cartography (0.5.0)
   - Hex (2.0)
   - Pages (0.6.2)
-  - Presentation (1.0.0):
+  - Presentation (2.0.0):
     - Cartography (~> 0.5.0)
-    - Pages (~> 0.6.1)
+    - Pages (~> 0.6.2)
 
 DEPENDENCIES:
   - Cartography (from `https://github.com/robb/Cartography.git`)
@@ -32,6 +32,6 @@ SPEC CHECKSUMS:
   Cartography: 314f5ed1495995760487161eeb7a8a0940d88ad3
   Hex: 1800bd20206b93b10422d2289baa3787698825ad
   Pages: 6c042132f8c63c34d242789b7763d4c64e9681a0
-  Presentation: 983b35662805253b6141e589edb6685a4d1724a5
+  Presentation: 11c0a317bd206f671492cebba09b3ea3fab4b9c8
 
 COCOAPODS: 0.39.0.beta.4
