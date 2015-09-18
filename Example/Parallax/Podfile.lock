@@ -7,27 +7,25 @@ PODS:
     - Pages (~> 0.6.1)
 
 DEPENDENCIES:
-  - Cartography (from `https://github.com/robb/Cartography.git`, branch `swift-2.0`)
+  - Cartography (from `https://github.com/robb/Cartography.git`)
   - Hex (~> 2.0)
-  - Pages (from `https://github.com/hyperoslo/Pages`, branch `swift_2.0`)
+  - Pages (from `https://github.com/hyperoslo/Pages`)
   - Presentation (from `../../`)
 
 EXTERNAL SOURCES:
   Cartography:
-    :branch: swift-2.0
     :git: https://github.com/robb/Cartography.git
   Pages:
-    :branch: swift_2.0
     :git: https://github.com/hyperoslo/Pages
   Presentation:
     :path: "../../"
 
 CHECKOUT OPTIONS:
   Cartography:
-    :commit: 36eeb22dbf7db7eff066389e9dc19e47a7266071
+    :commit: 5ced82bb4bcd34ef232e2c13c3d07d686238b457
     :git: https://github.com/robb/Cartography.git
   Pages:
-    :commit: 8bd74508f49d0fa1fe7e62b66aa0531b2d932541
+    :commit: 8dabe1c74ceb9095a9ce3058749886c9ce17ddd1
     :git: https://github.com/hyperoslo/Pages
 
 SPEC CHECKSUMS:
@@ -36,4 +34,4 @@ SPEC CHECKSUMS:
   Pages: 515a8ec7396cfb7cdacc28c0beceb2ce39c065cb
   Presentation: 983b35662805253b6141e589edb6685a4d1724a5
 
-COCOAPODS: 0.38.2
+COCOAPODS: 0.39.0.beta.4
