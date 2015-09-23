@@ -6,5 +6,4 @@ platform :ios, '8.0'
 
 pod 'Presentation', path: '../../'
 pod 'Hex', '~> 2.0'
-pod 'Cartography', git: 'https://github.com/robb/Cartography.git'
 pod 'Pages', git: 'https://github.com/hyperoslo/Pages'
