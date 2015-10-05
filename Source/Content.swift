@@ -44,7 +44,7 @@ public class Content: NSObject {
           view.top == y
         }
       }
-      view.layoutIfNeeded()
+      view.superview!.layoutIfNeeded()
     }
   }
 }
