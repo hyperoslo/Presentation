@@ -35,10 +35,10 @@ public class TransitionAnimation: NSObject, Animatable {
       delay: 0,
       usingSpringWithDamping: dumping,
       initialSpringVelocity: 0.5,
-      options: [.BeginFromCurrentState, .AllowUserInteraction, .LayoutSubviews],
+      options: [.BeginFromCurrentState, .AllowUserInteraction],
       animations: { [unowned self] in
         self.content.position = position
-        self.content.view.superview!.layoutIfNeeded()
+        self.content.animate()
       }, completion: nil)
 
     played = true
@@ -55,6 +55,8 @@ extension TransitionAnimation {
         let position = reflective ? startMirror : start
 
         content.position = position
+        content.animate()
+
         animateTo(destination)
       }
     }
