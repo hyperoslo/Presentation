@@ -35,9 +35,10 @@ public class TransitionAnimation: NSObject, Animatable {
       delay: 0,
       usingSpringWithDamping: dumping,
       initialSpringVelocity: 0.5,
-      options: [.BeginFromCurrentState, .AllowUserInteraction],
+      options: [.BeginFromCurrentState, .AllowUserInteraction, .LayoutSubviews],
       animations: { [unowned self] in
         self.content.position = position
+        self.content.view.superview!.layoutIfNeeded()
       }, completion: nil)
 
     played = true
