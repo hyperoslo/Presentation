@@ -47,6 +47,10 @@ public class Content: NSObject {
       view.layoutIfNeeded()
     }
   }
+
+  public func animate() {
+    view.superview!.layoutIfNeeded()
+  }
 }
 
 extension Content {
