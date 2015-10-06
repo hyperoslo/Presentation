@@ -11,7 +11,7 @@ import Pages
 
 public class PresentationController: PagesController {
 
-  public var presentationDelegate: PresentationControllerDelegate?
+  public weak var presentationDelegate: PresentationControllerDelegate?
 
   private var backgroundContents = [Content]()
   private var slides = [SlideController]()
