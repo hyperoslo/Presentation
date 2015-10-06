@@ -12,6 +12,7 @@ import Pages
 public class PresentationController: PagesController {
 
   public weak var presentationDelegate: PresentationControllerDelegate?
+  public var maxAnimationDelay: Double = 3
 
   private var backgroundContents = [Content]()
   private var slides = [SlideController]()
@@ -19,6 +20,7 @@ public class PresentationController: PagesController {
 
   private var animationIndex = 0
   private weak var scrollView: UIScrollView?
+  var animationTimer: NSTimer?
 
   public convenience init(pages: [UIViewController]) {
     self.init(
@@ -55,6 +57,8 @@ public class PresentationController: PagesController {
   // MARK: - Public methods
 
   public override func goTo(index: Int) {
+    startAnimationTimer()
+    
     super.goTo(index)
 
     if index >= 0 && index < pagesCount {
@@ -81,6 +85,33 @@ public class PresentationController: PagesController {
         }
       })
     }
+  }
+
+  // MARK: - Animation Timer
+
+  func startAnimationTimer() {
+    stopAnimationTimer()
+    scrollView?.userInteractionEnabled = false
+    if animationTimer == nil {
+      dispatch_async(dispatch_get_main_queue()) {
+        self.animationTimer = NSTimer.scheduledTimerWithTimeInterval(self.maxAnimationDelay,
+          target: self,
+          selector: "updateAnimationTimer:",
+          userInfo: nil,
+          repeats: false)
+        NSRunLoop.currentRunLoop().addTimer(self.animationTimer!, forMode: NSRunLoopCommonModes)
+      }
+    }
+  }
+
+  func stopAnimationTimer() {
+    animationTimer?.invalidate()
+    animationTimer = nil
+  }
+
+  func updateAnimationTimer(timer: NSTimer) {
+    stopAnimationTimer()
+    scrollView?.userInteractionEnabled = true
   }
 }
 
