@@ -3,8 +3,6 @@ import Cartography
 
 public class Content: NSObject {
 
-  public static var animating: Bool = false
-
   public var view: UIView
   public var centered: Bool
 
@@ -46,11 +44,7 @@ public class Content: NSObject {
           view.top == y
         }
       }
-      if Content.animating {
-        view.superview!.layoutIfNeeded()
-      } else {
-        view.layoutIfNeeded()
-      }
+      view.layoutIfNeeded()
     }
   }
 }
