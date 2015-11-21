@@ -66,6 +66,9 @@ public class PresentationController: PagesController {
       if !reverse {
         animationIndex = index
       }
+      else {
+        animationIndex = index+1
+      }
 
       for slide in slides {
         if reverse {
