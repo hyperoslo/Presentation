@@ -16,6 +16,8 @@
 		D523B0ED1C43AC70001AD1EC /* Position.swift in Sources */ = {isa = PBXBuildFile; fileRef = D523B0E31C43AC70001AD1EC /* Position.swift */; };
 		D523B0EE1C43AC70001AD1EC /* PresentationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D523B0E41C43AC70001AD1EC /* PresentationController.swift */; };
 		D523B0EF1C43AC70001AD1EC /* SlideController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D523B0E51C43AC70001AD1EC /* SlideController.swift */; };
+		D523B0F21C43AE94001AD1EC /* Pages.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D523B0F01C43AE94001AD1EC /* Pages.framework */; };
+		D523B0F31C43AE94001AD1EC /* Cartography.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D523B0F11C43AE94001AD1EC /* Cartography.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +32,8 @@
 		D523B0E31C43AC70001AD1EC /* Position.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Position.swift; sourceTree = "<group>"; };
 		D523B0E41C43AC70001AD1EC /* PresentationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PresentationController.swift; sourceTree = "<group>"; };
 		D523B0E51C43AC70001AD1EC /* SlideController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SlideController.swift; sourceTree = "<group>"; };
+		D523B0F01C43AE94001AD1EC /* Pages.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Pages.framework; path = Carthage/Build/iOS/Pages.framework; sourceTree = "<group>"; };
+		D523B0F11C43AE94001AD1EC /* Cartography.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cartography.framework; path = Carthage/Build/iOS/Cartography.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -37,6 +41,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D523B0F21C43AE94001AD1EC /* Pages.framework in Frameworks */,
+				D523B0F31C43AE94001AD1EC /* Cartography.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -48,6 +54,7 @@
 			children = (
 				D523B0D81C43AC70001AD1EC /* SupportFiles */,
 				D523B0DA1C43AC70001AD1EC /* Source */,
+				D523B0F51C43AF9B001AD1EC /* Frameworks */,
 				D523B0CE1C43AB90001AD1EC /* Products */,
 			);
 			sourceTree = "<group>";
@@ -100,6 +107,15 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
+		D523B0F51C43AF9B001AD1EC /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				D523B0F01C43AE94001AD1EC /* Pages.framework */,
+				D523B0F11C43AE94001AD1EC /* Cartography.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -121,6 +137,7 @@
 				D523B0C91C43AB90001AD1EC /* Frameworks */,
 				D523B0CA1C43AB90001AD1EC /* Headers */,
 				D523B0CB1C43AB90001AD1EC /* Resources */,
+				D523B0F41C43AE99001AD1EC /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -171,6 +188,24 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		D523B0F41C43AE99001AD1EC /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/Carthage/Build/iOS/Pages.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/Cartography.framework",
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "/usr/local/bin/carthage copy-frameworks";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		D523B0C81C43AB90001AD1EC /* Sources */ = {
@@ -288,8 +323,13 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = Presentation/Info.plist;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
+				INFOPLIST_FILE = "$(SRCROOT)/SupportFiles/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = no.hyper.Presentation;
 				PRODUCT_NAME = Presentation;
@@ -304,8 +344,13 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = Presentation/Info.plist;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
+				INFOPLIST_FILE = "$(SRCROOT)/SupportFiles/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = no.hyper.Presentation;
 				PRODUCT_NAME = Presentation;
