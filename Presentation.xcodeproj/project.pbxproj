@@ -6,9 +6,30 @@
 	objectVersion = 46;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		D523B0E71C43AC70001AD1EC /* Animatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D523B0DC1C43AC70001AD1EC /* Animatable.swift */; };
+		D523B0E81C43AC70001AD1EC /* DissolveAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = D523B0DD1C43AC70001AD1EC /* DissolveAnimation.swift */; };
+		D523B0E91C43AC70001AD1EC /* PopAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = D523B0DE1C43AC70001AD1EC /* PopAnimation.swift */; };
+		D523B0EA1C43AC70001AD1EC /* TransitionAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = D523B0DF1C43AC70001AD1EC /* TransitionAnimation.swift */; };
+		D523B0EB1C43AC70001AD1EC /* Content.swift in Sources */ = {isa = PBXBuildFile; fileRef = D523B0E01C43AC70001AD1EC /* Content.swift */; };
+		D523B0EC1C43AC70001AD1EC /* CGPointExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D523B0E21C43AC70001AD1EC /* CGPointExtension.swift */; };
+		D523B0ED1C43AC70001AD1EC /* Position.swift in Sources */ = {isa = PBXBuildFile; fileRef = D523B0E31C43AC70001AD1EC /* Position.swift */; };
+		D523B0EE1C43AC70001AD1EC /* PresentationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D523B0E41C43AC70001AD1EC /* PresentationController.swift */; };
+		D523B0EF1C43AC70001AD1EC /* SlideController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D523B0E51C43AC70001AD1EC /* SlideController.swift */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXFileReference section */
 		D523B0CD1C43AB90001AD1EC /* Presentation.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Presentation.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		D523B0D21C43AB90001AD1EC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D523B0D91C43AC70001AD1EC /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D523B0DC1C43AC70001AD1EC /* Animatable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Animatable.swift; sourceTree = "<group>"; };
+		D523B0DD1C43AC70001AD1EC /* DissolveAnimation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DissolveAnimation.swift; sourceTree = "<group>"; };
+		D523B0DE1C43AC70001AD1EC /* PopAnimation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopAnimation.swift; sourceTree = "<group>"; };
+		D523B0DF1C43AC70001AD1EC /* TransitionAnimation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransitionAnimation.swift; sourceTree = "<group>"; };
+		D523B0E01C43AC70001AD1EC /* Content.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Content.swift; sourceTree = "<group>"; };
+		D523B0E21C43AC70001AD1EC /* CGPointExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CGPointExtension.swift; sourceTree = "<group>"; };
+		D523B0E31C43AC70001AD1EC /* Position.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Position.swift; sourceTree = "<group>"; };
+		D523B0E41C43AC70001AD1EC /* PresentationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PresentationController.swift; sourceTree = "<group>"; };
+		D523B0E51C43AC70001AD1EC /* SlideController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SlideController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -25,7 +46,8 @@
 		D523B0C31C43AB90001AD1EC = {
 			isa = PBXGroup;
 			children = (
-				D523B0CF1C43AB90001AD1EC /* Presentation */,
+				D523B0D81C43AC70001AD1EC /* SupportFiles */,
+				D523B0DA1C43AC70001AD1EC /* Source */,
 				D523B0CE1C43AB90001AD1EC /* Products */,
 			);
 			sourceTree = "<group>";
@@ -38,12 +60,44 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		D523B0CF1C43AB90001AD1EC /* Presentation */ = {
+		D523B0D81C43AC70001AD1EC /* SupportFiles */ = {
 			isa = PBXGroup;
 			children = (
-				D523B0D21C43AB90001AD1EC /* Info.plist */,
+				D523B0D91C43AC70001AD1EC /* Info.plist */,
 			);
-			path = Presentation;
+			path = SupportFiles;
+			sourceTree = "<group>";
+		};
+		D523B0DA1C43AC70001AD1EC /* Source */ = {
+			isa = PBXGroup;
+			children = (
+				D523B0DB1C43AC70001AD1EC /* Animations */,
+				D523B0E01C43AC70001AD1EC /* Content.swift */,
+				D523B0E11C43AC70001AD1EC /* Extensions */,
+				D523B0E31C43AC70001AD1EC /* Position.swift */,
+				D523B0E41C43AC70001AD1EC /* PresentationController.swift */,
+				D523B0E51C43AC70001AD1EC /* SlideController.swift */,
+			);
+			path = Source;
+			sourceTree = "<group>";
+		};
+		D523B0DB1C43AC70001AD1EC /* Animations */ = {
+			isa = PBXGroup;
+			children = (
+				D523B0DC1C43AC70001AD1EC /* Animatable.swift */,
+				D523B0DD1C43AC70001AD1EC /* DissolveAnimation.swift */,
+				D523B0DE1C43AC70001AD1EC /* PopAnimation.swift */,
+				D523B0DF1C43AC70001AD1EC /* TransitionAnimation.swift */,
+			);
+			path = Animations;
+			sourceTree = "<group>";
+		};
+		D523B0E11C43AC70001AD1EC /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				D523B0E21C43AC70001AD1EC /* CGPointExtension.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -59,9 +113,9 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		D523B0CC1C43AB90001AD1EC /* Presentation */ = {
+		D523B0CC1C43AB90001AD1EC /* Presentation-iOS */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = D523B0D51C43AB90001AD1EC /* Build configuration list for PBXNativeTarget "Presentation" */;
+			buildConfigurationList = D523B0D51C43AB90001AD1EC /* Build configuration list for PBXNativeTarget "Presentation-iOS" */;
 			buildPhases = (
 				D523B0C81C43AB90001AD1EC /* Sources */,
 				D523B0C91C43AB90001AD1EC /* Frameworks */,
@@ -72,7 +126,7 @@
 			);
 			dependencies = (
 			);
-			name = Presentation;
+			name = "Presentation-iOS";
 			productName = Presentation;
 			productReference = D523B0CD1C43AB90001AD1EC /* Presentation.framework */;
 			productType = "com.apple.product-type.framework";
@@ -103,7 +157,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				D523B0CC1C43AB90001AD1EC /* Presentation */,
+				D523B0CC1C43AB90001AD1EC /* Presentation-iOS */,
 			);
 		};
 /* End PBXProject section */
@@ -123,6 +177,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D523B0ED1C43AC70001AD1EC /* Position.swift in Sources */,
+				D523B0E91C43AC70001AD1EC /* PopAnimation.swift in Sources */,
+				D523B0E71C43AC70001AD1EC /* Animatable.swift in Sources */,
+				D523B0EC1C43AC70001AD1EC /* CGPointExtension.swift in Sources */,
+				D523B0E81C43AC70001AD1EC /* DissolveAnimation.swift in Sources */,
+				D523B0EB1C43AC70001AD1EC /* Content.swift in Sources */,
+				D523B0EA1C43AC70001AD1EC /* TransitionAnimation.swift in Sources */,
+				D523B0EF1C43AC70001AD1EC /* SlideController.swift in Sources */,
+				D523B0EE1C43AC70001AD1EC /* PresentationController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -229,7 +292,7 @@
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = no.hyper.Presentation;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = Presentation;
 				SKIP_INSTALL = YES;
 			};
 			name = Debug;
@@ -245,7 +308,7 @@
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = no.hyper.Presentation;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = Presentation;
 				SKIP_INSTALL = YES;
 			};
 			name = Release;
@@ -262,13 +325,14 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		D523B0D51C43AB90001AD1EC /* Build configuration list for PBXNativeTarget "Presentation" */ = {
+		D523B0D51C43AB90001AD1EC /* Build configuration list for PBXNativeTarget "Presentation-iOS" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				D523B0D61C43AB90001AD1EC /* Debug */,
 				D523B0D71C43AB90001AD1EC /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
