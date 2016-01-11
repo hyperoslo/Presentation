@@ -2,6 +2,7 @@
 
 [![CI Status](http://img.shields.io/travis/hyperoslo/Presentation.svg?style=flat)](https://travis-ci.org/hyperoslo/Presentation)
 [![Version](https://img.shields.io/cocoapods/v/Presentation.svg?style=flat)](http://cocoadocs.org/docsets/Presentation)
+[![Carthage Compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
 [![License](https://img.shields.io/cocoapods/l/Presentation.svg?style=flat)](http://cocoadocs.org/docsets/Presentation)
 [![Platform](https://img.shields.io/cocoapods/p/Presentation.svg?style=flat)](http://cocoadocs.org/docsets/Presentation)
 
@@ -151,6 +152,13 @@ it, simply add the following line to your Podfile:
 
 ```ruby
 pod 'Presentation'
+```
+
+**Presentation** is also available through [Carthage](https://github.com/Carthage/Carthage).
+To install just write into your Cartfile:
+
+```ruby
+github "hyperoslo/Presentation"
 ```
 
 ## Components
