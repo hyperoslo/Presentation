@@ -1,5 +1,11 @@
-# language: objective-c
-# before_install:
-# - gem install cocoapods
-# podfile: Pod/Podfile
-# script: xctool -workspace Pod/Pod.xcworkspace -scheme Tests -sdk iphonesimulator build test
+osx_image: xcode7.2
+language: objective-c
+
+before_install:
+- brew update
+- brew install carthage
+- if brew outdated | grep -qx xctool; then brew upgrade xctool; fi
+- carthage update --platform iOS
+
+script:
+- xctool clean build -project Presentation.xcodeproj -scheme Presentation-iOS -sdk iphonesimulator
