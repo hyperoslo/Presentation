@@ -38,18 +38,14 @@ public class SlideController: UIViewController {
   // MARK: - Navigation
 
   public func goToLeft() {
-    for animation in animations {
-      if animation is TransitionAnimation {
-        (animation as! TransitionAnimation).reflective = true
-      }
+    for case let animation as TransitionAnimation in animations {
+      animation.reflective = true
     }
   }
 
   public func goToRight() {
-    for animation in animations {
-      if animation is TransitionAnimation {
-        (animation as! TransitionAnimation).reflective = false
-      }
+    for case let animation as TransitionAnimation in animations {
+      animation.reflective = false
     }
   }
 }

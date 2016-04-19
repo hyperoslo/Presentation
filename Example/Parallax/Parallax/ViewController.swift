@@ -34,7 +34,7 @@ class ViewController: PresentationController {
       title: "Previous",
       style: .Plain,
       target: self,
-      action: "previous")
+      action: #selector(previous))
 
     leftButton.setTitleTextAttributes(
       [NSForegroundColorAttributeName : UIColor.blackColor()],
@@ -48,7 +48,7 @@ class ViewController: PresentationController {
       title: "Next",
       style: .Plain,
       target: self,
-      action: "next")
+      action: #selector(next))
 
     rightButton.setTitleTextAttributes(
       [NSForegroundColorAttributeName : UIColor.blackColor()],

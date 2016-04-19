@@ -42,7 +42,7 @@ public class PresentationController: PagesController {
   public override func viewDidAppear(animated: Bool) {
     super.viewDidAppear(animated)
 
-    for subview in view.subviews{
+    for subview in view.subviews {
       if subview.isKindOfClass(UIScrollView) {
         scrollView = subview as? UIScrollView
         scrollView?.delegate = self
@@ -96,7 +96,7 @@ public class PresentationController: PagesController {
       dispatch_async(dispatch_get_main_queue()) {
         self.animationTimer = NSTimer.scheduledTimerWithTimeInterval(self.maxAnimationDelay,
           target: self,
-          selector: "updateAnimationTimer:",
+          selector: #selector(self.updateAnimationTimer(_:)),
           userInfo: nil,
           repeats: false)
         NSRunLoop.currentRunLoop().addTimer(self.animationTimer!, forMode: NSRunLoopCommonModes)
@@ -120,10 +120,8 @@ public class PresentationController: PagesController {
 extension PresentationController {
 
   public override func add(viewControllers: [UIViewController]) {
-    for controller in viewControllers {
-      if controller is SlideController {
-        slides.append((controller as! SlideController))
-      }
+    for case let controller as SlideController in viewControllers  {
+      slides.append(controller)
     }
     super.add(viewControllers)
   }
@@ -189,7 +187,7 @@ extension PresentationController: UIScrollViewDelegate {
 
     var index = animationIndex
     if offsetRatio > 0.0 || index == 0 {
-      index++
+      index += 1
     }
 
     let canMove = offsetRatio != 0.0 &&

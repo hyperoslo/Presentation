@@ -26,7 +26,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
       title: "Previous page",
       style: .Plain,
       target: self.presentationController,
-      action: "previous")
+      action: #selector(PresentationController.previous))
 
     button.setTitleTextAttributes(
       [NSForegroundColorAttributeName : UIColor.whiteColor()],
@@ -40,7 +40,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
       title: "Next page",
       style: .Plain,
       target: self.presentationController,
-      action: "next")
+      action: #selector(PresentationController.next))
 
     button.setTitleTextAttributes(
       [NSForegroundColorAttributeName : UIColor.whiteColor()],
