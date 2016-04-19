@@ -4,6 +4,8 @@ use_frameworks!
 
 platform :ios, '8.0'
 
-pod 'Presentation', path: '../../'
-pod 'Hex', '~> 2.0'
-pod 'Pages', git: 'https://github.com/hyperoslo/Pages'
+target 'Tutorial' do
+    pod 'Presentation', path: '../../'
+    pod 'Hex', '~> 2.0'
+    pod 'Pages', git: 'https://github.com/hyperoslo/Pages'
+end
