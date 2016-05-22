@@ -2,7 +2,9 @@ use_frameworks!
 
 platform :ios, '8.0'
 
-pod 'Presentation', path: '../../'
-pod 'Pages', git: 'https://github.com/hyperoslo/Pages'
+target 'Parallax' do
+    pod 'Presentation', path: '../../'
+    pod 'Pages', git: 'https://github.com/hyperoslo/Pages'
 
-pod 'Hex', '~> 2.0'
+    pod 'Hex', '~> 2.0'
+end
