@@ -110,7 +110,7 @@ let contents = ["Slide 1", "Slide 2", "Slide 3"].map { title -> Content in
 
 var slides = [SlideController]()
 
-for index in 0...3 {
+for index in 0...2 {
   let content = contents[index]
   let controller = SlideController(contents: [content])
   let animation = TransitionAnimation(
