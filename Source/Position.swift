@@ -59,23 +59,23 @@ import UIKit
     return Position(left: right, top: top)
   }
 
-  public func originInFrame(frame: CGRect) -> CGPoint {
+  public func originInFrame(_ frame: CGRect) -> CGPoint {
     return CGPoint(x: xInFrame(frame), y: yInFrame(frame))
   }
 
-  public func xInFrame(frame: CGRect) -> CGFloat {
-    let margin = CGRectGetWidth(frame) * left
+  public func xInFrame(_ frame: CGRect) -> CGFloat {
+    let margin = frame.width * left
 
-    return CGRectGetMinX(frame) + margin
+    return frame.minX + margin
   }
 
-  public func yInFrame(frame: CGRect) -> CGFloat {
-    let margin = CGRectGetHeight(frame) * top
+  public func yInFrame(_ frame: CGRect) -> CGFloat {
+    let margin = frame.height * top
 
-    return CGRectGetMinY(frame) + margin
+    return frame.minY + margin
   }
 
-  public func isEqualToPosition(position: Position, epsilon: CGFloat = 0.0001) -> Bool {
+  public func isEqualTo(position: Position, epsilon: CGFloat = 0.0001) -> Bool {
     let dx = left - position.left, dy = top - position.top
 
     return (dx * dx + dy * dy) < epsilon

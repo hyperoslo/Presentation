@@ -3,40 +3,40 @@ import UIKit
 public class PopAnimation: NSObject, Animatable {
 
   let content: Content
-  let duration: NSTimeInterval
+  let duration: TimeInterval
   var initial: Bool
   var played = false
 
-  public init(content: Content, duration: NSTimeInterval = 1.0, initial: Bool = false) {
+  public init(content: Content, duration: TimeInterval = 1.0, initial: Bool = false) {
     self.content = content
     self.duration = duration
     self.initial = initial
 
-    content.view.hidden = true
+    content.view.isHidden = true
 
     super.init()
   }
 
-  private func animate() {
+  fileprivate func animate() {
     let view = content.view
-    if view.hidden {
-      view.transform = CGAffineTransformMakeScale(0.95, 0.95)
+    if view.isHidden {
+      view.transform = CGAffineTransform(scaleX: 0.95, y: 0.95)
     }
-    view.hidden = false
+    view.isHidden = false
 
-    UIView.animateWithDuration(duration,
+    UIView.animate(withDuration: duration,
       animations: {
-        view.transform = CGAffineTransformMakeScale(1.05, 1.05)
+        view.transform = CGAffineTransform(scaleX: 1.05, y: 1.05)
         view.alpha = 0.8
       }, completion: { _ in
-        UIView.animateWithDuration(0.1,
+        UIView.animate(withDuration: 0.1,
           animations: {
-            view.transform = CGAffineTransformMakeScale(0.95, 0.95)
+            view.transform = CGAffineTransform(scaleX: 0.95, y: 0.95)
             view.alpha = 0.9
           }, completion: { _ in
-            UIView.animateWithDuration(0.1,
+            UIView.animate(withDuration: 0.1,
               animations: {
-                view.transform = CGAffineTransformIdentity
+                view.transform = CGAffineTransform.identity
                 view.alpha = 1.0
               }, completion: nil)
         })
@@ -53,7 +53,7 @@ extension PopAnimation {
   public func play() {
     if content.view.superview != nil {
       if !(initial && played) {
-        content.view.hidden = true
+        content.view.isHidden = true
         animate()
       }
     }
@@ -62,7 +62,7 @@ extension PopAnimation {
   public func playBack() {
     if content.view.superview != nil {
       if !(initial && played) {
-        content.view.hidden = false
+        content.view.isHidden = false
         animate()
       }
     }

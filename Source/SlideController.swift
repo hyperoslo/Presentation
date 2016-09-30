@@ -1,10 +1,10 @@
 import UIKit
 
-public class SlideController: UIViewController {
+open class SlideController: UIViewController {
 
-  private var contents = [Content]()
-  private var animations = [Animatable]()
-  private var visible = false
+  fileprivate var contents = [Content]()
+  fileprivate var animations = [Animatable]()
+  fileprivate var visible = false
 
   public convenience init(contents: [Content]) {
     self.init()
@@ -14,7 +14,7 @@ public class SlideController: UIViewController {
 
   // MARK: - View lifecycle
 
-  public override func viewWillAppear(animated: Bool) {
+  open override func viewWillAppear(_ animated: Bool) {
     super.viewWillAppear(animated)
 
     if !visible {
@@ -29,7 +29,7 @@ public class SlideController: UIViewController {
     }
   }
 
-  public override func viewDidDisappear(animated: Bool) {
+  open override func viewDidDisappear(_ animated: Bool) {
     super.viewDidDisappear(animated)
 
     visible = false
@@ -37,13 +37,13 @@ public class SlideController: UIViewController {
 
   // MARK: - Navigation
 
-  public func goToLeft() {
+  open func goToLeft() {
     for case let animation as TransitionAnimation in animations {
       animation.reflective = true
     }
   }
 
-  public func goToRight() {
+  open func goToRight() {
     for case let animation as TransitionAnimation in animations {
       animation.reflective = false
     }
@@ -54,26 +54,26 @@ public class SlideController: UIViewController {
 
 extension SlideController {
 
-  public func addContents(contents: [Content]) {
+  public func add(contents: [Content]) {
     for content in contents {
       addContent(content)
     }
   }
 
-  public func addContent(content: Content) {
+  public func add(content: Content) {
     contents.append(content)
     view.addSubview(content.view)
 
     content.layout()
   }
 
-  public func addAnimations(animations: [Animatable]) {
+  public func add(animations: [Animatable]) {
     for animation in animations {
       addAnimation(animation)
     }
   }
 
-  public func addAnimation(animation: Animatable) {
+  public func add(animation: Animatable) {
     animations.append(animation)
   }
 }

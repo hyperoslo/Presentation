@@ -3,13 +3,13 @@ import UIKit
 public class DissolveAnimation: NSObject, Animatable {
 
   let content: Content
-  let duration: NSTimeInterval
-  let delay: NSTimeInterval
+  let duration: TimeInterval
+  let delay: TimeInterval
   var initial: Bool
   var played = false
 
-  public init(content: Content, duration: NSTimeInterval = 1.0,
-    delay: NSTimeInterval = 0.0, initial: Bool = false) {
+  public init(content: Content, duration: TimeInterval = 1.0,
+    delay: TimeInterval = 0.0, initial: Bool = false) {
       self.content = content
       self.duration = duration
       self.delay = delay
@@ -20,14 +20,14 @@ public class DissolveAnimation: NSObject, Animatable {
       super.init()
   }
 
-  private func animate() {
+  fileprivate func animate() {
     let alpha: CGFloat = content.view.alpha == 0.0 ? 1.0 : 0.0
 
-    UIView.animateWithDuration(duration,
+    UIView.animate(withDuration: duration,
       delay: delay,
       usingSpringWithDamping: 1.0,
       initialSpringVelocity: 0.5,
-      options: [.BeginFromCurrentState, .AllowUserInteraction],
+      options: [.beginFromCurrentState, .allowUserInteraction],
       animations: { [unowned self] in
         self.content.view.alpha = alpha
       }, completion: nil)

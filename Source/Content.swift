@@ -1,7 +1,7 @@
 import UIKit
 import Cartography
 
-public class Content: NSObject {
+public final class Content: NSObject {
 
   public var view: UIView
   public var centered: Bool
@@ -12,8 +12,8 @@ public class Content: NSObject {
     }
   }
 
-  public private(set) var initialPosition: Position
-  private let group = ConstraintGroup()
+  public fileprivate(set) var initialPosition: Position
+  fileprivate let group = ConstraintGroup()
 
   public init(view: UIView, position: Position, centered: Bool = true) {
     self.view = view
@@ -57,7 +57,7 @@ extension Content {
 
   public class func titleContent(text: String,
     attributes: [String : AnyObject]? = nil) -> Content {
-      let label = UILabel(frame: CGRectZero)
+      let label = UILabel(frame: CGRect.zero)
       label.numberOfLines = 1
       label.attributedText = NSAttributedString(string: text, attributes: attributes)
       label.sizeToFit()
@@ -67,23 +67,23 @@ extension Content {
       return Content(view: label, position: position)
   }
 
-  public class func textContent(text: String,
+  public class func content(text: String,
     attributes: [String : AnyObject]? = nil) -> Content {
-      let textView = UITextView(frame: CGRectZero)
-      textView.backgroundColor = .clearColor()
+      let textView = UITextView(frame: CGRect.zero)
+      textView.backgroundColor = .clear()
       textView.attributedText = NSAttributedString(string: text, attributes: attributes)
       textView.sizeToFit()
 
       return Content(view: textView, position: Position(left: 0.9, bottom: 0.1))
   }
 
-  public class func imageContent(image: UIImage) -> Content {
+  public class func content(image: UIImage) -> Content {
     let imageView = UIImageView(image: image)
 
     return Content(view: imageView, position: Position(left: 0.5, bottom: 0.5))
   }
 
-  public class func centerTransitionForSlideContent(content: Content) -> Animatable {
+  public class func centerTransitionFor(slideContent: Content) -> Animatable {
     return TransitionAnimation(
       content: content,
       destination: Position(left: 0.5, bottom: content.initialPosition.bottom),
