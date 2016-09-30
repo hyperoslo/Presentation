@@ -83,10 +83,10 @@ extension Content {
     return Content(view: imageView, position: Position(left: 0.5, bottom: 0.5))
   }
 
-  public class func centerTransitionFor(slideContent: Content) -> Animatable {
+  public class func centerTransition(forSlideContent content: Content) -> Animatable {
     return TransitionAnimation(
-      content: slideContent,
-      destination: Position(left: 0.5, bottom: slideContent.initialPosition.bottom),
+      content: content,
+      destination: Position(left: 0.5, bottom: content.initialPosition.bottom),
       duration: 2.0,
       dumping: 0.8,
       reflective: true)

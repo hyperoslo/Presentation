@@ -1,5 +1,5 @@
 import UIKit
-import Hex
+import Hue
 import Presentation
 
 class ViewController: PresentationController {
@@ -17,7 +17,7 @@ class ViewController: PresentationController {
       self.speed = speed
     }
 
-    func positionAt(index: Int) -> Position? {
+    func positionAt(_ index: Int) -> Position? {
       var position: Position?
 
       if index == 0 || speed != 0.0 {
@@ -32,13 +32,13 @@ class ViewController: PresentationController {
   lazy var leftButton: UIBarButtonItem = { [unowned self] in
     let leftButton = UIBarButtonItem(
       title: "Previous",
-      style: .Plain,
+      style: .plain,
       target: self,
-      action: #selector(previous))
+      action: #selector(moveBack))
 
     leftButton.setTitleTextAttributes(
-      [NSForegroundColorAttributeName : UIColor.blackColor()],
-      forState: .Normal)
+      [NSForegroundColorAttributeName : UIColor.black],
+      for: .normal)
 
     return leftButton
     }()
@@ -46,13 +46,13 @@ class ViewController: PresentationController {
   lazy var rightButton: UIBarButtonItem = { [unowned self] in
     let rightButton = UIBarButtonItem(
       title: "Next",
-      style: .Plain,
+      style: .plain,
       target: self,
-      action: #selector(next))
+      action: #selector(moveForward))
 
     rightButton.setTitleTextAttributes(
-      [NSForegroundColorAttributeName : UIColor.blackColor()],
-      forState: .Normal)
+      [NSForegroundColorAttributeName : UIColor.black],
+      for: .normal)
 
     return rightButton
     }()
@@ -76,7 +76,7 @@ class ViewController: PresentationController {
     let font = UIFont(name: "HelveticaNeue", size: 34.0)!
     let color = UIColor(hex: "FFE8A9")
     let paragraphStyle = NSMutableParagraphStyle()
-    paragraphStyle.alignment = NSTextAlignment.Center
+    paragraphStyle.alignment = NSTextAlignment.center
 
     let attributes = [NSFontAttributeName: font, NSForegroundColorAttributeName: color,
       NSParagraphStyleAttributeName: paragraphStyle]
@@ -99,7 +99,7 @@ class ViewController: PresentationController {
 
     for index in 0...4 {
       let controller = SlideController(contents: [titles[index]])
-      controller.addAnimations([Content.centerTransitionForSlideContent(titles[index])])
+      controller.add(animations: [Content.centerTransition(forSlideContent: titles[index])])
 
       slides.append(controller)
     }
@@ -132,8 +132,8 @@ class ViewController: PresentationController {
     addToBackground(contents)
 
     for row in 1...4 {
-      for (column, backgroundImage) in backgroundImages.enumerate() {
-        if let position = backgroundImage.positionAt(row), content = contents.at(column) {
+      for (column, backgroundImage) in backgroundImages.enumerated() {
+        if let position = backgroundImage.positionAt(row), let content = contents.at(column) {
           addAnimation(TransitionAnimation(content: content, destination: position,
             duration: 2.0, dumping: 1.0), forPage: row)
         }
@@ -152,9 +152,9 @@ class ViewController: PresentationController {
 
 extension Array {
 
-  func at(index: Int?) -> Element? {
+  func at(_ index: Int?) -> Element? {
     var object: Element?
-    if let index = index where index >= 0 && index < endIndex {
+    if let index = index , index >= 0 && index < endIndex {
       object = self[index]
     }
 
