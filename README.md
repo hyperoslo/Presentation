@@ -119,7 +119,7 @@ for index in 0...2 {
     duration: 2.0,
     dumping: 0.8,
     reflective: true)
-  controller.addAnimations([animation])
+  controller.add(animations: [animation])
 
   slides.append(controller)
 }
@@ -136,11 +136,11 @@ let content = Content(view: imageView, position: Position(left: -0.3, top: 0.2))
 presentationController.addToBackground([content])
 
 // Add pages animations
-presentationController.addAnimations([
+presentationController.add(animations: [
   TransitionAnimation(content: content, destination: Position(left: 0.2, top: 0.2))],
   forPage: 0)
 
-presentationController.addAnimations([
+presentationController.add(animations: [
   TransitionAnimation(content: content, destination: Position(left: 0.3, top: 0.2))],
   forPage: 1)
 ```
