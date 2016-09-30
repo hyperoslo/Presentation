@@ -24,8 +24,8 @@ public final class Content: NSObject {
     super.init()
 
     constrain(view) { [unowned self] view in
-      view.width  == CGRectGetWidth(self.view.frame)
-      view.height == CGRectGetHeight(self.view.frame)
+      view.width  == self.view.frame.width
+      view.height == self.view.frame.height
     }
   }
 
@@ -70,7 +70,7 @@ extension Content {
   public class func content(text: String,
     attributes: [String : AnyObject]? = nil) -> Content {
       let textView = UITextView(frame: CGRect.zero)
-      textView.backgroundColor = .clear()
+      textView.backgroundColor = UIColor.clear
       textView.attributedText = NSAttributedString(string: text, attributes: attributes)
       textView.sizeToFit()
 
@@ -85,8 +85,8 @@ extension Content {
 
   public class func centerTransitionFor(slideContent: Content) -> Animatable {
     return TransitionAnimation(
-      content: content,
-      destination: Position(left: 0.5, bottom: content.initialPosition.bottom),
+      content: slideContent,
+      destination: Position(left: 0.5, bottom: slideContent.initialPosition.bottom),
       duration: 2.0,
       dumping: 0.8,
       reflective: true)

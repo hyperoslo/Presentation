@@ -57,7 +57,7 @@ extension TransitionAnimation {
         content.position = position
         content.animate()
 
-        animateTo(destination)
+        animate(to: destination)
       }
     }
   }
@@ -67,7 +67,7 @@ extension TransitionAnimation {
       if !(initial && played) {
         let position = reflective ? startMirror : start
 
-        animateTo(position)
+        animate(to: position)
       }
     }
   }
@@ -93,7 +93,7 @@ extension TransitionAnimation {
         origin.x = startX + offsetX
         origin.y = startY + offsetY
 
-        content.position = origin.positionInFrame(superview.bounds)
+        content.position = origin.position(in: superview.bounds)
       }
     }
   }

@@ -24,8 +24,8 @@ open class PresentationController: PagesController {
 
   public convenience init(pages: [UIViewController]) {
     self.init(
-      transitionStyle: .Scroll,
-      navigationOrientation: .Horizontal,
+      transitionStyle: .scroll,
+      navigationOrientation: .horizontal,
       options: nil)
 
     add(pages)
@@ -43,7 +43,7 @@ open class PresentationController: PagesController {
     super.viewDidAppear(animated)
 
     for subview in view.subviews {
-      if subview.isKindOfClass(UIScrollView) {
+      if subview is UIScrollView {
         scrollView = subview as? UIScrollView
         scrollView?.delegate = self
       }
@@ -119,7 +119,7 @@ open class PresentationController: PagesController {
 
 extension PresentationController {
 
-  public override func add(_ viewControllers: [UIViewController]) {
+  open override func add(_ viewControllers: [UIViewController]) {
     for case let controller as SlideController in viewControllers  {
       slides.append(controller)
     }
@@ -130,7 +130,7 @@ extension PresentationController {
     for content in elements {
       backgroundContents.append(content)
       view.addSubview(content.view)
-      view.sendSubviewToBack(content.view)
+      view.sendSubview(toBack: content.view)
       content.layout()
     }
   }
@@ -196,7 +196,7 @@ extension PresentationController: UIScrollViewDelegate {
 
     if canMove {
       animateAtIndex(index, perform: { animation in
-        animation.moveWith(offsetRatio)
+        animation.moveWith(offsetRatio: offsetRatio)
       })
       for slide in slides {
         if index <= animationIndex {

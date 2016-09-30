@@ -9,7 +9,7 @@ open class SlideController: UIViewController {
   public convenience init(contents: [Content]) {
     self.init()
 
-    addContents(contents)
+    add(contents: contents)
   }
 
   // MARK: - View lifecycle
@@ -56,7 +56,7 @@ extension SlideController {
 
   public func add(contents: [Content]) {
     for content in contents {
-      addContent(content)
+      add(content: content)
     }
   }
 
@@ -69,7 +69,7 @@ extension SlideController {
 
   public func add(animations: [Animatable]) {
     for animation in animations {
-      addAnimation(animation)
+      add(animation: animation)
     }
   }
 
