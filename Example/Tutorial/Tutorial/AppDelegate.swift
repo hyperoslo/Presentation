@@ -1,5 +1,5 @@
 import UIKit
-import Hex
+import Hue
 import Presentation
 
 @UIApplicationMain
@@ -24,13 +24,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
   lazy var leftButton: UIBarButtonItem = { [unowned self] in
     let button = UIBarButtonItem(
       title: "Previous page",
-      style: .Plain,
+      style: .plain,
       target: self.presentationController,
-      action: #selector(PresentationController.previous))
+      action: #selector(PresentationController.moveBack))
 
     button.setTitleTextAttributes(
-      [NSForegroundColorAttributeName : UIColor.whiteColor()],
-      forState: .Normal)
+      [NSForegroundColorAttributeName : UIColor.white],
+      for: .normal)
 
     return button
     }()
@@ -38,23 +38,23 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
   lazy var rightButton: UIBarButtonItem = { [unowned self] in
     let button = UIBarButtonItem(
       title: "Next page",
-      style: .Plain,
+      style: .plain,
       target: self.presentationController,
-      action: #selector(PresentationController.next))
+      action: #selector(PresentationController.moveForward))
 
     button.setTitleTextAttributes(
-      [NSForegroundColorAttributeName : UIColor.whiteColor()],
-      forState: .Normal)
+      [NSForegroundColorAttributeName : UIColor.white],
+      for: .normal)
 
     return button
     }()
 
   func application(
-    application: UIApplication,
-    didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
+    _ application: UIApplication,
+    didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
 
       UINavigationBar.appearance().barTintColor = UIColor(hex: "FF5703")
-      UINavigationBar.appearance().barStyle = .BlackTranslucent
+      UINavigationBar.appearance().barStyle = .blackTranslucent
 
       presentationController.navigationItem.leftBarButtonItem = leftButton
       presentationController.navigationItem.rightBarButtonItem = rightButton
@@ -62,7 +62,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
       configureSlides()
       configureBackground()
 
-      window = UIWindow(frame: UIScreen.mainScreen().bounds)
+      window = UIWindow(frame: UIScreen.main.bounds)
       window?.rootViewController = navigationController
       window?.makeKeyAndVisible()
 
@@ -71,18 +71,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
   func configureSlides() {
     let font = UIFont(name: "ArialRoundedMTBold", size: 42.0)!
-    let color = UIColor.whiteColor()
+    let color = UIColor.white
     let paragraphStyle = NSMutableParagraphStyle()
-    paragraphStyle.alignment = .Center
+    paragraphStyle.alignment = .center
 
     let attributes = [NSFontAttributeName: font, NSForegroundColorAttributeName: color,
       NSParagraphStyleAttributeName: paragraphStyle]
 
     let titles = ["Tutorial on how to make a profit", "Step I", "Step II", "Step III", "Thanks"].map {
-      Content.titleContent($0, attributes: attributes)
+      Content.content(forTitle: $0, attributes: attributes)
     }
     let texts = ["", "Collect underpants\n💭", "🎅🎅🏻🎅🏼🎅🏽🎅🏾🎅🏿", "Profit\n💸", ""].map {
-      Content.textContent($0, attributes: attributes)
+      Content.content(forText: $0, attributes: attributes)
     }
 
     var slides = [SlideController]()
@@ -93,18 +93,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
       if index == 0 {
         titles[index].position.left = 0.5
 
-        controller.addAnimations([
+        controller.add(animations: [
           DissolveAnimation(content: titles[index], duration: 2.0, delay: 1.0, initial: true)])
       } else {
-        controller.addAnimations([
-          Content.centerTransitionForSlideContent(titles[index]),
-          Content.centerTransitionForSlideContent(texts[index])])
+        controller.add(animations: [
+          Content.centerTransition(forSlideContent: titles[index]),
+          Content.centerTransition(forSlideContent: texts[index])])
       }
 
       slides.append(controller)
     }
 
-    slides[4].addContent(Content.imageContent(UIImage(named: "HyperLogo")!))
+    slides[4].add(content: Content.content(forImage: UIImage(named: "HyperLogo")!))
 
     presentationController.add(slides)
   }

@@ -4,28 +4,28 @@ import Pages
 @objc public protocol PresentationControllerDelegate {
 
   func presentationController(
-    presentationController: PresentationController,
+    _ presentationController: PresentationController,
     didSetViewController viewController: UIViewController,
     atPage page: Int)
 }
 
-public class PresentationController: PagesController {
+open class PresentationController: PagesController {
 
-  public weak var presentationDelegate: PresentationControllerDelegate?
-  public var maxAnimationDelay: Double = 3
+  open weak var presentationDelegate: PresentationControllerDelegate?
+  open var maxAnimationDelay: Double = 3
 
-  private var backgroundContents = [Content]()
-  private var slides = [SlideController]()
-  private var animationsForPages = [Int : [Animatable]]()
+  fileprivate var backgroundContents = [Content]()
+  fileprivate var slides = [SlideController]()
+  fileprivate var animationsForPages = [Int : [Animatable]]()
 
-  private var animationIndex = 0
-  private weak var scrollView: UIScrollView?
-  var animationTimer: NSTimer?
+  fileprivate var animationIndex = 0
+  fileprivate weak var scrollView: UIScrollView?
+  var animationTimer: Timer?
 
   public convenience init(pages: [UIViewController]) {
     self.init(
-      transitionStyle: .Scroll,
-      navigationOrientation: .Horizontal,
+      transitionStyle: .scroll,
+      navigationOrientation: .horizontal,
       options: nil)
 
     add(pages)
@@ -33,17 +33,17 @@ public class PresentationController: PagesController {
 
   // MARK: - View lifecycle
 
-  public override func viewDidLoad() {
+  open override func viewDidLoad() {
     pagesDelegate = self
 
     super.viewDidLoad()
   }
 
-  public override func viewDidAppear(animated: Bool) {
+  open override func viewDidAppear(_ animated: Bool) {
     super.viewDidAppear(animated)
 
     for subview in view.subviews {
-      if subview.isKindOfClass(UIScrollView) {
+      if subview is UIScrollView {
         scrollView = subview as? UIScrollView
         scrollView?.delegate = self
       }
@@ -56,7 +56,7 @@ public class PresentationController: PagesController {
 
   // MARK: - Public methods
 
-  public override func goTo(index: Int) {
+  open override func goTo(_ index: Int) {
     startAnimationTimer()
     
     super.goTo(index)
@@ -91,15 +91,15 @@ public class PresentationController: PagesController {
 
   func startAnimationTimer() {
     stopAnimationTimer()
-    scrollView?.userInteractionEnabled = false
+    scrollView?.isUserInteractionEnabled = false
     if animationTimer == nil {
-      dispatch_async(dispatch_get_main_queue()) {
-        self.animationTimer = NSTimer.scheduledTimerWithTimeInterval(self.maxAnimationDelay,
+      DispatchQueue.main.async {
+        self.animationTimer = Timer.scheduledTimer(timeInterval: self.maxAnimationDelay,
           target: self,
           selector: #selector(self.updateAnimationTimer(_:)),
           userInfo: nil,
           repeats: false)
-        NSRunLoop.currentRunLoop().addTimer(self.animationTimer!, forMode: NSRunLoopCommonModes)
+        RunLoop.current.add(self.animationTimer!, forMode: RunLoopMode.commonModes)
       }
     }
   }
@@ -109,9 +109,9 @@ public class PresentationController: PagesController {
     animationTimer = nil
   }
 
-  func updateAnimationTimer(timer: NSTimer) {
+  func updateAnimationTimer(_ timer: Timer) {
     stopAnimationTimer()
-    scrollView?.userInteractionEnabled = true
+    scrollView?.isUserInteractionEnabled = true
   }
 }
 
@@ -119,18 +119,18 @@ public class PresentationController: PagesController {
 
 extension PresentationController {
 
-  public override func add(viewControllers: [UIViewController]) {
+  open override func add(_ viewControllers: [UIViewController]) {
     for case let controller as SlideController in viewControllers  {
       slides.append(controller)
     }
     super.add(viewControllers)
   }
 
-  public func addToBackground(elements: [Content]) {
+  public func addToBackground(_ elements: [Content]) {
     for content in elements {
       backgroundContents.append(content)
       view.addSubview(content.view)
-      view.sendSubviewToBack(content.view)
+      view.sendSubview(toBack: content.view)
       content.layout()
     }
   }
@@ -140,23 +140,23 @@ extension PresentationController {
 
 extension PresentationController {
 
-  public func addAnimations(animations: [Animatable], forPage page: Int) {
+  public func addAnimations(_ animations: [Animatable], forPage page: Int) {
     for animation in animations {
       addAnimation(animation, forPage: page)
     }
   }
 
-  public func addAnimation(animation: Animatable, forPage page: Int) {
+  public func addAnimation(_ animation: Animatable, forPage page: Int) {
     if animationsForPages[page] == nil {
       animationsForPages[page] = []
     }
     animationsForPages[page]?.append(animation)
   }
 
-  private func animateAtIndex(index: Int, perform: (animation: Animatable) -> Void) {
+  fileprivate func animateAtIndex(_ index: Int, perform: (_ animation: Animatable) -> Void) {
     if let animations = animationsForPages[index] {
       for animation in animations {
-        perform(animation: animation)
+        perform(animation)
       }
     }
   }
@@ -166,7 +166,7 @@ extension PresentationController {
 
 extension PresentationController: PagesControllerDelegate {
 
-  public func pageViewController(pageViewController: UIPageViewController,
+  open func pageViewController(_ pageViewController: UIPageViewController,
     setViewController viewController: UIViewController, atPage page: Int) {
       animationIndex = page
       scrollView?.delegate = self
@@ -181,9 +181,9 @@ extension PresentationController: PagesControllerDelegate {
 
 extension PresentationController: UIScrollViewDelegate {
 
-  public func scrollViewDidScroll(scrollView: UIScrollView) {
-    let offset = scrollView.contentOffset.x - CGRectGetWidth(view.frame)
-    let offsetRatio = offset / CGRectGetWidth(view.frame)
+  open func scrollViewDidScroll(_ scrollView: UIScrollView) {
+    let offset = scrollView.contentOffset.x - (view.frame).width
+    let offsetRatio = offset / (view.frame).width
 
     var index = animationIndex
     if offsetRatio > 0.0 || index == 0 {
@@ -196,7 +196,7 @@ extension PresentationController: UIScrollViewDelegate {
 
     if canMove {
       animateAtIndex(index, perform: { animation in
-        animation.moveWith(offsetRatio)
+        animation.moveWith(offsetRatio: offsetRatio)
       })
       for slide in slides {
         if index <= animationIndex {

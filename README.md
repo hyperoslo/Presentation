@@ -3,6 +3,7 @@
 [![Version](https://img.shields.io/cocoapods/v/Presentation.svg?style=flat)](http://cocoadocs.org/docsets/Presentation)
 [![CI Status](http://img.shields.io/travis/hyperoslo/Presentation.svg?style=flat)](https://travis-ci.org/hyperoslo/Presentation)
 [![Carthage Compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
+![Swift](https://img.shields.io/badge/%20in-swift%203.0-orange.svg)
 [![License](https://img.shields.io/cocoapods/l/Presentation.svg?style=flat)](http://cocoadocs.org/docsets/Presentation)
 [![Platform](https://img.shields.io/cocoapods/p/Presentation.svg?style=flat)](http://cocoadocs.org/docsets/Presentation)
 
@@ -119,7 +120,7 @@ for index in 0...2 {
     duration: 2.0,
     dumping: 0.8,
     reflective: true)
-  controller.addAnimations([animation])
+  controller.add(animations: [animation])
 
   slides.append(controller)
 }
@@ -136,11 +137,11 @@ let content = Content(view: imageView, position: Position(left: -0.3, top: 0.2))
 presentationController.addToBackground([content])
 
 // Add pages animations
-presentationController.addAnimations([
+presentationController.add(animations: [
   TransitionAnimation(content: content, destination: Position(left: 0.2, top: 0.2))],
   forPage: 0)
 
-presentationController.addAnimations([
+presentationController.add(animations: [
   TransitionAnimation(content: content, destination: Position(left: 0.3, top: 0.2))],
   forPage: 1)
 ```

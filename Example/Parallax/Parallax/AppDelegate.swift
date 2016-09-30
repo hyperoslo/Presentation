@@ -16,15 +16,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }()
 
   func application(
-    application: UIApplication,
-    didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
+    _ application: UIApplication,
+    didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
 
-      UINavigationBar.appearance().setBackgroundImage(UIImage(), forBarMetrics: .Default)
-      UINavigationBar.appearance().barStyle = .Default
+      UINavigationBar.appearance().setBackgroundImage(UIImage(), for: .default)
+      UINavigationBar.appearance().barStyle = .default
       UINavigationBar.appearance().shadowImage = UIImage()
-      UINavigationBar.appearance().translucent = true
+      UINavigationBar.appearance().isTranslucent = true
 
-      window = UIWindow(frame: UIScreen.mainScreen().bounds)
+      window = UIWindow(frame: UIScreen.main.bounds)
       window?.rootViewController = navigationController
       window?.makeKeyAndVisible()
 

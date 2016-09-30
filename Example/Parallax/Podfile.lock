@@ -1,31 +1,33 @@
 PODS:
-  - Cartography (0.6.0)
-  - Hex (2.0)
-  - Pages (0.6.2)
-  - Presentation (2.0.0):
+  - Cartography (1.0.0)
+  - Hue (1.2.0)
+  - Pages (1.0.0)
+  - Presentation (2.1.0):
     - Cartography
-    - Pages (~> 0.6.2)
+    - Pages
 
 DEPENDENCIES:
-  - Hex (~> 2.0)
-  - Pages (from `https://github.com/hyperoslo/Pages`)
+  - Hue (from `https://github.com/hyperoslo/Hue`, branch `swift3`)
   - Presentation (from `../../`)
 
 EXTERNAL SOURCES:
-  Pages:
-    :git: https://github.com/hyperoslo/Pages
+  Hue:
+    :branch: swift3
+    :git: https://github.com/hyperoslo/Hue
   Presentation:
-    :path: ../../
+    :path: "../../"
 
 CHECKOUT OPTIONS:
-  Pages:
-    :commit: f411722d6281fee2d458cc520e3fb9c4de62f04c
-    :git: https://github.com/hyperoslo/Pages
+  Hue:
+    :commit: c21ca81d4fa002309f8f8f554317bf9ec3167365
+    :git: https://github.com/hyperoslo/Hue
 
 SPEC CHECKSUMS:
-  Cartography: 70af183a248547694a8cfaa6b989cb7e04589985
-  Hex: 1800bd20206b93b10422d2289baa3787698825ad
-  Pages: 6c042132f8c63c34d242789b7763d4c64e9681a0
-  Presentation: ffc0ebd6775cf66071dc1b151848a67637cc8c05
+  Cartography: e576cf19c0c1f201686180bcf4537f981574ce8d
+  Hue: 0705083b7aff40334033373e6293ec1215285ac2
+  Pages: f3718e6f03a5e2787f6b0bff4becb3c7c19bcebc
+  Presentation: bb372ffe054c1aab90b4455f1b515f26650ccb09
 
-COCOAPODS: 0.39.0.beta.5
+PODFILE CHECKSUM: f41db61a2828ca5a77fd53546b00649e4bd644cc
+
+COCOAPODS: 1.1.0.rc.2
