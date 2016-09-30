@@ -5,7 +5,6 @@ use_frameworks!
 platform :ios, '8.0'
 
 target 'Tutorial' do
-    pod 'Presentation', path: '../../'
-    pod 'Hex', '~> 2.0'
-    pod 'Pages', git: 'https://github.com/hyperoslo/Pages'
+  pod 'Presentation', path: '../../'
+  pod 'Hue', git: 'https://github.com/hyperoslo/Hue', branch: 'swift3'
 end
