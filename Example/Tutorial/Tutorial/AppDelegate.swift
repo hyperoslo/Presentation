@@ -97,8 +97,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
           DissolveAnimation(content: titles[index], duration: 2.0, delay: 1.0, initial: true)])
       } else {
         controller.add(animations: [
-          Content.centerTransitionFor(slideContent: titles[index]),
-          Content.centerTransitionFor(slideContent: texts[index])])
+          Content.centerTransition(forSlideContent: titles[index]),
+          Content.centerTransition(forSlideContent: texts[index])])
       }
 
       slides.append(controller)
