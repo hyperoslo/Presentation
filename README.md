@@ -19,7 +19,7 @@ Looking for the easiest way of presenting something in your iOS app? Then you ar
 
 Presentation works both on the iPhone and the iPad. You can use it with both `Swift` and `Objective-C`.
 
-Try one of our [demos](https://github.com/hyperoslo/Presentation/tree/master/Demos) to see how it works:
+Try one of our [demos](https://github.com/hyperoslo/Presentation/tree/master/Example) to see how it works:
 
 ```shell
 pod try Presentation
