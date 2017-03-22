@@ -88,7 +88,7 @@ extension Content {
       content: content,
       destination: Position(left: 0.5, bottom: content.initialPosition.bottom),
       duration: 2.0,
-      dumping: 0.8,
+      damping: 0.8,
       reflective: true)
   }
 }

@@ -5,7 +5,7 @@ public class TransitionAnimation: NSObject, Animatable {
   let content: Content
   let destination: Position
   let duration: TimeInterval
-  let dumping: CGFloat
+  let damping: CGFloat
   var reflective: Bool
   var initial: Bool
   var played = false
@@ -19,11 +19,11 @@ public class TransitionAnimation: NSObject, Animatable {
     }()
 
   public init(content: Content, destination: Position,
-    duration: TimeInterval = 1.0, dumping: CGFloat = 0.7, reflective: Bool = false, initial: Bool = false) {
+    duration: TimeInterval = 1.0, damping: CGFloat = 0.7, reflective: Bool = false, initial: Bool = false) {
       self.content = content
       self.destination = destination
       self.duration = duration
-      self.dumping = dumping
+      self.damping = damping
       self.reflective = reflective
       self.initial = initial
 
@@ -33,7 +33,7 @@ public class TransitionAnimation: NSObject, Animatable {
   fileprivate func animate(to position: Position) {
     UIView.animate(withDuration: duration,
       delay: 0,
-      usingSpringWithDamping: dumping,
+      usingSpringWithDamping: damping,
       initialSpringVelocity: 0.5,
       options: [.beginFromCurrentState, .allowUserInteraction],
       animations: { [unowned self] in
