@@ -70,7 +70,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
   }
 
   func configureSlides() {
-    let ratio: CGFloat = UIScreen.main.bounds.width / 1024
+    let ratio: CGFloat = UIDevice.current.userInterfaceIdiom == .pad ? 1 : 0.4
     let font = UIFont(name: "ArialRoundedMTBold", size: 42.0 * ratio)!
     let color = UIColor.white
     let paragraphStyle = NSMutableParagraphStyle()
