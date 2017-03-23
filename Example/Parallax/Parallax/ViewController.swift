@@ -73,7 +73,8 @@ class ViewController: PresentationController {
   // MARK: - Configuration
 
   func configureSlides() {
-    let font = UIFont(name: "HelveticaNeue", size: 34.0)!
+    let ratio: CGFloat = UIDevice.current.userInterfaceIdiom == .pad ? 1 : 0.6
+    let font = UIFont(name: "HelveticaNeue", size: 34.0 * ratio)!
     let color = UIColor(hex: "FFE8A9")
     let paragraphStyle = NSMutableParagraphStyle()
     paragraphStyle.alignment = NSTextAlignment.center
@@ -87,7 +88,7 @@ class ViewController: PresentationController {
       "The term is derived from the Greek word παράλλαξις (parallaxis), meaning 'alteration'.",
       "Nearby objects have a larger parallax than more distant objects when observed from different positions.",
       "http://en.wikipedia.org/wiki/Parallax"].map { title -> Content in
-        let label = UILabel(frame: CGRect(x: 0, y: 0, width: 550, height: 200))
+        let label = UILabel(frame: CGRect(x: 0, y: 0, width: 550 * ratio, height: 200 * ratio))
         label.numberOfLines = 5
         label.attributedText = NSAttributedString(string: title, attributes: attributes)
         let position = Position(left: 0.7, top: 0.35)
