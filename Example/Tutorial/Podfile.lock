@@ -1,8 +1,8 @@
 PODS:
-  - Cartography (1.0.0)
+  - Cartography (1.0.1)
   - Hue (1.2.0)
   - Pages (1.0.0)
-  - Presentation (2.1.0):
+  - Presentation (3.0.0):
     - Cartography
     - Pages
 
@@ -19,15 +19,15 @@ EXTERNAL SOURCES:
 
 CHECKOUT OPTIONS:
   Hue:
-    :commit: c21ca81d4fa002309f8f8f554317bf9ec3167365
+    :commit: 3303cbcdf0f771aea1a6d1a153e4b95eef8696eb
     :git: https://github.com/hyperoslo/Hue
 
 SPEC CHECKSUMS:
-  Cartography: e576cf19c0c1f201686180bcf4537f981574ce8d
+  Cartography: c1460e99395b824d9d75360b0382faeb0b33dcd7
   Hue: 0705083b7aff40334033373e6293ec1215285ac2
   Pages: f3718e6f03a5e2787f6b0bff4becb3c7c19bcebc
-  Presentation: bb372ffe054c1aab90b4455f1b515f26650ccb09
+  Presentation: 2a7e0379ab403c0bd91c4f6d5c59480edba6f429
 
 PODFILE CHECKSUM: a46ef067438fe85dbabc3ca50d68bda71f1ff526
 
-COCOAPODS: 1.1.0.rc.2
+COCOAPODS: 1.2.0

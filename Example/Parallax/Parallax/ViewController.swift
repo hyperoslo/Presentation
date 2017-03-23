@@ -135,7 +135,7 @@ class ViewController: PresentationController {
       for (column, backgroundImage) in backgroundImages.enumerated() {
         if let position = backgroundImage.positionAt(row), let content = contents.at(column) {
           addAnimation(TransitionAnimation(content: content, destination: position,
-            duration: 2.0, dumping: 1.0), forPage: row)
+            duration: 2.0, damping: 1.0), forPage: row)
         }
       }
     }
