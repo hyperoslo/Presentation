@@ -4,36 +4,35 @@ import Presentation
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
-
   var window: UIWindow?
 
   lazy var navigationController: UINavigationController = { [unowned self] in
     let controller = UINavigationController(rootViewController: self.presentationController)
     controller.view.backgroundColor = UIColor(hex:"FF5703")
-
     return controller
   }()
 
   lazy var presentationController: PresentationController = {
     let controller = PresentationController(pages: [])
     controller.setNavigationTitle = false
-
     return controller
-    }()
+  }()
 
   lazy var leftButton: UIBarButtonItem = { [unowned self] in
     let button = UIBarButtonItem(
       title: "Previous page",
       style: .plain,
       target: self.presentationController,
-      action: #selector(PresentationController.moveBack))
+      action: #selector(PresentationController.moveBack)
+    )
 
     button.setTitleTextAttributes(
-      [NSForegroundColorAttributeName : UIColor.white],
-      for: .normal)
+      [NSAttributedStringKey.foregroundColor: UIColor.white],
+      for: .normal
+    )
 
     return button
-    }()
+  }()
 
   lazy var rightButton: UIBarButtonItem = { [unowned self] in
     let button = UIBarButtonItem(
@@ -43,7 +42,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
       action: #selector(PresentationController.moveForward))
 
     button.setTitleTextAttributes(
-      [NSForegroundColorAttributeName : UIColor.white],
+      [NSAttributedStringKey.foregroundColor: UIColor.white],
       for: .normal)
 
     return button
@@ -76,8 +75,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     let paragraphStyle = NSMutableParagraphStyle()
     paragraphStyle.alignment = .center
 
-    let attributes = [NSFontAttributeName: font, NSForegroundColorAttributeName: color,
-      NSParagraphStyleAttributeName: paragraphStyle]
+    let attributes = [NSAttributedStringKey.font: font, NSAttributedStringKey.foregroundColor: color,
+      NSAttributedStringKey.paragraphStyle: paragraphStyle]
 
     let titles = ["Tutorial on how to make a profit", "Step I", "Step II", "Step III", "Thanks"].map {
       Content.content(forTitle: $0, attributes: attributes)
