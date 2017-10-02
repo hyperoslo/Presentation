@@ -59,7 +59,6 @@ public extension SlideController {
   func add(content: Content) {
     contents.append(content)
     view.addSubview(content.view)
-
     content.layout()
   }
 
