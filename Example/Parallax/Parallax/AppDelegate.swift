@@ -2,23 +2,15 @@ import UIKit
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
-
   var window: UIWindow?
 
-  lazy var navigationController: UINavigationController = { [unowned self] in
-    let controller = UINavigationController(rootViewController: self.presentationController)
+  private lazy var navigationController: UINavigationController = .init(
+    rootViewController: self.presentationController
+  )
+  private lazy var presentationController: ViewController = .init(pages: [])
 
-    return controller
-    }()
-
-  lazy var presentationController: ViewController = {
-    return ViewController(pages: [])
-    }()
-
-  func application(
-    _ application: UIApplication,
-    didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-
+  func application(_ application: UIApplication,
+                   didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
       UINavigationBar.appearance().setBackgroundImage(UIImage(), for: .default)
       UINavigationBar.appearance().barStyle = .default
       UINavigationBar.appearance().shadowImage = UIImage()

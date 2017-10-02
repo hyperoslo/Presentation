@@ -2,31 +2,31 @@ import UIKit
 import Pages
 
 @objc public protocol PresentationControllerDelegate {
-
   func presentationController(
     _ presentationController: PresentationController,
     didSetViewController viewController: UIViewController,
-    atPage page: Int)
+    atPage page: Int
+  )
 }
 
 open class PresentationController: PagesController {
+  public weak var presentationDelegate: PresentationControllerDelegate?
+  public var maxAnimationDelay: Double = 3
 
-  open weak var presentationDelegate: PresentationControllerDelegate?
-  open var maxAnimationDelay: Double = 3
+  private var backgroundContents = [Content]()
+  private var slides = [SlideController]()
+  private var animationsForPages = [Int : [Animatable]]()
 
-  fileprivate var backgroundContents = [Content]()
-  fileprivate var slides = [SlideController]()
-  fileprivate var animationsForPages = [Int : [Animatable]]()
-
-  fileprivate var animationIndex = 0
-  fileprivate weak var scrollView: UIScrollView?
-  var animationTimer: Timer?
+  private var animationIndex = 0
+  private weak var scrollView: UIScrollView?
+  private var animationTimer: Timer?
 
   public convenience init(pages: [UIViewController]) {
     self.init(
       transitionStyle: .scroll,
       navigationOrientation: .horizontal,
-      options: nil)
+      options: nil
+    )
 
     add(pages)
   }
@@ -35,7 +35,6 @@ open class PresentationController: PagesController {
 
   open override func viewDidLoad() {
     pagesDelegate = self
-
     super.viewDidLoad()
   }
 
@@ -89,9 +88,10 @@ open class PresentationController: PagesController {
 
   // MARK: - Animation Timer
 
-  func startAnimationTimer() {
+  private func startAnimationTimer() {
     stopAnimationTimer()
     scrollView?.isUserInteractionEnabled = false
+
     if animationTimer == nil {
       DispatchQueue.main.async {
         self.animationTimer = Timer.scheduledTimer(timeInterval: self.maxAnimationDelay,
@@ -104,20 +104,17 @@ open class PresentationController: PagesController {
     }
   }
 
-  func stopAnimationTimer() {
+  private func stopAnimationTimer() {
     animationTimer?.invalidate()
     animationTimer = nil
   }
 
-  func updateAnimationTimer(_ timer: Timer) {
+  @objc func updateAnimationTimer(_ timer: Timer) {
     stopAnimationTimer()
     scrollView?.isUserInteractionEnabled = true
   }
-}
 
-// MARK: - Content
-
-extension PresentationController {
+  // MARK: - Content
 
   open override func add(_ viewControllers: [UIViewController]) {
     for case let controller as SlideController in viewControllers  {
@@ -139,7 +136,6 @@ extension PresentationController {
 // MARK: - Animations
 
 extension PresentationController {
-
   public func addAnimations(_ animations: [Animatable], forPage page: Int) {
     for animation in animations {
       addAnimation(animation, forPage: page)
@@ -153,7 +149,7 @@ extension PresentationController {
     animationsForPages[page]?.append(animation)
   }
 
-  fileprivate func animateAtIndex(_ index: Int, perform: (_ animation: Animatable) -> Void) {
+  private func animateAtIndex(_ index: Int, perform: (_ animation: Animatable) -> Void) {
     if let animations = animationsForPages[index] {
       for animation in animations {
         perform(animation)
@@ -165,27 +161,28 @@ extension PresentationController {
 // MARK: - PagesControllerDelegate
 
 extension PresentationController: PagesControllerDelegate {
-
   open func pageViewController(_ pageViewController: UIPageViewController,
-    setViewController viewController: UIViewController, atPage page: Int) {
-      animationIndex = page
-      scrollView?.delegate = self
+                               setViewController viewController: UIViewController,
+                               atPage page: Int) {
+    animationIndex = page
+    scrollView?.delegate = self
 
-      presentationDelegate?.presentationController(self,
-        didSetViewController: viewController,
-        atPage: page)
+    presentationDelegate?.presentationController(
+      self,
+      didSetViewController: viewController,
+      atPage: page
+    )
   }
 }
 
 // MARK: - UIScrollViewDelegate
 
 extension PresentationController: UIScrollViewDelegate {
-
   open func scrollViewDidScroll(_ scrollView: UIScrollView) {
     let offset = scrollView.contentOffset.x - (view.frame).width
     let offsetRatio = offset / (view.frame).width
-
     var index = animationIndex
+
     if offsetRatio > 0.0 || index == 0 {
       index += 1
     }

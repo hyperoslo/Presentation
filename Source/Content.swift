@@ -2,7 +2,6 @@ import UIKit
 import Cartography
 
 public final class Content: NSObject {
-
   public var view: UIView
   public var centered: Bool
 
@@ -12,8 +11,8 @@ public final class Content: NSObject {
     }
   }
 
-  public fileprivate(set) var initialPosition: Position
-  fileprivate let group = ConstraintGroup()
+  public private(set) var initialPosition: Position
+  private let group = ConstraintGroup()
 
   public init(view: UIView, position: Position, centered: Bool = true) {
     self.view = view
@@ -30,22 +29,28 @@ public final class Content: NSObject {
   }
 
   public func layout() {
-    if let _ = view.superview {
-      constrain(view, replace: group) { [unowned self] view in
-        let x = self.position.left == 0.0 ? view.superview!.left * 1.0 :
-          view.superview!.right * self.position.left
-        let y = self.position.top == 0.0 ? view.superview!.top * 1.0 :
-          view.superview!.bottom * self.position.top
-        if self.centered {
-          view.centerX == x
-          view.centerY  == y
-        } else {
-          view.left == x
-          view.top == y
-        }
-      }
-      view.layoutIfNeeded()
+    guard view.superview != nil else {
+      return
     }
+
+    constrain(view, replace: group) { [unowned self] view in
+      let x = self.position.left == 0.0
+        ? view.superview!.left * 1.0
+        : view.superview!.right * self.position.left
+      let y = self.position.top == 0.0
+        ? view.superview!.top * 1.0
+        : view.superview!.bottom * self.position.top
+
+      if self.centered {
+        view.centerX == x
+        view.centerY  == y
+      } else {
+        view.left == x
+        view.top == y
+      }
+    }
+
+    view.layoutIfNeeded()
   }
 
   public func animate() {
@@ -53,42 +58,39 @@ public final class Content: NSObject {
   }
 }
 
-extension Content {
+public extension Content {
+  class func content(forTitle text: String, attributes: [NSAttributedStringKey: Any]? = nil) -> Content {
+    let label = UILabel(frame: CGRect.zero)
+    label.numberOfLines = 1
+    label.attributedText = NSAttributedString(string: text, attributes: attributes)
+    label.sizeToFit()
 
-  public class func content(forTitle text: String,
-    attributes: [String : AnyObject]? = nil) -> Content {
-      let label = UILabel(frame: CGRect.zero)
-      label.numberOfLines = 1
-      label.attributedText = NSAttributedString(string: text, attributes: attributes)
-      label.sizeToFit()
+    let position = Position(left: 0.9, bottom: 0.2)
 
-      let position = Position(left: 0.9, bottom: 0.2)
-
-      return Content(view: label, position: position)
+    return Content(view: label, position: position)
   }
 
-  public class func content(forText text: String,
-    attributes: [String : AnyObject]? = nil) -> Content {
-      let textView = UITextView(frame: CGRect.zero)
-      textView.backgroundColor = UIColor.clear
-      textView.attributedText = NSAttributedString(string: text, attributes: attributes)
-      textView.sizeToFit()
+  class func content(forText text: String, attributes: [NSAttributedStringKey: Any]? = nil) -> Content {
+    let textView = UITextView(frame: CGRect.zero)
+    textView.backgroundColor = UIColor.clear
+    textView.attributedText = NSAttributedString(string: text, attributes: attributes)
+    textView.sizeToFit()
 
-      return Content(view: textView, position: Position(left: 0.9, bottom: 0.1))
+    return Content(view: textView, position: Position(left: 0.9, bottom: 0.1))
   }
 
-  public class func content(forImage image: UIImage) -> Content {
+  class func content(forImage image: UIImage) -> Content {
     let imageView = UIImageView(image: image)
-
     return Content(view: imageView, position: Position(left: 0.5, bottom: 0.5))
   }
 
-  public class func centerTransition(forSlideContent content: Content) -> Animatable {
+  class func centerTransition(forSlideContent content: Content) -> Animatable {
     return TransitionAnimation(
       content: content,
       destination: Position(left: 0.5, bottom: content.initialPosition.bottom),
       duration: 2.0,
       damping: 0.8,
-      reflective: true)
+      reflective: true
+    )
   }
 }

@@ -2,7 +2,7 @@ use_frameworks!
 
 platform :ios, '8.0'
 
-target 'Parallax' do
-  pod 'Presentation', path: '../../'
-  pod 'Hue', git: 'https://github.com/hyperoslo/Hue', branch: 'swift3'
-end
+pod 'Presentation', path: '../../'
+pod 'Hue'
+
+target 'Parallax'
