@@ -9,4 +9,4 @@ before_install:
 
 script:
 - set -o pipefail
-- travis_retry xcodebuild -project Presentation.xcodeproj -scheme "Presentation-iOS" -destination "platform=iOS Simulator,name=iPhone 6" build-for-testing test | xcpretty
+- travis_retry xcodebuild clean build -project Presentation.xcodeproj -scheme "Presentation-iOS" -destination "platform=iOS Simulator,name=iPhone 6" | xcpretty
