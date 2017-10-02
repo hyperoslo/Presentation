@@ -1,5 +1,6 @@
-osx_image: xcode8
+osx_image: xcode9
 language: objective-c
+xcode_sdk: iphonesimulator10.0
 
 before_install:
 - brew update
@@ -7,4 +8,5 @@ before_install:
 - travis_wait 35 carthage bootstrap --platform iOS
 
 script:
-- xcodebuild clean build -project Presentation.xcodeproj -scheme "Presentation-iOS" -sdk iphonesimulator
+- set -o pipefail
+- travis_retry xcodebuild -project Presentation.xcodeproj -scheme "Presentation-iOS" -destination "platform=iOS Simulator,name=iPhone 6" build-for-testing test | xcpretty
