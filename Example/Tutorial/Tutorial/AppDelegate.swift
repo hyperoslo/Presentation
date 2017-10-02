@@ -6,19 +6,19 @@ import Presentation
 class AppDelegate: UIResponder, UIApplicationDelegate {
   var window: UIWindow?
 
-  lazy var navigationController: UINavigationController = { [unowned self] in
+  private lazy var navigationController: UINavigationController = { [unowned self] in
     let controller = UINavigationController(rootViewController: self.presentationController)
     controller.view.backgroundColor = UIColor(hex:"FF5703")
     return controller
   }()
 
-  lazy var presentationController: PresentationController = {
+  private lazy var presentationController: PresentationController = {
     let controller = PresentationController(pages: [])
     controller.setNavigationTitle = false
     return controller
   }()
 
-  lazy var leftButton: UIBarButtonItem = { [unowned self] in
+  private lazy var leftButton: UIBarButtonItem = { [unowned self] in
     let button = UIBarButtonItem(
       title: "Previous page",
       style: .plain,
@@ -34,41 +34,41 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     return button
   }()
 
-  lazy var rightButton: UIBarButtonItem = { [unowned self] in
+  private lazy var rightButton: UIBarButtonItem = { [unowned self] in
     let button = UIBarButtonItem(
       title: "Next page",
       style: .plain,
       target: self.presentationController,
-      action: #selector(PresentationController.moveForward))
+      action: #selector(PresentationController.moveForward)
+    )
 
     button.setTitleTextAttributes(
       [NSAttributedStringKey.foregroundColor: UIColor.white],
-      for: .normal)
+      for: .normal
+    )
 
     return button
     }()
 
-  func application(
-    _ application: UIApplication,
-    didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+  func application(_ application: UIApplication,
+                   didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+    UINavigationBar.appearance().barTintColor = UIColor(hex: "FF5703")
+    UINavigationBar.appearance().barStyle = .blackTranslucent
 
-      UINavigationBar.appearance().barTintColor = UIColor(hex: "FF5703")
-      UINavigationBar.appearance().barStyle = .blackTranslucent
+    presentationController.navigationItem.leftBarButtonItem = leftButton
+    presentationController.navigationItem.rightBarButtonItem = rightButton
 
-      presentationController.navigationItem.leftBarButtonItem = leftButton
-      presentationController.navigationItem.rightBarButtonItem = rightButton
+    configureSlides()
+    configureBackground()
 
-      configureSlides()
-      configureBackground()
+    window = UIWindow(frame: UIScreen.main.bounds)
+    window?.rootViewController = navigationController
+    window?.makeKeyAndVisible()
 
-      window = UIWindow(frame: UIScreen.main.bounds)
-      window?.rootViewController = navigationController
-      window?.makeKeyAndVisible()
-
-      return true
+    return true
   }
 
-  func configureSlides() {
+  private func configureSlides() {
     let ratio: CGFloat = UIDevice.current.userInterfaceIdiom == .pad ? 1 : 0.4
     let font = UIFont(name: "ArialRoundedMTBold", size: 42.0 * ratio)!
     let color = UIColor.white
@@ -109,9 +109,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     presentationController.add(slides)
   }
 
-  func configureBackground() {
+  private func configureBackground() {
     let images = ["Cloud1", "Cloud2", "Cloud1"].map { UIImageView(image: UIImage(named: $0)) }
-
     let content1 = Content(view: images[0], position: Position(left: -0.3, top: 0.2))
     let content2 = Content(view: images[1], position: Position(right: -0.3, top: 0.22))
     let content3 = Content(view: images[2], position: Position(left: 0.5, top: 0.5))
@@ -145,4 +144,3 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
       ], forPage: 4)
   }
 }
-

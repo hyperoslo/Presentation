@@ -3,8 +3,7 @@ import Hue
 import Presentation
 
 class ViewController: PresentationController {
-
-  struct BackgroundImage {
+  private struct BackgroundImage {
     let name: String
     let left: CGFloat
     let top: CGFloat
@@ -29,7 +28,7 @@ class ViewController: PresentationController {
     }
   }
 
-  lazy var leftButton: UIBarButtonItem = { [unowned self] in
+  private lazy var leftButton: UIBarButtonItem = { [unowned self] in
     let leftButton = UIBarButtonItem(
       title: "Previous",
       style: .plain,
@@ -37,25 +36,28 @@ class ViewController: PresentationController {
       action: #selector(moveBack))
 
     leftButton.setTitleTextAttributes(
-      [NSForegroundColorAttributeName : UIColor.black],
-      for: .normal)
+      [NSAttributedStringKey.foregroundColor : UIColor.black],
+      for: .normal
+    )
 
     return leftButton
-    }()
+  }()
 
-  lazy var rightButton: UIBarButtonItem = { [unowned self] in
+  private lazy var rightButton: UIBarButtonItem = { [unowned self] in
     let rightButton = UIBarButtonItem(
       title: "Next",
       style: .plain,
       target: self,
-      action: #selector(moveForward))
+      action: #selector(moveForward)
+    )
 
     rightButton.setTitleTextAttributes(
-      [NSForegroundColorAttributeName : UIColor.black],
-      for: .normal)
+      [NSAttributedStringKey.foregroundColor : UIColor.black],
+      for: .normal
+    )
 
     return rightButton
-    }()
+  }()
 
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -63,7 +65,6 @@ class ViewController: PresentationController {
     setNavigationTitle = false
     navigationItem.leftBarButtonItem = leftButton
     navigationItem.rightBarButtonItem = rightButton
-
     view.backgroundColor = UIColor(hex: "FFBC00")
 
     configureSlides()
@@ -72,15 +73,18 @@ class ViewController: PresentationController {
 
   // MARK: - Configuration
 
-  func configureSlides() {
+  private func configureSlides() {
     let ratio: CGFloat = UIDevice.current.userInterfaceIdiom == .pad ? 1 : 0.6
     let font = UIFont(name: "HelveticaNeue", size: 34.0 * ratio)!
     let color = UIColor(hex: "FFE8A9")
     let paragraphStyle = NSMutableParagraphStyle()
     paragraphStyle.alignment = NSTextAlignment.center
 
-    let attributes = [NSFontAttributeName: font, NSForegroundColorAttributeName: color,
-      NSParagraphStyleAttributeName: paragraphStyle]
+    let attributes = [
+      NSAttributedStringKey.font: font,
+      NSAttributedStringKey.foregroundColor: color,
+      NSAttributedStringKey.paragraphStyle: paragraphStyle
+    ]
 
     let titles = [
       "Parallax is a displacement or difference in the apparent position of an object viewed along two different lines of sight.",
@@ -101,14 +105,13 @@ class ViewController: PresentationController {
     for index in 0...4 {
       let controller = SlideController(contents: [titles[index]])
       controller.add(animations: [Content.centerTransition(forSlideContent: titles[index])])
-
       slides.append(controller)
     }
 
     add(slides)
   }
 
-  func configureBackground() {
+  private func configureBackground() {
     let backgroundImages = [
       BackgroundImage(name: "Trees", left: 0.0, top: 0.743, speed: -0.3),
       BackgroundImage(name: "Bus", left: 0.02, top: 0.77, speed: 0.25),
@@ -136,23 +139,26 @@ class ViewController: PresentationController {
       for (column, backgroundImage) in backgroundImages.enumerated() {
         if let position = backgroundImage.positionAt(row), let content = contents.at(column) {
           addAnimation(TransitionAnimation(content: content, destination: position,
-            duration: 2.0, damping: 1.0), forPage: row)
+                                           duration: 2.0, damping: 1.0), forPage: row)
         }
       }
     }
 
     let groundView = UIView(frame: CGRect(x: 0, y: 0, width: 1024, height: 60))
     groundView.backgroundColor = UIColor(hex: "FFCD41")
-    let groundContent = Content(view: groundView,
-      position: Position(left: 0.0, bottom: 0.063), centered: false)
-    contents.append(groundContent)
 
+    let groundContent = Content(
+      view: groundView,
+      position: Position(left: 0.0, bottom: 0.063),
+      centered: false
+    )
+
+    contents.append(groundContent)
     addToBackground([groundContent])
   }
 }
 
-extension Array {
-
+private extension Array {
   func at(_ index: Int?) -> Element? {
     var object: Element?
     if let index = index , index >= 0 && index < endIndex {
