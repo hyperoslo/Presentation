@@ -1,25 +1,28 @@
 import UIKit
 
 public class TransitionAnimation: NSObject, Animatable {
-
-  let content: Content
-  let destination: Position
-  let duration: TimeInterval
-  let damping: CGFloat
+  private let content: Content
+  private let destination: Position
+  private let duration: TimeInterval
+  private let damping: CGFloat
   var reflective: Bool
-  var initial: Bool
-  var played = false
+  private var initial: Bool
+  private var played = false
 
   lazy var start: Position = { [unowned self] in
     return self.content.position.positionCopy
-    }()
+  }()
 
   lazy var startMirror: Position = { [unowned self] in
     return self.start.horizontalMirror
-    }()
+  }()
 
-  public init(content: Content, destination: Position,
-    duration: TimeInterval = 1.0, damping: CGFloat = 0.7, reflective: Bool = false, initial: Bool = false) {
+  public init(content: Content,
+              destination: Position,
+              duration: TimeInterval = 1.0,
+              damping: CGFloat = 0.7,
+              reflective: Bool = false,
+              initial: Bool = false) {
       self.content = content
       self.destination = destination
       self.duration = duration
@@ -30,16 +33,19 @@ public class TransitionAnimation: NSObject, Animatable {
       super.init()
   }
 
-  fileprivate func animate(to position: Position) {
-    UIView.animate(withDuration: duration,
+  private func animate(to position: Position) {
+    UIView.animate(
+      withDuration: duration,
       delay: 0,
       usingSpringWithDamping: damping,
       initialSpringVelocity: 0.5,
       options: [.beginFromCurrentState, .allowUserInteraction],
-      animations: { [unowned self] in
+      animations: ({ [unowned self] in
         self.content.position = position
         self.content.animate()
-      }, completion: nil)
+      }),
+      completion: nil
+    )
 
     played = true
   }
@@ -48,7 +54,6 @@ public class TransitionAnimation: NSObject, Animatable {
 // MARK: -  Animatable
 
 extension TransitionAnimation {
-
   public func play() {
     if let _ = content.view.superview {
       if !(initial && played) {
@@ -63,7 +68,7 @@ extension TransitionAnimation {
   }
 
   public func playBack() {
-    if let _ = content.view.superview {
+    if content.view.superview != nil {
       if !(initial && played) {
         let position = reflective ? startMirror : start
 

@@ -1,14 +1,12 @@
 import UIKit
 
 open class SlideController: UIViewController {
-
-  fileprivate var contents = [Content]()
-  fileprivate var animations = [Animatable]()
-  fileprivate var visible = false
+  private var contents = [Content]()
+  private var animations = [Animatable]()
+  private var visible = false
 
   public convenience init(contents: [Content]) {
     self.init()
-
     add(contents: contents)
   }
 
@@ -31,7 +29,6 @@ open class SlideController: UIViewController {
 
   open override func viewDidDisappear(_ animated: Bool) {
     super.viewDidDisappear(animated)
-
     visible = false
   }
 
@@ -52,28 +49,27 @@ open class SlideController: UIViewController {
 
 // MARK: - Public methods
 
-extension SlideController {
-
-  public func add(contents: [Content]) {
+public extension SlideController {
+  func add(contents: [Content]) {
     for content in contents {
       add(content: content)
     }
   }
 
-  public func add(content: Content) {
+  func add(content: Content) {
     contents.append(content)
     view.addSubview(content.view)
 
     content.layout()
   }
 
-  public func add(animations: [Animatable]) {
+  func add(animations: [Animatable]) {
     for animation in animations {
       add(animation: animation)
     }
   }
 
-  public func add(animation: Animatable) {
+  func add(animation: Animatable) {
     animations.append(animation)
   }
 }

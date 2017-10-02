@@ -1,7 +1,6 @@
 import UIKit
 
 @objc public class Position: NSObject {
-
   public var left: CGFloat = 0.0
   public var top: CGFloat = 0.0
 
@@ -25,28 +24,24 @@ import UIKit
 
   public init(left: CGFloat, top: CGFloat) {
     super.init()
-
     self.left = left
     self.top = top
   }
 
   public init(left: CGFloat, bottom: CGFloat) {
     super.init()
-
     self.left = left
     self.bottom = bottom
   }
 
   public init(right: CGFloat, top: CGFloat) {
     super.init()
-
     self.right = right
     self.top = top
   }
 
   public init(right: CGFloat, bottom: CGFloat) {
     super.init()
-
     self.right = right
     self.bottom = bottom
   }
@@ -65,19 +60,16 @@ import UIKit
 
   public func xInFrame(_ frame: CGRect) -> CGFloat {
     let margin = frame.width * left
-
     return frame.minX + margin
   }
 
   public func yInFrame(_ frame: CGRect) -> CGFloat {
     let margin = frame.height * top
-
     return frame.minY + margin
   }
 
   public func isEqualTo(position: Position, epsilon: CGFloat = 0.0001) -> Bool {
     let dx = left - position.left, dy = top - position.top
-
     return (dx * dx + dy * dy) < epsilon
   }
 }

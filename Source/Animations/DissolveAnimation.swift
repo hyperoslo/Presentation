@@ -1,15 +1,16 @@
 import UIKit
 
 public class DissolveAnimation: NSObject, Animatable {
+  private let content: Content
+  private let duration: TimeInterval
+  private let delay: TimeInterval
+  private var initial: Bool
+  private var played = false
 
-  let content: Content
-  let duration: TimeInterval
-  let delay: TimeInterval
-  var initial: Bool
-  var played = false
-
-  public init(content: Content, duration: TimeInterval = 1.0,
-    delay: TimeInterval = 0.0, initial: Bool = false) {
+  public init(content: Content,
+              duration: TimeInterval = 1.0,
+              delay: TimeInterval = 0.0,
+              initial: Bool = false) {
       self.content = content
       self.duration = duration
       self.delay = delay
@@ -20,17 +21,20 @@ public class DissolveAnimation: NSObject, Animatable {
       super.init()
   }
 
-  fileprivate func animate() {
+  private func animate() {
     let alpha: CGFloat = content.view.alpha == 0.0 ? 1.0 : 0.0
 
-    UIView.animate(withDuration: duration,
+    UIView.animate(
+      withDuration: duration,
       delay: delay,
       usingSpringWithDamping: 1.0,
       initialSpringVelocity: 0.5,
       options: [.beginFromCurrentState, .allowUserInteraction],
-      animations: { [unowned self] in
+      animations: ({ [unowned self] in
         self.content.view.alpha = alpha
-      }, completion: nil)
+      }),
+      completion: nil
+    )
 
     played = true
   }
@@ -39,7 +43,6 @@ public class DissolveAnimation: NSObject, Animatable {
 // MARK: - Animatable
 
 extension DissolveAnimation {
-
   public func play() {
     if content.view.superview != nil {
       if !(initial && played) {
@@ -60,6 +63,7 @@ extension DissolveAnimation {
 
   public func moveWith(offsetRatio: CGFloat) {
     let view = content.view
+
     if view.layer.animationKeys() == nil {
       if view.superview != nil {
         let ratio = offsetRatio > 0.0 ? offsetRatio : (1.0 + offsetRatio)
