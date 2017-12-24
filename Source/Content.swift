@@ -56,10 +56,10 @@ public final class Content: NSObject {
 extension Content {
 
   public class func content(forTitle text: String,
-    attributes: [String : AnyObject]? = nil) -> Content {
+    attributes: [NSAttributedStringKey : Any]? = nil) -> Content {
       let label = UILabel(frame: CGRect.zero)
       label.numberOfLines = 1
-      label.attributedText = NSAttributedString(string: text, attributes: attributes)
+    label.attributedText = NSAttributedString(string: text, attributes: (attributes! as [String : Any]))
       label.sizeToFit()
 
       let position = Position(left: 0.9, bottom: 0.2)
@@ -68,10 +68,10 @@ extension Content {
   }
 
   public class func content(forText text: String,
-    attributes: [String : AnyObject]? = nil) -> Content {
+    attributes: [NSAttributedStringKey : Any]? = nil) -> Content {
       let textView = UITextView(frame: CGRect.zero)
       textView.backgroundColor = UIColor.clear
-      textView.attributedText = NSAttributedString(string: text, attributes: attributes)
+    textView.attributedText = NSAttributedString(string: text, attributes: (attributes! as [String : Any]))
       textView.sizeToFit()
 
       return Content(view: textView, position: Position(left: 0.9, bottom: 0.1))
