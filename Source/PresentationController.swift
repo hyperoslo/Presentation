@@ -109,7 +109,7 @@ open class PresentationController: PagesController {
     animationTimer = nil
   }
 
-  func updateAnimationTimer(_ timer: Timer) {
+  @objc func updateAnimationTimer(_ timer: Timer) {
     stopAnimationTimer()
     scrollView?.isUserInteractionEnabled = true
   }
