@@ -13,5 +13,4 @@ Pod::Spec.new do |s|
 
   s.source_files = 'Source/**/*'
   s.dependency 'Pages', '~> 2.0'
-  s.dependency 'Cartography', '~> 2.0'
 end

@@ -1,5 +1,4 @@
 import UIKit
-import Cartography
 
 public final class Content: NSObject {
   public var view: UIView
@@ -12,7 +11,7 @@ public final class Content: NSObject {
   }
 
   public private(set) var initialPosition: Position
-  private let group = ConstraintGroup()
+  private var constraints = [NSLayoutConstraint]()
 
   public init(view: UIView, position: Position, centered: Bool = true) {
     self.view = view
@@ -22,39 +21,69 @@ public final class Content: NSObject {
 
     super.init()
 
-    constrain(view) { [unowned self] view in
-      view.width  == self.view.frame.width
-      view.height == self.view.frame.height
-    }
+    view.translatesAutoresizingMaskIntoConstraints = false
+    setupSizeConstraints()
   }
 
   public func layout() {
-    guard view.superview != nil else {
+    guard let superview = view.superview else {
       return
     }
 
-    constrain(view, replace: group) { [unowned self] view in
-      let x = self.position.left == 0.0
-        ? view.superview!.left * 1.0
-        : view.superview!.right * self.position.left
-      let y = self.position.top == 0.0
-        ? view.superview!.top * 1.0
-        : view.superview!.bottom * self.position.top
+    NSLayoutConstraint.deactivate(constraints)
 
-      if self.centered {
-        view.centerX == x
-        view.centerY  == y
-      } else {
-        view.left == x
-        view.top == y
-      }
-    }
+    let xAttribute: NSLayoutAttribute = centered ? .centerX : .leading
+    let yAttribute: NSLayoutAttribute = centered ? .centerY : .top
+    let xSuperAttribute: NSLayoutAttribute = position.left == 0 ? .leading : .trailing
+    let ySuperAttribute: NSLayoutAttribute = position.top == 0 ? .top : .bottom
+    let xMultiplier: CGFloat = position.left == 0 ? 1 : position.left
+    let yMultiplier: CGFloat = position.top == 0 ? 1 : position.top
 
+    constraints = [
+      NSLayoutConstraint(
+        item: view,
+        attribute: xAttribute,
+        relatedBy: .equal,
+        toItem: superview,
+        attribute: xSuperAttribute,
+        multiplier: xMultiplier,
+        constant: 0
+      ),
+      NSLayoutConstraint(
+        item: view,
+        attribute: yAttribute,
+        relatedBy: .equal,
+        toItem: superview,
+        attribute: ySuperAttribute,
+        multiplier: yMultiplier,
+        constant: 0
+      )
+    ]
+
+    NSLayoutConstraint.activate(constraints)
     view.layoutIfNeeded()
   }
 
   public func animate() {
     view.superview!.layoutIfNeeded()
+  }
+
+  private func setupSizeConstraints() {
+    makeSizeConstraint(attribute: .width, constant: view.frame.width).isActive = true
+    makeSizeConstraint(attribute: .height, constant: view.frame.height).isActive = true
+  }
+
+  private func makeSizeConstraint(attribute: NSLayoutAttribute,
+                                  constant: CGFloat) -> NSLayoutConstraint {
+    return NSLayoutConstraint(
+      item: view,
+      attribute: attribute,
+      relatedBy: .equal,
+      toItem: nil,
+      attribute: .notAnAttribute,
+      multiplier: 1,
+      constant: constant
+    )
   }
 }
 
