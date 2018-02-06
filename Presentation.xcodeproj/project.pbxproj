@@ -17,7 +17,6 @@
 		D523B0EE1C43AC70001AD1EC /* PresentationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D523B0E41C43AC70001AD1EC /* PresentationController.swift */; };
 		D523B0EF1C43AC70001AD1EC /* SlideController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D523B0E51C43AC70001AD1EC /* SlideController.swift */; };
 		D523B0F21C43AE94001AD1EC /* Pages.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D523B0F01C43AE94001AD1EC /* Pages.framework */; };
-		D523B0F31C43AE94001AD1EC /* Cartography.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D523B0F11C43AE94001AD1EC /* Cartography.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -33,7 +32,6 @@
 		D523B0E41C43AC70001AD1EC /* PresentationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PresentationController.swift; sourceTree = "<group>"; };
 		D523B0E51C43AC70001AD1EC /* SlideController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SlideController.swift; sourceTree = "<group>"; };
 		D523B0F01C43AE94001AD1EC /* Pages.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Pages.framework; path = Carthage/Build/iOS/Pages.framework; sourceTree = "<group>"; };
-		D523B0F11C43AE94001AD1EC /* Cartography.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cartography.framework; path = Carthage/Build/iOS/Cartography.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -42,7 +40,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				D523B0F21C43AE94001AD1EC /* Pages.framework in Frameworks */,
-				D523B0F31C43AE94001AD1EC /* Cartography.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -111,7 +108,6 @@
 			isa = PBXGroup;
 			children = (
 				D523B0F01C43AE94001AD1EC /* Pages.framework */,
-				D523B0F11C43AE94001AD1EC /* Cartography.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -198,7 +194,6 @@
 			);
 			inputPaths = (
 				"$(SRCROOT)/Carthage/Build/iOS/Pages.framework",
-				"$(SRCROOT)/Carthage/Build/iOS/Cartography.framework",
 			);
 			outputPaths = (
 			);
