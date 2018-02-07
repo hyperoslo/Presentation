@@ -1,10 +1,8 @@
 PODS:
-  - Cartography (2.0.0)
-  - Hue (1.2.0)
+  - Hue (3.0.1)
   - Pages (2.0.2)
-  - Presentation (3.1.0):
-    - Cartography
-    - Pages
+  - Presentation (4.1.0):
+    - Pages (~> 2.0)
 
 DEPENDENCIES:
   - Hue
@@ -15,11 +13,10 @@ EXTERNAL SOURCES:
     :path: ../../
 
 SPEC CHECKSUMS:
-  Cartography: d295eb25ab54bb57eecd8c2f04e9648c850f1281
-  Hue: 0705083b7aff40334033373e6293ec1215285ac2
+  Hue: 93e852fa6211ab35922ad8c293f51c43d6c79eb2
   Pages: 5564ac6035c48fef7a837049314f57507d263b11
-  Presentation: 07f001419368d0ece73285f238b1dc3852462f23
+  Presentation: b717a7e0bff6af8e028998269114a344d5c114e4
 
-PODFILE CHECKSUM: a2be853ebf7792783dc915c68a50d0f469a3c2ec
+PODFILE CHECKSUM: fdf662532b7595886c0398895df5b6e99fbfa147
 
-COCOAPODS: 1.3.1
+COCOAPODS: 1.4.0
