@@ -90,7 +90,7 @@ extension TransitionAnimation {
         let startY = position.yInFrame(superview.bounds)
         let dy = destination.yInFrame(superview.bounds) - startY
 
-        let ratio = offsetRatio > 0.0 ? offsetRatio : (1.0 + offsetRatio)
+        let ratio = min(0.0, max(1.0, offsetRatio > 0.0 ? offsetRatio : (1.0 + offsetRatio)))
         let offsetX = dx * ratio
         let offsetY = dy * ratio
 
