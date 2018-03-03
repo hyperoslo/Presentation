@@ -75,7 +75,7 @@ extension PopAnimation {
     if view.layer.animationKeys() == nil {
       if view.superview != nil {
         let ratio = offsetRatio > 0.0 ? offsetRatio : (1.0 + offsetRatio)
-        view.alpha = min(0.0, max(1.0, ratio))
+        view.alpha = max(0.0, min(1.0, ratio))
       }
     }
   }
