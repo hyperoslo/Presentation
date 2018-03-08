@@ -1,33 +1,25 @@
 PODS:
   - Cartography (1.0.1)
-  - Hue (1.2.0)
+  - Hue (2.0.1)
   - Pages (1.0.0)
-  - Presentation (3.0.0):
+  - Presentation (3.1.6):
     - Cartography
     - Pages
 
 DEPENDENCIES:
-  - Hue (from `https://github.com/hyperoslo/Hue`, branch `swift3`)
+  - Hue
   - Presentation (from `../../`)
 
 EXTERNAL SOURCES:
-  Hue:
-    :branch: swift3
-    :git: https://github.com/hyperoslo/Hue
   Presentation:
-    :path: "../../"
-
-CHECKOUT OPTIONS:
-  Hue:
-    :commit: 3303cbcdf0f771aea1a6d1a153e4b95eef8696eb
-    :git: https://github.com/hyperoslo/Hue
+    :path: ../../
 
 SPEC CHECKSUMS:
   Cartography: c1460e99395b824d9d75360b0382faeb0b33dcd7
-  Hue: 0705083b7aff40334033373e6293ec1215285ac2
+  Hue: 354caec055fdc9d38b5ef33ca2e7224721843baf
   Pages: f3718e6f03a5e2787f6b0bff4becb3c7c19bcebc
-  Presentation: 2a7e0379ab403c0bd91c4f6d5c59480edba6f429
+  Presentation: 89ae2e9cb098a6296f7d6db9edf2beac7518d729
 
-PODFILE CHECKSUM: a46ef067438fe85dbabc3ca50d68bda71f1ff526
+PODFILE CHECKSUM: 9c2b6d605b8d61342a1e6cef2f07bed8ae38d1fb
 
-COCOAPODS: 1.2.0
+COCOAPODS: 1.4.0
