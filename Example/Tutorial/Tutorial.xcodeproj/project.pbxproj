@@ -7,10 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		2DCCF82811EB3F02E430E820 /* Pods_Tutorial.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0E054AB64D7F047E189E0676 /* Pods_Tutorial.framework */; };
 		D59807741AF6A8AB004B6D3A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D598076E1AF6A8AB004B6D3A /* AppDelegate.swift */; };
 		D59807751AF6A8AB004B6D3A /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = D598076F1AF6A8AB004B6D3A /* LaunchScreen.xib */; };
 		D59807771AF6A8AB004B6D3A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D59807731AF6A8AB004B6D3A /* Images.xcassets */; };
+		D6EE78DD289ADA0AEC513A18 /* Pods_Tutorial.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0E054AB64D7F047E189E0676 /* Pods_Tutorial.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,7 +30,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2DCCF82811EB3F02E430E820 /* Pods_Tutorial.framework in Frameworks */,
+				D6EE78DD289ADA0AEC513A18 /* Pods_Tutorial.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -104,7 +104,6 @@
 				D54221831AF64A7000F4E9A8 /* Frameworks */,
 				D54221841AF64A7000F4E9A8 /* Resources */,
 				98EF1B66773AF87D3D6A4C62 /* [CP] Embed Pods Frameworks */,
-				8058477F6FC36BF93DD6D31F /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -127,6 +126,7 @@
 				TargetAttributes = {
 					D54221851AF64A7000F4E9A8 = {
 						CreatedOnToolsVersion = 6.3.1;
+						DevelopmentTeam = 5E287C6W67;
 						LastSwiftMigration = 0900;
 					};
 				};
@@ -178,21 +178,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		8058477F6FC36BF93DD6D31F /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Tutorial/Pods-Tutorial-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		98EF1B66773AF87D3D6A4C62 /* [CP] Embed Pods Frameworks */ = {
@@ -349,6 +334,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 5E287C6W67;
 				INFOPLIST_FILE = Tutorial/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -366,6 +352,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 5E287C6W67;
 				INFOPLIST_FILE = Tutorial/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
