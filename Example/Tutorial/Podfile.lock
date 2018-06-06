@@ -1,7 +1,7 @@
 PODS:
   - Hue (3.0.1)
   - Pages (2.0.2)
-  - Presentation (4.1.2):
+  - Presentation (4.1.0):
     - Pages (~> 2.0)
 
 DEPENDENCIES:
