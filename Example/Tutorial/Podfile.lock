@@ -6,17 +6,19 @@ PODS:
 
 DEPENDENCIES:
   - Hue
-  - Presentation (from `../../`)
+  - Presentation
 
-EXTERNAL SOURCES:
-  Presentation:
-    :path: ../../
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - Hue
+    - Pages
+    - Presentation
 
 SPEC CHECKSUMS:
   Hue: 93e852fa6211ab35922ad8c293f51c43d6c79eb2
   Pages: 5564ac6035c48fef7a837049314f57507d263b11
-  Presentation: b717a7e0bff6af8e028998269114a344d5c114e4
+  Presentation: 84974970fa451c89147d2bed4d5d50f857e71761
 
-PODFILE CHECKSUM: fdf662532b7595886c0398895df5b6e99fbfa147
+PODFILE CHECKSUM: e19a5b7c42f77897bad4928da7a347fed02ca07d
 
-COCOAPODS: 1.4.0
+COCOAPODS: 1.5.3
