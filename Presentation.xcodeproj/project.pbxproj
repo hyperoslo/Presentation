@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		36B02CF09781DA04ED30BB3C /* Pods_Presentation_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 79979118C8586F8C7BC31DEF /* Pods_Presentation_iOS.framework */; };
+		BF03C550215A08330032B7D6 /* Array+Sugar.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF03C54D215A08320032B7D6 /* Array+Sugar.swift */; };
+		BF03C551215A08330032B7D6 /* PagesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF03C54E215A08320032B7D6 /* PagesController.swift */; };
+		BF03C552215A08330032B7D6 /* UIStoryboard+Sugar.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF03C54F215A08320032B7D6 /* UIStoryboard+Sugar.swift */; };
 		D523B0E71C43AC70001AD1EC /* Animatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D523B0DC1C43AC70001AD1EC /* Animatable.swift */; };
 		D523B0E81C43AC70001AD1EC /* DissolveAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = D523B0DD1C43AC70001AD1EC /* DissolveAnimation.swift */; };
 		D523B0E91C43AC70001AD1EC /* PopAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = D523B0DE1C43AC70001AD1EC /* PopAnimation.swift */; };
@@ -20,6 +24,12 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4EC2C10868831A291C53708E /* Pods-Presentation-iOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Presentation-iOS.release.xcconfig"; path = "Target Support Files/Pods-Presentation-iOS/Pods-Presentation-iOS.release.xcconfig"; sourceTree = "<group>"; };
+		79979118C8586F8C7BC31DEF /* Pods_Presentation_iOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Presentation_iOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		9F05CFF1E1637F5AA059EB0F /* Pods-Presentation-iOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Presentation-iOS.debug.xcconfig"; path = "Target Support Files/Pods-Presentation-iOS/Pods-Presentation-iOS.debug.xcconfig"; sourceTree = "<group>"; };
+		BF03C54D215A08320032B7D6 /* Array+Sugar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Array+Sugar.swift"; sourceTree = "<group>"; };
+		BF03C54E215A08320032B7D6 /* PagesController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PagesController.swift; sourceTree = "<group>"; };
+		BF03C54F215A08320032B7D6 /* UIStoryboard+Sugar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIStoryboard+Sugar.swift"; sourceTree = "<group>"; };
 		D523B0CD1C43AB90001AD1EC /* Presentation.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Presentation.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D523B0D91C43AC70001AD1EC /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D523B0DC1C43AC70001AD1EC /* Animatable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Animatable.swift; sourceTree = "<group>"; };
@@ -40,12 +50,32 @@
 			buildActionMask = 2147483647;
 			files = (
 				D523B0F21C43AE94001AD1EC /* Pages.framework in Frameworks */,
+				36B02CF09781DA04ED30BB3C /* Pods_Presentation_iOS.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		53DB5246487F6A20EA7AB90A /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				9F05CFF1E1637F5AA059EB0F /* Pods-Presentation-iOS.debug.xcconfig */,
+				4EC2C10868831A291C53708E /* Pods-Presentation-iOS.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		BF03C553215A08370032B7D6 /* Pages */ = {
+			isa = PBXGroup;
+			children = (
+				BF03C54D215A08320032B7D6 /* Array+Sugar.swift */,
+				BF03C54E215A08320032B7D6 /* PagesController.swift */,
+				BF03C54F215A08320032B7D6 /* UIStoryboard+Sugar.swift */,
+			);
+			path = Pages;
+			sourceTree = "<group>";
+		};
 		D523B0C31C43AB90001AD1EC = {
 			isa = PBXGroup;
 			children = (
@@ -53,6 +83,7 @@
 				D523B0DA1C43AC70001AD1EC /* Source */,
 				D523B0F51C43AF9B001AD1EC /* Frameworks */,
 				D523B0CE1C43AB90001AD1EC /* Products */,
+				53DB5246487F6A20EA7AB90A /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -81,6 +112,7 @@
 				D523B0E51C43AC70001AD1EC /* SlideController.swift */,
 				D523B0DB1C43AC70001AD1EC /* Animations */,
 				D523B0E11C43AC70001AD1EC /* Extensions */,
+				BF03C553215A08370032B7D6 /* Pages */,
 			);
 			path = Source;
 			sourceTree = "<group>";
@@ -108,6 +140,7 @@
 			isa = PBXGroup;
 			children = (
 				D523B0F01C43AE94001AD1EC /* Pages.framework */,
+				79979118C8586F8C7BC31DEF /* Pods_Presentation_iOS.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -129,6 +162,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = D523B0D51C43AB90001AD1EC /* Build configuration list for PBXNativeTarget "Presentation-iOS" */;
 			buildPhases = (
+				8C6D3870912623A5468A38B0 /* [CP] Check Pods Manifest.lock */,
 				D523B0C81C43AB90001AD1EC /* Sources */,
 				D523B0C91C43AB90001AD1EC /* Frameworks */,
 				D523B0CA1C43AB90001AD1EC /* Headers */,
@@ -187,6 +221,28 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		8C6D3870912623A5468A38B0 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Presentation-iOS-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
 		D523B0F41C43AE99001AD1EC /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -208,11 +264,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BF03C551215A08330032B7D6 /* PagesController.swift in Sources */,
 				D523B0ED1C43AC70001AD1EC /* Position.swift in Sources */,
 				D523B0E91C43AC70001AD1EC /* PopAnimation.swift in Sources */,
+				BF03C550215A08330032B7D6 /* Array+Sugar.swift in Sources */,
 				D523B0E71C43AC70001AD1EC /* Animatable.swift in Sources */,
 				D523B0EC1C43AC70001AD1EC /* CGPointExtension.swift in Sources */,
 				D523B0E81C43AC70001AD1EC /* DissolveAnimation.swift in Sources */,
+				BF03C552215A08330032B7D6 /* UIStoryboard+Sugar.swift in Sources */,
 				D523B0EB1C43AC70001AD1EC /* Content.swift in Sources */,
 				D523B0EA1C43AC70001AD1EC /* TransitionAnimation.swift in Sources */,
 				D523B0EF1C43AC70001AD1EC /* SlideController.swift in Sources */,
@@ -331,6 +390,7 @@
 		};
 		D523B0D61C43AB90001AD1EC /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9F05CFF1E1637F5AA059EB0F /* Pods-Presentation-iOS.debug.xcconfig */;
 			buildSettings = {
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				DEFINES_MODULE = YES;
@@ -355,6 +415,7 @@
 		};
 		D523B0D71C43AB90001AD1EC /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4EC2C10868831A291C53708E /* Pods-Presentation-iOS.release.xcconfig */;
 			buildSettings = {
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				DEFINES_MODULE = YES;
