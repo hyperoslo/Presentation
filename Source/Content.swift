@@ -32,10 +32,10 @@ public final class Content: NSObject {
 
     NSLayoutConstraint.deactivate(constraints)
 
-    let xAttribute: NSLayoutAttribute = centered ? .centerX : .leading
-    let yAttribute: NSLayoutAttribute = centered ? .centerY : .top
-    let xSuperAttribute: NSLayoutAttribute = position.left == 0 ? .leading : .trailing
-    let ySuperAttribute: NSLayoutAttribute = position.top == 0 ? .top : .bottom
+    let xAttribute: NSLayoutConstraint.Attribute = centered ? .centerX : .leading
+    let yAttribute: NSLayoutConstraint.Attribute = centered ? .centerY : .top
+    let xSuperAttribute: NSLayoutConstraint.Attribute = position.left == 0 ? .leading : .trailing
+    let ySuperAttribute: NSLayoutConstraint.Attribute = position.top == 0 ? .top : .bottom
     let xMultiplier: CGFloat = position.left == 0 ? 1 : position.left
     let yMultiplier: CGFloat = position.top == 0 ? 1 : position.top
 
@@ -73,7 +73,7 @@ public final class Content: NSObject {
     makeSizeConstraint(attribute: .height, constant: view.frame.height).isActive = true
   }
 
-  private func makeSizeConstraint(attribute: NSLayoutAttribute,
+  private func makeSizeConstraint(attribute: NSLayoutConstraint.Attribute,
                                   constant: CGFloat) -> NSLayoutConstraint {
     return NSLayoutConstraint(
       item: view,
@@ -88,7 +88,7 @@ public final class Content: NSObject {
 }
 
 public extension Content {
-  class func content(forTitle text: String, attributes: [NSAttributedStringKey: Any]? = nil) -> Content {
+  class func content(forTitle text: String, attributes: [NSAttributedString.Key: Any]? = nil) -> Content {
     let label = UILabel(frame: CGRect.zero)
     label.numberOfLines = 1
     label.attributedText = NSAttributedString(string: text, attributes: attributes)
@@ -99,7 +99,7 @@ public extension Content {
     return Content(view: label, position: position)
   }
 
-  class func content(forText text: String, attributes: [NSAttributedStringKey: Any]? = nil) -> Content {
+  class func content(forText text: String, attributes: [NSAttributedString.Key: Any]? = nil) -> Content {
     let textView = UITextView(frame: CGRect.zero)
     textView.backgroundColor = UIColor.clear
     textView.attributedText = NSAttributedString(string: text, attributes: attributes)
