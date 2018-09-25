@@ -50,9 +50,9 @@ import UIKit
   public private(set) var pageControl: UIPageControl?
 
   public convenience init(_ pages: [UIViewController],
-                          transitionStyle: UIPageViewControllerTransitionStyle = .scroll,
-                          navigationOrientation: UIPageViewControllerNavigationOrientation = .horizontal,
-                          options: [String : AnyObject]? = nil) {
+                          transitionStyle: UIPageViewController.TransitionStyle = .scroll,
+                          navigationOrientation: UIPageViewController.NavigationOrientation = .horizontal,
+                          options: [UIPageViewController.OptionsKey : Any]? = nil) {
     self.init(
       transitionStyle: transitionStyle,
       navigationOrientation: navigationOrientation,
@@ -70,7 +70,7 @@ import UIKit
 
     view.addSubview(bottomLineView)
     addConstraints()
-    view.bringSubview(toFront: bottomLineView)
+    view.bringSubviewToFront(bottomLineView)
     goTo(startPage)
   }
 
@@ -88,7 +88,7 @@ import UIKit
 
   open func goTo(_ index: Int) {
     if index >= 0 && index < pages.count {
-      let direction: UIPageViewControllerNavigationDirection = (index > currentIndex) ? .forward : .reverse
+      let direction: UIPageViewController.NavigationDirection = (index > currentIndex) ? .forward : .reverse
       let viewController = pages[index]
       currentIndex = index
 
