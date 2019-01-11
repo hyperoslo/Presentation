@@ -99,7 +99,7 @@ open class PresentationController: PagesController {
           selector: #selector(self.updateAnimationTimer(_:)),
           userInfo: nil,
           repeats: false)
-        RunLoop.current.add(self.animationTimer!, forMode: RunLoop.Mode.common)
+        RunLoop.current.add(self.animationTimer!, forMode: RunLoopMode.commonModes)
       }
     }
   }
