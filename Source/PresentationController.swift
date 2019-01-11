@@ -127,7 +127,7 @@ open class PresentationController: PagesController {
     for content in elements {
       backgroundContents.append(content)
       view.addSubview(content.view)
-      view.sendSubviewToBack(content.view)
+      view.sendSubview(toBack: content.view)
       content.layout()
     }
   }
