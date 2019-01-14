@@ -1,3 +1,5 @@
+⚠️ DEPRECATED, NO LONGER MAINTAINED
+
 ![Presentation logo](https://raw.githubusercontent.com/hyperoslo/Presentation/master/Images/logo.png)
 
 [![Version](https://img.shields.io/cocoapods/v/Presentation.svg?style=flat)](http://cocoadocs.org/docsets/Presentation)
