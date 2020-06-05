@@ -99,7 +99,7 @@ open class PresentationController: PagesController {
           selector: #selector(self.updateAnimationTimer(_:)),
           userInfo: nil,
           repeats: false)
-        RunLoop.current.add(self.animationTimer!, forMode: RunLoopMode.commonModes)
+        RunLoop.current.add(self.animationTimer!, forMode: RunLoop.Mode.common)
       }
     }
   }
@@ -127,7 +127,7 @@ open class PresentationController: PagesController {
     for content in elements {
       backgroundContents.append(content)
       view.addSubview(content.view)
-      view.sendSubview(toBack: content.view)
+      view.sendSubviewToBack(content.view)
       content.layout()
     }
   }
